@@ -3,46 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bando Invitalia: Fondo Perduto per Imprese</title>
+    <title>Bando Invitalia | Come Funziona Davvero il Fondo Perduto</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary-blue: #0A2540; --action-red: #D93025; --action-red-hover: #B32015; --bg-light: #F6F9FC; --text-dark: #333333; --text-muted: #666666; }
+        :root { --primary-blue: #0A2540; --action-red: #D93025; --bg-light: #F6F9FC; --text-dark: #333333; --text-muted: #666666; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; font-size: 1.1rem; }
         header { background-color: var(--primary-blue); color: white; padding: 1rem; text-align: left; }
         header a { color: white; text-decoration: none; font-weight: 800; font-size: 1.2rem; }
         .container { max-width: 800px; margin: 2rem auto; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         h1 { font-size: 2.2rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 1rem; line-height: 1.2; letter-spacing: -1px; }
-        .meta-info { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 1rem; }
-        .meta-tag { display: inline-block; padding: 0.3rem 0.6rem; background-color: var(--action-red); color: white; font-weight: 800; border-radius: 4px; text-transform: uppercase; font-size: 0.8rem; margin-right: 10px; }
         h2 { font-size: 1.6rem; font-weight: 800; color: var(--primary-blue); margin-top: 2.5rem; margin-bottom: 1rem; }
-        p { margin-bottom: 1.5rem; }
-        ul { margin-bottom: 1.5rem; margin-left: 1.5rem; list-style-type: disc; }
-        .ads-placeholder { width: 100%; min-height: 250px; background-color: #e2e8f0; border: 2px dashed #cbd5e1; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 0.9rem; margin: 2.5rem 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        @keyframes pulse-animation { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 48, 37, 0.7); } 50% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(217, 48, 37, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 48, 37, 0); } }
-        .btn-cta { display: block; width: 100%; padding: 1.5rem; text-align: center; text-decoration: none; background-color: var(--action-red); color: white; font-weight: 800; border-radius: 12px; font-size: 1.4rem; margin: 3rem 0; animation: pulse-animation 2s infinite; box-shadow: 0 10px 20px rgba(217, 48, 37, 0.3); transition: background-color 0.3s ease; }
-        .btn-cta:hover { background-color: var(--action-red-hover); animation: none; transform: translateY(-3px); }
-        footer { background-color: var(--primary-blue); color: white; text-align: center; padding: 2rem 1rem; margin-top: 3rem; font-size: 0.9rem; }
+        p, ul { margin-bottom: 1.5rem; }
+        ul { margin-left: 1.5rem; }
+        .bureaucracy-box { background: #FFFBEB; border-left: 5px solid #F59E0B; padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; }
+        .bureaucracy-box h3 { color: #B45309; margin-bottom: 0.8rem; font-size: 1.3rem; }
+        .step-list { counter-reset: steps; list-style: none; margin: 2rem 0; padding: 0; margin-left: 0; }
+        .step-list li { position: relative; padding-left: 3.5rem; margin-bottom: 2rem; }
+        .step-list li::before { content: counter(steps); counter-increment: steps; position: absolute; left: 0; top: -4px; background: var(--primary-blue); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; }
+        .ads-placeholder { width: 100%; min-height: 250px; background-color: #e2e8f0; border: 2px dashed #cbd5e1; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 0.9rem; margin: 2.5rem 0; }
+        .btn-cta { display: block; width: 100%; padding: 1.5rem; text-align: center; text-decoration: none; background-color: var(--action-red); color: white; font-weight: 800; border-radius: 12px; font-size: 1.4rem; margin: 3rem 0; box-shadow: 0 10px 20px rgba(217, 48, 37, 0.3); }
     </style>
 </head>
 <body>
     <header><a href="index.html">⬅ Concorsi & Lavoro Italia</a></header>
     <div class="container">
-        <div class="meta-info"><span class="meta-tag">💶 Fondi Limitati</span> Categoria: Agevolazioni Imprese</div>
-        <h1>Bando Invitalia: Fino a 50.000€ a Fondo Perduto per Nuove Imprese</h1>
-        <p>Hai un'idea imprenditoriale ma ti mancano i capitali? Invitalia ha sbloccato nuovi fondi per incentivare l'autoimprenditorialità, offrendo contributi a fondo perduto e finanziamenti a tasso zero per chi decide di aprire una nuova Partita IVA.</p>
-        <div class="ads-placeholder">[Spazio Pubblicitario AdSense - Articolo Top]</div>
-        <h2>A chi è rivolto il bonus?</h2>
-        <p>Le agevolazioni puntano a supportare le fasce con maggiore difficoltà di accesso al credito bancario tradizionale:</p>
-        <ul>
-            <li>Giovani under 35.</li>
-            <li>Donne di qualsiasi età (imprenditoria femminile).</li>
-            <li>Disoccupati di lunga durata che vogliono rimettersi in gioco.</li>
+        <h1>Bando Invitalia: Fino a 50.000€ per Nuove Imprese (Senza Illusione)</h1>
+        <p>I telegiornali parlano di "soldi regalati" a chi apre la Partita IVA grazie a bandi come <em>Resto al Sud</em> o <em>ON - Oltre Nuove imprese a tasso zero</em>. Sgombriamo il campo dalle false promesse e vediamo come funziona nella realtà concreta.</p>
+        
+        <div class="ads-placeholder">[Spazio Pubblicitario AdSense - Top]</div>
+
+        <div class="bureaucracy-box">
+            <h3>💸 Sfatiamo il Mito dei Soldi Facili</h3>
+            <p>Il "Fondo Perduto" (soldi che non devi restituire) esiste, ma <strong>Invitalia non ti bonificherà 50.000€ sul tuo conto personale corrente</strong> per farci ciò che vuoi.</p>
+            <ul>
+                <li>I fondi coprono solo <strong>spese giustificate e rendicontate</strong>: preventivi di macchinari, ristrutturazioni dei locali, software.</li>
+                <li><strong>L'IVA è sempre a tuo carico.</strong> Il bando finanzia l'imponibile, l'IVA la devi anticipare tu.</li>
+                <li>Non copre quasi mai l'acquisto di merci da rivendere o stipendi (se non per brevi periodi iniziali previsti da specifici bandi).</li>
+            </ul>
+        </div>
+
+        <h2>I 3 Passi per Ottenere l'Approvazione</h2>
+        <ul class="step-list">
+            <li><strong>Firma Digitale e PEC:</strong> Sono obbligatorie. Per presentare la domanda sulla piattaforma Invitalia devi firmare il progetto con una smart card o chiavetta USB di Firma Digitale (es. Aruba o Poste).</li>
+            <li><strong>Il Business Plan:</strong> Non basta un'idea geniale. Devi compilare un foglio Excel dettagliato dimostrando che nei prossimi 3 anni la tua azienda fatturerà abbastanza per mantenersi viva. Un commercialista esperto in finanza agevolata qui è quasi obbligatorio.</li>
+            <li><strong>Il Colloquio con l'Esaminatore:</strong> Se passi la prima fase cartacea, farai una videochiamata Skype con un analista di Invitalia che proverà a smontare il tuo progetto per vedere se lo padroneggi davvero.</li>
         </ul>
-        <div class="ads-placeholder" style="min-height: 100px;">[Spazio Pubblicitario AdSense - In-Article]</div>
-        <h2>Come presentare il Business Plan</h2>
-        <p>I fondi non vengono erogati a pioggia. È fondamentale presentare un Business Plan solido sulla piattaforma web di Invitalia. La procedura è a sportello: i fondi vengono assegnati fino a esaurimento risorse.</p>
-        <a href="https://www.invitalia.it/" target="_blank" class="btn-cta">Scopri come Richiedere i Fondi su Invitalia ➔</a>
+        
+        <div class="ads-placeholder">[Spazio Pubblicitario AdSense - Middle]</div>
+
+        <p>Se credi nel tuo progetto, questa è un'occasione reale e formidabile.</p>
+        <a href="https://www.invitalia.it/" target="_blank" class="btn-cta">Esplora i Bandi Attivi su Invitalia ➔</a>
     </div>
     <footer><p>&copy; 2026 Concorsi & Lavoro Italia.</p></footer>
 </body>
