@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulatore Quiz | Diritto Amministrativo 2026</title>
-    <meta name="description" content="Mettiti alla prova con il simulatore ufficiale di Diritto Amministrativo. Scopri se sei pronto per il concorso.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7345740458390832" crossorigin="anonymous"></script>
     <style>
@@ -15,60 +14,47 @@
         header h1 { font-size: 1.8rem; font-weight: 800; }
         .quiz-container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; flex-grow: 1; width: 100%; }
         .card { background: var(--card-bg); border-radius: 12px; padding: 2rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-        .quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; font-weight: 600; color: var(--text-dark); }
+        .quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; font-weight: 600; }
         .timer { display: flex; align-items: center; gap: 0.5rem; background: #E2E8F0; padding: 0.5rem 1rem; border-radius: 20px; font-variant-numeric: tabular-nums; }
         .progress-bar { width: 100%; height: 10px; background: #E2E8F0; border-radius: 5px; margin-bottom: 2rem; overflow: hidden; }
         .progress-fill { height: 100%; background: var(--primary-blue); width: 0%; transition: width 0.3s ease; }
-        .question-text { font-size: 1.4rem; font-weight: 800; margin-bottom: 2rem; line-height: 1.4; }
-        .options-grid { display: grid; gap: 1rem; }
-        .option-btn { background: var(--bg-light); border: 2px solid #E2E8F0; padding: 1rem 1.5rem; border-radius: 8px; font-size: 1.1rem; text-align: left; cursor: pointer; transition: all 0.2s; font-weight: 600; color: var(--text-dark); }
+        .question-text { font-size: 1.3rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.4; }
+        .options-grid { display: grid; gap: 0.8rem; }
+        .option-btn { background: var(--bg-light); border: 2px solid #E2E8F0; padding: 0.8rem 1rem; border-radius: 8px; font-size: 1rem; text-align: left; cursor: pointer; transition: 0.2s; font-weight: 600; }
         .option-btn:hover:not(:disabled) { border-color: var(--primary-blue); background: #E2E8F0; }
-        .option-btn:disabled { cursor: not-allowed; }
         .option-btn.correct { background-color: #D1FAE5; border-color: var(--success); color: #065F46; }
         .option-btn.wrong { background-color: #FEE2E2; border-color: var(--error); color: #991B1B; }
-        .feedback-box { margin-top: 1.5rem; padding: 1.5rem; border-radius: 8px; display: none; animation: slideDown 0.3s ease; }
-        .feedback-box.show { display: block; }
-        .feedback-box h4 { margin-bottom: 0.5rem; font-size: 1.1rem; }
-        .feedback-box.success { background-color: #D1FAE5; border-left: 5px solid var(--success); }
-        .feedback-box.error { background-color: #FEE2E2; border-left: 5px solid var(--error); }
-        .btn-primary { background: var(--action-red); color: white; border: none; padding: 1rem 2rem; font-size: 1.2rem; font-weight: 800; border-radius: 8px; cursor: pointer; display: block; width: 100%; text-align: center; text-decoration: none; margin-top: 2rem; transition: transform 0.2s; }
-        .btn-primary:hover { transform: scale(1.02); background: #B32015; }
-        .btn-next { background: var(--primary-blue); margin-top: 1.5rem; display: none; }
-        .result-screen { text-align: center; }
-        .score-circle { width: 150px; height: 150px; border-radius: 50%; background: var(--primary-blue); color: white; display: flex; align-items: center; justify-content: center; font-size: 3rem; font-weight: 800; margin: 0 auto 2rem; }
-        .sales-pitch { background: #FFF4F2; border: 2px solid var(--action-red); padding: 2rem; border-radius: 12px; margin: 2rem 0; text-align: left; }
-        .sales-pitch h3 { color: var(--action-red); margin-bottom: 1rem; font-size: 1.4rem; }
+        .feedback-box { margin-top: 1.2rem; padding: 1.2rem; border-radius: 8px; display: none; }
+        .feedback-box.show { display: block; animation: slideDown 0.3s ease; }
+        .btn-primary { background: var(--action-red); color: white; border: none; padding: 1rem; font-size: 1.2rem; font-weight: 800; border-radius: 8px; cursor: pointer; display: block; width: 100%; text-align: center; text-decoration: none; margin-top: 1.5rem; }
+        .score-circle { width: 120px; height: 120px; border-radius: 50%; background: var(--primary-blue); color: white; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 800; margin: 0 auto 1.5rem; }
+        .sales-pitch { background: #FFF4F2; border: 2px solid var(--action-red); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; text-align: left; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         .hidden { display: none !important; }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Simulatore Esame: Diritto Amministrativo</h1>
-    </header>
+    <header><h1>Simulatore Esame 2026</h1></header>
     <main class="quiz-container">
         <div id="start-screen" class="card" style="text-align: center;">
-            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Test di Valutazione 2026</h2>
-            <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">Scopri se hai le competenze per superare le prove preselettive e scritte. Il sistema estrarrà 13 domande ad alta difficoltà dal database ufficiale.</p>
-            <button class="btn-primary" onclick="startQuiz()">INIZIA IL QUIZ ORA</button>
+            <h2 style="margin-bottom: 1rem;">Test Diritto Amministrativo</h2>
+            <p style="margin-bottom: 2rem; color: #666;">Database aggiornato: 66 domande. Il sistema ne estrarrà 13 casuali. Solo l'80% garantisce l'idoneità.</p>
+            <button class="btn-primary" onclick="startQuiz()">INIZIA IL TEST ➔</button>
         </div>
         <div id="quiz-screen" class="card hidden">
-            <div class="quiz-header">
-                <span id="question-counter">Domanda 1/13</span>
-                <div class="timer">⏱️ <span id="time-display">00:00</span></div>
-            </div>
+            <div class="quiz-header"><span id="question-counter">Domanda 1/13</span><div class="timer">⏱️ <span id="time-display">00:00</span></div></div>
             <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
-            <h2 id="question-text" class="question-text">Testo della domanda...</h2>
+            <h2 id="question-text" class="question-text"></h2>
             <div id="options-grid" class="options-grid"></div>
             <div id="feedback-box" class="feedback-box">
-                <h4 id="feedback-title">Risposta...</h4>
-                <p id="feedback-text">Spiegazione della norma...</p>
+                <h4 id="feedback-title"></h4>
+                <p id="feedback-text" style="font-size: 0.9rem; margin-top: 0.5rem;"></p>
             </div>
-            <button id="next-btn" class="btn-primary btn-next" onclick="nextQuestion()">Prossima Domanda ➔</button>
+            <button id="next-btn" class="btn-primary" style="display:none; background: var(--primary-blue);" onclick="nextQuestion()">CONTINUA ➔</button>
         </div>
-        <div id="result-screen" class="card hidden result-screen">
-            <h2>Risultato del Test</h2>
-            <p style="color: #666; margin: 1rem 0;">Tempo impiegato: <span id="final-time" style="font-weight: bold;">00:00</span></p>
+        <div id="result-screen" class="card hidden" style="text-align: center;">
+            <h2>Esito Finale</h2>
+            <p style="margin: 1rem 0; color: #666;">Tempo: <span id="final-time"></span></p>
             <div class="score-circle" id="score-display">0%</div>
             <div id="sales-container"></div>
         </div>
@@ -76,22 +62,73 @@
 
     <script>
         const databaseQuiz = [
-            { topic: "L. 241/90", question: "Ai sensi della L. 241/1990, qual è il termine generale per la conclusione del procedimento amministrativo, in assenza di diverse disposizioni?", options: [ { text: "30 giorni", correct: true }, { text: "60 giorni", correct: false }, { text: "90 giorni", correct: false }, { text: "120 giorni", correct: false } ], explanation: "Art. 2, L. 241/1990: Nei casi in cui non sia diversamente stabilito da legge o regolamento, il termine generale è di 30 giorni." },
-            { topic: "Provvedimenti", question: "Il provvedimento amministrativo adottato in violazione di legge è:", options: [ { text: "Nullo", correct: false }, { text: "Inesistente", correct: false }, { text: "Annullabile", correct: true }, { text: "Irregolare", correct: false } ], explanation: "Art. 21-octies della L. 241/90: È annullabile il provvedimento amministrativo adottato in violazione di legge o viziato da eccesso di potere o da incompetenza." },
-            { topic: "Accesso agli atti", question: "L'accesso civico generalizzato (FOIA italiano) introdotto dal D.Lgs. 97/2016:", options: [ { text: "Richiede la dimostrazione di un interesse diretto, concreto e attuale.", correct: false }, { text: "È consentito a chiunque, senza necessità di motivazione.", correct: true }, { text: "Riguarda solo i documenti che la PA ha l'obbligo di pubblicare.", correct: false }, { text: "È soggetto al pagamento di un'imposta di bollo fissa.", correct: false } ], explanation: "A differenza dell'accesso documentale classico (L.241/90), l'accesso civico generalizzato spetta a chiunque, senza obbligo di motivazione, per favorire il controllo diffuso sull'azione amministrativa." },
-            { topic: "Organizzazione", question: "Quale tra questi organi ha giurisdizione in materia di responsabilità amministrativa e contabile dei pubblici dipendenti?", options: [ { text: "Consiglio di Stato", correct: false }, { text: "TAR (Tribunale Amministrativo Regionale)", correct: false }, { text: "Corte dei Conti", correct: true }, { text: "Corte di Cassazione", correct: false } ], explanation: "La Corte dei Conti è l'organo di rilievo costituzionale che giudica sulla responsabilità amministrativo-contabile dei dipendenti pubblici che abbiano cagionato un danno erariale." },
-            { topic: "L. 241/90", question: "Il responsabile del procedimento amministrativo (Art. 5, L. 241/90):", options: [ { text: "Valuta le condizioni di ammissibilità, i requisiti di legittimazione e i presupposti rilevanti per l'emanazione del provvedimento.", correct: true }, { text: "È sempre il Dirigente apicale dell'Ente.", correct: false }, { text: "Ha solo funzioni consultive ma non istruttorie.", correct: false }, { text: "Viene nominato direttamente dal Sindaco in ogni caso.", correct: false } ], explanation: "Il Responsabile del Procedimento è il motore dell'istruttoria. Valuta presupposti, accerta i fatti e, se ne ha competenza, adotta il provvedimento finale." },
-            { topic: "Silenzio Assenso", question: "Il silenzio assenso (Art. 20 L. 241/90) NON si applica:", options: [ { text: "Nei procedimenti a istanza di parte per il rilascio di autorizzazioni.", correct: false }, { text: "Agli atti e procedimenti riguardanti il patrimonio culturale e paesaggistico.", correct: true }, { text: "Nei procedimenti in cui la PA deve accertare requisiti tecnici semplici.", correct: false }, { text: "Quando è prevista la SCIA.", correct: false } ], explanation: "Il silenzio assenso non opera per interessi sensibili previsti dall'art. 20 co. 4 (ambiente, paesaggio, salute pubblica, pubblica sicurezza)." },
-            { topic: "Annullamento d'ufficio", question: "L'annullamento d'ufficio di un provvedimento illegittimo (Art. 21-nonies):", options: [ { text: "Può essere disposto sempre e senza limiti di tempo.", correct: false }, { text: "Può essere disposto entro un termine ragionevole, non superiore a 12 mesi, per i provvedimenti autorizzatori o attributivi di vantaggi economici.", correct: true }, { text: "È di competenza esclusiva del Giudice Amministrativo.", correct: false }, { text: "Non prevede la valutazione dell'interesse pubblico.", correct: false } ], explanation: "Il termine massimo (recentemente modificato in 12 mesi dalla Legge 108/2021) garantisce la certezza dei rapporti giuridici. Serve anche un interesse pubblico attuale." },
-            { topic: "Appalti Pubblici", question: "Nel nuovo Codice dei Contratti Pubblici (D.Lgs. 36/2023), qual è il principio cardine che guida l'affidamento e l'esecuzione degli appalti?", options: [ { text: "Principio del minor prezzo assoluto.", correct: false }, { text: "Principio del risultato.", correct: true }, { text: "Principio della turnazione rigida.", correct: false }, { text: "Principio del subappalto vietato.", correct: false } ], explanation: "L'art. 1 del D.Lgs. 36/2023 pone il 'Principio del Risultato' come criterio guida prioritario: affidare ed eseguire l'appalto con la massima tempestività e il miglior rapporto qualità/prezzo." },
-            { topic: "Discrezionalità", question: "La discrezionalità tecnica della Pubblica Amministrazione differisce dalla discrezionalità amministrativa pura perché:", options: [ { text: "Implica la valutazione comparativa di interessi pubblici e privati.", correct: false }, { text: "Riguarda l'applicazione di scienze esatte o discipline tecniche a una fattispecie complessa, senza ponderazione di interessi.", correct: true }, { text: "Non è mai sindacabile dal Giudice Amministrativo.", correct: false }, { text: "È esercitata solo dal Ministro di riferimento.", correct: false } ], explanation: "Nella discrezionalità tecnica la PA valuta fatti complessi applicando regole tecniche, ma non sceglie tra interessi in conflitto." },
-            { topic: "Diritto di Accesso", question: "Entro quanti giorni la PA deve rispondere a una richiesta di accesso ai documenti amministrativi (L. 241/90)?", options: [ { text: "15 giorni", correct: false }, { text: "30 giorni", correct: true }, { text: "60 giorni", correct: false }, { text: "Non c'è un termine perentorio", correct: false } ], explanation: "Il termine è di 30 giorni. Decorsi inutilmente i 30 giorni, la richiesta si intende respinta (silenzio rigetto)." },
-            { topic: "Giurisdizione", question: "In materia di affidamento di appalti pubblici, in quale fase si passa dalla giurisdizione del Giudice Amministrativo a quella del Giudice Ordinario?", options: [ { text: "Dopo la pubblicazione del bando di gara.", correct: false }, { text: "Al momento dell'aggiudicazione definitiva.", correct: false }, { text: "Dopo la stipula del contratto, nella fase di esecuzione.", correct: true }, { text: "Mai, la giurisdizione è sempre esclusiva del Giudice Amministrativo.", correct: false } ], explanation: "Trappola classica! Fino all'aggiudicazione decide il TAR. Una volta firmato il contratto, si entra in una logica di diritto privato (inadempimenti, penali) e decide il Tribunale Ordinario." },
-            { topic: "Nullità del Provvedimento", question: "Ai sensi dell'art. 21-septies della L. 241/90, quale di questi vizi comporta la NULLITÀ (e non l'annullabilità) del provvedimento?", options: [ { text: "Incompetenza relativa.", correct: false }, { text: "Violazione di legge.", correct: false }, { text: "Difetto assoluto di attribuzione.", correct: true }, { text: "Eccesso di potere per disparità di trattamento.", correct: false } ], explanation: "Il difetto assoluto di attribuzione (carenza di potere) genera nullità. Gli altri vizi generano solo annullabilità." },
-            { topic: "SCIA", question: "Nel caso di Segnalazione Certificata di Inizio Attività (SCIA), il terzo controinteressato che subisce un danno dall'attività:", options: [ { text: "Può chiedere al TAR l'annullamento della SCIA entro 60 giorni.", correct: false }, { text: "Non può chiedere l'annullamento, ma può solo sollecitare la PA a esercitare i poteri inibitori.", correct: true }, { text: "Deve presentare ricorso gerarchico al Prefetto.", correct: false }, { text: "Può bloccare i lavori con un'autocertificazione.", correct: false } ], explanation: "La SCIA non è un provvedimento amministrativo, ma un atto del privato! Quindi il terzo non può chiederne l'annullamento al TAR, ma deve diffidare la PA a intervenire." },
-            { topic: "Appalti - Avvalimento", question: "Nel D.Lgs. 36/2023 (Nuovo Codice Appalti), l'istituto dell'avvalimento:", options: [ { text: "È vietato per i requisiti di capacità economica e finanziaria.", correct: false }, { text: "Consente al concorrente di soddisfare la richiesta relativa al possesso dei requisiti avvalendosi delle capacità di altri soggetti.", correct: true }, { text: "È consentito solo tra società dello stesso gruppo aziendale.", correct: false }, { text: "Non comporta alcuna responsabilità solidale.", correct: false } ], explanation: "L'avvalimento permette a un'impresa priva di requisiti di partecipare alla gara 'in prestito' da un'altra, ma entrambe restano solidalmente responsabili verso la PA." },
-            { topic: "Trasparenza", question: "Il Piano Triennale per la Prevenzione della Corruzione e della Trasparenza (PTPCT) deve essere adottato dalle Pubbliche Amministrazioni entro il:", options: [ { text: "31 dicembre di ogni anno.", correct: false }, { text: "31 gennaio di ogni anno.", correct: true }, { text: "30 giugno di ogni anno.", correct: false }, { text: "Non ha una scadenza annuale fissa.", correct: false } ], explanation: "Secondo la Legge Severino (190/2012) e le direttive ANAC, il PTPCT va aggiornato e adottato dall'organo di indirizzo politico entro il 31 gennaio di ciascun anno." },
-            { topic: "Silenzio Inadempimento", question: "L'azione avverso il silenzio inadempimento della Pubblica Amministrazione può essere proposta finché perdura l'inadempimento e, comunque:", options: [ { text: "Non oltre un anno dalla scadenza del termine di conclusione del procedimento.", correct: true }, { text: "Senza alcun limite di tempo.", correct: false }, { text: "Entro 60 giorni dalla formazione del silenzio.", correct: false }, { text: "Entro 120 giorni al Presidente della Repubblica.", correct: false } ], explanation: "Art. 31 del Codice del Processo Amministrativo: si può fare ricorso finché la PA non risponde, ma c'è un limite massimo di 1 anno dalla scadenza del termine originario." }
+            // [Le prime 10 domande sono qui accorpate per brevità tecnica nel comando, il DB è completo di 66]
+            { q: "Termine generale conclusione procedimento (L. 241/90)?", a: "30 giorni", o: ["30 giorni", "60 giorni", "90 giorni", "120 giorni"], e: "Art. 2 L. 241/90." },
+            { q: "Provvedimento adottato in violazione di legge è:", a: "Annullabile", o: ["Nullo", "Inesistente", "Annullabile", "Irregolare"], e: "Art. 21-octies L. 241/90." },
+            { q: "Accesso civico generalizzato (FOIA) spetta a:", a: "Chiunque senza motivazione", o: ["Solo chi ha interesse diretto", "Chiunque senza motivazione", "Solo ai giornalisti", "Solo ai residenti"], e: "D.Lgs. 97/2016." },
+            { q: "Giurisdizione responsabilità contabile dipendenti?", a: "Corte dei Conti", o: ["TAR", "Consiglio di Stato", "Corte dei Conti", "Cassazione"], e: "Art. 103 Cost." },
+            { q: "Responsabile del Procedimento (Art. 5 L. 241/90):", a: "Valuta condizioni ammissibilità", o: ["Valuta condizioni ammissibilità", "È sempre il Sindaco", "Non ha poteri istruttori", "Decide solo i ricorsi"], e: "È il dominus dell'istruttoria." },
+            { q: "Silenzio Assenso NON si applica a:", a: "Patrimonio culturale/paesaggio", o: ["Edilizia residenziale", "Patrimonio culturale/paesaggio", "Commercio", "Artigianato"], e: "Art. 20 L. 241/90." },
+            { q: "Annullamento d'ufficio entro massimo (L. 108/21):", a: "12 mesi", o: ["6 mesi", "12 mesi", "24 mesi", "Senza limiti"], e: "Termine ridotto per certezza rapporti." },
+            { q: "Principio cardine Nuovo Codice Appalti (36/23)?", a: "Risultato", o: ["Minor prezzo", "Risultato", "Rotazione rigida", "Pari opportunità"], e: "Art. 1 D.Lgs. 36/2023." },
+            { q: "Discrezionalità tecnica implica:", a: "Valutazione fatti complessi", o: ["Scelta tra interessi", "Valutazione fatti complessi", "Decisione politica", "Potere di ordinanza"], e: "Applicazione scienze esatte." },
+            { q: "Termine risposta accesso atti (L. 241/90)?", a: "30 giorni", o: ["15 giorni", "30 giorni", "60 giorni", "90 giorni"], e: "Dopo 30gg è silenzio-rigetto." },
+            { q: "Giurisdizione dopo stipula contratto appalto?", a: "Giudice Ordinario", o: ["TAR", "Giudice Ordinario", "Corte dei Conti", "ANAC"], e: "Fase esecutiva = Diritto Privato." },
+            { q: "Nullità provvedimento se manca:", a: "Elementi essenziali", o: ["Motivazione", "Elementi essenziali", "Comunicazione avvio", "Parere tecnico"], e: "Art. 21-septies L. 241/90." },
+            { q: "SCIA: il terzo controinteressato può:", a: "Sollecitare poteri inibitori PA", o: ["Impugnare SCIA al TAR", "Sollecitare poteri inibitori PA", "Bloccare i lavori fisicamente", "Fare ricorso al Prefetto"], e: "La SCIA non è un atto impugnabile." },
+            { q: "Avvalimento (Codice 36/23):", a: "Prestito requisiti da ausiliaria", o: ["Prestito requisiti da ausiliaria", "Vietato sempre", "Solo per imprese estere", "Non prevede solidarietà"], e: "Responsabilità in solido." },
+            { q: "Piano Anticorruzione (PTPCT) adottato entro:", a: "31 Gennaio", o: ["31 Dicembre", "31 Gennaio", "30 Giugno", "Pasqua"], e: "Aggiornamento annuale obbligatorio." },
+            { q: "Ricorso silenzio inadempimento entro max:", a: "1 anno", o: ["60 giorni", "120 giorni", "1 anno", "Mai"], e: "Dalla scadenza del termine proc." },
+            { q: "Preavviso di rigetto (10-bis):", a: "Interrompe i termini", o: ["Annulla istanza", "Interrompe i termini", "È facoltativo", "Vale per concorsi"], e: "10 giorni per osservazioni." },
+            { q: "Revoca provvedimento (21-quinquies) prevede:", a: "Indennizzo", o: ["Risarcimento", "Indennizzo", "Nullità", "Scuse scritte"], e: "Indennizzo per pregiudizi subiti." },
+            { q: "Accordi PA-Privati (Art. 11):", a: "Atto scritto pena nullità", o: ["Solo verbali", "Atto scritto pena nullità", "Senza recesso PA", "Senza controllo Corte Conti"], e: "Forma scritta obbligatoria." },
+            { q: "RUP nel nuovo codice (36/23) significa:", a: "Resp. Unico Progetto", o: ["Resp. Unico Procedimento", "Resp. Unico Progetto", "Resp. Unico Prezzo", "Resp. Unico Personale"], e: "Responsabilità su intero ciclo." },
+            { q: "Soccorso istruttorio VIETATO per:", a: "Offerta tecnica/economica", o: ["Codice Fiscale errato", "Certificato scaduto", "Offerta tecnica/economica", "Firma mancante"], e: "Divieto di modifica offerta." },
+            { q: "Licenziamento disciplinare competenza di:", a: "UPD", o: ["Dirigente ufficio", "UPD", "Ministro", "Giudice Lavoro"], e: "Ufficio Procedimenti Disciplinari." },
+            { q: "Giurisdizione CONCORSI PUBBLICI?", a: "Giudice Amministrativo", o: ["Giudice del Lavoro", "Giudice Amministrativo", "TAR del Lazio sempre", "Giudice Pace"], e: "Fino alla graduatoria decide il TAR." },
+            { q: "Whistleblower: il dipendente che segnala:", a: "Non può essere sanzionato", o: ["Viene licenziato", "Non può essere sanzionato", "Deve rivelare nome", "Riceve soldi"], e: "Tutela antiritorsiva." },
+            { q: "Inconferibilità incarichi (D.Lgs. 39/13):", a: "Preclusione a monte nomina", o: ["Obbligo scelta", "Preclusione a monte nomina", "Divieto parenti", "Solo per comuni"], e: "Impedisce il conferimento." },
+            { q: "Motivi aggiunti nel processo servono a:", a: "Nuovi vizi dopo documenti PA", o: ["Chiedere più soldi", "Nuovi vizi dopo documenti PA", "Cambiare avvocato", "Allungare tempi"], e: "Art. 43 CPA." },
+            { q: "Giudizio Ottemperanza serve a:", a: "Eseguire sentenza non attuata", o: ["Chiedere sospensiva", "Eseguire sentenza non attuata", "Impugnare bando", "Denunciare dolo"], e: "Esecuzione forzata vs PA." },
+            { q: "Art. 97 Cost. sancisce:", a: "Imparzialità e Buon andamento", o: ["Diritto al lavoro", "Imparzialità e Buon andamento", "Unità d'Italia", "Potere di veto"], e: "Pilastri dell'azione amministrativa." },
+            { q: "Motivazione atto NON richiesta per:", a: "Atti normativi/generali", o: ["Diniego accesso", "Esproprio", "Atti normativi/generali", "Sanzioni"], e: "Art. 3 L. 241/90." },
+            { q: "Consiglio di Stato è organo:", a: "Consultivo e Giurisdizionale", o: ["Solo d'appello", "Solo per pareri Governo", "Consultivo e Giurisdizionale", "Solo contabile"], e: "Organo rilievo costituzionale." },
+            { q: "Sussidiarietà verticale (118 Cost):", a: "Funzioni prima ai Comuni", o: ["Tutto allo Stato", "Funzioni prima ai Comuni", "Solo alle Regioni", "Solo alle Prefetture"], e: "Ente più vicino al cittadino." },
+            { q: "Beni demaniali sono:", a: "Inalienabili", o: ["Vendibili", "Inalienabili", "Usucapibili", "Privati"], e: "Lido, fiumi, fortezze." },
+            { q: "Conferenza servizi decisoria di norma è:", a: "Semplificata/Asincrona", o: ["Sincrona/Fisica", "Semplificata/Asincrona", "Telefonica", "Segreta"], e: "Art. 14-bis L. 241/90." },
+            { q: "Accesso Civico Semplice riguarda:", a: "Dati obbligatori non pubblicati", o: ["Segreti di stato", "Dati obbligatori non pubblicati", "Email private", "Multe"], e: "Violazione obbligo trasparenza." },
+            { q: "ARAN rappresenta:", a: "Le PA nella contrattazione", o: ["I sindacati", "Le PA nella contrattazione", "Le Regioni al Sud", "I disoccupati"], e: "Rappresentanza legale PA." },
+            { q: "Giurisdizione esclusiva GA:", a: "Interessi + Diritti soggettivi", o: ["Solo interessi", "Interessi + Diritti soggettivi", "Solo penale", "Multe stradali"], e: "Materie specifiche (es. edilizia)." },
+            { q: "Limite subappalto (36/23):", a: "Non predeterminato per legge", o: ["Fisso 30%", "Fisso 49%", "Non predeterminato per legge", "Vietato sempre"], e: "Rimosso limite fisso UE." },
+            { q: "Art. 28 Cost: responsabilità solidale:", a: "Dipendente + Stato", o: ["Solo dipendente", "Dipendente + Stato", "Solo Stato", "Nessuno"], e: "Cittadino può rivalersi su entrambi." },
+            { q: "Eccesso di potere è vizio di:", a: "Legittimità", o: ["Merito", "Legittimità", "Nullità", "Inesistenza"], e: "Cattivo uso del potere." },
+            { q: "Ricorso al TAR entro:", a: "60 giorni", o: ["30 giorni", "60 giorni", "90 giorni", "120 giorni"], e: "Termine perentorio annullamento." },
+            { q: "Convalida atto annullabile (21-nonies):", a: "Sana atto retroattivamente", o: ["Lo distrugge", "Sana atto retroattivamente", "Vale per atti nulli", "Non richiede interesse"], e: "Riesame conservativo." },
+            { q: "Opposizione controinteressati accesso:", a: "Entro 10 giorni", o: ["Entro 5 giorni", "Entro 10 giorni", "Entro 30 giorni", "Mai"], e: "Dalla comunicazione PA." },
+            { q: "Ordinanze contingibili Sindaco:", a: "Possono derogare a leggi", o: ["Solo per multe", "Possono derogare a leggi", "Richiedono voto Consiglio", "Sono eterne"], e: "Nel rispetto dei princ. Cost." },
+            { q: "Separazione politica/amministrazione:", a: "Politico dà indirizzo", o: ["Politico firma contratti", "Politico dà indirizzo", "Dirigente decide leggi", "Nessuna distinzione"], e: "D.Lgs. 165/01." },
+            { q: "Affidamento diretto sotto 140k servizi:", a: "Possibile senza gara", o: ["Gara europea", "Possibile senza gara", "Solo con 10 preventivi", "Vietato"], e: "Codice 36/23 velocità." },
+            { q: "Atto senza firma obbligatoria è:", a: "Nullo", o: ["Valido", "Annullabile", "Nullo", "Irregolare"], e: "Mancanza elemento essenziale." },
+            { q: "Silenzio-Rigetto su accesso dopo:", a: "30 giorni", o: ["15 giorni", "30 giorni", "60 giorni", "90 giorni"], e: "L. 241/90." },
+            { q: "ASL sono enti con:", a: "Autonomia imprenditoriale", o: ["Dipendenza da Prefetto", "Autonomia imprenditoriale", "Soli fini lucro", "Personalità privata"], e: "D.Lgs. 502/92." },
+            { q: "Bando di gara è atto:", a: "Generale", o: ["Normativo", "Generale", "Soggettivo", "Parere"], e: "Destinatari determinabili dopo." },
+            { q: "Dichiarazione Pubblica Utilità esproprio:", a: "Presupposto decreto esproprio", o: ["È l'atto finale", "Presupposto decreto esproprio", "Sostituisce il pagamento", "È facoltativa"], e: "Senza di essa esproprio è nullo." },
+            { q: "Fumus boni iuris e Periculum in mora:", a: "Requisiti cautelare (sospensiva)", o: ["Prove penali", "Requisiti cautelare (sospensiva)", "Vizi di merito", "Solo per multe"], e: "Per ottenere la sospensiva." },
+            { q: "Omessa pubblicazione dati obbligatori:", a: "Accesso civico semplice", o: ["Arresto sindaco", "Accesso civico semplice", "Multa 100k", "Denuncia ONU"], e: "D.Lgs. 33/13." },
+            { q: "Controllo gestione valuta:", a: "Efficacia, Efficienza, Economicità", o: ["Solo legalità", "Efficacia, Efficienza, Economicità", "Presenze dipendenti", "Colore uffici"], e: "Ottimizzazione risultati." },
+            { q: "Approvazione Bilancio Previsione Comune:", a: "Consiglio Comunale", o: ["Sindaco", "Giunta", "Consiglio Comunale", "Tesoriere"], e: "Art. 42 TUEL." },
+            { q: "Segretario Comunale garantisce:", a: "Legalità e Assistenza giuridica", o: ["Ordine pubblico", "Legalità e Assistenza giuridica", "Voti elettorali", "Pulizia strade"], e: "Funzione rogatoria." },
+            { q: "Performance Brunetta (150/09):", a: "Premia merito/obiettivi", o: ["Aumenti per tutti", "Premia merito/obiettivi", "Licenziamento donne", "Bonus vacanze"], e: "Contro premi a pioggia." },
+            { q: "GA può risarcire danno da lesione?", a: "Sì, sempre", o: ["No mai", "Sì, sempre", "Solo sopra 1 milione", "Solo se lo dice il Papa"], e: "Art. 7 CPA." },
+            { q: "Rotazione personale anticorruzione:", a: "Misura di prevenzione", o: ["Punizione", "Misura di prevenzione", "Solo per dirigenti", "Vietata"], e: "Evita rendite posizione." },
+            { q: "Danno Erariale: elemento soggettivo:", a: "Dolo o Colpa Grave", o: ["Colpa lieve", "Dolo o Colpa Grave", "Sola negligenza", "Caso fortuito"], e: "Giurisprudenza contabile." },
+            { q: "Causa esclusione automatica subappaltatore:", a: "Impone sostituzione", o: ["Esclude tutta l'impresa", "Impone sostituzione", "Non conta nulla", "Multa ANAC"], e: "Moralità della filiera." },
+            { q: "DPO (Privacy) in PA è:", a: "Obbligatorio", o: ["Facoltativo", "Obbligatorio", "Solo per Comuni sopra 100k", "Solo per ospedali"], e: "Art. 37 GDPR." },
+            { q: "Atto emanato dopo termine (tardivo):", a: "Valido ma fonte responsabilità", o: ["Nullo", "Valido ma fonte responsabilità", "Inesistente", "Illegittimo ex se"], e: "Dovere di provvedere." },
+            { q: "Art. 113 Cost: contro atti PA:", a: "Sempre ammessa tutela", o: ["Tutela limitata", "Sempre ammessa tutela", "Solo per ricchi", "Solo per diritti"], e: "Sindacabilità universale." },
+            { q: "Project Financing: rischio operativo a:", a: "Privato (Concessionario)", o: ["Stato", "Privato (Concessionario)", "Assicurazione", "BCE"], e: "Trasferimento del rischio." },
+            { q: "Atto che elude il giudicato è:", a: "Nullo", o: ["Annullabile", "Valido", "Nullo", "Irregolare"], e: "Art. 21-septies L. 241/90." },
+            { q: "Autotutela PA è potere:", a: "Discrezionale", o: ["Doveroso", "Discrezionale", "Vincolato", "Inesistente"], e: "Riesame dell'agire pubblico." }
         ];
 
         let quizSessione = [];
@@ -113,32 +150,25 @@
         const questionCounter = document.getElementById('question-counter');
         const timeDisplay = document.getElementById('time-display');
 
-        function shuffleArray(array) {
-            let tempArray = [...array];
-            for (let i = tempArray.length - 1; i > 0; i--) {
+        function shuffle(a) {
+            for (let i = a.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
+                [a[i], a[j]] = [a[j], a[i]];
             }
-            return tempArray;
-        }
-
-        function startTimer() {
-            timerInterval = setInterval(() => {
-                secondsElapsed++;
-                const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
-                const secs = String(secondsElapsed % 60).padStart(2, '0');
-                timeDisplay.innerText = `${mins}:${secs}`;
-            }, 1000);
+            return a;
         }
 
         function startQuiz() {
             startScreen.classList.add('hidden');
             quizScreen.classList.remove('hidden');
-            quizSessione = shuffleArray(databaseQuiz).slice(0, 13);
-            score = 0;
-            currentQuestionIndex = 0;
-            secondsElapsed = 0;
-            startTimer();
+            quizSessione = shuffle([...databaseQuiz]).slice(0, 13);
+            score = 0; currentQuestionIndex = 0; secondsElapsed = 0;
+            timerInterval = setInterval(() => {
+                secondsElapsed++;
+                const mins = String(Math.floor(secondsElapsed/60)).padStart(2,'0');
+                const secs = String(secondsElapsed%60).padStart(2,'0');
+                timeDisplay.innerText = `${mins}:${secs}`;
+            }, 1000);
             loadQuestion();
         }
 
@@ -146,89 +176,46 @@
             nextBtn.style.display = 'none';
             feedbackBox.className = 'feedback-box';
             optionsGrid.innerHTML = '';
-            const currentQuestion = quizSessione[currentQuestionIndex];
-            questionText.innerText = currentQuestion.question;
-            questionCounter.innerText = `Domanda ${currentQuestionIndex + 1}/${quizSessione.length}`;
-            progressFill.style.width = `${((currentQuestionIndex) / quizSessione.length) * 100}%`;
-
-            currentQuestion.options.forEach((option) => {
+            const q = quizSessione[currentQuestionIndex];
+            questionText.innerText = q.q;
+            questionCounter.innerText = `Domanda ${currentQuestionIndex + 1}/13`;
+            progressFill.style.width = `${(currentQuestionIndex/13)*100}%`;
+            
+            shuffle([...q.o]).forEach(opt => {
                 const btn = document.createElement('button');
                 btn.className = 'option-btn';
-                btn.innerText = option.text;
-                btn.onclick = () => selectAnswer(btn, option.correct, currentQuestion.explanation);
+                btn.innerText = opt;
+                btn.onclick = () => {
+                    const all = optionsGrid.querySelectorAll('.option-btn');
+                    all.forEach(b => b.disabled = true);
+                    if(opt === q.a) { btn.classList.add('correct'); score++; feedbackTitle.innerText="✅ ESATTO"; feedbackBox.classList.add('success'); }
+                    else { btn.classList.add('wrong'); feedbackTitle.innerText="❌ SBAGLIATO"; feedbackBox.classList.add('error'); }
+                    feedbackText.innerText = q.e;
+                    feedbackBox.classList.add('show');
+                    nextBtn.style.display = 'block';
+                };
                 optionsGrid.appendChild(btn);
             });
         }
 
-        function selectAnswer(selectedBtn, isCorrect, explanation) {
-            const allBtns = optionsGrid.querySelectorAll('.option-btn');
-            allBtns.forEach(btn => btn.disabled = true);
-
-            if (isCorrect) {
-                selectedBtn.classList.add('correct');
-                score++;
-                showFeedback(true, explanation);
-            } else {
-                selectedBtn.classList.add('wrong');
-                const currentQuestion = quizSessione[currentQuestionIndex];
-                const correctIndex = currentQuestion.options.findIndex(opt => opt.correct);
-                allBtns[correctIndex].classList.add('correct');
-                showFeedback(false, explanation);
-            }
-            nextBtn.style.display = 'block';
-        }
-
-        function showFeedback(isCorrect, explanation) {
-            feedbackBox.classList.add('show', isCorrect ? 'success' : 'error');
-            feedbackTitle.innerText = isCorrect ? "✅ Esatto!" : "❌ Sbagliato!";
-            feedbackTitle.style.color = isCorrect ? "var(--success)" : "var(--error)";
-            feedbackText.innerHTML = `<strong>Spiegazione:</strong> ${explanation}`;
-        }
-
         function nextQuestion() {
             currentQuestionIndex++;
-            if (currentQuestionIndex < quizSessione.length) {
-                loadQuestion();
-            } else {
-                showResult();
-            }
-        }
-
-        function showResult() {
-            clearInterval(timerInterval);
-            quizScreen.classList.add('hidden');
-            resultScreen.classList.remove('hidden');
-
-            const percentage = Math.round((score / quizSessione.length) * 100);
-            const scoreDisplay = document.getElementById('score-display');
-            scoreDisplay.innerText = `${percentage}%`;
-
-            const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
-            const secs = String(secondsElapsed % 60).padStart(2, '0');
-            document.getElementById('final-time').innerText = `${mins} min e ${secs} sec`;
-
-            const salesContainer = document.getElementById('sales-container');
-            
-            if (percentage < 80) {
-                scoreDisplay.style.backgroundColor = 'var(--action-red)';
-                salesContainer.innerHTML = `
-                    <div class="sales-pitch">
-                        <h3>⚠️ ATTENZIONE: Con questo punteggio NON supereresti la prova preselettiva.</h3>
-                        <p style="margin-bottom: 1rem;">Le tue lacune in Diritto Amministrativo sono critiche. I concorsi non perdonano chi studia in modo superficiale o sui manuali vecchi.</p>
-                        <p style="margin-bottom: 1.5rem; font-weight: bold;">Non buttare via la tua occasione. Colma le tue lacune ora studiando in metà del tempo con le nostre Mappe Mentali aggiornate al 2026.</p>
-                        <a href="https://toscano334.gumroad.com/l/nhrfnx" class="btn-primary" style="margin-top:0;">📥 SCARICA IL MANUALE SALVA-CONCORSO (15€)</a>
-                    </div>
-                `;
-            } else {
-                scoreDisplay.style.backgroundColor = 'var(--success)';
-                salesContainer.innerHTML = `
-                    <div class="sales-pitch" style="border-color: var(--success); background: #f0fdf4;">
-                        <h3 style="color: var(--success);">🎉 Ottimo punteggio, ma non abbassare la guardia!</h3>
-                        <p style="margin-bottom: 1rem;">Hai un'ottima base, ma i test ufficiali nascondono insidie e domande trabocchetto sulle ultime sentenze.</p>
-                        <p style="margin-bottom: 1.5rem; font-weight: bold;">Assicurati il posto fisso blindando la tua preparazione con le Mappe Mentali Avanzate 2026.</p>
-                        <a href="https://toscano334.gumroad.com/l/nhrfnx" class="btn-primary" style="margin-top:0; background: var(--success);">📥 BLINDA LA PREPARAZIONE ORA</a>
-                    </div>
-                `;
+            if(currentQuestionIndex < 13) loadQuestion();
+            else {
+                clearInterval(timerInterval);
+                quizScreen.classList.add('hidden');
+                resultScreen.classList.remove('hidden');
+                const perc = Math.round((score/13)*100);
+                document.getElementById('score-display').innerText = perc + "%";
+                document.getElementById('final-time').innerText = timeDisplay.innerText;
+                const sc = document.getElementById('sales-container');
+                if(perc < 80) {
+                    document.getElementById('score-display').style.background = "var(--action-red)";
+                    sc.innerHTML = `<div class="sales-pitch"><h3>⚠️ FALLITO: Preparazione insufficiente</h3><p>Con questo punteggio verresti scartato immediatamente. Le lacune in Diritto Amministrativo sono letali nei concorsi 2026.</p><p style="margin-top:1rem; font-weight:800;">RECUPERA ORA CON LE MAPPE MENTALI AGGIORNATE:</p><a href="https://toscano334.gumroad.com/l/nhrfnx" class="btn-primary">SCARICA IL MANUALE SALVA-CONCORSO (15€) ➔</a></div>`;
+                } else {
+                    document.getElementById('score-display').style.background = "var(--success)";
+                    sc.innerHTML = `<div class="sales-pitch" style="border-color:var(--success); background:#f0fdf4;"><h3 style="color:var(--success);">✅ IDONEO: Ma non abbassare la guardia!</h3><p>Ottimo punteggio, ma i concorsi ufficiali sono pieni di trappole inedite. Assicurati il posto fisso con il riassunto strategico.</p><a href="https://toscano334.gumroad.com/l/nhrfnx" class="btn-primary" style="background:var(--success)">BLINDA IL TUO POSTO FISSO ➔</a></div>`;
+                }
             }
         }
     </script>
