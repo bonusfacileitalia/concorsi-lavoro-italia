@@ -57,12 +57,12 @@
             <p style="margin: 1rem 0; color: #666;">Tempo: <span id="final-time"></span></p>
             <div class="score-circle" id="score-display">0%</div>
             <div id="sales-container"></div>
+            <button class="btn-primary" style="background-color: var(--primary-blue); margin-top: 1rem;" onclick="location.reload()">🔄 RIPETI IL QUIZ</button>
         </div>
     </main>
 
     <script>
         const databaseQuiz = [
-            // [Le prime 10 domande sono qui accorpate per brevità tecnica nel comando, il DB è completo di 66]
             { q: "Termine generale conclusione procedimento (L. 241/90)?", a: "30 giorni", o: ["30 giorni", "60 giorni", "90 giorni", "120 giorni"], e: "Art. 2 L. 241/90." },
             { q: "Provvedimento adottato in violazione di legge è:", a: "Annullabile", o: ["Nullo", "Inesistente", "Annullabile", "Irregolare"], e: "Art. 21-octies L. 241/90." },
             { q: "Accesso civico generalizzato (FOIA) spetta a:", a: "Chiunque senza motivazione", o: ["Solo chi ha interesse diretto", "Chiunque senza motivazione", "Solo ai giornalisti", "Solo ai residenti"], e: "D.Lgs. 97/2016." },
@@ -221,33 +221,3 @@
     </script>
 </body>
 </html>
-
-<!-- INIEZIONE TASTO RIPETI QUIZ -->
-<script>
-    let btnRipeti = document.createElement("button");
-    btnRipeti.innerHTML = "🔄 Ripeti il Quiz";
-    btnRipeti.style.cssText = "display: block; width: 80%; max-width: 300px; margin: 30px auto; padding: 15px; background: linear-gradient(135deg, #00C9FF 0%, #92FE9D 100%); color: #1a1a1a; border: none; border-radius: 50px; font-size: 18px; font-weight: 900; text-transform: uppercase; cursor: pointer; box-shadow: 0 5px 15px rgba(0, 201, 255, 0.4); text-align: center;";
-    btnRipeti.onclick = function() { location.reload(); };
-    document.body.appendChild(btnRipeti);
-</script>
-
-<!-- INIEZIONE INTELLIGENTE TASTO RIPETI -->
-<script>
-    // 1. Elimina il bottone sballato di prima se esiste ancora
-    document.querySelectorAll('button').forEach(b => {
-        if(b.innerText.includes("Ripeti il Quiz") && b.parentNode === document.body) {
-            b.remove();
-        }
-    });
-
-    // 2. Crea il nuovo bottone usando le TUE classi CSS per renderlo identico al resto
-    let btnRipeti = document.createElement("button");
-    btnRipeti.innerHTML = "🔄 RIPETI IL QUIZ";
-    btnRipeti.className = "btn-primary"; 
-    btnRipeti.style.backgroundColor = "var(--primary-blue)";
-    btnRipeti.style.marginTop = "1.5rem";
-    btnRipeti.onclick = function() { location.reload(); };
-
-    // 3. Lo sposta DENTRO la schermata finale (così resta nascosto finché non finisce il quiz!)
-    document.getElementById("result-screen").appendChild(btnRipeti);
-</script>
