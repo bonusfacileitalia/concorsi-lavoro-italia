@@ -3,30 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Concorsi & Lavoro Italia</title>
+    <title>Contatti | Concorsi & Lavoro Italia</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root { --primary-blue: #0A2540; --bg-light: #F6F9FC; --text-dark: #333333; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
         header { background-color: var(--primary-blue); color: white; padding: 2rem 1rem; text-align: center; }
-        .container { max-width: 800px; margin: 2rem auto; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .container { max-width: 800px; margin: 2rem auto; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; }
         h1, h2 { margin-bottom: 1rem; color: var(--primary-blue); }
-        p { margin-bottom: 1rem; }
-        a { color: var(--primary-blue); font-weight: bold; }
+        p { margin-bottom: 1rem; font-size: 1.1rem; }
+        .email { font-size: 1.3rem; font-weight: 800; color: #D93025; margin: 2rem 0; }
         .btn-back { display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #e2e8f0; text-decoration: none; border-radius: 5px; color: #333; }
     </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7345740458390832" crossorigin="anonymous"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7345740458390832" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header><h1>Privacy Policy</h1>
+    <header><h1>Contattaci</h1>
 <div style="background: #FFF4F2; border: 2px solid #D93025; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; text-align: center; font-family: sans-serif; box-shadow: 0 4px 15px rgba(217,48,37,0.15);"><h3 style="color: #0A2540; margin-top: 0; font-size: 1.4rem;">📖 Manuale Preparazione Esami: Istruttore e Funzionario Amministrativo</h3><p style="color: #333; font-size: 1.1rem; margin-bottom: 1.5rem;">Scarica ora il <strong>Manuale Salva-Concorsi 2026</strong>. 25 pagine di pura sintesi strategica e aggiornata e segreti sui quiz che non trovi online.</p><a href="https://toscano334.gumroad.com/l/nhrfnx" style="background: #D93025; color: white; padding: 1rem 2rem; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 1.2rem; display: inline-block;">SCARICA IL MANUALE ➔</a></div></header>
     <div class="container">
-        <h2>Tutela dei dati personali</h2>
-        <p>La presente Privacy Policy ha lo scopo di descrivere le modalità di gestione di questo sito, in riferimento al trattamento dei dati personali degli utenti/visitatori che lo consultano. Ai sensi del Regolamento (UE) 2016/679 (GDPR).</p>
-        <h2>Utilizzo di Google AdSense</h2>
-        <p>Questo sito utilizza Google AdSense, un servizio di advertising fornito da Google LLC. Google utilizza i cookie per pubblicare annunci pertinenti in base alle precedenti visite dell'utente su questo o altri siti web.</p>
+        <h2>Hai domande sui bandi o segnalazioni?</h2>
+        <p>Il nostro team è a disposizione per chiarimenti. Per richieste commerciali o segnalazioni riguardanti i contenuti, scrivici all'indirizzo email qui sotto:</p>
+        <div class="email">bonusfacileitalia@gmail.com</div>
         <a href="index.html" class="btn-back">⬅ Torna alla Home</a>
     </div>
 </body>

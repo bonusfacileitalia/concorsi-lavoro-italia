@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Concorsi & Lavoro Italia</title>
+    <title>Cookie Policy | Concorsi & Lavoro Italia</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root { --primary-blue: #0A2540; --bg-light: #F6F9FC; --text-dark: #333333; }
@@ -13,20 +13,18 @@
         .container { max-width: 800px; margin: 2rem auto; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         h1, h2 { margin-bottom: 1rem; color: var(--primary-blue); }
         p { margin-bottom: 1rem; }
-        a { color: var(--primary-blue); font-weight: bold; }
         .btn-back { display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #e2e8f0; text-decoration: none; border-radius: 5px; color: #333; }
     </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7345740458390832" crossorigin="anonymous"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7345740458390832" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header><h1>Privacy Policy</h1>
+    <header><h1>Cookie Policy</h1>
 <div style="background: #FFF4F2; border: 2px solid #D93025; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; text-align: center; font-family: sans-serif; box-shadow: 0 4px 15px rgba(217,48,37,0.15);"><h3 style="color: #0A2540; margin-top: 0; font-size: 1.4rem;">📖 Manuale Preparazione Esami: Istruttore e Funzionario Amministrativo</h3><p style="color: #333; font-size: 1.1rem; margin-bottom: 1.5rem;">Scarica ora il <strong>Manuale Salva-Concorsi 2026</strong>. 25 pagine di pura sintesi strategica e aggiornata e segreti sui quiz che non trovi online.</p><a href="https://toscano334.gumroad.com/l/nhrfnx" style="background: #D93025; color: white; padding: 1rem 2rem; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 1.2rem; display: inline-block;">SCARICA IL MANUALE ➔</a></div></header>
     <div class="container">
-        <h2>Tutela dei dati personali</h2>
-        <p>La presente Privacy Policy ha lo scopo di descrivere le modalità di gestione di questo sito, in riferimento al trattamento dei dati personali degli utenti/visitatori che lo consultano. Ai sensi del Regolamento (UE) 2016/679 (GDPR).</p>
-        <h2>Utilizzo di Google AdSense</h2>
-        <p>Questo sito utilizza Google AdSense, un servizio di advertising fornito da Google LLC. Google utilizza i cookie per pubblicare annunci pertinenti in base alle precedenti visite dell'utente su questo o altri siti web.</p>
+        <h2>Cosa sono i Cookie?</h2>
+        <p>I cookie sono piccoli file di testo che i siti visitati dagli utenti inviano ai loro terminali, ove vengono memorizzati per essere poi ritrasmessi agli stessi siti alla visita successiva.</p>
+        <h2>Cookie di Terze Parti e Profilazione</h2>
+        <p>Il nostro sito utilizza cookie di profilazione di terze parti (Google AdSense) per mostrarti pubblicità personalizzata in linea con le tue preferenze. Puoi disattivare la pubblicità personalizzata visitando le <a href="https://myadcenter.google.com/" target="_blank">Impostazioni annunci di Google</a>.</p>
         <a href="index.html" class="btn-back">⬅ Torna alla Home</a>
     </div>
 </body>

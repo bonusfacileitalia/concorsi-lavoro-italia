@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bando Invitalia | Come Funziona Davvero il Fondo Perduto</title>
+    <title>Concorso ATA 24 Mesi vs 3ª Fascia | Guida Semplificata</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root { --primary-blue: #0A2540; --action-red: #D93025; --bg-light: #F6F9FC; --text-dark: #333333; --text-muted: #666666; }
@@ -18,49 +18,45 @@
         ul { margin-left: 1.5rem; }
         .bureaucracy-box { background: #FFFBEB; border-left: 5px solid #F59E0B; padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; }
         .bureaucracy-box h3 { color: #B45309; margin-bottom: 0.8rem; font-size: 1.3rem; }
-        .step-list { counter-reset: steps; list-style: none; margin: 2rem 0; padding: 0; margin-left: 0; }
-        .step-list li { position: relative; padding-left: 3.5rem; margin-bottom: 2rem; }
-        .step-list li::before { content: counter(steps); counter-increment: steps; position: absolute; left: 0; top: -4px; background: var(--primary-blue); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; }
         .ads-placeholder { width: 100%; min-height: 250px;  display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 0.9rem; margin: 2.5rem 0; }
         .btn-cta { display: block; width: 100%; padding: 1.5rem; text-align: center; text-decoration: none; background-color: var(--action-red); color: white; font-weight: 800; border-radius: 12px; font-size: 1.4rem; margin: 3rem 0; box-shadow: 0 10px 20px rgba(217, 48, 37, 0.3); }
     </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7345740458390832" crossorigin="anonymous"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7345740458390832" crossorigin="anonymous"></script>
 </head>
 <body>
     <header><a href="index.html">⬅ Concorsi & Lavoro Italia</a></header>
     <div class="container">
-        <h1>Bando Invitalia: Fino a 50.000€ per Nuove Imprese (Senza Illusione)</h1>
+        <h1>Concorso Personale ATA: Facciamo Chiarezza sulle Graduatorie</h1>
 <div style="background: #FFF4F2; border: 2px solid #D93025; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; text-align: center; font-family: sans-serif; box-shadow: 0 4px 15px rgba(217,48,37,0.15);"><h3 style="color: #0A2540; margin-top: 0; font-size: 1.4rem;">📖 Manuale Preparazione Esami: Istruttore e Funzionario Amministrativo</h3><p style="color: #333; font-size: 1.1rem; margin-bottom: 1.5rem;">Scarica ora il <strong>Manuale Salva-Concorsi 2026</strong>. 25 pagine di pura sintesi strategica e aggiornata e segreti sui quiz che non trovi online.</p><a href="https://toscano334.gumroad.com/l/nhrfnx" style="background: #D93025; color: white; padding: 1rem 2rem; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 1.2rem; display: inline-block;">SCARICA IL MANUALE ➔</a></div>
-        <p>I telegiornali parlano di "soldi regalati" a chi apre la Partita IVA grazie a bandi come <em>Resto al Sud</em> o <em>ON - Oltre Nuove imprese a tasso zero</em>. Sgombriamo il campo dalle false promesse e vediamo come funziona nella realtà concreta.</p>
+        <p>Lavorare come bidello (Collaboratore Scolastico) o segretario (Assistente Amministrativo) è il sogno di molti. Ma il sistema scolastico usa un linguaggio per addetti ai lavori che respinge i nuovi arrivati. Risolviamo il problema.</p>
         
         <div class="ads-placeholder">
 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7345740458390832" data-ad-slot="7441904804" data-ad-format="auto" data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
 
         <div class="bureaucracy-box">
-            <h3>💸 Sfatiamo il Mito dei Soldi Facili</h3>
-            <p>Il "Fondo Perduto" (soldi che non devi restituire) esiste, ma <strong>Invitalia non ti bonificherà 50.000€ sul tuo conto personale corrente</strong> per farci ciò che vuoi.</p>
+            <h3>❌ Errore Comune: "24 Mesi" vs "Terza Fascia"</h3>
+            <p>Non hai MAI lavorato in una scuola statale? <strong>Allora questo bando "24 mesi" NON fa per te.</strong></p>
             <ul>
-                <li>I fondi coprono solo <strong>spese giustificate e rendicontate</strong>: preventivi di macchinari, ristrutturazioni dei locali, software.</li>
-                <li><strong>L'IVA è sempre a tuo carico.</strong> Il bando finanzia l'imponibile, l'IVA la devi anticipare tu.</li>
-                <li>Non copre quasi mai l'acquisto di merci da rivendere o stipendi (se non per brevi periodi iniziali previsti da specifici bandi).</li>
+                <li><strong>Bando 24 Mesi (Prima Fascia):</strong> È riservato ESCLUSIVAMENTE a chi ha già accumulato nella sua vita almeno 23 mesi e 16 giorni di supplenze statali. È un aggiornamento per chi è già nel sistema.</li>
+                <li><strong>Bando Terza Fascia:</strong> È quello per i "nuovi", chi parte da zero. Si apre ogni 3 anni. Qui ti serve solo il diploma (o la certificazione internazionale di alfabetizzazione digitale) per iscriverti per la prima volta.</li>
             </ul>
         </div>
 
-        <h2>I 3 Passi per Ottenere l'Approvazione</h2>
-        <ul class="step-list">
-            <li><strong>Firma Digitale e PEC:</strong> Sono obbligatorie. Per presentare la domanda sulla piattaforma Invitalia devi firmare il progetto con una smart card o chiavetta USB di Firma Digitale (es. Aruba o Poste).</li>
-            <li><strong>Il Business Plan:</strong> Non basta un'idea geniale. Devi compilare un foglio Excel dettagliato dimostrando che nei prossimi 3 anni la tua azienda fatturerà abbastanza per mantenersi viva. Un commercialista esperto in finanza agevolata qui è quasi obbligatorio.</li>
-            <li><strong>Il Colloquio con l'Esaminatore:</strong> Se passi la prima fase cartacea, farai una videochiamata Skype con un analista di Invitalia che proverà a smontare il tuo progetto per vedere se lo padroneggi davvero.</li>
+        <h2>Come si Calcola il Punteggio?</h2>
+        <p>Nella scuola, non conta chi sei, ma quanti punti hai. I punti si ottengono con:</p>
+        <ul>
+            <li>Voto di diploma o laurea.</li>
+            <li>Mesi di servizio prestato in precedenza.</li>
+            <li>Certificazioni informatiche (es. EIPASS, ECDL, ora obbligatoria la CIAD).</li>
         </ul>
         
         <div class="ads-placeholder">
 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7345740458390832" data-ad-slot="7441904804" data-ad-format="auto" data-full-width-responsive="true"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
 
-        <p>Se credi nel tuo progetto, questa è un'occasione reale e formidabile.</p>
-        <a href="https://www.invitalia.it/" target="_blank" class="btn-cta">Esplora i Bandi Attivi su Invitalia ➔</a>
+        <p>Le domande, per tutte le fasce, passano oggi attraverso il sistema telematico "Istanze Online" (POLIS) del Ministero dell'Istruzione, a cui si accede tramite SPID.</p>
+        <a href="https://www.istruzione.it/polis/Istanzeonline.htm" target="_blank" class="btn-cta">Accedi a Istanze Online (Miur) ➔</a>
     </div>
     <footer><p>&copy; 2026 Concorsi & Lavoro Italia.</p></footer>
 </body>
