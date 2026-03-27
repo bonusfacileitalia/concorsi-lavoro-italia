@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulatore Quiz | Diritto Amministrativo 2026</title>
+    <meta name="description" content="Mettiti alla prova con il simulatore ufficiale di Diritto Amministrativo. Scopri se sei pronto per il concorso.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- PLACEHOLDER ADSENSE (Google lo riempirà in automatico) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7345740458390832" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary-blue: #0A2540;
+            --action-red: #D93025;
+            --bg-light: #F6F9FC;
+            --text-dark: #333333;
+            --success: #10B981;
+            --error: #EF4444;
+            --card-bg: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); display: flex; flex-direction: column; min-height: 100vh; }
+        
+        header { background-color: var(--primary-blue); color: white; padding: 1.5rem 1rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        header h1 { font-size: 1.8rem; font-weight: 800; }
+
+        .quiz-container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; flex-grow: 1; width: 100%; }
+        
+        .card { background: var(--card-bg); border-radius: 12px; padding: 2rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+
+        /* Timer & Progress */
+        .quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; font-weight: 600; color: var(--text-dark); }
+        .timer { display: flex; align-items: center; gap: 0.5rem; background: #E2E8F0; padding: 0.5rem 1rem; border-radius: 20px; font-variant-numeric: tabular-nums; }
+        .progress-bar { width: 100%; height: 10px; background: #E2E8F0; border-radius: 5px; margin-bottom: 2rem; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--primary-blue); width: 0%; transition: width 0.3s ease; }
+
+        /* Typography */
+        .question-text { font-size: 1.4rem; font-weight: 800; margin-bottom: 2rem; line-height: 1.4; }
+        
+        /* Options Grid */
+        .options-grid { display: grid; gap: 1rem; }
+        .option-btn { background: var(--bg-light); border: 2px solid #E2E8F0; padding: 1rem 1.5rem; border-radius: 8px; font-size: 1.1rem; text-align: left; cursor: pointer; transition: all 0.2s; font-weight: 600; color: var(--text-dark); }
+        .option-btn:hover:not(:disabled) { border-color: var(--primary-blue); background: #E2E8F0; }
+        .option-btn:disabled { cursor: not-allowed; }
+        
+        /* State Classes */
+        .option-btn.correct { background-color: #D1FAE5; border-color: var(--success); color: #065F46; }
+        .option-btn.wrong { background-color: #FEE2E2; border-color: var(--error); color: #991B1B; }
+
+        /* Feedback Box */
+        .feedback-box { margin-top: 1.5rem; padding: 1.5rem; border-radius: 8px; display: none; animation: slideDown 0.3s ease; }
+        .feedback-box.show { display: block; }
+        .feedback-box h4 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .feedback-box.success { background-color: #D1FAE5; border-left: 5px solid var(--success); }
+        .feedback-box.error { background-color: #FEE2E2; border-left: 5px solid var(--error); }
+
+        /* Buttons */
+        .btn-primary { background: var(--action-red); color: white; border: none; padding: 1rem 2rem; font-size: 1.2rem; font-weight: 800; border-radius: 8px; cursor: pointer; display: block; width: 100%; text-align: center; text-decoration: none; margin-top: 2rem; transition: transform 0.2s; }
+        .btn-primary:hover { transform: scale(1.02); background: #B32015; }
+        .btn-next { background: var(--primary-blue); margin-top: 1.5rem; display: none; }
+
+        /* Result Screen */
+        .result-screen { text-align: center; }
+        .score-circle { width: 150px; height: 150px; border-radius: 50%; background: var(--primary-blue); color: white; display: flex; align-items: center; justify-content: center; font-size: 3rem; font-weight: 800; margin: 0 auto 2rem; }
+        .sales-pitch { background: #FFF4F2; border: 2px solid var(--action-red); padding: 2rem; border-radius: 12px; margin: 2rem 0; text-align: left; }
+        .sales-pitch h3 { color: var(--action-red); margin-bottom: 1rem; font-size: 1.4rem; }
+
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Utilities */
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Simulatore Esame: Diritto Amministrativo</h1>
+    </header>
+
+    <main class="quiz-container">
+        
+        <!-- START SCREEN -->
+        <div id="start-screen" class="card" style="text-align: center;">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Test di Valutazione 2026</h2>
+            <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">Scopri se hai le competenze necessarie per superare le prove preselettive e scritte dei concorsi pubblici. Attenzione: il tempo è monitorato.</p>
+            <button class="btn-primary" onclick="startQuiz()">INIZIA IL QUIZ ORA</button>
+        </div>
+
+        <!-- QUIZ SCREEN -->
+        <div id="quiz-screen" class="card hidden">
+            <div class="quiz-header">
+                <span id="question-counter">Domanda 1/10</span>
+                <div class="timer">⏱️ <span id="time-display">00:00</span></div>
+            </div>
+            
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+            </div>
+
+            <h2 id="question-text" class="question-text">Testo della domanda...</h2>
+            
+            <div id="options-grid" class="options-grid">
+                <!-- Opzioni iniettate via JS -->
+            </div>
+
+            <div id="feedback-box" class="feedback-box">
+                <h4 id="feedback-title">Risposta...</h4>
+                <p id="feedback-text">Spiegazione della norma...</p>
+            </div>
+
+            <button id="next-btn" class="btn-primary btn-next" onclick="nextQuestion()">Prossima Domanda ➔</button>
+        </div>
+
+        <!-- RESULT SCREEN -->
+        <div id="result-screen" class="card hidden result-screen">
+            <h2>Risultato del Test</h2>
+            <p style="color: #666; margin: 1rem 0;">Tempo impiegato: <span id="final-time" style="font-weight: bold;">00:00</span></p>
+            
+            <div class="score-circle" id="score-display">0%</div>
+
+            <div id="sales-container">
+                <!-- Messaggio di vendita iniettato via JS -->
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        /* =========================================
+           DATABASE DOMANDE (Architettura Dati)
+           Aggiungi qui quante domande vuoi.
+           ========================================= */
+        const databaseQuiz = [
+            {
+                topic: "L. 241/90",
+                question: "Ai sensi della L. 241/1990, qual è il termine generale per la conclusione del procedimento amministrativo, in assenza di diverse disposizioni?",
+                options: [
+                    { text: "30 giorni", correct: true },
+                    { text: "60 giorni", correct: false },
+                    { text: "90 giorni", correct: false },
+                    { text: "120 giorni", correct: false }
+                ],
+                explanation: "Art. 2, L. 241/1990: Nei casi in cui non sia diversamente stabilito da legge o regolamento, il termine generale è di 30 giorni."
+            },
+            {
+                topic: "Provvedimenti",
+                question: "Il provvedimento amministrativo adottato in violazione di legge è:",
+                options: [
+                    { text: "Nullo", correct: false },
+                    { text: "Inesistente", correct: false },
+                    { text: "Annullabile", correct: true },
+                    { text: "Irregolare", correct: false }
+                ],
+                explanation: "Art. 21-octies della L. 241/90: È annullabile il provvedimento amministrativo adottato in violazione di legge o viziato da eccesso di potere o da incompetenza."
+            },
+            {
+                topic: "Accesso agli atti",
+                question: "L'accesso civico generalizzato (FOIA italiano) introdotto dal D.Lgs. 97/2016:",
+                options: [
+                    { text: "Richiede la dimostrazione di un interesse diretto, concreto e attuale.", correct: false },
+                    { text: "È consentito a chiunque, senza necessità di motivazione.", correct: true },
+                    { text: "Riguarda solo i documenti che la PA ha l'obbligo di pubblicare.", correct: false },
+                    { text: "È soggetto al pagamento di un'imposta di bollo fissa.", correct: false }
+                ],
+                explanation: "A differenza dell'accesso documentale classico (L.241/90), l'accesso civico generalizzato spetta a chiunque, senza obbligo di motivazione, per favorire il controllo diffuso sull'azione amministrativa."
+            },
+            {
+                topic: "Organizzazione",
+                question: "Quale tra questi organi ha giurisdizione in materia di responsabilità amministrativa e contabile dei pubblici dipendenti?",
+                options: [
+                    { text: "Consiglio di Stato", correct: false },
+                    { text: "TAR (Tribunale Amministrativo Regionale)", correct: false },
+                    { text: "Corte dei Conti", correct: true },
+                    { text: "Corte di Cassazione", correct: false }
+                ],
+                explanation: "La Corte dei Conti è l'organo di rilievo costituzionale che giudica sulla responsabilità amministrativo-contabile dei dipendenti pubblici che abbiano cagionato un danno erariale."
+            },
+            {
+                topic: "L. 241/90",
+                question: "Il responsabile del procedimento amministrativo (Art. 5, L. 241/90):",
+                options: [
+                    { text: "Valuta le condizioni di ammissibilità, i requisiti di legittimazione e i presupposti rilevanti per l'emanazione del provvedimento.", correct: true },
+                    { text: "È sempre il Dirigente apicale dell'Ente.", correct: false },
+                    { text: "Ha solo funzioni consultive ma non istruttorie.", correct: false },
+                    { text: "Viene nominato direttamente dal Sindaco in ogni caso.", correct: false }
+                ],
+                explanation: "Il Responsabile del Procedimento è il motore dell'istruttoria. Valuta presupposti, accerta i fatti e, se ne ha competenza, adotta il provvedimento finale."
+            },
+            {
+                topic: "Silenzio Assenso",
+                question: "Il silenzio assenso (Art. 20 L. 241/90) NON si applica:",
+                options: [
+                    { text: "Nei procedimenti a istanza di parte per il rilascio di autorizzazioni.", correct: false },
+                    { text: "Agli atti e procedimenti riguardanti il patrimonio culturale e paesaggistico.", correct: true },
+                    { text: "Nei procedimenti in cui la PA deve accertare requisiti tecnici semplici.", correct: false },
+                    { text: "Quando è prevista la SCIA.", correct: false }
+                ],
+                explanation: "Il silenzio assenso non opera per interessi sensibili previsti dall'art. 20 co. 4 (ambiente, paesaggio, salute pubblica, pubblica sicurezza)."
+            },
+            {
+                topic: "Annullamento d'ufficio",
+                question: "L'annullamento d'ufficio di un provvedimento illegittimo (Art. 21-nonies):",
+                options: [
+                    { text: "Può essere disposto sempre e senza limiti di tempo.", correct: false },
+                    { text: "Può essere disposto entro un termine ragionevole, non superiore a 12 mesi, per i provvedimenti autorizzatori o attributivi di vantaggi economici.", correct: true },
+                    { text: "È di competenza esclusiva del Giudice Amministrativo.", correct: false },
+                    { text: "Non prevede la valutazione dell'interesse pubblico.", correct: false }
+                ],
+                explanation: "Il termine massimo (recentemente modificato in 12 mesi dalla Legge 108/2021) garantisce la certezza dei rapporti giuridici. Serve anche un interesse pubblico attuale."
+            },
+            {
+                topic: "Appalti Pubblici",
+                question: "Nel nuovo Codice dei Contratti Pubblici (D.Lgs. 36/2023), qual è il principio cardine che guida l'affidamento e l'esecuzione degli appalti?",
+                options: [
+                    { text: "Principio del minor prezzo assoluto.", correct: false },
+                    { text: "Principio del risultato.", correct: true },
+                    { text: "Principio della turnazione rigida.", correct: false },
+                    { text: "Principio del subappalto vietato.", correct: false }
+                ],
+                explanation: "L'art. 1 del D.Lgs. 36/2023 pone il 'Principio del Risultato' come criterio guida prioritario: affidare ed eseguire l'appalto con la massima tempestività e il miglior rapporto qualità/prezzo."
+            },
+            {
+                topic: "Discrezionalità",
+                question: "La discrezionalità tecnica della Pubblica Amministrazione differisce dalla discrezionalità amministrativa pura perché:",
+                options: [
+                    { text: "Implica la valutazione comparativa di interessi pubblici e privati.", correct: false },
+                    { text: "Riguarda l'applicazione di scienze esatte o discipline tecniche a una fattispecie complessa, senza ponderazione di interessi.", correct: true },
+                    { text: "Non è mai sindacabile dal Giudice Amministrativo.", correct: false },
+                    { text: "È esercitata solo dal Ministro di riferimento.", correct: false }
+                ],
+                explanation: "Nella discrezionalità tecnica la PA valuta fatti complessi (es. valore artistico di un bene, impatto ambientale) applicando regole tecniche, ma non sceglie tra interessi in conflitto."
+            },
+            {
+                topic: "Diritto di Accesso",
+                question: "Entro quanti giorni la PA deve rispondere a una richiesta di accesso ai documenti amministrativi (L. 241/90)?",
+                options: [
+                    { text: "15 giorni", correct: false },
+                    { text: "30 giorni", correct: true },
+                    { text: "60 giorni", correct: false },
+                    { text: "Non c'è un termine perentorio", correct: false }
+                ],
+                explanation: "Il termine è di 30 giorni. Decorsi inutilmente i 30 giorni, la richiesta si intende respinta (silenzio rigetto)."
+            }
+        ];
+
+        /* =========================================
+           LOGICA DEL QUIZ E ALGORITMO DI VENDITA
+           ========================================= */
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let timerInterval;
+        let secondsElapsed = 0;
+
+        // Elementi DOM
+        const startScreen = document.getElementById('start-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const questionText = document.getElementById('question-text');
+        const optionsGrid = document.getElementById('options-grid');
+        const nextBtn = document.getElementById('next-btn');
+        const feedbackBox = document.getElementById('feedback-box');
+        const feedbackTitle = document.getElementById('feedback-title');
+        const feedbackText = document.getElementById('feedback-text');
+        const progressFill = document.getElementById('progress-fill');
+        const questionCounter = document.getElementById('question-counter');
+        const timeDisplay = document.getElementById('time-display');
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                secondsElapsed++;
+                const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+                const secs = String(secondsElapsed % 60).padStart(2, '0');
+                timeDisplay.innerText = `${mins}:${secs}`;
+            }, 1000);
+        }
+
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            score = 0;
+            currentQuestionIndex = 0;
+            secondsElapsed = 0;
+            startTimer();
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            // Reset UI
+            nextBtn.style.display = 'none';
+            feedbackBox.className = 'feedback-box';
+            optionsGrid.innerHTML = '';
+            
+            const currentQuestion = databaseQuiz[currentQuestionIndex];
+            
+            // Aggiorna Testi e Progressi
+            questionText.innerText = currentQuestion.question;
+            questionCounter.innerText = `Domanda ${currentQuestionIndex + 1}/${databaseQuiz.length}`;
+            progressFill.style.width = `${((currentQuestionIndex) / databaseQuiz.length) * 100}%`;
+
+            // Crea Opzioni
+            currentQuestion.options.forEach((option, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = option.text;
+                btn.onclick = () => selectAnswer(btn, option.correct, currentQuestion.explanation);
+                optionsGrid.appendChild(btn);
+            });
+        }
+
+        function selectAnswer(selectedBtn, isCorrect, explanation) {
+            // Blocca tutte le opzioni
+            const allBtns = optionsGrid.querySelectorAll('.option-btn');
+            allBtns.forEach(btn => btn.disabled = true);
+
+            // Colora i bottoni e mostra feedback
+            if (isCorrect) {
+                selectedBtn.classList.add('correct');
+                score++;
+                showFeedback(true, explanation);
+            } else {
+                selectedBtn.classList.add('wrong');
+                // Trova e colora quella giusta
+                const currentQuestion = databaseQuiz[currentQuestionIndex];
+                const correctIndex = currentQuestion.options.findIndex(opt => opt.correct);
+                allBtns[correctIndex].classList.add('correct');
+                showFeedback(false, explanation);
+            }
+
+            nextBtn.style.display = 'block';
+        }
+
+        function showFeedback(isCorrect, explanation) {
+            feedbackBox.classList.add('show', isCorrect ? 'success' : 'error');
+            feedbackTitle.innerText = isCorrect ? "✅ Esatto!" : "❌ Sbagliato!";
+            feedbackTitle.style.color = isCorrect ? "var(--success)" : "var(--error)";
+            feedbackText.innerHTML = `<strong>Spiegazione:</strong> ${explanation}`;
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < databaseQuiz.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            clearInterval(timerInterval);
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            const percentage = Math.round((score / databaseQuiz.length) * 100);
+            const scoreDisplay = document.getElementById('score-display');
+            scoreDisplay.innerText = `${percentage}%`;
+
+            // Mostra tempo finale
+            const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+            const secs = String(secondsElapsed % 60).padStart(2, '0');
+            document.getElementById('final-time').innerText = `${mins} min e ${secs} sec`;
+
+            // ALGORITMO DI SCARSITÀ E VENDITA (L'Imbuto)
+            const salesContainer = document.getElementById('sales-container');
+            
+            if (percentage < 80) {
+                scoreDisplay.style.backgroundColor = 'var(--action-red)';
+                salesContainer.innerHTML = `
+                    <div class="sales-pitch">
+                        <h3>⚠️ ATTENZIONE: Con questo punteggio NON supereresti la prova preselettiva.</h3>
+                        <p style="margin-bottom: 1rem;">Le tue lacune in Diritto Amministrativo sono critiche. I concorsi non perdonano chi studia in modo superficiale o sui manuali vecchi.</p>
+                        <p style="margin-bottom: 1.5rem; font-weight: bold;">Non buttare via la tua occasione. Colma le tue lacune ora studiando in metà del tempo con le nostre Mappe Mentali aggiornate al 2026.</p>
+                        <a href="https://toscano334.gumroad.com/l/nhrfnx" class="btn-primary" style="margin-top:0;">📥 SCARICA IL MANUALE SALVA-CONCORSO (15€)</a>
+                    </div>
+                `;
+            } else {
+                scoreDisplay.style.backgroundColor = 'var(--success)';
+                salesContainer.innerHTML = `
+                    <div class="sales-pitch" style="border-color: var(--success); background: #f0fdf4;">
+                        <h3 style="color: var(--success);">🎉 Ottimo punteggio, ma non abbassare la guardia!</h3>
+                        <p style="margin-bottom: 1rem;">Hai un'ottima base, ma i test ufficiali nascondono insidie e domande trabocchetto sulle ultime sentenze.</p>
+                        <p style="margin-bottom: 1.5rem; font-weight: bold;">Assicurati il posto fisso blindando la tua preparazione con le Mappe Mentali Avanzate 2026.</p>
+                        <a href="https://toscano334.gumroad.com/l/nhrfnx" class="btn-primary" style="margin-top:0; background: var(--success);">📥 BLINDA LA PREPARAZIONE ORA</a>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
