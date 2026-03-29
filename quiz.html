@@ -61,8 +61,7 @@
     </main>
 
     <script>
-        const databaseQuiz = [
-            {"q": "Ai sensi dell'art. 10-bis L. 241/90, il preavviso di rigetto interrompe i termini di conclusione che:", "options": ["Riprendono a decorrere ex novo dalla presentazione delle osservazioni.", "Restano sospesi per un periodo massimo di 30 giorni lavorativi.", "Iniziano a decorrere nuovamente dalla comunicazione dei motivi ostativi.", "Iniziano a decorrere nuovamente per intero dieci giorni dopo la presentazione delle osservazioni."], "a": 3, "e": "Hai confuso l'interruzione con la sospensione. Un errore che al Formez non perdonano."},
+        const databaseQuiz = [{"q": "Ai sensi dell'art. 10-bis L. 241/90, il preavviso di rigetto interrompe i termini di conclusione che:", "options": ["Riprendono a decorrere ex novo dalla presentazione delle osservazioni.", "Restano sospesi per un periodo massimo di 30 giorni lavorativi.", "Iniziano a decorrere nuovamente dalla comunicazione dei motivi ostativi.", "Iniziano a decorrere nuovamente per intero dieci giorni dopo la presentazione delle osservazioni."], "a": 3, "e": "Hai confuso l'interruzione con la sospensione. Un errore che al Formez non perdonano."},
             {"q": "Nel nuovo Codice dei Contratti (D.Lgs. 36/2023), la colpa grave dell'operatore pubblico è configurata:", "options": ["In ogni caso di violazione di norme di legge che determini un danno erariale.", "Nell'ipotesi di violazione di norme palesemente chiare, univoche e non suscettibili di interpretazione.", "Esclusivamente quando sussista il dolo specifico di favorire un operatore.", "Qualora la violazione derivi da un'errata interpretazione delle clausole del bando."], "a": 1, "e": "Il Principio di Fiducia tutela il funzionario salvo violazioni macroscopiche di norme chiare."},
             {"q": "Diritto UE: In caso di contrasto tra norma interna e norma UE senza effetti diretti, il giudice nazionale:", "options": ["Deve disapplicare immediatamente la norma interna per dare prevalenza alla UE.", "Deve sollevare questione di legittimità costituzionale dinanzi alla Consulta.", "Deve interpretare la norma interna in modo conforme e, se impossibile, sollevare rinvio pregiudiziale.", "È tenuto ad applicare la norma interna e segnalare la difformità al Governo."], "a": 2, "e": "L'assenza di effetti diretti obbliga all'interpretazione conforme, non alla disapplicazione."},
             {"q": "L'accesso civico generalizzato (FOIA) può essere rifiutato per 'conduzione di indagini sui reati'. Tale limite è:", "options": ["Un limite assoluto che preclude qualsiasi valutazione discrezionale.", "Sussistente solo se l'indagine è coperta dal segreto istruttorio penale.", "Un limite relativo che richiede un bilanciamento tra trasparenza e pregiudizio concreto.", "Destinato a decadere automaticamente trascorsi 180 giorni dalla richiesta."], "a": 2, "e": "I limiti FOIA richiedono un 'test di pregiudizio'. Non sono mai automatici."},
@@ -81,8 +80,560 @@
             {"q": "Il 'subappalto a cascata' nel nuovo Codice Appalti è:", "options": ["Vietato categoricamente per prevenire infiltrazioni mafiose.", "Generalmente consentito, salvo divieto motivato nella lex specialis.", "Ammesso senza limiti solo per servizi intellettuali sotto soglia.", "Soggetto a previa autorizzazione dell'Ispettorato del Lavoro."], "a": 1, "e": "Nuova disciplina: ammesso ma con paletti precisi della Stazione Appaltante."},
             {"q": "La mancata emanazione del provvedimento nei termini (L. 241/90):", "options": ["Configura un'ipotesi di reato di omissione di atti d'ufficio.", "Rileva per la performance e costituisce responsabilità amministrativa.", "Determina l'annullabilità automatica del provvedimento tardivo.", "Comporta la decadenza immediata del dirigente dall'incarico."], "a": 1, "e": "Il ritardo è un costo: per la tua carriera e per l'ente."},
             {"q": "Logica: Qual è la negazione di 'Tutti i gatti sono neri'?", "options": ["Nessun gatto è nero.", "Tutti i gatti sono bianchi.", "Esiste almeno un gatto che non è nero.", "Alcuni gatti sono neri."], "a": 2, "e": "Per smentire tutti, basta trovarne uno diverso."},
-            {"q": "Gli incarichi dirigenziali a soggetti esterni (D.Lgs. 165/2001) sono ammessi:", "options": ["Senza alcun limite, purché con esperienza almeno quinquennale.", "Entro limiti percentuali e per comprovata specializzazione professionale.", "Solo se l'amministrazione è in dissesto finanziario o commissariata.", "Per una durata massima di 12 mesi non prorogabili."], "a": 1, "e": "L'esterno è l'eccezione, non la regola. Limiti rigidi."}
-        ];
+            {"q": "Gli incarichi dirigenziali a soggetti esterni (D.Lgs. 165/2001) sono ammessi:", "options": ["Senza alcun limite, purché con esperienza almeno quinquennale.", "Entro limiti percentuali e per comprovata specializzazione professionale.", "Solo se l'amministrazione è in dissesto finanziario o commissariata.", "Per una durata massima di 12 mesi non prorogabili."], "a": 1, "e": "L'esterno è l'eccezione, non la regola. Limiti rigidi."},
+
+    {
+        "q": "Ai sensi dell'art. 21-nonies L. 241/90, il limite temporale di 12 mesi per l'annullamento d'ufficio NON si applica se:",
+        "options": [
+            "L'atto è viziato da incompetenza assoluta.",
+            "Il provvedimento ha concesso contributi comunitari.",
+            "L'atto è stato conseguito sulla base di false rappresentazioni dei fatti accertate con sentenza passata in giudicato.",
+            "Il controinteressato ha presentato esposto formale alla Corte dei Conti."
+        ],
+        "a": 2,
+        "e": "Il dolo o la falsità accertata in giudizio superano la tutela dell'affidamento temporale (12 mesi)."
+    },
+    {
+        "q": "Nella Conferenza di Servizi simultanea (art. 14-ter L. 241/90), si considera acquisito l'assenso senza condizioni se:",
+        "o": [
+            "Il rappresentante dell'amministrazione invitata non partecipa alla riunione.",
+            "Il rappresentante partecipa ma non ha i poteri per esprimere in modo vincolante la volontà dell'ente.",
+            "Il rappresentante esprime un dissenso non motivato.",
+            "Tutte le precedenti ipotesi sono corrette."
+        ],
+        "a": 3,
+        "e": "Assenza, difetto di delega e dissenso immotivato equivalgono tutti ad assenso senza condizioni (silenzio-assenso endoprocedimentale)."
+    },
+    {
+        "q": "Accesso Civico Generalizzato (FOIA): se la PA individua controinteressati, costoro hanno un termine per presentare opposizione pari a:",
+        "options": [
+            "10 giorni solari dalla ricezione della comunicazione.",
+            "10 giorni lavorativi dalla ricezione della comunicazione.",
+            "15 giorni liberi e perentori.",
+            "30 giorni, con contestuale sospensione del procedimento."
+        ],
+        "a": 0,
+        "e": "Il termine è di 10 giorni. Da notare la trappola tra 'solari' e 'lavorativi'."
+    },
+    {
+        "q": "Ai sensi dell'art. 11 L. 241/90, per sopravvenuti motivi di pubblico interesse, la P.A. può recedere unilateralmente dall'accordo integrativo:",
+        "options": [
+            "Solo previo parere del TAR territoriale.",
+            "Salvo l'obbligo di provvedere alla liquidazione di un indennizzo per gli eventuali pregiudizi verificatisi.",
+            "Senza alcun onere, trattandosi di esercizio di potere autoritativo.",
+            "Solo se l'accordo non ha ancora prodotto principi di esecuzione materiale."
+        ],
+        "a": 1,
+        "e": "Il recesso dagli accordi ex art. 11 comporta sempre l'indennizzo in favore del privato."
+    },
+    {
+        "q": "Il 'silenzio inadempimento' si forma:",
+        "options": [
+            "Allo scadere del termine di conclusione del procedimento, precludendo l'adozione tardiva dell'atto.",
+            "Allo scadere del termine, conferendo al privato il diritto al risarcimento e la facoltà di adire il giudice per l'accertamento dell'obbligo di provvedere.",
+            "Dopo 30 giorni dalla diffida ad adempiere notificata dal privato.",
+            "In tutti i casi in cui la legge non preveda espressamente il silenzio-assenso o il silenzio-rigetto."
+        ],
+        "a": 1,
+        "e": "Il silenzio inadempimento non fa perdere il potere di provvedere, ma apre la via al ricorso e al risarcimento."
+    },
+    {
+        "q": "La 'carenza di potere in concreto' (es. espropriazione senza preventiva dichiarazione di pubblica utilità) comporta:",
+        "options": [
+            "La nullità del provvedimento per difetto assoluto di attribuzione.",
+            "L'annullabilità del provvedimento per violazione di legge.",
+            "L'inefficacia temporanea fino a sanatoria.",
+            "La disapplicazione obbligatoria da parte del Giudice Amministrativo."
+        ],
+        "a": 1,
+        "e": "La giurisprudenza ha chiarito che la carenza in concreto (potere esistente ma mal esercitato nei presupposti) causa annullabilità, non nullità."
+    },
+    {
+        "q": "Il preavviso di rigetto (art. 10-bis L. 241/90) NON si applica:",
+        "options": [
+            "Alle procedure concorsuali e ai procedimenti in materia previdenziale.",
+            "Ai procedimenti ad istanza di parte avviati telematicamente.",
+            "Ai procedimenti cautelari d'urgenza.",
+            "Alle procedure concorsuali e ai procedimenti in materia previdenziale e assistenziale sorti a seguito di istanza di parte."
+        ],
+        "a": 3,
+        "e": "Trappola tipica Formez: la risposta D è quella normativamente precisa e completa, la A omette il vincolo 'sorti a seguito di istanza di parte'."
+    },
+    {
+        "q": "Ai sensi del D.Lgs. 36/2023, il 'Principio del Risultato' e il 'Principio della Fiducia':",
+        "options": [
+            "Sono principi generali subordinati alla direttiva anticorruzione dell'ANAC.",
+            "Costituiscono i criteri di valutazione per l'aggiornamento del PIAO.",
+            "Costituiscono i criteri interpretativi e applicativi delle disposizioni del Codice.",
+            "Agiscono solo nelle procedure di affidamento sotto le soglie di rilevanza europea."
+        ],
+        "a": 2,
+        "e": "Art. 1, 2 e 3 del Codice Appalti fungono da faro interpretativo per tutto il D.Lgs 36/2023."
+    },
+    {
+        "q": "Codice Appalti: La rinegoziazione del contratto (Art. 9) per sopravvenienze impreviste è volta a:",
+        "options": [
+            "Annullare il rischio d'impresa dell'appaltatore.",
+            "Ripristinare l'originario equilibrio economico del contratto, senza alterarne la sostanza economica.",
+            "Garantire un utile minimo garantito del 5%.",
+            "Sostituire integralmente l'oggetto del contratto con prestazioni equivalenti."
+        ],
+        "a": 1,
+        "e": "Il principio di conservazione dell'equilibrio (Art. 9) non azzera il rischio d'impresa, ripristina solo l'equilibrio originario."
+    },
+    {
+        "q": "Nel D.Lgs. 36/2023, l'affidamento diretto per lavori è consentito:",
+        "options": [
+            "Per importi inferiori a 140.000 euro.",
+            "Per importi inferiori a 150.000 euro, anche senza consultazione di più operatori economici.",
+            "Esclusivamente fino a 50.000 euro, oltre serve la procedura negoziata.",
+            "Fino alla soglia di rilevanza europea, purché giustificato dal RUP."
+        ],
+        "a": 1,
+        "e": "Lavori: sotto 150.000 euro affidamento diretto (Art. 50). 140.000 è per servizi e forniture."
+    },
+    {
+        "q": "Quale dei seguenti NON è un requisito di partecipazione escludente 'non automatico' ex D.Lgs. 36/2023?",
+        "options": [
+            "Grave illecito professionale.",
+            "Significative carenze nell'esecuzione di un precedente contratto d'appalto.",
+            "Condanna definitiva per reati di mafia (art. 416-bis c.p.).",
+            "Conflitto di interessi non diversamente risolvibile."
+        ],
+        "a": 2,
+        "e": "I reati di mafia (Art. 94) costituiscono causa di esclusione AUTOMATICA."
+    },
+    {
+        "q": "Il RUP (Responsabile Unico del Progetto) può far parte della commissione giudicatrice?",
+        "options": [
+            "No, sussiste sempre un'incompatibilità assoluta.",
+            "Sì, può anche presiederla.",
+            "Sì, ma solo come segretario verbalizzante senza diritto di voto.",
+            "Solo se l'appalto è sotto soglia comunitaria."
+        ],
+        "a": 1,
+        "e": "Art. 51 D.Lgs. 36/2023: Il RUP può far parte della commissione giudicatrice e può persino presiederla."
+    },
+    {
+        "q": "L'esclusione automatica delle offerte anomale (Art. 54 D.Lgs. 36/2023):",
+        "options": [
+            "Si applica solo agli appalti sotto soglia con criterio del minor prezzo, se il bando lo prevede e le offerte ammesse sono almeno 5.",
+            "È vietata in ogni caso dalla direttiva UE, pena l'infrazione.",
+            "Si applica a tutti gli appalti di lavori, anche sopra soglia, se le offerte sono almeno 10.",
+            "Scatta sempre se il ribasso supera il 30%."
+        ],
+        "a": 0,
+        "e": "Esclusione automatica: solo sotto soglia, minor prezzo, almeno 5 offerte ammesse, e deve essere previsa nel bando."
+    },
+    {
+        "q": "In base al Codice 36/2023, il 'subappalto a cascata':",
+        "options": [
+            "È sempre vietato per motivi di ordine pubblico e antimafia.",
+            "È ammesso, a meno che la stazione appaltante non indichi specifici divieti motivati nel bando di gara.",
+            "È consentito solo per prestazioni secondarie o scorporabili non specialistiche.",
+            "È obbligatorio se l'operatore economico è una PMI."
+        ],
+        "a": 1,
+        "e": "Il nuovo Codice ribalta la regola: il subappalto a cascata è la regola, il divieto è l'eccezione motivata (Art. 119)."
+    },
+    {
+        "q": "Diritto UE: L'invocabilità dei 'Controlimiti' serve a:",
+        "o": [
+            "Permettere allo Stato membro di disapplicare i Regolamenti agricoli sfavorevoli.",
+            "Impedire che il primato del diritto UE possa violare i principi supremi dell'ordinamento costituzionale e i diritti inalienabili.",
+            "Limitare l'ingresso di merci extra-UE nel mercato interno.",
+            "Bloccare l'allargamento dell'Unione a nuovi Stati."
+        ],
+        "a": 1,
+        "e": "I controlimiti sono la diga costituzionale contro le norme UE che ledono i principi fondamentali della Costituzione italiana."
+    },
+    {
+        "q": "Nella procedura di infrazione UE (Art. 258 TFUE), la 'Lettera di messa in mora':",
+        "options": [
+            "È l'atto che chiude la fase pre-contenziosa.",
+            "È l'atto di avvio formale con cui la Commissione contesta l'inadempimento e fissa un termine per le osservazioni dello Stato.",
+            "È emessa dalla Corte di Giustizia a seguito di condanna in contumacia.",
+            "Comporta l'automatica sospensione dei fondi PNRR."
+        ],
+        "a": 1,
+        "e": "La lettera di messa in mora apre la fase precontenziosa garantendo il contraddittorio."
+    },
+    {
+        "q": "Diritto UE: Il principio di Sussidiarietà (Art. 5 TUE) opera:",
+        "options": [
+            "Nelle materie di competenza esclusiva dell'Unione.",
+            "In tutte le materie, comprese quelle di Politica Estera e di Sicurezza Comune.",
+            "Nelle materie che non sono di competenza esclusiva dell'Unione.",
+            "Esclusivamente nel settore della cooperazione giudiziaria penale."
+        ],
+        "a": 2,
+        "e": "La sussidiarietà regola l'esercizio delle competenze concorrenti, non quelle esclusive."
+    },
+    {
+        "q": "Se un Regolamento UE contrasta con una legge ordinaria italiana successiva, il giudice nazionale:",
+        "options": [
+            "Solleva obbligatoriamente questione di legittimità costituzionale.",
+            "Disapplica la legge italiana e applica il Regolamento UE.",
+            "Sospende il giudizio e attende l'abrogazione da parte del Parlamento.",
+            "Applica la legge italiana, essendo successiva (criterio cronologico)."
+        ],
+        "a": 1,
+        "e": "Per il principio del primato, il giudice nazionale disapplica direttamente la norma interna contrastante."
+    },
+    {
+        "q": "La Commissione Europea, in caso di mozione di censura approvata dal Parlamento Europeo:",
+        "options": [
+            "Viene sciolta dal Consiglio Europeo all'unanimità.",
+            "Deve rinunciare al suo mandato collettivamente.",
+            "Può rifiutarsi di dimettersi se appoggiata dalla Corte di Giustizia.",
+            "Perde i poteri legislativi ma mantiene quelli esecutivi."
+        ],
+        "a": 1,
+        "e": "La mozione di censura obbliga i membri della Commissione alle dimissioni collettive (Art. 234 TFUE)."
+    },
+    {
+        "q": "Gli atti delegati (Art. 290 TFUE) permettono alla Commissione di:",
+        "options": [
+            "Adottare atti non legislativi di portata generale che integrano o modificano elementi non essenziali dell'atto legislativo.",
+            "Emanare sentenze esecutive in nome degli Stati membri.",
+            "Delegare i propri poteri esecutivi alle agenzie decentrate.",
+            "Modificare i Trattati senza passare per la procedura di revisione ordinaria."
+        ],
+        "a": 0,
+        "e": "Atti delegati: delega legislativa 'minore' su elementi non essenziali."
+    },
+    {
+        "q": "Il Piano Integrato di Attività e Organizzazione (PIAO) deve essere adottato dalle PA entro il:",
+        "options": [
+            "31 dicembre dell'anno precedente al triennio di riferimento.",
+            "31 gennaio di ogni anno.",
+            "30 aprile, in concomitanza con il bilancio consuntivo.",
+            "60 giorni dall'insediamento del nuovo organo di indirizzo politico."
+        ],
+        "a": 1,
+        "e": "La scadenza naturale del PIAO è fissata al 31 gennaio."
+    },
+    {
+        "q": "La mancata adozione del PIAO comporta, tra le sanzioni:",
+        "options": [
+            "Il commissariamento immediato dell'Ente da parte della Prefettura.",
+            "Il divieto di erogare la retribuzione di risultato ai dirigenti e il divieto di assumere nuovo personale.",
+            "L'automatica approvazione della bozza proposta dall'OIV.",
+            "La decadenza del Sindaco o dell'organo di vertice."
+        ],
+        "a": 1,
+        "e": "Sanzioni paralizzanti: blocco assunzioni e blocco premi di risultato."
+    },
+    {
+        "q": "Nel PIAO, il concetto di 'Valore Pubblico' indica:",
+        "options": [
+            "Il fatturato generato dalle società in house dell'ente.",
+            "L'incremento del livello di benessere economico, sociale, ambientale e sanitario dei cittadini.",
+            "La somma dei risparmi di spesa ottenuti grazie alla spending review.",
+            "Il valore catastale degli immobili di proprietà dell'amministrazione."
+        ],
+        "a": 1,
+        "e": "Il Valore Pubblico è l'impatto positivo dell'azione amministrativa sui bisogni dei cittadini."
+    },
+    {
+        "q": "I dirigenti pubblici, ai sensi dell'art. 16 D.Lgs. 165/2001, hanno il potere di:",
+        "options": [
+            "Modificare i criteri di ripartizione delle risorse definiti in contrattazione collettiva.",
+            "Adottare atti di gestione finanziaria, tecnica e amministrativa, compresi quelli che impegnano l'amministrazione verso l'esterno.",
+            "Esentare i dipendenti dall'obbligo di esclusività senza autorizzazione dell'ente.",
+            "Annullare gli atti di indirizzo politico emessi dal Ministro o dal Sindaco."
+        ],
+        "a": 1,
+        "e": "Principio di separazione tra indirizzo politico (politici) e gestione (dirigenti)."
+    },
+    {
+        "q": "Le pubbliche amministrazioni con meno di 50 dipendenti:",
+        "options": [
+            "Non sono tenute ad adottare il PIAO, ma solo il PTPCT.",
+            "Devono adottare un PIAO semplificato.",
+            "Sono esonerate da qualsiasi obbligo di programmazione.",
+            "Adottano il PIAO ogni cinque anni anziché tre."
+        ],
+        "a": 1,
+        "e": "Esiste uno schema di PIAO semplificato per gli enti sotto i 50 dipendenti (D.M. 132/2022)."
+    },
+    {
+        "q": "Il dipendente pubblico che riceve un regalo di modico valore (es. 100 euro) a titolo di cortesia:",
+        "options": [
+            "Deve restituirlo immediatamente con raccomandata A/R.",
+            "Può trattenerlo, rientrando nei limiti degli usi di cortesia consueti (sotto i 150 euro).",
+            "Deve consegnarlo all'amministrazione affinché sia devoluto in beneficenza.",
+            "Può trattenerlo solo se il donante non è un fornitore dell'ente."
+        ],
+        "a": 1,
+        "e": "Il D.P.R. 62/2013 (Codice Comportamento) fissa a 150 euro il tetto per i regali di cortesia."
+    },
+    {
+        "q": "L'Organismo Indipendente di Valutazione (OIV):",
+        "options": [
+            "È nominato dall'ARAN.",
+            "Valuta il posizionamento strategico dei partiti di maggioranza.",
+            "Valuta le performance dei dirigenti di vertice e propone i premi.",
+            "Sostituisce il RPCT in caso di vacanza del ruolo."
+        ],
+        "a": 2,
+        "e": "L'OIV è il fulcro del sistema di misurazione della performance dirigenziale."
+    },
+    {
+        "q": "SCIA: Se la PA accerta la carenza dei requisiti entro i 60 giorni, adotta motivati provvedimenti di:",
+        "options": [
+            "Sospensione sine die dei lavori.",
+            "Divieto di prosecuzione dell'attività e rimozione degli effetti, salva conformazione ove possibile.",
+            "Annullamento d'ufficio della SCIA stessa.",
+            "Sanzione penale pecuniaria immediata."
+        ],
+        "a": 1,
+        "e": "La PA inibisce l'attività. Non può annullare la SCIA perché la SCIA è un atto del privato, non della PA."
+    },
+    {
+        "q": "Logica: Se 'Alcuni X sono Y' e 'Tutti gli Y sono Z', si deduce con certezza che:",
+        "options": [
+            "Tutti gli X sono Z.",
+            "Alcuni Z sono X.",
+            "Tutti gli Z sono Y.",
+            "Nessun X è Z."
+        ],
+        "a": 1,
+        "e": "Se c'è intersezione tra X e Y, e tutto Y è dentro Z, allora la parte di X che è Y è per forza anche Z."
+    },
+    {
+        "q": "Diritto UE: La procedura legislativa ordinaria (codecisione) si basa sulla parità tra:",
+        "options": [
+            "Parlamento Europeo e Commissione Europea.",
+            "Consiglio dell'Unione Europea e Consiglio Europeo.",
+            "Parlamento Europeo e Consiglio dell'Unione Europea.",
+            "Corte di Giustizia e Consiglio d'Europa."
+        ],
+        "a": 2,
+        "e": "La codecisione (Art. 294 TFUE) equipara Parlamento e Consiglio dei Ministri (co-legislatori)."
+    },
+    {
+        "q": "Logica Formez: 'Non vi è alcun manuale che non sia non utile'. Questa frase equivale a:",
+        "options": [
+            "Alcuni manuali sono utili.",
+            "Tutti i manuali sono utili.",
+            "Tutti i manuali sono inutili.",
+            "Nessun manuale è utile."
+        ],
+        "a": 2,
+        "e": "Tripla negazione nascosta. 'Non vi è alcun... che non sia' = 'Tutti sono'. Essere 'non utile' = inutile. Quindi: Tutti i manuali sono inutili."
+    },
+    {
+        "q": "In materia di procedimento amministrativo, l'accordo sostitutivo (Art. 11 L. 241/90):",
+        "options": [
+            "Non deve essere motivato, avendo natura privatistica.",
+            "È soggetto ai medesimi controlli previsti per il provvedimento sostituito.",
+            "Può derogare al perseguimento del pubblico interesse se avvantaggia la PA economicamente.",
+            "Si stipula oralmente se riguarda procedimenti sotto i 30 giorni."
+        ],
+        "a": 1,
+        "e": "L'accordo sostitutivo è un atto di diritto pubblico e sconta gli stessi controlli dell'atto che sostituisce."
+    },
+    {
+        "q": "Il subappaltatore, nel Codice Appalti 36/2023, per ottenere il pagamento diretto dalla stazione appaltante:",
+        "options": [
+            "Deve chiederlo in ogni caso tramite decreto ingiuntivo.",
+            "Lo ottiene se è una micro-piccola impresa e l'appaltatore è inadempiente, o su richiesta del subappaltatore (ove previsto).",
+            "Non può mai ottenerlo, vigendo il divieto di rapporti diretti.",
+            "Lo ottiene solo previa autorizzazione del giudice fallimentare."
+        ],
+        "a": 1,
+        "e": "Il pagamento diretto tutela le PMI e scatta per inadempimento o se l'impresa rientra in specifiche categorie (Art. 119)."
+    },
+    {
+        "q": "Logica: 'Emanuele vince il concorso a patto che studi'. Si è verificato che Emanuele NON ha vinto il concorso. Dunque:",
+        "options": [
+            "Emanuele non ha studiato.",
+            "Emanuele ha studiato ma c'erano raccomandati.",
+            "Non si può dedurre se abbia studiato o meno.",
+            "Emanuele ha studiato il programma sbagliato."
+        ],
+        "a": 2,
+        "e": "'A patto che' introduce una condizione necessaria ('Vince -> Studia'). Se non vince (Non A), non posso dedurre (Non B). Fallacia della negazione dell'antecedente."
+    },
+    {
+        "q": "Il RUP nel D.Lgs. 36/2023 è denominato 'Responsabile Unico del Progetto'. La dicitura 'Progetto' sostituisce 'Procedimento' per:",
+        "options": [
+            "Semplificare il glossario normativo in ottica europea.",
+            "Sottolineare che il RUP gestisce l'intero ciclo di vita dell'intervento pubblico, non il solo iter amministrativo.",
+            "Limitare le sue responsabilità ai soli appalti di lavori.",
+            "Delegare le funzioni istruttorie alle intelligenze artificiali."
+        ],
+        "a": 1,
+        "e": "Il cambio di nome segna il passaggio da logica burocratica (procedimento) a logica manageriale (progetto)."
+    },
+    {
+        "q": "Diritto UE: Quale istituzione ha il monopolio dell'iniziativa legislativa negli atti dell'Unione?",
+        "options": [
+            "Il Parlamento Europeo.",
+            "Il Consiglio dell'Unione Europea.",
+            "La Commissione Europea.",
+            "La Corte dei Conti Europea."
+        ],
+        "a": 2,
+        "e": "Salvo eccezioni minime, solo la Commissione può proporre nuove leggi."
+    },
+    {
+        "q": "I termini di conclusione del procedimento (Art. 2 L. 241/90):",
+        "options": [
+            "Sono di regola 60 giorni, se non diversamente stabilito.",
+            "Non possono mai superare i 90 giorni, anche con DPCM.",
+            "Sono di regola 30 giorni, salvo disposizioni di legge diverse, elevabili fino a un massimo assoluto di 180 giorni per casi complessi (tramite DPCM).",
+            "Hanno natura sempre perentoria, determinando la decadenza del potere in caso di ritardo."
+        ],
+        "a": 2,
+        "e": "Regola base 30 gg. Limite massimo DPCM 180 gg."
+    },
+    {
+        "q": "Nel nuovo PIAO, le Amministrazioni devono definire gli obiettivi di parità di genere. Questa sezione è finalizzata a:",
+        "options": [
+            "Ridurre il divario retributivo e favorire l'accesso delle donne alle posizioni di vertice.",
+            "Licenziare il personale maschile in eccesso.",
+            "Organizzare seminari facoltativi a spese dell'ente.",
+            "Abrogare il congedo di paternità."
+        ],
+        "a": 0,
+        "e": "La sezione Valore Pubblico e Parità di genere è una novità del PIAO."
+    },
+    {
+        "q": "Logica: Un treno parte in ritardo se e solo se piove. Se oggi il treno è partito puntuale:",
+        "options": [
+            "Significa che il macchinista ha recuperato tempo.",
+            "Potrebbe aver piovuto ma poco.",
+            "Certamente non ha piovuto.",
+            "Oggi era un giorno festivo."
+        ],
+        "a": 2,
+        "e": "Se e solo se = doppia implicazione. Non ritardo -> Non piove."
+    },
+    {
+        "q": "L'istituto del 'Soccorso istruttorio procedimentale' (Art. 6 L. 241/90) consente al responsabile del procedimento di:",
+        "options": [
+            "Sanare d'ufficio i vizi di nullità dell'istanza.",
+            "Chiedere il rilascio di dichiarazioni e la rettifica di dichiarazioni o istanze erronee o incomplete.",
+            "Aggiungere nuovi controinteressati non previsti dalla legge.",
+            "Modificare i termini di decadenza per proporre ricorso giurisdizionale."
+        ],
+        "a": 1,
+        "e": "Il RUP ha il dovere di aiutare il cittadino a superare errori formali."
+    },
+    {
+        "q": "Diritto UE: Una Direttiva non recepita nel termine produce effetti diretti se le disposizioni sono:",
+        "options": [
+            "Soggette a condizioni e rinvii a leggi statali.",
+            "Precise, chiare e incondizionate, nei soli rapporti verticali (Cittadino vs Stato).",
+            "Generiche ma volte a tutelare i consumatori, in ogni tipo di rapporto (orizzontale e verticale).",
+            "Emanate con procedura legislativa d'urgenza."
+        ],
+        "a": 1,
+        "e": "Requisiti per l'efficacia diretta: chiara, incondizionata, precisa, e solo efficacia verticale discendente."
+    },
+    {
+        "q": "Il Collegio Consultivo Tecnico (CCT) nel D.Lgs. 36/2023:",
+        "options": [
+            "Ha la funzione di prevenire e risolvere le controversie nella fase di esecuzione dei contratti.",
+            "È un organo della Corte dei Conti per il controllo preventivo dei bandi.",
+            "Sostituisce il RUP in caso di malattia prolungata.",
+            "Si occupa di validare i progetti di fattibilità tecnica ed economica."
+        ],
+        "a": 0,
+        "e": "Il CCT è un istituto di deflazione del contenzioso in corso d'opera."
+    },
+    {
+        "q": "Le 'Cause di esclusione' legate al mancato pagamento di tasse (Art. 94 D.Lgs. 36/2023) scattano automaticamente se:",
+        "options": [
+            "Il debito supera i 500 euro.",
+            "La violazione è grave e definitivamente accertata.",
+            "L'operatore ha chiesto la rateizzazione del debito.",
+            "Il DURC è in corso di rinnovo."
+        ],
+        "a": 1,
+        "e": "La definitività dell'accertamento è la condizione per l'esclusione automatica sui carichi fiscali."
+    },
+    {
+        "q": "Accesso agli atti vs FOIA: Chi fa richiesta di accesso documentale ex L. 241/90:",
+        "options": [
+            "Non deve mai motivare l'istanza.",
+            "Può accedere anche a dati per i quali la PA non ha formato alcun documento.",
+            "Deve dimostrare un interesse diretto, concreto e attuale, corrispondente a una situazione giuridicamente tutelata.",
+            "Ottiene una risposta automatica entro 10 giorni."
+        ],
+        "a": 2,
+        "e": "Differenza chiave: L. 241/90 richiede motivazione e interesse qualificato, FOIA no."
+    },
+    {
+        "q": "Logica: 'Condizione necessaria per superare l'esame è rispondere a questa domanda'. Significa che:",
+        "options": [
+            "Se rispondi a questa domanda, superi certamente l'esame.",
+            "Se non rispondi a questa domanda, non superi l'esame.",
+            "È impossibile rispondere a questa domanda senza superare l'esame.",
+            "Rispondere alla domanda equivale a superare l'esame."
+        ],
+        "a": 1,
+        "e": "A è condizione necessaria per B = Se non A, allora non B (Oppure Se B allora A)."
+    },
+    {
+        "q": "L'ordine gerarchico è una relazione di lavoro che consente al superiore di:",
+        "options": [
+            "Emanare ordini vincolanti e annullare d'ufficio gli atti del subordinato.",
+            "Avocare a sé gli atti del dipendente senza alcuna motivazione e in via definitiva.",
+            "Sostituirsi al lavoratore in ferie senza avviso.",
+            "Trasferire il dipendente ad altra PA in modo unilaterale."
+        ],
+        "a": 0,
+        "e": "I poteri tipici della gerarchia: ordine, controllo, annullamento d'ufficio e avocazione (se motivata)."
+    },
+    {
+        "q": "Il 'conflitto di interessi' (Art. 16 D.Lgs. 36/2023) comporta l'esclusione dalla gara se:",
+        "options": [
+            "L'operatore economico dichiara di aver partecipato alla consultazione preliminare.",
+            "Non è possibile risolverlo con misure meno restrittive.",
+            "Riguarda un parente oltre il sesto grado del RUP.",
+            "Viene segnalato in forma anonima tramite Whistleblowing."
+        ],
+        "a": 1,
+        "e": "Extrema ratio: l'esclusione per conflitto si applica solo se il conflitto non è altrimenti sanabile."
+    },
+    {
+        "q": "Nella classificazione delle competenze UE (Titolo I TFUE), la concorrenza (regole per il mercato interno) è una competenza:",
+        "options": [
+            "Concorrente tra Unione e Stati.",
+            "Esclusiva dell'Unione Europea.",
+            "Di sostegno, coordinamento e completamento.",
+            "Lasciata alla totale discrezionalità dell'OMC."
+        ],
+        "a": 1,
+        "e": "L'Art. 3 TFUE elenca le regole di concorrenza del mercato interno tra le competenze esclusive."
+    },
+    {
+        "q": "Logica: Tutti gli avvocati sono prolissi. Qualche prolisso è noioso. Si deduce:",
+        "options": [
+            "Tutti gli avvocati sono noiosi.",
+            "Qualche avvocato è noioso.",
+            "Non è possibile dedurre che qualche avvocato sia noioso.",
+            "Nessun avvocato è noioso."
+        ],
+        "a": 2,
+        "e": "Fallacia del medio non distribuito. L'intersezione tra prolissi e noiosi potrebbe non includere gli avvocati."
+    },
+    {
+        "q": "Il vizio di 'Eccesso di potere' si riscontra tipicamente in un provvedimento:",
+        "options": [
+            "A carattere vincolato, dove manca il parere obbligatorio.",
+            "A carattere discrezionale, viziato da figure sintomatiche come illogicità manifesta o disparità di trattamento.",
+            "Adottato in carenza assoluta di potere.",
+            "Emanato da un organo territorialmente incompetente."
+        ],
+        "a": 1,
+        "e": "L'eccesso di potere è il vizio tipico della funzione discrezionale, smascherato dai 'sintomi' di un cattivo uso del potere."
+    }
+
+];
 
         let quizSessione = [];
         let currentQuestionIndex = 0;
