@@ -38,7 +38,7 @@
     <main class="quiz-container">
         <div id="start-screen" class="card" style="text-align: center;">
             <h2 style="margin-bottom: 1rem;">Test Diritto Amministrativo</h2>
-            <p style="margin-bottom: 2rem; color: #666;">Database aggiornato: 216 domande. Il sistema ne estrarrà 13 casuali. Solo l'80% garantisce l'idoneità.</p>
+            <p style="margin-bottom: 2rem; color: #666;">Database aggiornato: 100 domande. Il sistema ne estrarrà 13 casuali. Solo l'80% garantisce l'idoneità.</p>
             <button class="btn-primary" onclick="startQuiz()">INIZIA IL TEST ➔</button>
         </div>
         <div id="quiz-screen" class="card hidden">
@@ -62,721 +62,1106 @@
     </main>
 
     <script>
-        const databaseQuiz = [{ q: "Termine generale conclusione procedimento (L. 241/90)?", a: "30 giorni", o: ["30 giorni", "60 giorni", "90 giorni", "120 giorni"], e: "Art. 2 L. 241/90." },
-            { q: "Provvedimento adottato in violazione di legge è:", a: "Annullabile", o: ["Nullo", "Inesistente", "Annullabile", "Irregolare"], e: "Art. 21-octies L. 241/90." },
-            { q: "Accesso civico generalizzato (FOIA) spetta a:", a: "Chiunque senza motivazione", o: ["Solo chi ha interesse diretto", "Chiunque senza motivazione", "Solo ai giornalisti", "Solo ai residenti"], e: "D.Lgs. 97/2016." },
-            { q: "Giurisdizione responsabilità contabile dipendenti?", a: "Corte dei Conti", o: ["TAR", "Consiglio di Stato", "Corte dei Conti", "Cassazione"], e: "Art. 103 Cost." },
-            { q: "Responsabile del Procedimento (Art. 5 L. 241/90):", a: "Valuta condizioni ammissibilità", o: ["Valuta condizioni ammissibilità", "È sempre il Sindaco", "Non ha poteri istruttori", "Decide solo i ricorsi"], e: "È il dominus dell'istruttoria." },
-            { q: "Silenzio Assenso NON si applica a:", a: "Patrimonio culturale/paesaggio", o: ["Edilizia residenziale", "Patrimonio culturale/paesaggio", "Commercio", "Artigianato"], e: "Art. 20 L. 241/90." },
-            { q: "Annullamento d'ufficio entro massimo (L. 108/21):", a: "12 mesi", o: ["6 mesi", "12 mesi", "24 mesi", "Senza limiti"], e: "Termine ridotto per certezza rapporti." },
-            { q: "Principio cardine Nuovo Codice Appalti (36/23)?", a: "Risultato", o: ["Minor prezzo", "Risultato", "Rotazione rigida", "Pari opportunità"], e: "Art. 1 D.Lgs. 36/2023." },
-            { q: "Discrezionalità tecnica implica:", a: "Valutazione fatti complessi", o: ["Scelta tra interessi", "Valutazione fatti complessi", "Decisione politica", "Potere di ordinanza"], e: "Applicazione scienze esatte." },
-            { q: "Termine risposta accesso atti (L. 241/90)?", a: "30 giorni", o: ["15 giorni", "30 giorni", "60 giorni", "90 giorni"], e: "Dopo 30gg è silenzio-rigetto." },
-            { q: "Giurisdizione dopo stipula contratto appalto?", a: "Giudice Ordinario", o: ["TAR", "Giudice Ordinario", "Corte dei Conti", "ANAC"], e: "Fase esecutiva = Diritto Privato." },
-            { q: "Nullità provvedimento se manca:", a: "Elementi essenziali", o: ["Motivazione", "Elementi essenziali", "Comunicazione avvio", "Parere tecnico"], e: "Art. 21-septies L. 241/90." },
-            { q: "SCIA: il terzo controinteressato può:", a: "Sollecitare poteri inibitori PA", o: ["Impugnare SCIA al TAR", "Sollecitare poteri inibitori PA", "Bloccare i lavori fisicamente", "Fare ricorso al Prefetto"], e: "La SCIA non è un atto impugnabile." },
-            { q: "Avvalimento (Codice 36/23):", a: "Prestito requisiti da ausiliaria", o: ["Prestito requisiti da ausiliaria", "Vietato sempre", "Solo per imprese estere", "Non prevede solidarietà"], e: "Responsabilità in solido." },
-            { q: "Piano Anticorruzione (PTPCT) adottato entro:", a: "31 Gennaio", o: ["31 Dicembre", "31 Gennaio", "30 Giugno", "Pasqua"], e: "Aggiornamento annuale obbligatorio." },
-            { q: "Ricorso silenzio inadempimento entro max:", a: "1 anno", o: ["60 giorni", "120 giorni", "1 anno", "Mai"], e: "Dalla scadenza del termine proc." },
-            { q: "Preavviso di rigetto (10-bis):", a: "Interrompe i termini", o: ["Annulla istanza", "Interrompe i termini", "È facoltativo", "Vale per concorsi"], e: "10 giorni per osservazioni." },
-            { q: "Revoca provvedimento (21-quinquies) prevede:", a: "Indennizzo", o: ["Risarcimento", "Indennizzo", "Nullità", "Scuse scritte"], e: "Indennizzo per pregiudizi subiti." },
-            { q: "Accordi PA-Privati (Art. 11):", a: "Atto scritto pena nullità", o: ["Solo verbali", "Atto scritto pena nullità", "Senza recesso PA", "Senza controllo Corte Conti"], e: "Forma scritta obbligatoria." },
-            { q: "RUP nel nuovo codice (36/23) significa:", a: "Resp. Unico Progetto", o: ["Resp. Unico Procedimento", "Resp. Unico Progetto", "Resp. Unico Prezzo", "Resp. Unico Personale"], e: "Responsabilità su intero ciclo." },
-            { q: "Soccorso istruttorio VIETATO per:", a: "Offerta tecnica/economica", o: ["Codice Fiscale errato", "Certificato scaduto", "Offerta tecnica/economica", "Firma mancante"], e: "Divieto di modifica offerta." },
-            { q: "Licenziamento disciplinare competenza di:", a: "UPD", o: ["Dirigente ufficio", "UPD", "Ministro", "Giudice Lavoro"], e: "Ufficio Procedimenti Disciplinari." },
-            { q: "Giurisdizione CONCORSI PUBBLICI?", a: "Giudice Amministrativo", o: ["Giudice del Lavoro", "Giudice Amministrativo", "TAR del Lazio sempre", "Giudice Pace"], e: "Fino alla graduatoria decide il TAR." },
-            { q: "Whistleblower: il dipendente che segnala:", a: "Non può essere sanzionato", o: ["Viene licenziato", "Non può essere sanzionato", "Deve rivelare nome", "Riceve soldi"], e: "Tutela antiritorsiva." },
-            { q: "Inconferibilità incarichi (D.Lgs. 39/13):", a: "Preclusione a monte nomina", o: ["Obbligo scelta", "Preclusione a monte nomina", "Divieto parenti", "Solo per comuni"], e: "Impedisce il conferimento." },
-            { q: "Motivi aggiunti nel processo servono a:", a: "Nuovi vizi dopo documenti PA", o: ["Chiedere più soldi", "Nuovi vizi dopo documenti PA", "Cambiare avvocato", "Allungare tempi"], e: "Art. 43 CPA." },
-            { q: "Giudizio Ottemperanza serve a:", a: "Eseguire sentenza non attuata", o: ["Chiedere sospensiva", "Eseguire sentenza non attuata", "Impugnare bando", "Denunciare dolo"], e: "Esecuzione forzata vs PA." },
-            { q: "Art. 97 Cost. sancisce:", a: "Imparzialità e Buon andamento", o: ["Diritto al lavoro", "Imparzialità e Buon andamento", "Unità d'Italia", "Potere di veto"], e: "Pilastri dell'azione amministrativa." },
-            { q: "Motivazione atto NON richiesta per:", a: "Atti normativi/generali", o: ["Diniego accesso", "Esproprio", "Atti normativi/generali", "Sanzioni"], e: "Art. 3 L. 241/90." },
-            { q: "Consiglio di Stato è organo:", a: "Consultivo e Giurisdizionale", o: ["Solo d'appello", "Solo per pareri Governo", "Consultivo e Giurisdizionale", "Solo contabile"], e: "Organo rilievo costituzionale." },
-            { q: "Sussidiarietà verticale (118 Cost):", a: "Funzioni prima ai Comuni", o: ["Tutto allo Stato", "Funzioni prima ai Comuni", "Solo alle Regioni", "Solo alle Prefetture"], e: "Ente più vicino al cittadino." },
-            { q: "Beni demaniali sono:", a: "Inalienabili", o: ["Vendibili", "Inalienabili", "Usucapibili", "Privati"], e: "Lido, fiumi, fortezze." },
-            { q: "Conferenza servizi decisoria di norma è:", a: "Semplificata/Asincrona", o: ["Sincrona/Fisica", "Semplificata/Asincrona", "Telefonica", "Segreta"], e: "Art. 14-bis L. 241/90." },
-            { q: "Accesso Civico Semplice riguarda:", a: "Dati obbligatori non pubblicati", o: ["Segreti di stato", "Dati obbligatori non pubblicati", "Email private", "Multe"], e: "Violazione obbligo trasparenza." },
-            { q: "ARAN rappresenta:", a: "Le PA nella contrattazione", o: ["I sindacati", "Le PA nella contrattazione", "Le Regioni al Sud", "I disoccupati"], e: "Rappresentanza legale PA." },
-            { q: "Giurisdizione esclusiva GA:", a: "Interessi + Diritti soggettivi", o: ["Solo interessi", "Interessi + Diritti soggettivi", "Solo penale", "Multe stradali"], e: "Materie specifiche (es. edilizia)." },
-            { q: "Limite subappalto (36/23):", a: "Non predeterminato per legge", o: ["Fisso 30%", "Fisso 49%", "Non predeterminato per legge", "Vietato sempre"], e: "Rimosso limite fisso UE." },
-            { q: "Art. 28 Cost: responsabilità solidale:", a: "Dipendente + Stato", o: ["Solo dipendente", "Dipendente + Stato", "Solo Stato", "Nessuno"], e: "Cittadino può rivalersi su entrambi." },
-            { q: "Eccesso di potere è vizio di:", a: "Legittimità", o: ["Merito", "Legittimità", "Nullità", "Inesistenza"], e: "Cattivo uso del potere." },
-            { q: "Ricorso al TAR entro:", a: "60 giorni", o: ["30 giorni", "60 giorni", "90 giorni", "120 giorni"], e: "Termine perentorio annullamento." },
-            { q: "Convalida atto annullabile (21-nonies):", a: "Sana atto retroattivamente", o: ["Lo distrugge", "Sana atto retroattivamente", "Vale per atti nulli", "Non richiede interesse"], e: "Riesame conservativo." },
-            { q: "Opposizione controinteressati accesso:", a: "Entro 10 giorni", o: ["Entro 5 giorni", "Entro 10 giorni", "Entro 30 giorni", "Mai"], e: "Dalla comunicazione PA." },
-            { q: "Ordinanze contingibili Sindaco:", a: "Possono derogare a leggi", o: ["Solo per multe", "Possono derogare a leggi", "Richiedono voto Consiglio", "Sono eterne"], e: "Nel rispetto dei princ. Cost." },
-            { q: "Separazione politica/amministrazione:", a: "Politico dà indirizzo", o: ["Politico firma contratti", "Politico dà indirizzo", "Dirigente decide leggi", "Nessuna distinzione"], e: "D.Lgs. 165/01." },
-            { q: "Affidamento diretto sotto 140k servizi:", a: "Possibile senza gara", o: ["Gara europea", "Possibile senza gara", "Solo con 10 preventivi", "Vietato"], e: "Codice 36/23 velocità." },
-            { q: "Atto senza firma obbligatoria è:", a: "Nullo", o: ["Valido", "Annullabile", "Nullo", "Irregolare"], e: "Mancanza elemento essenziale." },
-            { q: "Silenzio-Rigetto su accesso dopo:", a: "30 giorni", o: ["15 giorni", "30 giorni", "60 giorni", "90 giorni"], e: "L. 241/90." },
-            { q: "ASL sono enti con:", a: "Autonomia imprenditoriale", o: ["Dipendenza da Prefetto", "Autonomia imprenditoriale", "Soli fini lucro", "Personalità privata"], e: "D.Lgs. 502/92." },
-            { q: "Bando di gara è atto:", a: "Generale", o: ["Normativo", "Generale", "Soggettivo", "Parere"], e: "Destinatari determinabili dopo." },
-            { q: "Dichiarazione Pubblica Utilità esproprio:", a: "Presupposto decreto esproprio", o: ["È l'atto finale", "Presupposto decreto esproprio", "Sostituisce il pagamento", "È facoltativa"], e: "Senza di essa esproprio è nullo." },
-            { q: "Fumus boni iuris e Periculum in mora:", a: "Requisiti cautelare (sospensiva)", o: ["Prove penali", "Requisiti cautelare (sospensiva)", "Vizi di merito", "Solo per multe"], e: "Per ottenere la sospensiva." },
-            { q: "Omessa pubblicazione dati obbligatori:", a: "Accesso civico semplice", o: ["Arresto sindaco", "Accesso civico semplice", "Multa 100k", "Denuncia ONU"], e: "D.Lgs. 33/13." },
-            { q: "Controllo gestione valuta:", a: "Efficacia, Efficienza, Economicità", o: ["Solo legalità", "Efficacia, Efficienza, Economicità", "Presenze dipendenti", "Colore uffici"], e: "Ottimizzazione risultati." },
-            { q: "Approvazione Bilancio Previsione Comune:", a: "Consiglio Comunale", o: ["Sindaco", "Giunta", "Consiglio Comunale", "Tesoriere"], e: "Art. 42 TUEL." },
-            { q: "Segretario Comunale garantisce:", a: "Legalità e Assistenza giuridica", o: ["Ordine pubblico", "Legalità e Assistenza giuridica", "Voti elettorali", "Pulizia strade"], e: "Funzione rogatoria." },
-            { q: "Performance Brunetta (150/09):", a: "Premia merito/obiettivi", o: ["Aumenti per tutti", "Premia merito/obiettivi", "Licenziamento donne", "Bonus vacanze"], e: "Contro premi a pioggia." },
-            { q: "GA può risarcire danno da lesione?", a: "Sì, sempre", o: ["No mai", "Sì, sempre", "Solo sopra 1 milione", "Solo se lo dice il Papa"], e: "Art. 7 CPA." },
-            { q: "Rotazione personale anticorruzione:", a: "Misura di prevenzione", o: ["Punizione", "Misura di prevenzione", "Solo per dirigenti", "Vietata"], e: "Evita rendite posizione." },
-            { q: "Danno Erariale: elemento soggettivo:", a: "Dolo o Colpa Grave", o: ["Colpa lieve", "Dolo o Colpa Grave", "Sola negligenza", "Caso fortuito"], e: "Giurisprudenza contabile." },
-            { q: "Causa esclusione automatica subappaltatore:", a: "Impone sostituzione", o: ["Esclude tutta l'impresa", "Impone sostituzione", "Non conta nulla", "Multa ANAC"], e: "Moralità della filiera." },
-            { q: "DPO (Privacy) in PA è:", a: "Obbligatorio", o: ["Facoltativo", "Obbligatorio", "Solo per Comuni sopra 100k", "Solo per ospedali"], e: "Art. 37 GDPR." },
-            { q: "Atto emanato dopo termine (tardivo):", a: "Valido ma fonte responsabilità", o: ["Nullo", "Valido ma fonte responsabilità", "Inesistente", "Illegittimo ex se"], e: "Dovere di provvedere." },
-            { q: "Art. 113 Cost: contro atti PA:", a: "Sempre ammessa tutela", o: ["Tutela limitata", "Sempre ammessa tutela", "Solo per ricchi", "Solo per diritti"], e: "Sindacabilità universale." },
-            { q: "Project Financing: rischio operativo a:", a: "Privato (Concessionario)", o: ["Stato", "Privato (Concessionario)", "Assicurazione", "BCE"], e: "Trasferimento del rischio." },
-            { q: "Atto che elude il giudicato è:", a: "Nullo", o: ["Annullabile", "Valido", "Nullo", "Irregolare"], e: "Art. 21-septies L. 241/90." },
-            { q: "Autotutela PA è potere:", a: "Discrezionale", o: ["Doveroso", "Discrezionale", "Vincolato", "Inesistente"], e: "Riesame dell'agire pubblico." },
-        { q: "Nuovo Codice Appalti (36/23): la soglia per l'affidamento diretto di lavori è?", a: "Sotto 150.000 euro", o: ["Sotto 140.000 euro", "Sotto 150.000 euro", "Sotto 40.000 euro", "Sotto 1.000.000 euro"], e: "Art. 50, comma 1, lett. a) D.Lgs. 36/2023." },
-        { q: "Qual è la funzione del DIPE nel project financing?", a: "Supporto e coordinamento", o: ["Erogazione fondi", "Supporto e coordinamento", "Controllo contabile", "Giurisdizione esclusiva"], e: "Dipartimento per la programmazione e il coordinamento della politica economica." },
-        { q: "Nel Codice 36/23, il principio di fiducia (Art. 2) valorizza:", a: "L'autonomia decisionale dei funzionari", o: ["Il sospetto verso le imprese", "L'autonomia decisionale dei funzionari", "La rotazione rigida", "Il minor prezzo"], e: "Legato alla riduzione della paura della firma." },
-        { q: "L'esclusione automatica delle offerte anomale (appalti sotto soglia):", a: "Se il bando lo prevede e offerte ammesse >= 5", o: ["Sempre obbligatoria", "Se il bando lo prevede e offerte ammesse >= 5", "Mai consentita", "Solo per i servizi"], e: "Art. 54 D.Lgs. 36/2023." },
-        { q: "L'appalto integrato (Codice 36/23) prevede l'affidamento congiunto di:", a: "Progettazione esecutiva e esecuzione", o: ["Progettazione definitiva ed esecuzione", "Progettazione esecutiva e esecuzione", "Solo forniture e servizi", "Direzione lavori e collaudo"], e: "Art. 44 Codice Appalti 2023." },
-        { q: "Cause di esclusione non automatiche (Art. 95 Codice 36/23):", a: "Gravi illeciti professionali dimostrabili", o: ["Condanna per mafia", "Gravi illeciti professionali dimostrabili", "Mancanza DURC", "Sanzioni interdittive"], e: "Richiedono valutazione discrezionale della PA." },
-        { q: "Il soccorso istruttorio è a pagamento nel nuovo Codice?", a: "No, è sempre gratuito", o: ["Sì, 1% dell'offerta", "No, è sempre gratuito", "Solo per documenti essenziali", "Sì, per le microimprese"], e: "Abolita la sanzione pecuniaria per il soccorso istruttorio." },
-        { q: "Il RUP (Responsabile Unico del Progetto) deve essere nominato:", a: "Nel primo atto di avvio dell'intervento", o: ["Dopo l'aggiudicazione", "Nel primo atto di avvio dell'intervento", "Solo per appalti sopra soglia", "Dalla Corte dei Conti"], e: "Art. 15 D.Lgs. 36/2023." },
-        { q: "Le concessioni si distinguono dagli appalti per:", a: "Il trasferimento del rischio operativo", o: ["L'importo economico", "Il trasferimento del rischio operativo", "La durata illimitata", "L'assenza di contratto"], e: "Il concessionario si assume il rischio di mercato." },
-        { q: "Garanzia provvisoria negli appalti sotto soglia (Codice 36/23):", a: "Di regola non richiesta", o: ["Sempre 2%", "Di regola non richiesta", "Sempre 10%", "Fissa a 5.000 euro"], e: "Salvo specifiche esigenze motivate (Art. 53)." },
-        { q: "La L. 241/90 si applica ai soggetti privati?", a: "Sì, se preposti all'esercizio di attività amministrative", o: ["Mai", "Sì, se preposti all'esercizio di attività amministrative", "Solo alle SpA", "Solo se ricevono fondi UE"], e: "Art. 1, comma 1-ter L. 241/90." },
-        { q: "Il provvedimento amministrativo ad efficacia durevole può essere revocato per:", a: "Sopravvenuti motivi di pubblico interesse", o: ["Violazione di legge", "Sopravvenuti motivi di pubblico interesse", "Incompetenza", "Mancanza di forma"], e: "Art. 21-quinquies L. 241/90 (Revoca)." },
-        { q: "Il termine di 30 giorni per la conclusione del procedimento può essere sospeso?", a: "Sì, per una sola volta max 30 giorni (istruttoria)", o: ["No, mai", "Sì, per una sola volta max 30 giorni (istruttoria)", "Sì, a discrezione illimitata", "Solo dal Giudice"], e: "Art. 2, comma 7 L. 241/90." },
-        { q: "Qual è la conseguenza del mancato preavviso di rigetto (Art. 10-bis)?", a: "Annullabilità, salvo applicazione 21-octies c. 2", o: ["Nullità insanabile", "Annullabilità, salvo applicazione 21-octies c. 2", "Nessuna", "Risarcimento automatico"], e: "Se il contenuto non poteva essere diverso, non si annulla." },
-        { q: "L'Accordo integrativo (Art. 11 L. 241/90) serve a:", a: "Determinare il contenuto discrezionale del provvedimento", o: ["Sostituire il provvedimento", "Determinare il contenuto discrezionale del provvedimento", "Sanare atti nulli", "Evitare il ricorso al TAR"], e: "Il provvedimento finale viene comunque emanato." },
-        { q: "Il diritto di accesso documentale (L. 241/90) è un diritto:", a: "Soggettivo o Interesse legittimo a seconda dei casi", o: ["Sempre interesse legittimo", "Sempre diritto soggettivo", "Soggettivo o Interesse legittimo a seconda dei casi", "Interesse semplice"], e: "Posizione giuridica differenziata." },
-        { q: "Chi è competente a dichiarare la nullità di un provvedimento (21-septies)?", a: "Il Giudice Amministrativo (salvo difetto assoluto giurisdizione)", o: ["Il Giudice Ordinario", "Il Giudice Amministrativo (salvo difetto assoluto giurisdizione)", "La Corte dei Conti", "Il Prefetto"], e: "Art. 31, comma 4 CPA." },
-        { q: "L'ordinanza di demolizione di un abuso edilizio è un atto:", a: "Vincolato", o: ["Discrezionale", "Vincolato", "Politico", "Di alta amministrazione"], e: "Non richiede valutazione di interesse pubblico prevalente." },
-        { q: "La motivazione per relationem è ammessa?", a: "Sì, se l'atto richiamato è reso disponibile", o: ["No, mai", "Sì, se l'atto richiamato è reso disponibile", "Solo per i DPCM", "Solo negli appalti"], e: "Art. 3, comma 3 L. 241/90." },
-        { q: "Il parere obbligatorio non vincolante deve essere rilasciato entro:", a: "20 giorni", o: ["15 giorni", "20 giorni", "30 giorni", "45 giorni"], e: "Art. 16 L. 241/90." },
-        { q: "Piano Triennale Prevenzione Corruzione (PTPCT) è integrato in:", a: "PIAO", o: ["PEG", "PIAO", "DUP", "Bilancio di previsione"], e: "Piano Integrato di Attività e Organizzazione (D.L. 80/2021)." },
-        { q: "A chi spetta l'adozione del PTPCT negli Enti Locali?", a: "Alla Giunta", o: ["Al Sindaco", "Alla Giunta", "Al Consiglio", "Al Segretario Comunale"], e: "Organo di indirizzo politico (Legge 190/2012)." },
-        { q: "Il RPCT (Responsabile Prevenzione Corruzione) negli Enti Locali è di norma:", a: "Il Segretario Comunale", o: ["Il Sindaco", "Il Segretario Comunale", "Il Dirigente Finanziario", "Un consulente esterno"], e: "Salvo diversa e motivata determinazione." },
-        { q: "L'incompatibilità (D.Lgs. 39/2013) comporta:", a: "Obbligo di scelta entro 15 giorni a pena di decadenza", o: ["Nullità della nomina a monte", "Obbligo di scelta entro 15 giorni a pena di decadenza", "Multa fino a 10.000 euro", "Licenziamento"], e: "Diversa dall'inconferibilità che preclude la nomina." },
-        { q: "Patto di integrità negli appalti: la sua violazione comporta:", a: "Esclusione dalla gara o risoluzione del contratto", o: ["Sanzione ANAC", "Esclusione dalla gara o risoluzione del contratto", "Nulla", "Richiamo verbale"], e: "Clausola essenziale per la partecipazione." },
-        { q: "Accesso civico semplice (D.Lgs. 33/2013) è gratuito?", a: "Sì, sempre", o: ["No, costa 10 euro", "Sì, sempre", "Solo per ISEE bassi", "Sì, ma si pagano i bolli"], e: "Riguarda i documenti con obbligo di pubblicazione." },
-        { q: "Il FOIA italiano prevede un limite all'accesso per tutelare:", a: "Interessi pubblici e privati (es. privacy, sicurezza)", o: ["Solo il segreto di Stato", "Interessi pubblici e privati (es. privacy, sicurezza)", "Solo interessi economici PA", "Nessun limite"], e: "Art. 5-bis D.Lgs. 33/2013." },
-        { q: "La direttiva UE 2019/1937 sul Whistleblowing tutela il segnalante da:", a: "Ritorsioni (es. demansionamento, licenziamento)", o: ["Procedimenti penali per calunnia", "Ritorsioni (es. demansionamento, licenziamento)", "Tasse per 3 anni", "Sanzioni per diffamazione"], e: "Receplita in Italia con D.Lgs. 24/2023." },
-        { q: "Chi gestisce le segnalazioni Whistleblowing esterne in Italia?", a: "ANAC", o: ["Procura della Repubblica", "ANAC", "Corte dei Conti", "Ministero Interno"], e: "Canale esterno esclusivo." },
-        { q: "L'accesso documentale (L.241) prevale sul diritto alla riservatezza?", a: "Sì, se strettamente indispensabile per difendere un diritto", o: ["Mai", "Sì, sempre", "Sì, se strettamente indispensabile per difendere un diritto", "Dipende dal Sindaco"], e: "Bilanciamento degli interessi." },
-        { q: "Nel Pubblico Impiego (D.Lgs. 165/01), gli atti di macro-organizzazione sono:", a: "Atti di diritto pubblico (Giurisdizione GA)", o: ["Atti di diritto privato (Giurisdizione GO)", "Atti di diritto pubblico (Giurisdizione GA)", "Atti politici", "Contratti collettivi"], e: "Determinazione linee fondamentali organizzazione uffici." },
-        { q: "Le controversie in materia di procedure concorsuali (fino all'approvazione graduatoria) spettano a:", a: "Giudice Amministrativo", o: ["Giudice del Lavoro", "Giudice Amministrativo", "Corte dei Conti", "Corte Costituzionale"], e: "Art. 63, comma 4, D.Lgs. 165/2001." },
-        { q: "Il periodo di prova nel pubblico impiego può essere rinnovato o prorogato alla scadenza?", a: "No, salvo per malattia o infortuni", o: ["Sì, per altri 6 mesi", "No, salvo per malattia o infortuni", "Sì, se il dirigente vuole", "Sempre"], e: "Rigoroso divieto di proroga ingiustificata." },
-        { q: "Sanzioni disciplinari: il rimprovero verbale è irrogato da:", a: "Dirigente della struttura", o: ["UPD (Ufficio Procedimenti Disciplinari)", "Dirigente della struttura", "Sindaco", "Ispettorato Funzione Pubblica"], e: "L'unica sanzione irrogabile direttamente dal capo struttura." },
-        { q: "Esercizio di mansioni superiori nel pubblico impiego:", a: "Non dà diritto a inquadramento, ma solo a differenza retributiva", o: ["Dà diritto alla promozione dopo 6 mesi", "Non dà diritto a inquadramento, ma solo a differenza retributiva", "È vietato e nullo", "Scatta in automatico il concorso"], e: "Art. 52 D.Lgs. 165/01." },
-        { q: "Il licenziamento disciplinare per falsa attestazione della presenza è noto come:", a: "Legge Madia (Furbetti del cartellino)", o: ["Legge Brunetta", "Legge Madia (Furbetti del cartellino)", "Legge Severino", "Riforma Bongiorno"], e: "Licenziamento senza preavviso (Art. 55-quater)." },
-        { q: "Il dipendente pubblico può svolgere incarichi retribuiti extra-lavorativi?", a: "Sì, ma solo se autorizzato preventivamente dall'amministrazione", o: ["Sì, liberamente", "Mai", "Sì, ma solo se autorizzato preventivamente dall'amministrazione", "Sì, comunicandolo dopo"], e: "Principio di esclusività (Art. 53 D.Lgs. 165/01)." },
-        { q: "Lo spoils system in Italia riguarda:", a: "Incarichi dirigenziali apicali fiduciari", o: ["Tutti i dipendenti pubblici", "Incarichi dirigenziali apicali fiduciari", "Solo i Ministri", "I vincitori di concorso"], e: "Decadenza automatica al cambio dell'organo politico." },
-        { q: "I CCNL nel pubblico impiego diventano efficaci dopo:", a: "Controllo della Corte dei Conti", o: ["Firma dell'ARAN", "Controllo della Corte dei Conti", "Approvazione del Governo", "Voto dei lavoratori"], e: "Certificazione di compatibilità finanziaria." },
-        { q: "L'aspettativa per motivi personali o di famiglia è:", a: "Senza retribuzione e non computabile nell'anzianità", o: ["Retribuita al 50%", "Senza retribuzione e non computabile nell'anzianità", "Valida per la pensione", "Dura max 3 anni"], e: "Sospensione totale del rapporto." },
-        { q: "Il DPO (Data Protection Officer) ai sensi del GDPR nella PA è:", a: "Sempre obbligatorio", o: ["Facoltativo", "Sempre obbligatorio", "Obbligatorio solo per i Ministeri", "Nominato dall'ANAC"], e: "Art. 37 GDPR." },
-        { q: "In caso di Data Breach, la PA deve notificare il Garante entro:", a: "72 ore", o: ["24 ore", "48 ore", "72 ore", "5 giorni"], e: "Se il rischio per i diritti è probabile." },
-        { q: "Il PIAO (Piano Integrato di Attività e Organizzazione) dura:", a: "3 anni, aggiornato annualmente", o: ["1 anno", "3 anni, aggiornato annualmente", "5 anni", "Fino a fine mandato del Sindaco"], e: "Strumento di programmazione integrata." },
-        { q: "Qual è la sanzione per il dipendente che non rispetta il Codice di Comportamento (DPR 62/2013)?", a: "Sanzione disciplinare", o: ["Multa pecuniaria diretta", "Sanzione disciplinare", "Trasferimento d'ufficio automatico", "Reato penale immediato"], e: "La violazione integra illecito disciplinare." },
-        { q: "Cos'è il controllo strategico negli Enti Locali?", a: "Valutazione dell'adeguatezza delle scelte politiche rispetto ai risultati", o: ["Controllo della regolarità contabile", "Valutazione dell'adeguatezza delle scelte politiche rispetto ai risultati", "Verifica presenze dipendenti", "Bilancio di previsione"], e: "Art. 147-ter TUEL." },
-        { q: "Il DUP (Documento Unico di Programmazione) va presentato dalla Giunta entro:", a: "31 luglio", o: ["31 dicembre", "31 luglio", "30 settembre", "15 novembre"], e: "Costituisce guida strategica per il bilancio." },
-        { q: "Organo di revisione economico-finanziaria nel Comune è scelto tramite:", a: "Estrazione a sorte dalla Prefettura", o: ["Nomina diretta del Sindaco", "Estrazione a sorte dalla Prefettura", "Concorso pubblico", "Voto dei cittadini"], e: "Per garantire imparzialità (TUEL)." },
-        { q: "Dissesto finanziario dell'Ente Locale è dichiarato con:", a: "Deliberazione del Consiglio Comunale", o: ["Decreto del Prefetto", "Deliberazione del Consiglio Comunale", "Ordinanza del Sindaco", "Sentenza Corte dei Conti"], e: "Art. 246 TUEL." },
-        { q: "I Vizi di Merito del provvedimento amministrativo comportano:", a: "Inopportunità dell'atto (annullabile in casi tassativi)", o: ["Nullità automatica", "Inopportunità dell'atto (annullabile in casi tassativi)", "Inesistenza", "Illiceità penale"], e: "Sindacabili dal GA solo in giurisdizione di merito." },
-        { q: "Il ricorso gerarchico proprio va presentato entro:", a: "30 giorni", o: ["60 giorni", "30 giorni", "120 giorni", "10 giorni"], e: "Ricorso amministrativo ordinario." },
-        { q: "Il ricorso straordinario al Presidente della Repubblica si fa per vizi di:", a: "Sola legittimità", o: ["Legittimità e merito", "Sola legittimità", "Solo eccesso di potere", "Danno erariale"], e: "Alternativo al ricorso giurisdizionale al TAR." },
-        { q: "Nel processo amministrativo, il rito abbreviato per gli appalti dimezza i termini, tranne per:", a: "La notifica del ricorso introduttivo (rimane 30 gg)", o: ["L'appello", "La notifica del ricorso introduttivo (rimane 30 gg)", "La costituzione in giudizio", "I motivi aggiunti"], e: "Art. 120 CPA." },
-        { q: "L'azione avverso il silenzio della PA (Art. 31 CPA) si propone:", a: "Finché perdura l'inadempimento, ma max entro 1 anno", o: ["Entro 60 giorni", "Finché perdura l'inadempimento, ma max entro 1 anno", "Senza limiti di tempo", "Entro 30 giorni"], e: "Termine decadenziale di un anno dalla scadenza." },
-        { q: "Il TAR giudica in composizione monocratica (un solo giudice)?", a: "Sì, per alcune misure cautelari provvisorie", o: ["Mai, è sempre collegiale", "Sì, per alcune misure cautelari provvisorie", "Sì, per le cause di poco valore", "Sempre"], e: "Decreto cautelare monocratico (inaudita altera parte)." },
-        { q: "Il giudizio di ottemperanza è devoluto alla giurisdizione:", a: "Esclusiva del Giudice Amministrativo", o: ["Di legittimità del GA", "Esclusiva del Giudice Amministrativo", "Del Giudice Ordinario", "Della Corte dei Conti"], e: "Ha poteri anche di merito per sostituirsi alla PA." },
-        { q: "Commissario ad acta nel giudizio di ottemperanza è:", a: "Ausiliario del giudice", o: ["Avvocato della PA", "Ausiliario del giudice", "Funzionario del Governo", "Il Presidente del TAR"], e: "Sostituisce la PA inadempiente." },
-        { q: "Elemento soggettivo nel Danno Erariale:", a: "Dolo o colpa grave", o: ["Sempre dolo", "Qualsiasi grado di colpa", "Dolo o colpa grave", "Responsabilità oggettiva"], e: "Art. 1 L. 20/1994." },
-        { q: "Il cosiddetto 'Scudo Erariale' (prorogato fino al 2024 e oltre per PNRR) esclude la responsabilità per:", a: "Colpa grave per condotte attive", o: ["Colpa grave per omissioni", "Colpa grave per condotte attive", "Dolo", "Qualsiasi danno"], e: "Limita la paura della firma, resta la colpa grave omissiva." },
-        { q: "L'invito a dedurre nel giudizio contabile è:", a: "L'atto formale di avvio del procedimento da parte del PM contabile", o: ["La sentenza di condanna", "L'atto formale di avvio del procedimento da parte del PM contabile", "Il ricorso in appello", "L'atto di pignoramento"], e: "Equivale all'avviso di garanzia." },
-        { q: "L'azione di risarcimento per lesione di interessi legittimi si prescrive in:", a: "120 giorni", o: ["60 giorni", "120 giorni", "5 anni", "10 anni"], e: "Termine breve (Art. 30 CPA)." },
-        { q: "L'indennizzo per ritardo nella conclusione del procedimento (Art. 2-bis L. 241/90):", a: "È previsto, pari a 30€ per ogni giorno di ritardo", o: ["Non esiste in Italia", "È previsto, pari a 30€ per ogni giorno di ritardo", "Richiede la prova del danno", "È deciso dal Sindaco"], e: "Indennizzo automatico, salvo risarcimento ulteriore." },
-        { q: "La Corte Costituzionale giudica sui conflitti di attribuzione tra:", a: "Stati e Regioni e tra poteri dello Stato", o: ["Cittadini e PA", "Stati e Regioni e tra poteri dello Stato", "Comuni e Province", "Dipendenti e Dirigenti"], e: "Art. 134 Cost." },
-        { q: "Regolamenti governativi (Art. 17 L. 400/88) necessitano del parere di:", a: "Consiglio di Stato", o: ["Corte dei Conti", "Consiglio di Stato", "Corte Costituzionale", "Parlamento europeo"], e: "Parere obbligatorio (entro 45 giorni)." },
-        { q: "L'autonomia statutaria dei Comuni è garantita da:", a: "Art. 114 Costituzione", o: ["Art. 97 Costituzione", "Art. 114 Costituzione", "Legge Bassanini", "Trattato di Lisbona"], e: "Riconoscimento costituzionale." },
-        { q: "Le funzioni fondamentali dei Comuni sono stabilite da:", a: "Legge statale", o: ["Statuto comunale", "Legge statale", "Legge regionale", "Regolamento europeo"], e: "Art. 117, comma 2, lett. p) Costituzione." },
-        { q: "Città Metropolitane: il Sindaco Metropolitano è di diritto:", a: "Il Sindaco del Comune capoluogo", o: ["Eletto dai cittadini", "Il Sindaco del Comune capoluogo", "Nominato dal Governo", "Nominato dalla Regione"], e: "Legge Delrio (L. 56/2014)." },
-        { q: "La Polizia Municipale è una funzione locale. Il porto d'armi è concesso da:", a: "Prefetto", o: ["Sindaco", "Questore", "Prefetto", "Comandante Polizia"], e: "Qualifica di agente di pubblica sicurezza." },
-        { q: "Cos'è il controllo preventivo di legittimità della Corte dei Conti?", a: "Visto e registrazione sugli atti del Governo", o: ["Controllo sui bilanci comunali", "Visto e registrazione sugli atti del Governo", "Sentenza per danno erariale", "Valutazione dei dirigenti"], e: "Art. 100 Cost." },
-        { q: "Enti Pubblici Economici (EPE): il rapporto di lavoro è disciplinato da:", a: "Diritto privato", o: ["Diritto pubblico", "Diritto privato", "Testo Unico Enti Locali", "Statuto dei lavoratori ma solo in parte"], e: "Operano iure privatorum." },
-        { q: "Le Autorità Indipendenti (es. AGCM, AGCOM) rispondono a:", a: "Solo alla legge (Indipendenza dall'esecutivo)", o: ["Al Presidente del Consiglio", "Solo alla legge (Indipendenza dall'esecutivo)", "Al Ministro dell'Economia", "Alle Regioni"], e: "Modello di derivazione anglosassone." },
-        { q: "I beni del Demanio Culturale appartengono a:", a: "Stato, Regioni o Enti Locali", o: ["Solo allo Stato", "Stato, Regioni o Enti Locali", "Alla Chiesa Cattolica", "Soggetti privati"], e: "Codice dei Beni Culturali (D.Lgs. 42/2004)." },
-        { q: "Vincolo Paesaggistico: chi rilascia l'autorizzazione?", a: "La Regione (o ente delegato), previo parere Soprintendenza", o: ["Il Sindaco da solo", "La Regione (o ente delegato), previo parere Soprintendenza", "Il Ministro della Cultura", "Nessuno, è un divieto assoluto"], e: "Procedimento complesso, parere vincolante." },
-        { q: "L'Accordo di Programma serve a:", a: "Coordinare azioni di più PA per opere complesse", o: ["Assumere personale", "Coordinare azioni di più PA per opere complesse", "Stabilire gli stipendi", "Appaltare servizi di pulizia"], e: "Art. 34 TUEL." },
-        { q: "Giudice delle controversie sull'accesso agli atti (L. 241/90):", a: "TAR in giurisdizione esclusiva", o: ["Giudice di Pace", "TAR in giurisdizione esclusiva", "Difensore Civico (che decide con sentenza)", "Giudice Ordinario"], e: "Rito speciale accelerato." },
-        { q: "Nel giudizio in materia di accesso, il cittadino:", a: "Può stare in giudizio senza avvocato", o: ["Deve avere l'avvocato Cassazionista", "Può stare in giudizio senza avvocato", "Deve pagare il contributo unificato massimo", "Deve tentare prima la mediazione"], e: "Art. 23 CPA (deroga al patrocinio obbligatorio)." },
-        { q: "Azione di nullità (Art. 31 CPA) si prescrive in:", a: "180 giorni (ma l'eccezione è imprescrittibile)", o: ["60 giorni", "180 giorni (ma l'eccezione è imprescrittibile)", "10 anni", "Mai"], e: "Decadenza breve per certezza dei rapporti." },
-        { q: "Silenzio Rigetto si forma avverso:", a: "Ricorso gerarchico (dopo 90 giorni)", o: ["Istanza di permesso di costruire", "Ricorso gerarchico (dopo 90 giorni)", "Istanza di accesso civico", "SCIA"], e: "DPR 1199/1971." },
-        { q: "Il difetto assoluto di giurisdizione del Giudice Amministrativo comporta:", a: "Inammissibilità del ricorso", o: ["Traslazione al Giudice Ordinario", "Inammissibilità del ricorso", "Annullamento dell'atto", "Risarcimento automatico"], e: "La questione non appartiene a nessun giudice statale." },
-        { q: "Translatio judicii (Art. 11 CPA) permette di:", a: "Salvare gli effetti sostanziali se si sbaglia giudice", o: ["Cambiare avvocato", "Salvare gli effetti sostanziali se si sbaglia giudice", "Tradurre gli atti in inglese", "Sospendere il processo"], e: "Entro 30 giorni dal passaggio in giudicato." },
-        { q: "L'arbitrato nelle controversie di appalti pubblici è ammesso?", a: "Sì, previa autorizzazione motivata della PA", o: ["No, mai", "Sì, sempre e senza limiti", "Sì, previa autorizzazione motivata della PA", "Solo per appalti UE"], e: "Deroga alla giurisdizione statale (Codice 36/23)." },
-        { q: "Fondo Crediti di Dubbia Esigibilità (FCDE) serve a:", a: "Evitare l'utilizzo di entrate non certe per finanziare spese", o: ["Pagare le multe", "Evitare l'utilizzo di entrate non certe per finanziare spese", "Finanziare feste patronali", "Rimborsare i dirigenti"], e: "Armonizzazione contabile Enti Locali." },
-        { q: "I debiti fuori bilancio negli Enti Locali possono essere riconosciuti per:", a: "Sentenze esecutive e arricchimento dell'ente", o: ["Qualsiasi spesa fatta dal Sindaco", "Sentenze esecutive e arricchimento dell'ente", "Regali natalizi ai dipendenti", "Spese di propaganda"], e: "Art. 194 TUEL." },
-        { q: "La gestione provvisoria del bilancio locale non può superare:", a: "Poche settimane, è un'eccezione stretta", o: ["L'intero anno", "Poche settimane, è un'eccezione stretta", "Tre anni", "Il mandato elettorale"], e: "Diversa dall'esercizio provvisorio (Art. 163 TUEL)." },
-        { q: "Le concessioni demaniali marittime (Bolkestein):", a: "Devono essere assegnate con procedura ad evidenza pubblica", o: ["Sono prorogate in automatico a vita", "Devono essere assegnate con procedura ad evidenza pubblica", "Non esistono più", "Si ereditano"], e: "Giurisprudenza Consiglio di Stato e Corte UE." },
-        { q: "Principio di Sussidiarietà Orizzontale (Art. 118 u.c. Cost):", a: "PA favorisce autonoma iniziativa dei cittadini per interesse generale", o: ["Stato aiuta le Regioni", "PA favorisce autonoma iniziativa dei cittadini per interesse generale", "Comuni si fondono", "L'Unione Europea detta legge"], e: "Terzo settore, cittadinanza attiva." },
-        { q: "Il potere sostitutivo dello Stato verso le Regioni (Art. 120 Cost) si attiva per:", a: "Mancato rispetto trattati UE o pericolo incolumità", o: ["Debiti della Regione", "Mancato rispetto trattati UE o pericolo incolumità", "Elezioni annullate", "Sondaggi negativi"], e: "Garanzia unità e indivisibilità della Repubblica." },
-        { q: "Conferenza di Servizi Preliminare (Art. 14 L. 241/90):", a: "Fornisce indicazioni per progetti di particolare complessità prima dell'istanza", o: ["Sostituisce il bando", "Fornisce indicazioni per progetti di particolare complessità prima dell'istanza", "Serve a licenziare i dipendenti", "Eroga finanziamenti"], e: "Per non sprecare risorse nella progettazione definitiva." },
-        { q: "Se in Conferenza Servizi Asincrona un ente non risponde nei termini:", a: "Equivale ad assenso senza condizioni", o: ["Blocca tutto", "Equivale ad assenso senza condizioni", "Comporta il rigetto", "La pratica passa al Prefetto"], e: "Semplificazione procedimentale." },
-        { q: "Dissenso di un'Amministrazione preposta alla tutela ambientale in CDS:", a: "Rimette la decisione al Consiglio dei Ministri", o: ["Annulla il progetto", "Rimette la decisione al Consiglio dei Ministri", "Viene ignorato", "Comporta una multa"], e: "Superamento del dissenso cd. 'qualificato'." },
-        { q: "Il Segreto di Stato è opponibile all'accesso civico?", a: "Sì, è un'eccezione assoluta", o: ["No, il FOIA prevale", "Sì, è un'eccezione assoluta", "Solo per 10 anni", "Solo ai giornalisti"], e: "Art. 5-bis D.Lgs. 33/2013." },
-        { q: "Atto ablativo personale:", a: "Ordine di Polizia (es. foglio di via)", o: ["Espropriazione", "Ordine di Polizia (es. foglio di via)", "Requisizione", "Tassa"], e: "Limita le libertà personali." },
-        { q: "La requisizione in uso di un immobile per emergenza sisma è un atto:", a: "Ablativo reale contingibile e urgente", o: ["Di concessione", "Ablativo reale contingibile e urgente", "Nullo", "Ablativo personale"], e: "Dietro indennità, per periodi limitati." },
-        { q: "I regolamenti ministeriali (DM) non possono:", a: "Dettare norme contrarie a quelle dei regolamenti governativi", o: ["Regolare l'organizzazione interna", "Dettare norme contrarie a quelle dei regolamenti governativi", "Essere emanati", "Richiedere il parere del CdS"], e: "Principio di gerarchia delle fonti." },
-        { q: "Consiglio delle Autonomie Locali (CAL):", a: "Organo di consultazione tra Regione ed Enti Locali", o: ["Tribunale amministrativo locale", "Organo di consultazione tra Regione ed Enti Locali", "Associazione privata", "Polizia interregionale"], e: "Istituito in ogni Regione (Art. 123 Cost)." },
-        { q: "Controllo sugli organi (Enti Locali): il Consiglio Comunale è sciolto per:", a: "Infiltrazioni mafiose o gravi violazioni di legge", o: ["Debiti modesti", "Infiltrazioni mafiose o gravi violazioni di legge", "Dimissioni di 2 consiglieri", "Mancato pagamento Tari"], e: "Art. 141 e 143 TUEL." },
-        { q: "Codice dell'Amministrazione Digitale (CAD, D.Lgs. 82/2005) sancisce il diritto a:", a: "Uso delle tecnologie nelle comunicazioni con la PA", o: ["Avere un PC di Stato", "Uso delle tecnologie nelle comunicazioni con la PA", "Non pagare le tasse online", "Banda larga gratuita per tutti"], e: "Digital by default." },
-        { q: "Il Domicilio Digitale del cittadino è:", a: "Un indirizzo PEC o servizio elettronico recapito certificato", o: ["Il sito web personale", "Un indirizzo PEC o servizio elettronico recapito certificato", "La residenza anagrafica", "L'indirizzo IP"], e: "Sostituisce il recapito fisico." },
-        { q: "La firma digitale (CAD) garantisce:", a: "Autenticità, integrità e non ripudio", o: ["Solo l'anonimato", "Autenticità, integrità e non ripudio", "La velocità", "La gratuità"], e: "Equivalente alla firma autografa." },
-        { q: "Le Linee Guida ANAC sono atti di:", a: "Soft Law (in alcuni casi vincolanti)", o: ["Legge ordinaria", "Soft Law (in alcuni casi vincolanti)", "Costituzione", "Regolamento UE"], e: "Indirizzo e regolazione flessibile." },
-        { q: "La clausola sociale negli appalti serve a:", a: "Garantire la stabilità occupazionale del personale uscente", o: ["Escludere le aziende estere", "Garantire la stabilità occupazionale del personale uscente", "Aumentare i prezzi", "Favorire le coop sociali"], e: "Codice 36/2023 (Art. 57)." },
+        const databaseQuiz = [
 {
-            "q": "Ai sensi dell'art. 17-bis L. 241/90, in caso di silenzio-assenso tra amministrazioni, se l'amministrazione interpellata comunica il proprio dissenso dopo la scadenza del termine di 30 giorni:",
-            "a": "Il dissenso è inefficace e l'amministrazione procedente è tenuta a concludere il procedimento.",
+            "q": "Ai sensi dell'art. 17-bis L. 241/90, se l'amministrazione interpellata comunica il dissenso dopo i 30 giorni:",
+            "a": "Il dissenso è inefficace e l'amministrazione procedente deve concludere il procedimento.",
             "o": [
                         "Il dissenso è nullo per violazione di legge.",
-                        "Il dissenso è inefficace e l'amministrazione procedente è tenuta a concludere il procedimento.",
-                        "Il dissenso riapre i termini per una sola volta per ulteriori 15 giorni.",
-                        "Il procedimento si interrompe e deve essere indetta una conferenza di servizi."
+                        "Il dissenso è inefficace e l'amministrazione procedente deve concludere il procedimento.",
+                        "Il dissenso riapre i termini per 15 giorni.",
+                        "Il procedimento si interrompe obbligatoriamente."
             ],
-            "e": "Il superamento del termine comporta l'inefficacia dell'atto tardivo, non la sua nullità."
+            "e": "L'atto tardivo è inefficace, non nullo (Principio di semplificazione)."
 },
 {
-            "q": "Nel Codice 36/2023, il Principio del Risultato (Art. 1) costituisce:",
-            "a": "Criterio prioritario per l'esercizio del potere discrezionale e per l'individuazione della regola del caso concreto.",
+            "q": "Nel Codice 36/2023, il Principio del Risultato (Art. 1) è:",
+            "a": "Criterio prioritario per l'esercizio del potere discrezionale.",
             "o": [
-                        "Mero principio programmatico non vincolante.",
-                        "Criterio prioritario per l'esercizio del potere discrezionale e per l'individuazione della regola del caso concreto.",
-                        "Un limite applicabile solo alle procedure sopra soglia comunitaria.",
-                        "Un'esimente totale per la responsabilità erariale del RUP."
+                        "Mero principio programmatico.",
+                        "Criterio prioritario per l'esercizio del potere discrezionale.",
+                        "Applicabile solo sopra soglia.",
+                        "Esimente per la colpa lieve del RUP."
             ],
-            "e": "È il principio cardine che orienta l'intera interpretazione del nuovo Codice."
+            "e": "È il vertice gerarchico dei principi del nuovo Codice."
 },
 {
-            "q": "Il soccorso procedimentale, distinto dal soccorso istruttorio, permette di:",
+            "q": "Il soccorso procedimentale permette di:",
             "a": "Chiarire punti dell'offerta tecnica o economica senza modificarne il contenuto.",
             "o": [
-                        "Sanare la mancanza della garanzia provvisoria.",
-                        "Integrare elementi essenziali dell'offerta economica omessi.",
+                        "Sanare la mancanza della garanzia.",
+                        "Integrare l'offerta economica omessa.",
                         "Chiarire punti dell'offerta tecnica o economica senza modificarne il contenuto.",
-                        "Sostituire un certificato ISO scaduto dopo la presentazione."
+                        "Sostituire certificati scaduti."
             ],
-            "e": "Consente solo chiarimenti su quanto già presentato, per non violare la par condicio."
+            "e": "Chiarimenti sì, integrazioni postume dell'offerta no."
 },
 {
-            "q": "In base all'art. 21-nonies L. 241/90, l'annullamento d'ufficio di provvedimenti di autorizzazione o di attribuzione di vantaggi economici:",
-            "a": "È possibile entro 12 mesi, salvo che per false rappresentazioni di fatti accertate con sentenza passata in giudicato.",
+            "q": "Annullamento d'ufficio ex art. 21-nonies per vantaggi economici è possibile entro:",
+            "a": "12 mesi, salvo dolo accertato con sentenza passata in giudicato.",
             "o": [
-                        "È possibile entro 18 mesi in ogni caso per motivi di interesse pubblico.",
-                        "È possibile entro 12 mesi, salvo che per false rappresentazioni di fatti accertate con sentenza passata in giudicato.",
-                        "È precluso se il privato ha già iniziato l'esecuzione del provvedimento.",
-                        "Richiede sempre il parere vincolante del Consiglio di Stato."
+                        "18 mesi in ogni caso.",
+                        "12 mesi, salvo dolo accertato con sentenza passata in giudicato.",
+                        "24 mesi.",
+                        "Senza limiti di tempo."
             ],
-            "e": "La riforma del 2021 ha ridotto il termine a 12 mesi, con eccezione per il dolo accertato."
+            "e": "Modifica L. 108/2021."
 },
 {
-            "q": "Secondo la Direttiva 2019/1937 (Whistleblowing), se un dipendente segnala un illecito a mezzo stampa:",
-            "a": "Gode di protezione solo se ha già utilizzato canali interni/esterni senza esito o per pericolo imminente.",
+            "q": "Whistleblowing (Dir. 2019/1937): la segnalazione a mezzo stampa è protetta se:",
+            "a": "I canali interni/esterni sono stati usati senza esito o c'è pericolo imminente.",
             "o": [
-                        "È sempre protetto in virtù del diritto di cronaca.",
-                        "Gode di protezione solo se ha già utilizzato canali interni/esterni senza esito o per pericolo imminente.",
-                        "Perde ogni tutela e può essere licenziato per giusta causa.",
-                        "È protetto solo se la notizia è di interesse nazionale."
+                        "Sempre, per diritto di cronaca.",
+                        "I canali interni/esterni sono stati usati senza esito o c'è pericolo imminente.",
+                        "Mai, viola il segreto d'ufficio.",
+                        "Solo se riguarda politici."
             ],
-            "e": "La divulgazione pubblica è l'extrema ratio del sistema di tutela."
+            "e": "La gerarchia delle segnalazioni è tassativa."
 },
 {
-            "q": "La teoria dei 'Contro-limiti' elaborata dalla Corte Costituzionale implica che:",
-            "a": "Il diritto UE non può violare i principi supremi dell'ordinamento costituzionale italiano.",
+            "q": "La teoria dei 'Contro-limiti' della Corte Costituzionale:",
+            "a": "Impedisce al diritto UE di violare i principi supremi della Costituzione.",
             "o": [
-                        "Le leggi regionali prevalgono sui regolamenti UE nelle materie concorrenti.",
-                        "Il diritto UE non può violare i principi supremi dell'ordinamento costituzionale italiano.",
-                        "La PA può disapplicare le direttive se contrastano con il bilancio dello Stato.",
-                        "Il giudice nazionale può annullare un atto UE senza ricorrere alla CGUE."
+                        "Dà priorità alle leggi regionali sull'UE.",
+                        "Impedisce al diritto UE di violare i principi supremi della Costituzione.",
+                        "Permette di ignorare le direttive.",
+                        "Annulla i regolamenti UE automaticamente."
             ],
-            "e": "Protezione del nucleo duro della Costituzione rispetto al primato UE."
+            "e": "Salvaguardia del nucleo duro costituzionale."
 },
 {
-            "q": "L'accesso civico generalizzato può essere rifiutato se arreca un pregiudizio concreto alla:",
+            "q": "L'accesso civico generalizzato può essere rifiutato per pregiudizio a:",
             "a": "Stabilità finanziaria ed economica dello Stato.",
             "o": [
-                        "Reputazione politica dell'organo di indirizzo.",
+                        "Interesse politico del Ministro.",
                         "Stabilità finanziaria ed economica dello Stato.",
-                        "Celerità dell'azione amministrativa dell'ufficio.",
-                        "Privacy dei dipendenti pubblici coinvolti in procedimenti disciplinari conclusi."
+                        "Celerità dell'ufficio.",
+                        "Privacy dei colleghi d'ufficio."
             ],
-            "e": "Art. 5-bis, c. 1, lett. e) D.Lgs. 33/2013."
+            "e": "Art. 5-bis D.Lgs. 33/2013."
 },
 {
-            "q": "Nella conferenza di servizi simultanea, la determinazione motivata di conclusione è adottata:",
-            "a": "Sulla base delle posizioni prevalenti espresse in sede di conferenza.",
+            "q": "Nella conferenza simultanea, la determinazione finale si adotta:",
+            "a": "Sulla base delle posizioni prevalenti espresse.",
             "o": [
-                        "All'unanimità dei presenti.",
-                        "Sulla base delle posizioni prevalenti espresse in sede di conferenza.",
-                        "Dall'amministrazione procedente previo sorteggio tra i pareri favorevoli.",
-                        "Solo se l'autorità ambientale ha espresso parere favorevole."
+                        "All'unanimità.",
+                        "Sulla base delle posizioni prevalenti espresse.",
+                        "A maggioranza semplice.",
+                        "Solo col parere favorevole ambientale."
             ],
-            "e": "Il criterio della prevalenza (non numerica) è l'essenza dell'art. 14-ter."
+            "e": "Prevalenza qualitativa, non quantitativa."
 },
 {
-            "q": "Il subappalto a cascata (Art. 119 Codice 36/2023):",
-            "a": "È consentito, ma la stazione appaltante può limitarlo motivatamente per specifiche prestazioni.",
+            "q": "Subappalto a cascata (Art. 119 Codice 36/23):",
+            "a": "È ammesso, ma la PA può limitarlo con motivazione specifica.",
             "o": [
-                        "È vietato categoricamente per garantire la trasparenza.",
-                        "È consentito sempre e comunque senza possibilità di veto della PA.",
-                        "È consentito, ma la stazione appaltante può limitarlo motivatamente per specifiche prestazioni.",
-                        "È ammesso solo per forniture di importo inferiore a 40.000 euro."
+                        "Sempre vietato.",
+                        "È ammesso, ma la PA può limitarlo con motivazione specifica.",
+                        "Sempre libero.",
+                        "Solo sotto i 40.000 euro."
             ],
-            "e": "Apertura totale derivante dalle sentenze CGUE, con clausola di salvaguardia motivata."
+            "e": "Adueguamento ai diktat della CGUE."
 },
 {
-            "q": "In tema di PIAO, la mancata pubblicazione della sottosezione 'Rischi corruttivi e trasparenza' comporta:",
-            "a": "Sanzione amministrativa pecuniaria da 500 a 10.000 euro a carico dei responsabili.",
+            "q": "Mancata pubblicazione sezione Anticorruzione del PIAO comporta:",
+            "a": "Sanzione pecuniaria da 500 a 10.000 euro.",
             "o": [
-                        "La nullità del bilancio di previsione dell'ente.",
-                        "Sanzione amministrativa pecuniaria da 500 a 10.000 euro a carico dei responsabili.",
-                        "Il licenziamento immediato del RUP.",
-                        "L'impossibilità di ricevere fondi dal PNRR per l'anno solare."
+                        "Nullità del bilancio.",
+                        "Sanzione pecuniaria da 500 a 10.000 euro.",
+                        "Licenziamento del RUP.",
+                        "Nessuna sanzione."
             ],
-            "e": "Sanzioni ANAC specifiche per la trasparenza."
+            "e": "Potere sanzionatorio ANAC."
 },
 {
-            "q": "Sillogismo: 'Nessun atto nullo è sanabile. Alcuni provvedimenti sono sanabili'. Quale conclusione è corretta?",
+            "q": "Sillogismo: 'Nessun atto nullo è sanabile. Alcuni provvedimenti sono sanabili'.",
             "a": "Alcuni provvedimenti non sono atti nulli.",
             "o": [
-                        "Tutti i provvedimenti non sono atti nulli.",
+                        "Tutti i provvedimenti non sono nulli.",
                         "Alcuni provvedimenti non sono atti nulli.",
-                        "Tutti gli atti sanabili sono provvedimenti.",
-                        "Nessun provvedimento è nullo."
+                        "Nessun provvedimento è nullo.",
+                        "Tutti gli atti sanabili sono nulli."
             ],
-            "e": "Deduzione logica classica (Modus Tollens parziale)."
+            "e": "Conclusione logica necessaria."
 },
 {
             "q": "Negazione di: 'Tutti i dirigenti sono presenti o nessun ufficio è chiuso':",
             "a": "Almeno un dirigente è assente e almeno un ufficio è chiuso.",
             "o": [
-                        "Nessun dirigente è presente o tutti gli uffici sono chiusi.",
-                        "Tutti i dirigenti sono assenti e nessun ufficio è aperto.",
+                        "Nessun dirigente è presente.",
                         "Almeno un dirigente è assente e almeno un ufficio è chiuso.",
-                        "Almeno un dirigente è assente o un ufficio è chiuso."
+                        "Tutti gli uffici sono aperti.",
+                        "Nessuna delle precedenti."
             ],
-            "e": "Leggi di De Morgan: la negazione di (A o B) è (non A e non B)."
+            "e": "Leggi di De Morgan."
 },
 {
-            "q": "Il Principio di Fiducia (Art. 2 Codice 36/23) stabilisce che la colpa grave dell'operatore pubblico:",
-            "a": "È esclusa se il funzionario si è conformato a orientamenti giurisprudenziali prevalenti o pareri dell'ANAC.",
+            "q": "Principio di Fiducia (Art. 2 Codice 36/23): la colpa grave è esclusa se:",
+            "a": "Il funzionario segue orientamenti giurisprudenziali prevalenti o pareri ANAC.",
             "o": [
-                        "Non è mai configurabile se il risultato è raggiunto.",
-                        "È esclusa se il funzionario si è conformato a orientamenti giurisprudenziali prevalenti o pareri dell'ANAC.",
-                        "Comporta sempre la risoluzione del rapporto di lavoro.",
-                        "È limitata solo ai danni superiori a 1 milione di euro."
+                        "Il risultato è raggiunto comunque.",
+                        "Il funzionario segue orientamenti giurisprudenziali prevalenti o pareri ANAC.",
+                        "Il danno è sotto i 50.000 euro.",
+                        "C'è l'ok del Sindaco."
             ],
-            "e": "Tutela il funzionario che agisce secondo prassi consolidate (scudo erariale tipizzato)."
+            "e": "Tipizzazione dello scudo erariale."
 },
 {
-            "q": "In caso di ricorso avverso il silenzio, il GA può pronunciarsi sulla fondatezza della pretesa?",
-            "a": "Sì, ma solo quando si tratta di attività vincolata o non residuano margini di discrezionalità.",
+            "q": "Sul silenzio-inadempimento, il GA può pronunciarsi sulla fondatezza se:",
+            "a": "L'attività è vincolata o non c'è più discrezionalità.",
             "o": [
-                        "Sì, sempre, in base al principio di effettività della tutela.",
-                        "No, il giudice può solo ordinare alla PA di provvedere.",
-                        "Sì, ma solo quando si tratta di attività vincolata o non residuano margini di discrezionalità.",
-                        "Sì, ma solo se è trascorso più di un anno dall'istanza."
+                        "Sempre, per effettività della tutela.",
+                        "L'attività è vincolata o non c'è più discrezionalità.",
+                        "Solo dopo due anni di attesa.",
+                        "Mai, deve solo ordinare di provvedere."
             ],
             "e": "Art. 31, c. 3 CPA."
 },
 {
-            "q": "Il 'conflitto di interessi' nell'art. 16 del Codice 36/23 è configurabile quando:",
-            "a": "La situazione di conflitto è percepita come tale sulla base di presupposti oggettivi e prove concrete.",
+            "q": "Il conflitto di interessi ex Art. 16 Codice 36/23 richiede:",
+            "a": "Presupposti oggettivi e prove concrete di percezione del conflitto.",
             "o": [
-                        "Esiste un mero sospetto di parentela tra funzionario e concorrente.",
-                        "La situazione di conflitto è percepita come tale sulla base di presupposti oggettivi e prove concrete.",
-                        "Il funzionario ha lavorato per il concorrente 10 anni prima.",
-                        "Il concorrente ha la sede legale nello stesso comune del RUP."
+                        "Mero sospetto di parentela.",
+                        "Presupposti oggettivi e prove concrete di percezione del conflitto.",
+                        "Che il funzionario conosca l'impresa da 20 anni.",
+                        "Solo la dichiarazione dell'impresa concorrente."
             ],
-            "e": "Superamento della presunzione iuris et de jure di conflitto, servono prove."
+            "e": "Superamento della presunzione assoluta."
 },
 {
-            "q": "La revoca del provvedimento amministrativo (art. 21-quinquies) opera:",
-            "a": "Ex nunc (con efficacia non retroattiva).",
+            "q": "La revoca del provvedimento (21-quinquies) opera:",
+            "a": "Ex nunc (efficacia non retroattiva).",
             "o": [
-                        "Ex tunc (retroattivamente dalla data dell'atto).",
-                        "Ex nunc (con efficacia non retroattiva).",
-                        "Solo dopo il visto della Corte dei Conti.",
-                        "Senza obbligo di indennizzo se l'atto era illegittimo."
+                        "Ex tunc.",
+                        "Ex nunc (efficacia non retroattiva).",
+                        "Solo dopo 12 mesi.",
+                        "Con efficacia differita di 30 giorni."
             ],
-            "e": "Differenza sostanziale con l'annullamento d'ufficio (ex tunc)."
+            "e": "Differenza fondamentale dall'annullamento."
 },
 {
-            "q": "Quale tra i seguenti NON è un motivo di inammissibilità dell'accesso documentale?",
-            "a": "La mancata indicazione del numero di protocollo dell'atto richiesto.",
+            "q": "NON è motivo di inammissibilità dell'accesso documentale:",
+            "a": "La mancanza del numero di protocollo dell'atto.",
             "o": [
-                        "La genericità della richiesta (richiesta esplorativa).",
-                        "La necessità di una elaborazione dati complessa da parte della PA.",
-                        "La mancata indicazione del numero di protocollo dell'atto richiesto.",
-                        "La tutela del segreto industriale del controinteressato."
+                        "La richiesta esplorativa.",
+                        "La necessità di elaborare dati complessi.",
+                        "La mancanza del numero di protocollo dell'atto.",
+                        "Il segreto industriale."
             ],
-            "e": "Il cittadino non è tenuto a conoscere i dati interni di gestione (protocollo)."
+            "e": "La PA deve reperire l'atto internamente."
 },
 {
-            "q": "Nella gerarchia delle fonti UE, i regolamenti:",
-            "a": "Hanno portata generale e sono direttamente applicabili in ciascuno degli Stati membri.",
+            "q": "I regolamenti UE (Art. 288 TFUE) sono:",
+            "a": "Obbligatori e direttamente applicabili in ogni Stato membro.",
             "o": [
-                        "Necessitano di una legge di recepimento per produrre effetti orizzontali.",
-                        "Hanno portata generale e sono direttamente applicabili in ciascuno degli Stati membri.",
-                        "Prevalgono sulla Costituzione anche nei suoi principi supremi.",
-                        "Sono atti non vincolanti emanati dal Parlamento Europeo."
+                        "Da recepire con legge.",
+                        "Obbligatori e direttamente applicabili in ogni Stato membro.",
+                        "Atti non vincolanti.",
+                        "Solo per materie di difesa."
             ],
-            "e": "Caratteristica distintiva ex Art. 288 TFUE."
+            "e": "Efficacia diretta e portata generale."
 },
 {
-            "q": "Il soccorso istruttorio NON può essere utilizzato per:",
-            "a": "Sanare l'omessa indicazione dei costi della manodopera nell'offerta economica.",
+            "q": "Il soccorso istruttorio NON sana:",
+            "a": "L'omessa indicazione dei costi della manodopera nell'offerta economica.",
             "o": [
-                        "Integrare la prova dell'avvenuto pagamento del contributo ANAC.",
-                        "Sanare l'omessa indicazione dei costi della manodopera nell'offerta economica.",
-                        "Recuperare il DGUE non firmato digitalmente.",
-                        "Specificare requisiti tecnici già posseduti ma mal descritti."
+                        "La firma sul DGUE.",
+                        "L'omessa indicazione dei costi della manodopera nell'offerta economica.",
+                        "Il pagamento ANAC.",
+                        "La descrizione tecnica fumosa."
             ],
-            "e": "Elemento essenziale dell'offerta economica, non soccorribile."
+            "e": "Elemento economico essenziale e immodificabile."
 },
 {
-            "q": "L'ordinamento delle pubbliche amministrazioni (D.Lgs. 165/01) prevede che la gestione finanziaria e tecnica spetti:",
-            "a": "Ai dirigenti, che ne sono responsabili in via esclusiva.",
+            "q": "Gestione finanziaria e tecnica nelle PA (165/01) spetta:",
+            "a": "Ai dirigenti in via esclusiva.",
             "o": [
-                        "Al Ministro o agli organi di governo.",
-                        "Ai dirigenti, che ne sono responsabili in via esclusiva.",
-                        "Al Segretario Generale sentiti i sindacati.",
-                        "All'OIV in fase di controllo preventivo."
+                        "Al Ministro.",
+                        "Ai dirigenti in via esclusiva.",
+                        "Al Segretario Generale e Sindacati.",
+                        "All'OIV."
             ],
-            "e": "Separazione tra indirizzo politico e gestione amministrativa."
+            "e": "Principio di separazione poteri."
 },
 {
-            "q": "Se 'Non tutti i dipendenti sono pigri' è vera, allora è certamente vera anche:",
+            "q": "Se 'Non tutti i dipendenti sono pigri' è vera:",
             "a": "Almeno un dipendente non è pigro.",
             "o": [
-                        "Tutti i dipendenti sono laboriosi.",
+                        "Tutti sono laboriosi.",
                         "Almeno un dipendente è pigro.",
-                        "Nessun dipendente è pigro.",
-                        "Almeno un dipendente non è pigro."
+                        "Almeno un dipendente non è pigro.",
+                        "Nessun dipendente è pigro."
             ],
-            "e": "Relazione di subalternità e contraddittorietà nel quadrato degli opposti."
+            "e": "Logica degli opposti."
 },
 {
-            "q": "Un atto amministrativo emanato in violazione delle norme sulla competenza per territorio è:",
+            "q": "Atto emanato violando la competenza territoriale è:",
             "a": "Annullabile.",
             "o": [
                         "Nullo.",
                         "Inesistente.",
                         "Annullabile.",
-                        "Valido se ratificato dal Prefetto."
+                        "Sempre valido."
             ],
-            "e": "Incompetenza relativa = annullabilità."
+            "e": "Incompetenza relativa."
 },
 {
-            "q": "Il potere di ordinanza contingibile e urgente del Sindaco in materia di igiene e sanità:",
-            "a": "Deve avere durata limitata e rispettare i principi generali dell'ordinamento.",
+            "q": "L'ordinanza contingibile e urgente del Sindaco:",
+            "a": "Deve essere temporanea e rispettare i principi dell'ordinamento.",
             "o": [
-                        "Può derogare alla Costituzione in caso di pandemia.",
-                        "Deve avere durata limitata e rispettare i principi generali dell'ordinamento.",
-                        "È un atto vincolato non sindacabile dal TAR.",
-                        "Richiede la previa autorizzazione del Ministero della Salute."
+                        "Può essere eterna.",
+                        "Deve essere temporanea e rispettare i principi dell'ordinamento.",
+                        "Deroga a ogni norma costituzionale.",
+                        "È un atto politico insindacabile."
             ],
-            "e": "Carattere di eccezionalità e temporaneità."
+            "e": "Limiti al potere extra ordinem."
 },
 {
-            "q": "Nel Codice 36/23, l'appalto integrato è:",
-            "a": "Consentito come regola generale, salvo motivazione contraria.",
+            "q": "Nel Codice 36/23 l'appalto integrato è:",
+            "a": "Consentito come regola, salvo motivazione contraria.",
             "o": [
-                        "Vietato per i lavori sotto il milione di euro.",
-                        "Consentito come regola generale, salvo motivazione contraria.",
-                        "Ammesso solo per opere strategiche del PNRR.",
-                        "Sempre obbligatorio per l'edilizia scolastica."
+                        "Vietato sotto i 5 milioni.",
+                        "Consentito come regola, salvo motivazione contraria.",
+                        "Obbligatorio per il PNRR.",
+                        "Ammesso solo per forniture."
             ],
-            "e": "Ribaltamento rispetto al D.Lgs 50/2016."
+            "e": "Inversione di rotta rispetto al 2016."
 },
 {
-            "q": "La responsabilità dei dipendenti pubblici per danni cagionati a terzi (Art. 28 Cost.) è:",
-            "a": "Solidale con quella dell'amministrazione di appartenenza.",
+            "q": "La responsabilità dei dipendenti (Art. 28 Cost) è:",
+            "a": "Solidale tra dipendente e Stato.",
             "o": [
-                        "Limitata ai casi di dolo o colpa grave dell'amministrazione.",
-                        "Solidale con quella dell'amministrazione di appartenenza.",
-                        "Sussidiaria a quella dell'amministrazione.",
-                        "Esclusiva del dipendente, salvo rivalsa."
+                        "Esclusiva del dipendente.",
+                        "Solidale tra dipendente e Stato.",
+                        "Sussidiaria dello Stato.",
+                        "Inesistente per colpa lieve."
             ],
-            "e": "Il danneggiato può agire contro entrambi."
+            "e": "Estensione della garanzia al cittadino."
 },
 {
-            "q": "Il 'silenzio-rigetto' nell'accesso documentale (L. 241/90) si forma dopo:",
-            "a": "30 giorni dalla presentazione dell'istanza.",
+            "q": "Il silenzio-rigetto nell'accesso atti si forma dopo:",
+            "a": "30 giorni.",
             "o": [
-                        "15 giorni lavorativi.",
-                        "60 giorni per le istanze complesse.",
-                        "30 giorni dalla presentazione dell'istanza.",
-                        "90 giorni se non ci sono controinteressati."
+                        "15 giorni.",
+                        "30 giorni.",
+                        "60 giorni.",
+                        "90 giorni."
             ],
-            "e": "Termine fisso ex lege."
+            "e": "L. 241/90 art. 25."
 },
 {
-            "q": "L'accordo bonario (Art. 210 Codice 36/23) può riguardare:",
-            "a": "Riserve iscritte nei documenti contabili che superino una certa soglia dell'importo contrattuale.",
+            "q": "L'accordo bonario (Art. 210 Codice 36/23) riguarda:",
+            "a": "Riserve che superano una soglia dell'importo contrattuale.",
             "o": [
-                        "Solo le penali per ritardo.",
-                        "Riserve iscritte nei documenti contabili che superino una certa soglia dell'importo contrattuale.",
-                        "La variante in corso d'opera non approvata.",
-                        "Il licenziamento del direttore dei lavori."
+                        "Il licenziamento del RUP.",
+                        "Riserve che superano una soglia dell'importo contrattuale.",
+                        "Le ferie dei dipendenti.",
+                        "La nullità del bando."
             ],
-            "e": "Strumento deflattivo del contenzioso in fase di esecuzione."
+            "e": "Deflazione del contenzioso in esecuzione."
 },
 {
-            "q": "In tema di procedimento, la partecipazione dell'interessato è esclusa per:",
-            "a": "Atti diretti alla emanazione di atti normativi o amministrativi generali.",
+            "q": "Partecipazione esclusa (Art. 13 L. 241/90) per:",
+            "a": "Atti normativi e amministrativi generali.",
             "o": [
-                        "Provvedimenti di esproprio per pubblica utilità.",
-                        "Atti diretti alla emanazione di atti normativi o amministrativi generali.",
-                        "Sanzioni amministrative pecuniarie superiori a 10.000 euro.",
-                        "Revoca di sovvenzioni pubbliche."
+                        "Espropri.",
+                        "Sanzioni pecuniarie.",
+                        "Atti normativi e amministrativi generali.",
+                        "Concorsi."
             ],
-            "e": "Art. 13 L. 241/90."
+            "e": "Incompatibilità strutturale con la partecipazione."
 },
 {
-            "q": "Il diritto di accesso ai documenti amministrativi è negato se:",
-            "a": "I documenti riguardano la sicurezza, la difesa nazionale e le relazioni internazionali.",
+            "q": "Accesso atti negato se riguarda:",
+            "a": "Sicurezza, difesa nazionale e relazioni internazionali.",
             "o": [
-                        "La richiesta è presentata da un cittadino non residente.",
-                        "I documenti riguardano la sicurezza, la difesa nazionale e le relazioni internazionali.",
-                        "Il richiedente ha già ottenuto copia degli atti nell'ultimo biennio.",
-                        "L'atto è stato redatto da un ente pubblico economico."
+                        "Dati catastali del Sindaco.",
+                        "Sicurezza, difesa nazionale e relazioni internazionali.",
+                        "Bandi scaduti.",
+                        "Spese di cancelleria."
             ],
-            "e": "Limiti tassativi a tutela di interessi supremi."
+            "e": "Limiti tassativi."
 },
 {
-            "q": "L'incompatibilità tra incarichi dirigenziali e cariche politiche (D.Lgs. 39/13):",
-            "a": "Può essere rimossa se l'interessato opta per una delle due cariche entro 15 giorni.",
+            "q": "Incompatibilità (D.Lgs. 39/13) permette:",
+            "a": "L'opzione tra le cariche entro 15 giorni.",
             "o": [
-                        "Comporta la nullità insanabile dell'atto di nomina.",
-                        "Può essere rimossa se l'interessato opta per una delle due cariche entro 15 giorni.",
-                        "Non si applica ai comuni con meno di 50.000 abitanti.",
-                        "Comporta il divieto di contrattare con la PA per 3 anni."
+                        "La nullità della nomina.",
+                        "L'opzione tra le cariche entro 15 giorni.",
+                        "Solo il licenziamento.",
+                        "Nessun rimedio."
             ],
-            "e": "Regime dell'opzione."
+            "e": "Diritto di scelta dell'interessato."
 },
 {
-            "q": "Nel giudizio di ottemperanza, il commissario ad acta è:",
-            "a": "Un ausiliario del giudice munito di poteri sostitutivi della PA.",
+            "q": "Commissario ad acta nell'ottemperanza è:",
+            "a": "Ausiliario del giudice con poteri sostitutivi.",
             "o": [
-                        "Un difensore d'ufficio nominato dalla PA.",
-                        "Un ausiliario del giudice munito di poteri sostitutivi della PA.",
-                        "Un magistrato della Corte dei Conti.",
-                        "Il Prefetto della provincia in cui ha sede l'ente."
+                        "Avvocato della PA.",
+                        "Ausiliario del giudice con poteri sostitutivi.",
+                        "Un magistrato penale.",
+                        "Il Sindaco nominato dal Prefetto."
             ],
-            "e": "Sostituzione dell'inerzia amministrativa."
+            "e": "Esecuzione forzata amministrativa."
 },
 {
-            "q": "La 'clausola di stand-still' negli appalti pubblici comporta:",
-            "a": "Il divieto di stipulare il contratto prima di 35 giorni dalla comunicazione dell'aggiudicazione.",
+            "q": "Stand-still negli appalti:",
+            "a": "Divieto di firma contratto per 35 giorni dall'aggiudicazione.",
             "o": [
-                        "L'obbligo di sospendere i lavori in caso di ricorso al TAR.",
-                        "Il divieto di stipulare il contratto prima di 35 giorni dalla comunicazione dell'aggiudicazione.",
-                        "Il blocco delle varianti per i primi 6 mesi di contratto.",
-                        "L'impossibilità di subappaltare per i primi 12 mesi."
+                        "Blocco dei cantieri per pioggia.",
+                        "Divieto di firma contratto per 35 giorni dall'aggiudicazione.",
+                        "Sospensione dei termini di ricorso.",
+                        "Divieto di subappalto."
             ],
-            "e": "Termine dilatorio per permettere ricorsi cautelari."
+            "e": "Termine dilatorio per ricorsi."
 },
 {
-            "q": "Il Responsabile del Procedimento (Art. 6 L. 241/90):",
-            "a": "Può adottare il provvedimento finale se ne ha la competenza.",
+            "q": "Il RUP (Art. 6 L. 241/90):",
+            "a": "Può adottare l'atto finale se ha la competenza.",
             "o": [
-                        "Ha solo compiti istruttori e non può mai firmare l'atto finale.",
-                        "Può adottare il provvedimento finale se ne ha la competenza.",
-                        "È responsabile solo penalmente dell'operato dell'ufficio.",
-                        "Deve essere obbligatoriamente un dirigente di prima fascia."
+                        "Non può mai firmare l'atto.",
+                        "Può adottare l'atto finale se ha la competenza.",
+                        "Responsabile solo se laureato.",
+                        "Eletto dai cittadini."
             ],
-            "e": "Accorpamento dei poteri in capo a un unico soggetto."
+            "e": "Concentrazione di funzioni."
 },
 {
-            "q": "Quale principio UE impone allo Stato di risarcire i danni causati ai singoli da violazioni del diritto UE?",
-            "a": "Principio della responsabilità dello Stato (Sentenza Francovich).",
+            "q": "Sentenza Francovich sancisce:",
+            "a": "Responsabilità dello Stato per violazione diritto UE.",
             "o": [
-                        "Principio di sussidiarietà.",
-                        "Principio di leale collaborazione.",
-                        "Principio della responsabilità dello Stato (Sentenza Francovich).",
-                        "Principio di mutuo riconoscimento."
+                        "Primato dei regolamenti.",
+                        "Responsabilità dello Stato per violazione diritto UE.",
+                        "Libertà di stabilimento.",
+                        "Efficacia orizzontale delle direttive."
             ],
-            "e": "Fondamentale per la tutela dei diritti soggettivi derivanti da direttive."
+            "e": "Tutela risarcitoria dei singoli."
 },
 {
-            "q": "Il Danno Erariale indiretto si verifica quando:",
-            "a": "La PA risarcisce un terzo e si rivale sul dipendente responsabile per dolo o colpa grave.",
+            "q": "Danno Erariale indiretto:",
+            "a": "PA risarcisce terzo e si rivale su dipendente (dolo/colpa grave).",
             "o": [
-                        "Il dipendente ruba fondi dalla cassa dell'ente.",
-                        "La PA risarcisce un terzo e si rivale sul dipendente responsabile per dolo o colpa grave.",
-                        "Il dirigente non raggiunge gli obiettivi di performance.",
-                        "L'ente perde un finanziamento europeo per ritardo burocratico."
+                        "Mancato guadagno dell'ente.",
+                        "PA risarcisce terzo e si rivale su dipendente (dolo/colpa grave).",
+                        "Furto di beni dell'ente.",
+                        "Ritardo nel PNRR."
             ],
-            "e": "Azione di rivalsa della Procura Contabile."
+            "e": "Azione della Procura Contabile."
 },
 {
-            "q": "La SCIA (Segnalazione Certificata di Inizio Attività) ha natura di:",
-            "a": "Atto privato di parte volto a sollecitare i poteri di verifica della PA.",
+            "q": "Natura della SCIA:",
+            "a": "Atto privato di parte.",
             "o": [
-                        "Provvedimento amministrativo tacito.",
-                        "Atto privato di parte volto a sollecitare i poteri di verifica della PA.",
-                        "Autorizzazione espressa in forma semplificata.",
-                        "Accordo sostitutivo ex art. 11 L. 241/90."
+                        "Provvedimento tacito.",
+                        "Atto privato di parte.",
+                        "Autorizzazione espressa.",
+                        "Nullità relativa."
             ],
-            "e": "La SCIA non è un atto della PA (Ad. Plenaria Cons. Stato)."
+            "e": "Dichiarazione del privato, non atto PA."
 },
 {
-            "q": "Se 'Nessun A è B' e 'Tutti i C sono A', ne consegue che:",
+            "q": "Sillogismo: 'Nessun A è B' e 'Tutti i C sono A':",
             "a": "Nessun C è B.",
             "o": [
-                        "Alcuni C sono B.",
+                        "Qualche C è B.",
                         "Tutti i B sono C.",
                         "Nessun C è B.",
-                        "Nessun A è C."
+                        "A è uguale a C."
             ],
-            "e": "Sillogismo di prima figura (Celarent)."
+            "e": "Celarent (Prima figura)."
 },
 {
-            "q": "Il principio di 'non aggravamento del procedimento' (Art. 1 L. 241/90) può essere derogato:",
-            "a": "Per straordinarie e motivate esigenze imposte dallo svolgimento dell'istruttoria.",
+            "q": "Non aggravamento procedimento (Art. 1 L. 241/90) derogabile per:",
+            "a": "Straordinarie e motivate esigenze istruttorie.",
             "o": [
-                        "Sempre, a discrezione del RUP.",
-                        "Per straordinarie e motivate esigenze imposte dallo svolgimento dell'istruttoria.",
-                        "Solo se richiesto dal controinteressato.",
-                        "Solo nei procedimenti di gara sopra soglia."
+                        "Semplice pigrizia del RUP.",
+                        "Straordinarie e motivate esigenze istruttorie.",
+                        "Richiesta del politico di turno.",
+                        "Ordini verbali del dirigente."
             ],
-            "e": "L'aggravamento deve essere l'eccezione motivata."
+            "e": "L'efficienza è la regola, l'aggravamento l'eccezione."
 },
 {
-            "q": "L'azione di annullamento davanti al TAR deve essere proposta a pena di decadenza entro:",
+            "q": "Azione annullamento TAR entro:",
             "a": "60 giorni.",
             "o": [
                         "30 giorni.",
                         "60 giorni.",
                         "120 giorni.",
-                        "180 giorni."
+                        "1 anno."
             ],
-            "e": "Art. 29 CPA."
+            "e": "Termine decadenziale breve."
 },
 {
-            "q": "Nel PIAO, il monitoraggio della performance è finalizzato a:",
-            "a": "Verificare il raggiungimento degli obiettivi e l'efficienza organizzativa.",
+            "q": "Monitoraggio performance nel PIAO:",
+            "a": "Verifica obiettivi e efficienza.",
             "o": [
-                        "Punire i dipendenti meno produttivi con decurtazioni salariali.",
-                        "Verificare il raggiungimento degli obiettivi e l'efficienza organizzativa.",
-                        "Sostituire il controllo della Corte dei Conti.",
-                        "Garantire la rotazione triennale dei dirigenti."
+                        "Punizione dei dipendenti.",
+                        "Verifica obiettivi e efficienza.",
+                        "Controllo della Corte dei Conti.",
+                        "Sorteggio premi produzione."
             ],
-            "e": "Miglioramento continuo dei servizi pubblici."
+            "e": "Ciclo della performance."
 },
 {
-            "q": "Il principio di proporzionalità nell'azione amministrativa richiede:",
-            "a": "Idoneità, necessarietà e adeguatezza della misura rispetto al fine.",
+            "q": "Proporzionalità richiede:",
+            "a": "Idoneità, necessarietà e adeguatezza.",
             "o": [
-                        "Che il costo dell'atto sia proporzionato al bilancio dell'ente.",
-                        "Idoneità, necessarietà e adeguatezza della misura rispetto al fine.",
-                        "Che tutti i cittadini ricevano lo stesso trattamento economico.",
-                        "La firma di almeno tre funzionari per atti superiori a 100.000 euro."
+                        "Che l'atto costi poco.",
+                        "Idoneità, necessarietà e adeguatezza.",
+                        "La firma di 3 dirigenti.",
+                        "Parere del Consiglio di Stato."
             ],
-            "e": "Derivazione dal diritto tedesco e UE."
+            "e": "Tre pilastri del sindacato."
 },
 {
-            "q": "Un contratto di appalto stipulato sulla base di un'aggiudicazione successivamente annullata dal TAR è:",
-            "a": "Inefficace (il giudice stabilisce se la caducazione è automatica o meno).",
+            "q": "Contratto dopo aggiudicazione annullata dal TAR è:",
+            "a": "Inefficace (decide il giudice caso per caso).",
             "o": [
-                        "Nullo di diritto.",
-                        "Inefficace (il giudice stabilisce se la caducazione è automatica o meno).",
-                        "Sempre valido per il principio di conservazione degli atti.",
-                        "Annullabile solo su istanza dell'ANAC."
+                        "Sempre nullo.",
+                        "Inefficace (decide il giudice caso per caso).",
+                        "Sempre valido.",
+                        "Annullabile dall'ANAC."
             ],
-            "e": "Art. 121-122 CPA."
+            "e": "Artt. 121-122 CPA."
 },
 {
-            "q": "L'Organismo Indipendente di Valutazione (OIV) è nominato:",
-            "a": "Dall'organo di indirizzo politico-amministrativo dell'ente.",
+            "q": "OIV nominato da:",
+            "a": "Organo di indirizzo politico dell'ente.",
             "o": [
-                        "Dal Dipartimento della Funzione Pubblica tramite concorso.",
-                        "Dall'organo di indirizzo politico-amministrativo dell'ente.",
-                        "Dal Ministero dell'Economia e delle Finanze.",
-                        "Dalla Corte dei Conti regionale."
+                        "Funzione Pubblica.",
+                        "Organo di indirizzo politico dell'ente.",
+                        "Corte dei Conti.",
+                        "ANAC."
             ],
-            "e": "Art. 14 D.Lgs. 150/2009."
+            "e": "D.Lgs. 150/2009."
 },
 {
-            "q": "Le direttive UE 'Self-executing' sono caratterizzate da:",
-            "a": "Precisione, incondizionatezza e scadenza del termine di recepimento.",
+            "q": "Direttive Self-executing sono:",
+            "a": "Precise, incondizionate e oltre il termine di recepimento.",
             "o": [
-                        "Necessità di un regolamento attuativo nazionale entro 60 giorni.",
-                        "Precisione, incondizionatezza e scadenza del termine di recepimento.",
-                        "Efficacia orizzontale diretta tra privati cittadini.",
-                        "Possibilità di derogare ai trattati istitutivi UE."
+                        "Da recepire entro 10 anni.",
+                        "Precise, incondizionate e oltre il termine di recepimento.",
+                        "Sempre a portata generale.",
+                        "Prive di effetti verticali."
             ],
-            "e": "Producono effetti diretti verticali."
+            "e": "Efficacia diretta."
 },
 {
-            "q": "In logica, la condizione sufficiente 'Se P, allora Q' significa che:",
-            "a": "Se P è vera, Q deve essere necessariamente vera.",
+            "q": "Implicazione 'Se P allora Q' significa:",
+            "a": "Se P è vera, Q è necessariamente vera.",
             "o": [
-                        "Se Q è vera, P deve essere necessariamente vera.",
-                        "Se P è vera, Q deve essere necessariamente vera.",
-                        "P e Q devono essere entrambe false.",
-                        "Q è la causa di P."
+                        "Se Q è vera, P è vera.",
+                        "Se P è vera, Q è necessariamente vera.",
+                        "P e Q sono intercambiabili.",
+                        "Se non P, allora non Q."
             ],
-            "e": "Rapporto di implicazione unidirezionale."
+            "e": "Logica formale."
 },
 {
-            "q": "L'avvalimento premiale è:",
-            "a": "Il prestito di requisiti volto esclusivamente a migliorare il punteggio dell'offerta.",
+            "q": "Avvalimento premiale serve a:",
+            "a": "Migliorare il punteggio dell'offerta.",
             "o": [
-                        "Una forma di subappalto vietata dal Codice 36/23.",
-                        "Il prestito di requisiti volto esclusivamente a migliorare il punteggio dell'offerta.",
-                        "L'utilizzo di macchinari usati per ridurre i costi.",
-                        "Un incentivo economico per le imprese virtuose."
+                        "Partecipare alla gara senza requisiti minimi.",
+                        "Migliorare il punteggio dell'offerta.",
+                        "Subappaltare il 100%.",
+                        "Ridurre la cauzione."
             ],
-            "e": "Distinto dall'avvalimento operativo o di partecipazione."
+            "e": "Distinto dall'avvalimento operativo."
 },
 {
-            "q": "Il parere del Consiglio di Stato sui regolamenti governativi è:",
+            "q": "Parere CdS su regolamenti è:",
             "a": "Obbligatorio ma non vincolante.",
             "o": [
-                        "Facoltativo e vincolante.",
+                        "Facoltativo.",
                         "Obbligatorio ma non vincolante.",
-                        "Sempre vincolante per il Governo.",
-                        "Richiesto solo per le leggi di delega."
+                        "Vincolante.",
+                        "Solo per leggi regionali."
             ],
             "e": "Art. 17 L. 400/88."
 },
 {
-            "q": "Il divieto di 'reformatio in peius' nel ricorso gerarchico significa che:",
-            "a": "La PA non può aggravare la posizione del ricorrente in seguito al ricorso.",
+            "q": "No reformatio in peius nel ricorso gerarchico:",
+            "a": "La PA non può peggiorare la posizione del ricorrente.",
             "o": [
-                        "Il ricorrente non può aggiungere nuovi motivi dopo 10 giorni.",
-                        "La PA non può aggravare la posizione del ricorrente in seguito al ricorso.",
-                        "La sentenza del TAR deve essere sempre favorevole al privato.",
-                        "Le tasse di ricorso non possono essere aumentate durante il giudizio."
+                        "Il ricorso non può essere respinto.",
+                        "La PA non può peggiorare la posizione del ricorrente.",
+                        "Il TAR non può multare il privato.",
+                        "Nessuna delle precedenti."
             ],
-            "e": "Principio di tutela del ricorrente."
+            "e": "Tutela dell'interessato."
 },
 {
-            "q": "Nel nuovo Codice 36/23, la soglia di anomalia delle offerte:",
-            "a": "Viene calcolata automaticamente dal sistema informatico secondo metodi matematici variabili.",
+            "q": "Soglia anomalia offerte (Codice 36/23):",
+            "a": "Calcolata automaticamente con metodi variabili.",
             "o": [
-                        "È fissa al 20% di ribasso per ogni gara.",
-                        "Viene calcolata automaticamente dal sistema informatico secondo metodi matematici variabili.",
-                        "È decisa discrezionalmente dalla commissione giudicatrice.",
-                        "Non esiste più per favorire il principio del risultato."
+                        "Fissa al 20%.",
+                        "Calcolata automaticamente con metodi variabili.",
+                        "Decisa dal RUP.",
+                        "Non esiste più."
             ],
-            "e": "Metodi volti a rendere imprevedibile la soglia."
+            "e": "Anti-turbativa d'asta."
 },
 {
-            "q": "Il conflitto di attribuzione tra poteri dello Stato è risolto da:",
+            "q": "Conflitto poteri Stato risolto da:",
             "a": "Corte Costituzionale.",
             "o": [
-                        "Corte di Cassazione a Sezioni Unite.",
-                        "Consiglio di Stato.",
+                        "Cassazione.",
                         "Corte Costituzionale.",
-                        "Presidente della Repubblica."
+                        "Consiglio di Stato.",
+                        "Presidente Repubblica."
             ],
             "e": "Art. 134 Cost."
+},
+{
+            "q": "Nel Codice 36/23, l'istituto del Soccorso Istruttorio è precluso per:",
+            "a": "Omessa presentazione dell'offerta tecnica o economica.",
+            "o": [
+                        "Firma digitale mancante sul DGUE.",
+                        "Omessa presentazione dell'offerta tecnica o economica.",
+                        "Mancato versamento contributo ANAC.",
+                        "Carenza requisiti non dichiarati."
+            ],
+            "e": "L'offerta è immodificabile."
+},
+{
+            "q": "Provvedimento che elude il giudicato è:",
+            "a": "Nullo (Giurisdizione esclusiva GA).",
+            "o": [
+                        "Annullabile entro 60gg.",
+                        "Nullo (Giurisdizione esclusiva GA).",
+                        "Inesistente.",
+                        "Valido se ratificato."
+            ],
+            "e": "Art. 21-septies L. 241/90."
+},
+{
+            "q": "Differimento accesso atti (L. 241/90) disposto se:",
+            "a": "La conoscenza ostacola gravemente l'azione amministrativa.",
+            "o": [
+                        "Il controinteressato si oppone.",
+                        "La conoscenza ostacola gravemente l'azione amministrativa.",
+                        "L'atto è protocollato come 'riservato'.",
+                        "Solo per motivi di difesa."
+            ],
+            "e": "Tutela dell'istruttoria."
+},
+{
+            "q": "La SCIA condizionata (Art. 19-bis L. 241/90):",
+            "a": "Richiede atti di assenso di altre PA o pareri tecnici.",
+            "o": [
+                        "Scade dopo 6 mesi.",
+                        "Richiede atti di assenso di altre PA o pareri tecnici.",
+                        "Permette l'inizio immediato sempre.",
+                        "È solo per il commercio."
+            ],
+            "e": "Necessità di concentrazione procedimentale."
+},
+{
+            "q": "Sussidiarietà orizzontale (Art. 118 Cost) favorisce iniziativa cittadini per:",
+            "a": "Attività di interesse generale.",
+            "o": [
+                        "Funzioni delegate dallo Stato.",
+                        "Attività di interesse generale.",
+                        "Servizi pubblici a lucro.",
+                        "Compiti di polizia."
+            ],
+            "e": "Cittadinanza attiva."
+},
+{
+            "q": "In logica, 'Se non piove, esco' equivale a:",
+            "a": "Se non esco, piove.",
+            "o": [
+                        "Se esco, non piove.",
+                        "Se piove, non esco.",
+                        "Se non esco, piove.",
+                        "Non esco o non piove."
+            ],
+            "e": "Contro-nominale logica."
+},
+{
+            "q": "Il PIAO NON contiene:",
+            "a": "Il bilancio consolidato e i documenti contabili.",
+            "o": [
+                        "Piano anticorruzione.",
+                        "Fabbisogno personale.",
+                        "Il bilancio consolidato e i documenti contabili.",
+                        "Obiettivi performance."
+            ],
+            "e": "Il PIAO è organizzativo, non contabile."
+},
+{
+            "q": "Le decisioni UE (Art. 288 TFUE) sono:",
+            "a": "Obbligatorie in tutti gli elementi; se con destinatari, solo per essi.",
+            "o": [
+                        "Sempre generali.",
+                        "Obbligatorie in tutti gli elementi; se con destinatari, solo per essi.",
+                        "Prive di efficacia diretta.",
+                        "Solo della Corte di Giustizia."
+            ],
+            "e": "Natura dell'atto."
+},
+{
+            "q": "Silenzio assenso tra PA (17-bis L. 241/90) NON si forma se:",
+            "a": "Il diritto UE impone un provvedimento espresso.",
+            "o": [
+                        "L'ente è un Comune piccolo.",
+                        "Il diritto UE impone un provvedimento espresso.",
+                        "C'è un parere della Corte dei Conti.",
+                        "C'è opposizione politica."
+            ],
+            "e": "Primato diritto UE."
+},
+{
+            "q": "Appalto integrato (36/23): la PA deve motivare?",
+            "a": "Sì, su esigenze tecniche e qualità progetto.",
+            "o": [
+                        "No, è sempre libero.",
+                        "Sì, su esigenze tecniche e qualità progetto.",
+                        "Solo sopra i 10 milioni.",
+                        "Solo se richiesto dall'ANAC."
+            ],
+            "e": "Obbligo motivazionale specifico."
+},
+{
+            "q": "Clausola escludente bando non impugnata subito:",
+            "a": "Comporta decadenza dall'impugnazione.",
+            "o": [
+                        "Si impugna con la graduatoria.",
+                        "Comporta decadenza dall'impugnazione.",
+                        "È nulla di diritto.",
+                        "Nessuna conseguenza."
+            ],
+            "e": "Onere di impugnazione immediata."
+},
+{
+            "q": "Revoca provvedimento ex 21-quinquies comporta:",
+            "a": "Indennizzo dei pregiudizi subiti.",
+            "o": [
+                        "Risarcimento del danno emergente e lucro cessante.",
+                        "Indennizzo dei pregiudizi subiti.",
+                        "Nullità degli atti derivati.",
+                        "Scuse formali della PA."
+            ],
+            "e": "Ristoro del solo danno emergente."
+},
+{
+            "q": "Sillogismo: 'Nessun A è B' e 'Alcuni C sono B':",
+            "a": "Alcuni C non sono A.",
+            "o": [
+                        "Tutti i C sono A.",
+                        "Alcuni C sono A.",
+                        "Alcuni C non sono A.",
+                        "Nessun C è A."
+            ],
+            "e": "Logica valida (Festino)."
+},
+{
+            "q": "Il RUP nel Codice 36/23:",
+            "a": "Assicura il completamento intervento e obiettivi.",
+            "o": [
+                        "Responsabile solo dell'affidamento.",
+                        "Assicura il completamento intervento e obiettivi.",
+                        "Deve essere un notaio.",
+                        "Non risponde dell'esecuzione."
+            ],
+            "e": "Centralità del risultato."
+},
+{
+            "q": "FOIA: limite accesso per interessi privati:",
+            "a": "Libertà di impresa e segreto commerciale.",
+            "o": [
+                        "Anzianità dipendenti.",
+                        "Libertà di impresa e segreto commerciale.",
+                        "Iscrizione a partiti.",
+                        "Voto segreto."
+            ],
+            "e": "D.Lgs. 33/2013 art. 5-bis."
+},
+{
+            "q": "Atto con incompetenza assoluta (per materia) è:",
+            "a": "Nullo per difetto assoluto di attribuzione.",
+            "o": [
+                        "Annullabile.",
+                        "Nullo per difetto assoluto di attribuzione.",
+                        "Irregolare.",
+                        "Valido."
+            ],
+            "e": "Art. 21-septies L. 241/90."
+},
+{
+            "q": "Fase 'discendente' Diritto UE riguarda:",
+            "a": "Attuazione atti UE a livello nazionale.",
+            "o": [
+                        "Formazione norme a Bruxelles.",
+                        "Attuazione atti UE a livello nazionale.",
+                        "Potere veto Presidente Consiglio.",
+                        "Monitoraggio sussidiarietà."
+            ],
+            "e": "Recepimento interno."
+},
+{
+            "q": "NON sanabile con convalida (Art. 21-nonies):",
+            "a": "Il difetto assoluto di attribuzione (nullità).",
+            "o": [
+                        "Incompetenza relativa.",
+                        "Mancanza parziale motivazione.",
+                        "Il difetto assoluto di attribuzione (nullità).",
+                        "Vizio procedimentale."
+            ],
+            "e": "Solo gli annullabili si convalidano."
+},
+{
+            "q": "Rotazione inviti sotto soglia (36/23) si applica:",
+            "a": "Tra appalti nello stesso settore merceologico.",
+            "o": [
+                        "Sempre a ogni gara.",
+                        "Tra appalti nello stesso settore merceologico.",
+                        "Solo sopra il milione.",
+                        "Solo per lavori stradali."
+            ],
+            "e": "Art. 49 Codice Appalti."
+},
+{
+            "q": "Negazione di: 'Qualche candidato è preparato e nessuno è fortunato':",
+            "a": "Tutti non preparati o almeno uno fortunato.",
+            "o": [
+                        "Tutti preparati.",
+                        "Tutti non preparati o almeno uno fortunato.",
+                        "Nessuno è preparato.",
+                        "Qualche fortunato."
+            ],
+            "e": "Applicazione De Morgan."
+},
+{
+            "q": "Annullamento d'ufficio (21-nonies) richiede:",
+            "a": "Interesse pubblico attuale e concreto + bilanciamento.",
+            "o": [
+                        "Solo l'illegittimità.",
+                        "Interesse pubblico attuale e concreto + bilanciamento.",
+                        "Dolo del RUP.",
+                        "Parere dell'OIV."
+            ],
+            "e": "Motivazione comparativa necessaria."
+},
+{
+            "q": "Comunicazione avvio procedimento obbligatoria per:",
+            "a": "Soggetti individuabili cui derivi pregiudizio.",
+            "o": [
+                        "Tutti i residenti.",
+                        "Soggetti individuabili cui derivi pregiudizio.",
+                        "Solo l'istante.",
+                        "Prefetto."
+            ],
+            "e": "Art. 7 L. 241/90."
+},
+{
+            "q": "Rischio operativo nelle concessioni (36/23) trasferito se:",
+            "a": "Non garantito recupero investimenti e costi gestione.",
+            "o": [
+                        "La PA rimborsa le perdite.",
+                        "Non garantito recupero investimenti e costi gestione.",
+                        "Dura più di 50 anni.",
+                        "Terreno è demaniale."
+            ],
+            "e": "Allocazione del rischio."
+},
+{
+            "q": "Esercita funzione legislativa UE con il Parlamento:",
+            "a": "Il Consiglio dell'Unione Europea.",
+            "o": [
+                        "Commissione Europea.",
+                        "Il Consiglio dell'Unione Europea.",
+                        "Corte Giustizia.",
+                        "Consiglio Europeo."
+            ],
+            "e": "Procedura ordinaria."
+},
+{
+            "q": "Se 'Tutti i dirigenti sono occupati' e 'Piero è occupato':",
+            "a": "Nessuna delle altre è corretta.",
+            "o": [
+                        "Piero è dirigente.",
+                        "Piero non è dirigente.",
+                        "Piero è consulente.",
+                        "Nessuna delle altre è corretta."
+            ],
+            "e": "Fallacia del conseguente."
+},
+{
+            "q": "Incompatibilità D.Lgs. 39/13 comporta:",
+            "a": "Opzione tra cariche pena decadenza.",
+            "o": [
+                        "Nullità nomina.",
+                        "Opzione tra cariche pena decadenza.",
+                        "Licenziamento.",
+                        "Multa 3 mensilità."
+            ],
+            "e": "Regime opzionale."
+},
+{
+            "q": "Autotutela esecutiva (Art. 21-ter L. 241/90):",
+            "a": "Imposizione coattiva obblighi nei casi di legge.",
+            "o": [
+                        "Annullamento contratti privati.",
+                        "Imposizione coattiva obblighi nei casi di legge.",
+                        "Sospensione stipendi.",
+                        "Aumento tariffe unilaterale."
+            ],
+            "e": "Esecutorietà atto."
+},
+{
+            "q": "Riesame diniego accesso civico al RPCT:",
+            "a": "Senza termine perentorio; decisione entro 20 giorni.",
+            "o": [
+                        "30 giorni obbligatori.",
+                        "Senza termine perentorio; decisione entro 20 giorni.",
+                        "60 giorni.",
+                        "10 giorni."
+            ],
+            "e": "Tutela giustiziale interna."
+},
+{
+            "q": "Equivalenza tutele diritto UE:",
+            "a": "Modalità non meno favorevoli di quelle nazionali.",
+            "o": [
+                        "Risarcimento identico ovunque.",
+                        "Modalità non meno favorevoli di quelle nazionali.",
+                        "Stipendio unico giudici.",
+                        "Lingua unica processuale."
+            ],
+            "e": "Limiti autonomia Stati."
+},
+{
+            "q": "Serie logica: Triangolo, Quadrato, Pentagono...",
+            "a": "Esagono.",
+            "o": [
+                        "Cerchio.",
+                        "Esagono.",
+                        "Ettagono.",
+                        "Rettangolo."
+            ],
+            "e": "Progressione lati."
+},
+{
+            "q": "Accordo sostitutivo ex Art. 11 L. 241/90 richiede:",
+            "a": "Previa determinazione dell'organo competente.",
+            "o": [
+                        "Bando di gara.",
+                        "Previa determinazione dell'organo competente.",
+                        "Visto Corte Conti.",
+                        "Voto popolare."
+            ],
+            "e": "Manifestazione volontà PA."
+},
+{
+            "q": "Regolamento ministeriale contro legge ordinaria:",
+            "a": "Disapplicato dal GO o annullato dal GA.",
+            "o": [
+                        "Prevale per specialità.",
+                        "Disapplicato dal GO o annullato dal GA.",
+                        "Va in Corte Costituzionale.",
+                        "Abrogato da solo."
+            ],
+            "e": "Gerarchia fonti."
+},
+{
+            "q": "Soccorso istruttorio oneroso (36/23):",
+            "a": "È stato eliminato (ora gratuito).",
+            "o": [
+                        "Aumentato al 2%.",
+                        "È stato eliminato (ora gratuito).",
+                        "Solo per tecnica.",
+                        "Invariato."
+            ],
+            "e": "Semplificazione."
+},
+{
+            "q": "Parere CdS consultivo è vincolante?",
+            "a": "No, salvo legge contraria; serve motivazione scostamento.",
+            "o": [
+                        "Sì, sempre.",
+                        "No, salvo legge contraria; serve motivazione scostamento.",
+                        "Sì, per schemi D.Lgs.",
+                        "No, ignorabile senza motivi."
+            ],
+            "e": "Art. 100 Cost."
+},
+{
+            "q": "Sillogismo: 'Alcuni avvocati sono poeti' e 'Tutti i poeti sono sognatori':",
+            "a": "Alcuni avvocati sono sognatori.",
+            "o": [
+                        "Tutti gli avvocati sono sognatori.",
+                        "Tutti i sognatori sono avvocati.",
+                        "Alcuni avvocati sono sognatori.",
+                        "Nessuno è sognatore."
+            ],
+            "e": "Datisi (Terza figura)."
+},
+{
+            "q": "Accesso atti escluso per:",
+            "a": "Segreto di Stato o casi di legge.",
+            "o": [
+                        "Gestione personale.",
+                        "Segreto di Stato o casi di legge.",
+                        "Relazioni tecniche.",
+                        "Verbali gara chiusi."
+            ],
+            "e": "Limiti Art. 24."
+},
+{
+            "q": "Responsabilità dirigenziale (165/01) comporta:",
+            "a": "Impossibilità rinnovo stesso incarico.",
+            "o": [
+                        "Riduzione stipendio 50%.",
+                        "Impossibilità rinnovo stesso incarico.",
+                        "Arresto amministrativo.",
+                        "Trasferimento estero."
+            ],
+            "e": "Mancato obiettivi."
+},
+{
+            "q": "Trasparenza (L. 241/90) finalizzata a:",
+            "a": "Favorire controllo diffuso su funzioni e risorse.",
+            "o": [
+                        "Scrivere leggi coi cittadini.",
+                        "Favorire controllo diffuso su funzioni e risorse.",
+                        "Anonimato funzionari.",
+                        "Segretazione spese."
+            ],
+            "e": "Democrazia amministrativa."
+},
+{
+            "q": "Misure anticorruzione nel PIAO basate su:",
+            "a": "Mappatura processi e valutazione rischio specifico.",
+            "o": [
+                        "Elenco standard del Ministero.",
+                        "Mappatura processi e valutazione rischio specifico.",
+                        "Social network.",
+                        "Sorteggio."
+            ],
+            "e": "Metodo ANAC."
+},
+{
+            "q": "Se 'Tutti i libri sono pesanti' e 'Qualche oggetto pesante è prezioso':",
+            "a": "Nessuna conclusione certa su libri preziosi.",
+            "o": [
+                        "Tutti i libri sono preziosi.",
+                        "Qualche libro è prezioso.",
+                        "Nessuna conclusione certa su libri preziosi.",
+                        "Nessun libro è prezioso."
+            ],
+            "e": "Termine medio non distribuito."
+},
+{
+            "q": "Commissione Europea ha potere esclusivo di:",
+            "a": "Iniziativa legislativa UE.",
+            "o": [
+                        "Sentenze contro Stati.",
+                        "Iniziativa legislativa UE.",
+                        "Approvare bilancio solo.",
+                        "Nomina Presidente Consiglio Europeo."
+            ],
+            "e": "Funzione esecutiva/iniziativa."
+},
+{
+            "q": "Vizio eccesso di potere annullabile dal GA?",
+            "a": "Sì, in sede di legittimità.",
+            "o": [
+                        "No, è merito.",
+                        "Sì, in sede di legittimità.",
+                        "Solo se la PA non si difende.",
+                        "Solo se viola regolamenti."
+            ],
+            "e": "Uno dei tre vizi classici."
+},
+{
+            "q": "Figura sintomatica eccesso di potere:",
+            "a": "Disparità di trattamento.",
+            "o": [
+                        "Firma mancante.",
+                        "Disparità di trattamento.",
+                        "Termine ordinatorio violato.",
+                        "Incompetenza."
+            ],
+            "e": "Sintomo sviamento."
+},
+{
+            "q": "Conferenza preliminare (Art. 14 L. 241/90):",
+            "a": "Indica condizioni per atti assenso su progetti complessi.",
+            "o": [
+                        "Sostituisce paesaggistica.",
+                        "Indica condizioni per atti assenso su progetti complessi.",
+                        "Valida progetto esecutivo.",
+                        "Indennizza ritardi."
+            ],
+            "e": "Assistenza istruttoria."
+},
+{
+            "q": "Ricorso straordinario Capo Stato entro:",
+            "a": "120 giorni.",
+            "o": [
+                        "30 giorni.",
+                        "60 giorni.",
+                        "120 giorni.",
+                        "1 anno."
+            ],
+            "e": "Termine lungo."
+},
+{
+            "q": "Par condicio concorrenti appalto impone:",
+            "a": "Stesse info e criteri identici predefiniti.",
+            "o": [
+                        "Vittoria impresa locale.",
+                        "Stesse info e criteri identici predefiniti.",
+                        "Modifica bando post buste.",
+                        "Premio partecipazione."
+            ],
+            "e": "Trasparenza gara."
+},
+{
+            "q": "In logica, se 'Alcuni A sono B' è falsa:",
+            "a": "Nessun A è B.",
+            "o": [
+                        "Tutti A sono B.",
+                        "Nessun A è B.",
+                        "Qualche A non è B.",
+                        "B è uguale a A."
+            ],
+            "e": "Contraddittorietà."
+},
+{
+            "q": "Contratto disponibilità (PPP):",
+            "a": "Privato assume rischio costruzione e gestione tecnica.",
+            "o": [
+                        "PA paga se vende opera.",
+                        "Privato assume rischio costruzione e gestione tecnica.",
+                        "Rischio domanda a Stato.",
+                        "Privato proprietario per sempre."
+            ],
+            "e": "Art. 188 Codice 36/23."
+},
+{
+            "q": "Negazione accesso atti senza motivazione è:",
+            "a": "Violazione di legge (Art. 3 L. 241/90).",
+            "o": [
+                        "Irregolarità formale.",
+                        "Violazione di legge (Art. 3 L. 241/90).",
+                        "Eccesso di potere.",
+                        "Reato di omissione."
+            ],
+            "e": "Obbligo generale motivazione."
+},
+{
+            "q": "Se 'Mammiferi hanno polmoni' e 'Balene sono mammiferi':",
+            "a": "Balene hanno i polmoni.",
+            "o": [
+                        "Balene non hanno polmoni.",
+                        "Balene vivono fuori acqua.",
+                        "Balene hanno i polmoni.",
+                        "Solo balene sono mammiferi."
+            ],
+            "e": "Barbara (Sillogismo)."
 }
         ];
 
