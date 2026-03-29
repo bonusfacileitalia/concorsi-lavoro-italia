@@ -24,7 +24,7 @@
         .option-btn:hover:not(:disabled) { border-color: var(--primary-blue); background: #E2E8F0; }
         .option-btn.correct { background-color: #D1FAE5 !important; border-color: var(--success) !important; color: #065F46 !important; }
         .option-btn.wrong { background-color: #FEE2E2 !important; border-color: var(--error) !important; color: #991B1B !important; }
-        .feedback-box { margin-top: 1.2rem; padding: 1.2rem; border-radius: 8px; display: none; }
+        .feedback-box { margin-top: 1.2rem; padding: 1.2rem; border-radius: 8px; border: 2px solid transparent; display: none; }
         .feedback-box.show { display: block; animation: slideDown 0.3s ease; }
         .btn-primary { background: var(--action-red); color: white; border: none; padding: 1rem; font-size: 1.2rem; font-weight: 800; border-radius: 8px; cursor: pointer; display: block; width: 100%; text-align: center; text-decoration: none; margin-top: 1.5rem; }
         .score-circle { width: 120px; height: 120px; border-radius: 50%; background: var(--primary-blue); color: white; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 800; margin: 0 auto 1.5rem; }
@@ -38,7 +38,7 @@
     <main class="quiz-container">
         <div id="start-screen" class="card" style="text-align: center;">
             <h2 style="margin-bottom: 1rem;">Test Diritto Amministrativo</h2>
-            <p style="margin-bottom: 2rem; color: #666;">Database aggiornato: 20 domande Killer. Il sistema ne estrarrà 13 casuali. Solo l'80% garantisce l'idoneità.</p>
+            <p style="margin-bottom: 2rem; color: #666;">Database Inferno: 20 domande. Estrazione casuale di 13 domande. Soglia idoneità: 80%.</p>
             <button class="btn-primary" onclick="startQuiz()">INIZIA IL TEST ➔</button>
         </div>
         <div id="quiz-screen" class="card hidden">
@@ -47,14 +47,13 @@
             <h2 id="question-text" class="question-text"></h2>
             <div id="options-grid" class="options-grid"></div>
             <div id="feedback-box" class="feedback-box">
-                <h4 id="feedback-title"></h4>
-                <p id="feedback-text" style="font-size: 0.9rem; margin-top: 0.5rem;"></p>
+                <h4 id="feedback-title" style="margin-bottom: 0.5rem; font-weight: 800;"></h4>
+                <div id="feedback-content" style="line-height: 1.5;"></div>
             </div>
             <button id="next-btn" class="btn-primary" style="display:none; background: var(--primary-blue);" onclick="nextQuestion()">CONTINUA ➔</button>
         </div>
         <div id="result-screen" class="card hidden" style="text-align: center;">
             <h2>Esito Finale</h2>
-            <p style="margin: 1rem 0; color: #666;">Tempo: <span id="final-time"></span></p>
             <div class="score-circle" id="score-display">0%</div>
             <div id="sales-container"></div>
             <button class="btn-primary" style="background-color: var(--primary-blue); margin-top: 1rem;" onclick="location.reload()">🔄 RIPETI IL QUIZ</button>
@@ -63,26 +62,26 @@
 
     <script>
         const databaseQuiz = [
-            {"q": "Ai sensi dell'art. 10-bis L. 241/90, il preavviso di rigetto interrompe i termini di conclusione che:", "options": ["Riprendono a decorrere ex novo dalla presentazione delle osservazioni.", "Restano sospesi per un periodo massimo di 30 giorni lavorativi.", "Iniziano a decorrere nuovamente dalla comunicazione dei motivi ostativi.", "Iniziano a decorrere nuovamente per intero dieci giorni dopo la presentazione delle osservazioni."], "a": 3},
-            {"q": "Nel nuovo Codice dei Contratti (D.Lgs. 36/2023), la colpa grave dell'operatore pubblico è configurata:", "options": ["In ogni caso di violazione di norme di legge che determini un danno erariale.", "Nell'ipotesi di violazione di norme palesemente chiare, univoche e non suscettibili di interpretazione.", "Esclusivamente quando sussista il dolo specifico di favorire un operatore.", "Qualora la violazione derivi da un'errata interpretazione delle clausole del bando."], "a": 1},
-            {"q": "Diritto UE: In caso di contrasto tra norma interna e norma UE senza effetti diretti, il giudice nazionale:", "options": ["Deve disapplicare immediatamente la norma interna per dare prevalenza alla UE.", "Deve sollevare questione di legittimità costituzionale dinanzi alla Consulta.", "Deve interpretare la norma interna in modo conforme e, se impossibile, sollevare rinvio pregiudiziale.", "È tenuto ad applicare la norma interna e segnalare la difformità al Governo."], "a": 2},
-            {"q": "L'accesso civico generalizzato (FOIA) può essere rifiutato per 'conduzione di indagini sui reati'. Tale limite è:", "options": ["Un limite assoluto che preclude qualsiasi valutazione discrezionale.", "Sussistente solo se l'indagine è coperta dal segreto istruttorio penale.", "Un limite relativo che richiede un bilanciamento tra trasparenza e pregiudizio concreto.", "Destinato a decadere automaticamente trascorsi 180 giorni dalla richiesta."], "a": 2},
-            {"q": "Logica: 'Non è falso che non tutti i verbali siano incompleti'. Qual è l'affermazione equivalente?", "options": ["Almeno un verbale è completo.", "Tutti i verbali sono completi.", "Almeno un verbale è incompleto.", "Nessun verbale è completo."], "a": 2},
-            {"q": "Il soccorso istruttorio 'integrativo' (Art. 101 D.Lgs. 36/2023) permette di sanare i requisiti:", "options": ["Se effettivamente posseduti alla data di scadenza della presentazione dell'offerta.", "Entro 5 giorni lavorativi, previo pagamento di una sanzione pecuniaria.", "Purché l'integrazione non riguardi elementi essenziali dell'offerta tecnica o economica.", "Solo se la lex specialis di gara prevedeva espressamente tale facoltà."], "a": 0},
-            {"q": "Il silenzio-assenso tra amministrazioni pubbliche (Art. 17-bis L. 241/90) si perfeziona se:", "options": ["L'amministrazione non comunica l'assenso o il dissenso entro 30 giorni dal ricevimento.", "L'amministrazione procedente riceve nulla osta dagli organi di controllo interni.", "Sono trascorsi 60 giorni, se l'amministrazione gestisce interessi 'sensibili'.", "L'istanza è stata regolarmente protocollata presso la Presidenza del Consiglio."], "a": 0},
-            {"q": "Il principio del 'Risultato' (Art. 1 D.Lgs. 36/2023) definisce la trasparenza come:", "options": ["Un valore etico assoluto cui il risultato economico deve essere subordinato.", "Uno strumento funzionale alla massima semplicità e celerità dell'attuazione.", "L'unico criterio oggettivo per la valutazione della responsabilità disciplinare.", "Un obbligo di pubblicazione integrale di ogni atto a pena di nullità dell'appalto."], "a": 1},
-            {"q": "La responsabilità disciplinare del dipendente per violazione del codice di comportamento:", "options": ["Comporta necessariamente la sospensione cautelare dal servizio per 30 giorni.", "Dà luogo a sanzioni graduate in base alla gravità, colpa e entità del danno.", "Determina l'automatica risoluzione del rapporto per regali sopra i 150 euro.", "È sanzionabile solo se accertata mediante sistemi di videosorveglianza."], "a": 1},
-            {"q": "Una Direttiva UE 'non trasposta' può avere efficacia diretta verticale quando:", "options": ["Impone obblighi specifici ai cittadini verso la PA nazionale.", "Attribuisce ai singoli diritti precisi e incondizionati verso lo Stato.", "Sostituisce una norma nazionale dichiarata incostituzionale dalla Consulta.", "È pubblicata in GUUE da oltre 18 mesi senza ricevere osservazioni."], "a": 1},
-            {"q": "In caso di annullamento d'ufficio (art. 21-nonies), il termine di 12 mesi decorre:", "options": ["Dalla data di adozione formale del provvedimento viziato.", "Dal momento in cui l'amministrazione ha avuto conoscenza certa del vizio.", "Dalla scadenza del termine di conclusione del procedimento di riesame.", "Dalla data della notifica del provvedimento ai soggetti controinteressati."], "a": 0},
-            {"q": "Nella struttura del PIAO, la sezione 'Performance' integra i precedenti:", "options": ["Piani per la Prevenzione della Corruzione e della Trasparenza.", "Piano della Performance e Piano dei Fabbisogni del Personale.", "Documenti Tecnici di Accompagnamento al bilancio di previsione.", "Bilanci Sociali dell'Ente e Relazioni annuali dei nuclei di valutazione."], "a": 1},
-            {"q": "Logica: 'Non è vero che se piove, allora non prendo l'ombrello'. Conclusione?", "options": ["Piove e ho preso l'ombrello.", "Non piove, ma ho preso l'ombrello per precauzione.", "Piove, ma non ho preso l'ombrello.", "Se non piove, è impossibile che io abbia preso l'ombrello."], "a": 0},
-            {"q": "Il principio di 'Fiducia' (D.Lgs. 36/2023) presume l'azione dei funzionari legittima:", "options": ["In via assoluta e insindacabile per evitare la burocrazia difensiva.", "Salvo dolo o colpa grave, valorizzando l'autonomia decisionale.", "Previa attestazione semestrale di regolarità tecnica del RUP.", "Solo per gli atti adottati sotto supervisione diretta dell'ANAC."], "a": 1},
-            {"q": "In materia di rinvio pregiudiziale CGUE, i giudici di ultima istanza:", "options": ["Hanno la facoltà di sollevare la questione solo se c'è contrasto tra le parti.", "Hanno l'obbligo di sollevare la questione, salvo 'atto chiaro' o già deciso.", "Devono richiedere autorizzazione al CSM o al Ministero della Giustizia.", "Possono sollevare la questione solo per materie di competenza esclusiva UE."], "a": 1},
-            {"q": "L'invalidità 'ad efficacia caducante' si manifesta quando l'atto presupposto:", "options": ["Travolge necessariamente l'atto consequenziale per nesso di stretta dipendenza.", "Richiede l'impugnazione autonoma dell'atto finale entro i termini.", "Viene pronunciato dall'amministrazione in sede di riesame straordinario.", "Riguarda esclusivamente vizi di forma che non incidono sul dispositivo."], "a": 0},
-            {"q": "Il 'subappalto a cascata' nel nuovo Codice Appalti è:", "options": ["Vietato categoricamente per prevenire infiltrazioni mafiose.", "Generalmente consentito, salvo divieto motivato nella lex specialis.", "Ammesso senza limiti solo per servizi intellettuali sotto soglia.", "Soggetto a previa autorizzazione dell'Ispettorato del Lavoro."], "a": 1},
-            {"q": "La mancata emanazione del provvedimento nei termini (L. 241/90):", "options": ["Configura un'ipotesi di reato di omissione di atti d'ufficio.", "Rileva per la performance e costituisce responsabilità amministrativa.", "Determina l'annullabilità automatica del provvedimento tardivo.", "Comporta la decadenza immediata del dirigente dall'incarico."], "a": 1},
-            {"q": "Logica: Qual è la negazione di 'Tutti i gatti sono neri'?", "options": ["Nessun gatto è nero.", "Tutti i gatti sono bianchi.", "Esiste almeno un gatto che non è nero.", "Alcuni gatti sono neri."], "a": 2},
-            {"q": "Gli incarichi dirigenziali a soggetti esterni (D.Lgs. 165/2001) sono ammessi:", "options": ["Senza alcun limite, purché con esperienza almeno quinquennale.", "Entro limiti percentuali e per comprovata specializzazione professionale.", "Solo se l'amministrazione è in dissesto finanziario o commissariata.", "Per una durata massima di 12 mesi non prorogabili."], "a": 1}
+            {"q": "Ai sensi dell'art. 10-bis L. 241/90, il preavviso di rigetto interrompe i termini di conclusione che:", "options": ["Riprendono a decorrere ex novo dalla presentazione delle osservazioni.", "Restano sospesi per un periodo massimo di 30 giorni lavorativi.", "Iniziano a decorrere nuovamente dalla comunicazione dei motivi ostativi.", "Iniziano a decorrere nuovamente per intero dieci giorni dopo la presentazione delle osservazioni."], "a": 3, "e": "L'istituto del preavviso di rigetto comporta l'interruzione, non la sospensione."},
+            {"q": "Nel nuovo Codice dei Contratti (D.Lgs. 36/2023), la colpa grave dell'operatore pubblico è configurata:", "options": ["In ogni caso di violazione di norme di legge che determini un danno erariale.", "Nell'ipotesi di violazione di norme palesemente chiare, univoche e non suscettibili di interpretazione.", "Esclusivamente quando sussista il dolo specifico di favorire un operatore.", "Qualora la violazione derivi da un'errata interpretazione delle clausole del bando."], "a": 1, "e": "Il principio di fiducia limita la colpa grave alla violazione di norme chiare."},
+            {"q": "Diritto UE: In caso di contrasto tra norma interna e norma UE senza effetti diretti, il giudice nazionale:", "options": ["Deve disapplicare immediatamente la norma interna per dare prevalenza alla UE.", "Deve sollevare questione di legittimità costituzionale dinanzi alla Consulta.", "Deve interpretare la norma interna in modo conforme e, se impossibile, sollevare rinvio pregiudiziale.", "È tenuto ad applicare la norma interna e segnalare la difformità al Governo."], "a": 2, "e": "In assenza di effetti diretti, l'obbligo è di interpretazione conforme."},
+            {"q": "L'accesso civico generalizzato (FOIA) può essere rifiutato per 'conduzione di indagini sui reati'. Tale limite è:", "options": ["Un limite assoluto che preclude qualsiasi valutazione discrezionale.", "Sussistente solo se l'indagine è coperta dal segreto istruttorio penale.", "Un limite relativo che richiede un bilanciamento tra trasparenza e pregiudizio concreto.", "Destinato a decadere automaticamente trascorsi 180 giorni dalla richiesta."], "a": 2, "e": "I limiti FOIA dell'art. 5-bis sono relativi e richiedono bilanciamento."},
+            {"q": "Logica: 'Non è falso che non tutti i verbali siano incompleti'. Qual è l'affermazione equivalente?", "options": ["Almeno un verbale è completo.", "Tutti i verbali sono completi.", "Almeno un verbale è incompleto.", "Nessun verbale è completo."], "a": 2, "e": "La doppia negazione annulla, resta 'non tutti i verbali sono incompleti' = alcuni sono incompleti."},
+            {"q": "Il soccorso istruttorio 'integrativo' (Art. 101 D.Lgs. 36/2023) permette di sanare i requisiti:", "options": ["Se effettivamente posseduti alla data di scadenza della presentazione dell'offerta.", "Entro 5 giorni lavorativi, previo pagamento di una sanzione pecuniaria.", "Purché l'integrazione non riguardi elementi essenziali dell'offerta tecnica o economica.", "Solo se la lex specialis di gara prevedeva espressamente tale facoltà."], "a": 0, "e": "La sanatoria riguarda requisiti esistenti al momento della scadenza."},
+            {"q": "Il silenzio-assenso tra amministrazioni pubbliche (Art. 17-bis L. 241/90) si perfeziona se:", "options": ["L'amministrazione non comunica l'assenso o il dissenso entro 30 giorni dal ricevimento.", "L'amministrazione procedente riceve nulla osta dagli organi di controllo interni.", "Sono trascorsi 60 giorni, se l'amministrazione gestisce interessi 'sensibili'.", "L'istanza è stata regolarmente protocollata presso la Presidenza del Consiglio."], "a": 0, "e": "Il termine generale per il silenzio orizzontale è di 30 giorni."},
+            {"q": "Il principio del 'Risultato' (Art. 1 D.Lgs. 36/2023) definisce la trasparenza come:", "options": ["Un valore etico assoluto cui il risultato economico deve essere subordinato.", "Uno strumento funzionale alla massima semplicità e celerità dell'attuazione.", "L'unico criterio oggettivo per la valutazione della responsabilità disciplinare.", "Un obbligo di pubblicazione integrale di ogni atto a pena di nullità dell'appalto."], "a": 1, "e": "La trasparenza è servente rispetto al risultato del contratto."},
+            {"q": "La responsabilità disciplinare del dipendente per violazione del codice di comportamento:", "options": ["Comporta necessariamente la sospensione cautelare dal servizio per 30 giorni.", "Dà luogo a sanzioni graduate in base alla gravità, colpa e entità del danno.", "Determina l'automatica risoluzione del rapporto per regali sopra i 150 euro.", "È sanzionabile solo se accertata mediante sistemi di videosorveglianza."], "a": 1, "e": "Le sanzioni disciplinari seguono il principio di proporzionalità."},
+            {"q": "Una Direttiva UE 'non trasposta' può avere efficacia diretta verticale quando:", "options": ["Impone obblighi specifici ai cittadini verso la PA nazionale.", "Attribuisce ai singoli diritti precisi e incondizionati verso lo Stato.", "Sostituisce una norma nazionale dichiarata incostituzionale dalla Consulta.", "È pubblicata in GUUE da oltre 18 mesi senza ricevere osservazioni."], "a": 1, "e": "L'effetto diretto verticale richiede norme chiare e incondizionate."},
+            {"q": "In caso di annullamento d'ufficio (art. 21-nonies), il termine di 12 mesi decorre:", "options": ["Dalla data di adozione formale del provvedimento viziato.", "Dal momento in cui l'amministrazione ha avuto conoscenza certa del vizio.", "Dalla scadenza del termine di conclusione del procedimento di riesame.", "Dalla data della notifica del provvedimento ai soggetti controinteressati."], "a": 0, "e": "Il termine decorre dall'adozione dell'atto illegittimo."},
+            {"q": "Nella struttura del PIAO, la sezione 'Performance' integra i precedenti:", "options": ["Piani per la Prevenzione della Corruzione e della Trasparenza.", "Piano della Performance e Piano dei Fabbisogni del Personale.", "Documenti Tecnici di Accompagnamento al bilancio di previsione.", "Bilanci Sociali dell'Ente e Relazioni annuali dei nuclei di valutazione."], "a": 1, "e": "Il PIAO assorbe i piani performance e fabbisogni."},
+            {"q": "Logica: 'Non è vero che se piove, allora non prendo l'ombrello'. Conclusione?", "options": ["Piove e ho preso l'ombrello.", "Non piove, ma ho preso l'ombrello per precauzione.", "Piove, ma non ho preso l'ombrello.", "Se non piove, è impossibile che io abbia preso l'ombrello."], "a": 0, "e": "La negazione del condizionale implica la verità dell'antecedente."},
+            {"q": "Il principio di 'Fiducia' (D.Lgs. 36/2023) presume l'azione dei funzionari legittima:", "options": ["In via assoluta e insindacabile per evitare la burocrazia difensiva.", "Salvo dolo o colpa grave, valorizzando l'autonomia decisionale.", "Previa attestazione semestrale di regolarità tecnica del RUP.", "Solo per gli atti adottati sotto supervisione diretta dell'ANAC."], "a": 1, "e": "La fiducia tutela l'operato del funzionario salvo colpa grave."},
+            {"q": "In materia di rinvio pregiudiziale CGUE, i giudici di ultima istanza:", "options": ["Hanno la facoltà di sollevare la questione solo se c'è contrasto tra le parti.", "Hanno l'obbligo di sollevare la questione, salvo 'atto chiaro' o già deciso.", "Devono richiedere autorizzazione al CSM o al Ministero della Giustizia.", "Possono sollevare la questione solo per materie di competenza esclusiva UE."], "a": 1, "e": "L'obbligo di rinvio è sancito dall'art. 267 TFUE."},
+            {"q": "L'invalidità 'ad efficacia caducante' si manifesta quando l'atto presupposto:", "options": ["Travolge necessariamente l'atto consequenziale per nesso di stretta dipendenza.", "Richiede l'impugnazione autonoma dell'atto finale entro i termini.", "Viene pronunciato dall'amministrazione in sede di riesame straordinario.", "Riguarda esclusivamente vizi di forma che non incidono sul dispositivo."], "a": 0, "e": "L'invalidità caducante opera senza nuovo ricorso sull'atto a valle."},
+            {"q": "Il 'subappalto a cascata' nel nuovo Codice Appalti è:", "options": ["Vietato categoricamente per prevenire infiltrazioni mafiose.", "Generalmente consentito, salvo divieto motivato nella lex specialis.", "Ammesso senza limiti solo per servizi intellettuali sotto soglia.", "Soggetto a previa autorizzazione dell'Ispettorato del Lavoro."], "a": 1, "e": "Il D.Lgs 36/2023 ammette il subappalto a cascata con limiti."},
+            {"q": "La mancata emanazione del provvedimento nei termini (L. 241/90):", "options": ["Configura un'ipotesi di reato di omissione di atti d'ufficio.", "Rileva per la performance e costituisce responsabilità amministrativa.", "Determina l'annullabilità automatica del provvedimento tardivo.", "Comporta la decadenza immediata del dirigente dall'incarico."], "a": 1, "e": "Il ritardo incide su performance e danno erariale."},
+            {"q": "Logica: Qual è la negazione di 'Tutti i gatti sono neri'?", "options": ["Nessun gatto è nero.", "Tutti i gatti sono bianchi.", "Esiste almeno un gatto che non è nero.", "Alcuni gatti sono neri."], "a": 2, "e": "La negazione dell'universale affermativa è la particolare negativa."},
+            {"q": "Gli incarichi dirigenziali a soggetti esterni (D.Lgs. 165/2001) sono ammessi:", "options": ["Senza alcun limite, purché con esperienza almeno quinquennale.", "Entro limiti percentuali e per comprovata specializzazione professionale.", "Solo se l'amministrazione è in dissesto finanziario o commissariata.", "Per una durata massima di 12 mesi non prorogabili."], "a": 1, "e": "L'art. 19 c.6 impone limiti rigorosi per gli esterni."}
         ];
 
         let quizSessione = [];
@@ -122,7 +121,7 @@
             
             document.getElementById('question-text').innerText = q.q;
             document.getElementById('question-counter').innerText = "Domanda " + (currentQuestionIndex + 1) + "/13";
-            document.getElementById('progress-fill').style.width = (currentQuestionIndex/13)*100 + "%";
+            document.getElementById('progress-fill').style.width = ((currentQuestionIndex)/13)*100 + "%";
             
             q.options.forEach(opt => {
                 const btn = document.createElement('button');
@@ -137,18 +136,27 @@
                     
                     const fb = document.getElementById('feedback-box');
                     const ft = document.getElementById('feedback-title');
-                    const ftx = document.getElementById('feedback-text');
+                    const fc = document.getElementById('feedback-content');
                     
                     if(opt === correctText) { 
                         score++; 
                         ft.innerText="✅ ESATTO"; 
+                        ft.style.color = "#065F46";
                         fb.style.backgroundColor = '#D1FAE5'; 
+                        fb.style.border = '2px solid #10B981';
+                        fc.innerHTML = "<p style='color: #065F46;'><b>Ottimo lavoro!</b> Hai schivato la trappola Formez.</p>";
                     } else { 
                         btn.classList.add('wrong'); 
                         ft.innerText="❌ ERRORE GRAVE"; 
+                        ft.style.color = "#D93025";
                         fb.style.backgroundColor = '#FEE2E2'; 
+                        fb.style.border = '2px solid #EF4444';
+                        fc.innerHTML = `
+                            <p style="color: #991B1B; margin-bottom: 0.5rem;"><b>La risposta corretta era:</b> <span style="font-weight: 800;">${correctText}</span></p>
+                            <p style="color: #991B1B; margin-bottom: 0.8rem;"><b>Perché hai sbagliato:</b> ${q.e}</p>
+                            <p style="color: #666; font-size: 0.85rem; font-style: italic; border-top: 1px solid #F87171; padding-top: 0.5rem;">⚠️ Hai risposto d'impulso cadendo in un classico trabocchetto. Al concorso un errore così banale ti costa l'idoneità.</p>
+                        `;
                     }
-                    ftx.innerHTML = "La risposta corretta era: <b>" + correctText + "</b>";
                     fb.classList.add('show');
                     document.getElementById('next-btn').style.display = 'block';
                 };
@@ -165,14 +173,13 @@
                 document.getElementById('result-screen').classList.remove('hidden');
                 const perc = Math.round((score/13)*100);
                 document.getElementById('score-display').innerText = perc + "%";
-                document.getElementById('final-time').innerText = document.getElementById('time-display').innerText;
                 const sc = document.getElementById('sales-container');
                 if(perc < 80) {
                     document.getElementById('score-display').style.background = "var(--action-red)";
-                    sc.innerHTML = '<div class="sales-pitch"><h3>⚠️ FALLITO</h3><p>Preparazione insufficiente. Scarica il manuale per superare il concorso.</p><a href="https://toscano334.gumroad.com/l/nhrfnx" class="btn-primary">SCARICA IL MANUALE (15€) ➔</a></div>';
+                    sc.innerHTML = '<div class="sales-pitch"><h3>⚠️ FALLITO</h3><p>Preparazione insufficiente. Scarica il manuale.</p><a href="https://toscano334.gumroad.com/l/nhrfnx" class="btn-primary">SCARICA IL MANUALE (15€) ➔</a></div>';
                 } else {
                     document.getElementById('score-display').style.background = "var(--success)";
-                    sc.innerHTML = '<div class="sales-pitch"><h3>✅ IDONEO</h3><p>Ottimo lavoro, blinda il tuo posto fisso.</p><a href="https://toscano334.gumroad.com/l/nhrfnx" class="btn-primary">MAGGIORI INFO ➔</a></div>';
+                    sc.innerHTML = '<div class="sales-pitch"><h3>✅ IDONEO</h3><p>Blinda il tuo posto fisso.</p><a href="https://toscano334.gumroad.com/l/nhrfnx" class="btn-primary" style="background:var(--success)">MAGGIORI INFO ➔</a></div>';
                 }
             }
         }
