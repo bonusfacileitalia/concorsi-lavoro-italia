@@ -18,10 +18,10 @@
         #home-page { text-align: center; background: var(--card); padding: 50px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); max-width: 500px; width: 90%; border: 1px solid #333; }
         h1 { color: #fff; font-size: 2.2em; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px; }
         .subtitle { color: #888; margin-bottom: 30px; font-style: italic; }
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
-        .stat-box { background: #2a2a2a; padding: 15px; border-radius: 12px; border: 1px solid #444; }
-        .stat-val { display: block; font-size: 1.5em; font-weight: bold; color: var(--success); }
-        .stat-label { font-size: 0.7em; color: #aaa; text-transform: uppercase; }
+        .stats-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 30px; }
+        .stat-box { background: #2a2a2a; padding: 20px; border-radius: 12px; border: 1px solid #444; }
+        .stat-val { display: block; font-size: 2em; font-weight: bold; color: #3498db; }
+        .stat-label { font-size: 0.8em; color: #aaa; text-transform: uppercase; letter-spacing: 1px; }
         
         .btn-start { 
             background: var(--success); color: white; border: none; padding: 20px 50px; 
@@ -80,12 +80,8 @@
     
     <div class="stats-grid">
         <div class="stat-box">
-            <span class="stat-val" id="total-done">0</span>
-            <span class="stat-label">Completate totali</span>
-        </div>
-        <div class="stat-box">
-            <span class="stat-val" id="total-left">601</span>
-            <span class="stat-label">Ancora da battere</span>
+            <span class="stat-val" id="db-total">0</span>
+            <span class="stat-label">Domande nel Database Ufficiale</span>
         </div>
     </div>
 
@@ -6732,16 +6728,18 @@ let domandaCorrente = null;
 let timerInterval;
 let timeLeft = 25 * 60;
 
-document.getElementById('total-done').innerText = domandeViste.length;
-document.getElementById('total-left').innerText = databaseQuiz.length - domandeViste.length;
+// MOSTRA SOLO IL TOTALE DEL DATABASE NELLA HOME
+document.getElementById('db-total').innerText = databaseQuiz.length;
 
 function iniziaSessione() {
+    // Il "cervello" filtra comunque in base a domandeViste (memoria invisibile)
     let pool = databaseQuiz.map((q, i) => i).filter(i => !domandeViste.includes(i));
     pool.sort(() => Math.random() - 0.5);
     sessionPool = pool.slice(0, 25);
     
+    // AVVISO FINALE QUANDO HAI FATTO TUTTE E 600 LE DOMANDE
     if (sessionPool.length === 0) {
-        alert("Hai completato tutto! Reset database.");
+        alert("🎉 INCREDIBILE! HAI SVUOTATO L'ARSENALE! 🎉\n\nHai affrontato con successo tutte le " + databaseQuiz.length + " domande del database.\nIl simulatore verrà resettato per farti ricominciare il giro. Sei un mostro!");
         domandeViste = [];
         localStorage.removeItem(STORAGE_KEY);
         location.reload();
@@ -6789,19 +6787,14 @@ function caricaDomanda() {
     const container = document.getElementById('options-container');
     container.innerHTML = '';
 
-    // --- IL FRULLATORE 🌪️ ---
-    // Mappiamo le opzioni originali e teniamo traccia di qual era quella vera (domandaCorrente.a)
+    // IL FRULLATORE OPZIONI
     let opzioniMix = domandaCorrente.options.map((testo, indiceOriginale) => {
         return { testo: testo, isCorrect: (indiceOriginale === domandaCorrente.a) };
     });
     
-    // Mischiamo le opzioni a caso
     opzioniMix.sort(() => Math.random() - 0.5);
-    
-    // Salviamo la nuova posizione della risposta corretta
     domandaCorrente.indiceCorrettoAttuale = opzioniMix.findIndex(o => o.isCorrect);
 
-    // Renderizziamo i bottoni nell'ordine mixato
     opzioniMix.forEach((opt, i) => {
         const div = document.createElement('div');
         div.className = 'option';
@@ -6817,7 +6810,6 @@ function controllaRisposta(index, element) {
 
     let mat = domandaCorrente.materia || "Materia Generale";
 
-    // Ora controlliamo contro il "nuovo" indice corretto
     if (index === domandaCorrente.indiceCorrettoAttuale) {
         element.classList.add('correct');
         sessionScore++; 
@@ -6827,6 +6819,7 @@ function controllaRisposta(index, element) {
         erroriMateria[mat] = (erroriMateria[mat] || 0) + 1;
     }
 
+    // MEMORIA INVISIBILE: Salva in background
     const qIdx = sessionPool[sessionIdx];
     if (!domandeViste.includes(qIdx)) {
         domandeViste.push(qIdx);
