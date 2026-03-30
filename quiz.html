@@ -3,65 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulatore Quiz | Diritto Amministrativo 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7345740458390832" crossorigin="anonymous"></script>
+    <title>Simulatore Concorsi 2026 - Killer Mode</title>
     <style>
-        :root { --primary-blue: #0A2540; --action-red: #D93025; --bg-light: #F6F9FC; --text-dark: #333333; --success: #10B981; --error: #EF4444; --card-bg: #FFFFFF; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg-light); color: var(--text-dark); display: flex; flex-direction: column; min-height: 100vh; }
-        header { background-color: var(--primary-blue); color: white; padding: 1.5rem 1rem; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        header h1 { font-size: 1.8rem; font-weight: 800; }
-        .quiz-container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; flex-grow: 1; width: 100%; }
-        .card { background: var(--card-bg); border-radius: 12px; padding: 2rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-        .quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; font-weight: 600; }
-        .timer { display: flex; align-items: center; gap: 0.5rem; background: #E2E8F0; padding: 0.5rem 1rem; border-radius: 20px; font-variant-numeric: tabular-nums; }
-        .progress-bar { width: 100%; height: 10px; background: #E2E8F0; border-radius: 5px; margin-bottom: 2rem; overflow: hidden; }
-        .progress-fill { height: 100%; background: var(--primary-blue); width: 0%; transition: width 0.3s ease; }
-        .question-text { font-size: 1.3rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.4; }
-        .options-grid { display: grid; gap: 0.8rem; }
-        .option-btn { background: var(--bg-light); border: 2px solid #E2E8F0; padding: 0.8rem 1rem; border-radius: 8px; font-size: 1rem; text-align: left; cursor: pointer; transition: 0.2s; font-weight: 600; }
-        .option-btn:hover:not(:disabled) { border-color: var(--primary-blue); background: #E2E8F0; }
-        .option-btn.correct { background-color: #D1FAE5 !important; border-color: var(--success) !important; color: #065F46 !important; }
-        .option-btn.wrong { background-color: #FEE2E2 !important; border-color: var(--error) !important; color: #991B1B !important; }
-        .feedback-box { margin-top: 1.2rem; padding: 1.2rem; border-radius: 8px; border: 2px solid transparent; display: none; }
-        .feedback-box.show { display: block; animation: slideDown 0.3s ease; }
-        .btn-primary { background: var(--action-red); color: white; border: none; padding: 1rem; font-size: 1.2rem; font-weight: 800; border-radius: 8px; cursor: pointer; display: block; width: 100%; text-align: center; text-decoration: none; margin-top: 1.5rem; }
-        .score-circle { width: 120px; height: 120px; border-radius: 50%; background: var(--primary-blue); color: white; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 800; margin: 0 auto 1.5rem; }
-        .sales-pitch { background: #FFF4F2; border: 2px solid var(--action-red); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; text-align: left; line-height: 1.5; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        .hidden { display: none !important; }
+        :root { --primary: #2c3e50; --accent: #e74c3c; --success: #27ae60; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--primary); display: flex; justify-content: center; padding: 20px; margin: 0; }
+        .quiz-container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); max-width: 800px; width: 100%; margin-top: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid var(--bg); padding-bottom: 15px; }
+        .stats { font-size: 0.9em; font-weight: bold; color: #7f8c8d; }
+        .materia-tag { background: var(--primary); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.5px; }
+        .question { font-size: 1.15em; margin-bottom: 25px; line-height: 1.6; font-weight: 600; color: #1a252f; }
+        .options { display: grid; gap: 12px; }
+        .option { padding: 15px; border: 2px solid var(--bg); border-radius: 10px; cursor: pointer; transition: all 0.2s ease; position: relative; font-size: 0.95em; }
+        .option:hover { border-color: #3498db; background: #f8fbff; }
+        .option.correct { background: var(--success) !important; color: white; border-color: var(--success); }
+        .option.wrong { background: var(--accent) !important; color: white; border-color: var(--accent); }
+        .explanation { margin-top: 25px; padding: 18px; background: #eef7ff; border-left: 5px solid #3498db; display: none; font-size: 0.92em; line-height: 1.5; border-radius: 0 8px 8px 0; }
+        .btn-next { margin-top: 25px; width: 100%; padding: 16px; background: var(--primary); color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 1em; font-weight: bold; display: none; transition: opacity 0.3s; }
+        .btn-next:hover { background: #1a252f; }
+        #progress-bar { width: 100%; height: 6px; background: #ddd; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+        #progress-fill { height: 100%; background: var(--success); width: 0%; transition: width 0.4s ease; }
     </style>
 </head>
 <body>
-    <header><h1>Simulatore Esame 2026</h1></header>
-    <main class="quiz-container">
-        <div id="start-screen" class="card" style="text-align: center;">
-            <h2 style="margin-bottom: 1rem;">Protocollo di Selezione</h2>
-            <p style="margin-bottom: 2rem; color: #666;">Questo non è un gioco. Solo il 5% dei candidati supera questa soglia di sbarramento psicologico. Sei pronto a guardare in faccia la realtà?</p>
-            <button class="btn-primary" onclick="startQuiz()">MISURA IL TUO POTENZIALE ➔</button>
-        </div>
-        <div id="quiz-screen" class="card hidden">
-            <div class="quiz-header"><span id="question-counter">Domanda 1/13</span><div class="timer">⏱️ <span id="time-display">00:00</span></div></div>
-            <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
-            <h2 id="question-text" class="question-text"></h2>
-            <div id="options-grid" class="options-grid"></div>
-            <div id="feedback-box" class="feedback-box">
-                <h4 id="feedback-title" style="margin-bottom: 0.5rem; font-weight: 800;"></h4>
-                <div id="feedback-content"></div>
-            </div>
-            <button id="next-btn" class="btn-primary" style="display:none; background: var(--primary-blue);" onclick="nextQuestion()">CONTINUA IL TEST ➔</button>
-        </div>
-        <div id="result-screen" class="card hidden" style="text-align: center;">
-            <h2>Verdetto Strategico</h2>
-            <div class="score-circle" id="score-display">0%</div>
-            <div id="sales-container"></div>
-            <button class="btn-primary" style="background-color: var(--primary-blue); margin-top: 1rem;" onclick="location.reload()">🔄 TENTA NUOVAMENTE</button>
-        </div>
-    </main>
 
-    <script>
-        const databaseQuiz = [{
+<div class="quiz-container">
+    <div id="progress-bar"><div id="progress-fill"></div></div>
+    <div class="header">
+        <span id="materia-label" class="materia-tag">Caricamento...</span>
+        <span class="stats">Progressi: <span id="counter">0</span> / <span id="total-q">0</span></span>
+    </div>
+    
+    <div id="quiz-box">
+        <div class="question" id="question-text"></div>
+        <div class="options" id="options-container"></div>
+        <div class="explanation" id="explanation-box"></div>
+        <button class="btn-next" id="next-btn" onclick="prossimaDomanda()">PROSSIMA DOMANDA →</button>
+    </div>
+</div>
+
+<script>
+// IL DATABASE VIENE INIETTATO QUI DALLO SCRIPT DI AGGIORNAMENTO
+const databaseQuiz = [
+    {
         "q": "Nel nuovo Codice dei Contratti (D.Lgs. 36/2023), la colpa grave dell'operatore pubblico è configurata:",
         "options": [
             "In ogni caso di violazione di norme di legge che determini un danno erariale.",
@@ -1040,7 +1023,6 @@
         "a": 0,
         "e": "Il principio di sussidiarietà vale SOLO per le competenze concorrenti (dove possono legiferare sia l'UE che gli Stati). L'UE interviene solo se l'azione degli Stati da soli non è sufficiente (es. per inquinamento transfrontaliero)."
     },
-
     {
         "q": "L. 241/90 (Art. 10-bis): In merito alla comunicazione dei motivi ostativi all'accoglimento dell'istanza, quale delle seguenti affermazioni è corretta alla luce delle ultime modifiche legislative?",
         "options": [
@@ -1316,7 +1298,6 @@
         "a": 0,
         "e": "L'UE ha solo i poteri che gli Stati le hanno dato (Principio di Attribuzione)."
     },
-
     {
         "q": "L. 241/90 (Art. 16): Qualora l'amministrazione consultiva non renda il parere obbligatorio entro i termini previsti (20 giorni), l'amministrazione procedente:",
         "options": [
@@ -1592,7 +1573,6 @@
         "a": 0,
         "e": "Principio di effettività: lo Stato non può rendere la vita impossibile al cittadino che vuole far valere i diritti europei."
     },
-
     {
         "q": "TUEL (Art. 194): Il riconoscimento della legittimità dei debiti fuori bilancio da parte del Consiglio Comunale può avvenire per quali tra le seguenti fattispecie tassative?",
         "options": [
@@ -1868,7 +1848,6 @@
         "a": 0,
         "e": "L'Art. 23 obbliga a pubblicare gli elenchi dei provvedimenti che hanno un impatto esterno (concessioni, scelte contraenti, accordi)."
     },
-
     {
         "q": "TUEL (Art. 42): Il Consiglio Comunale è l'organo di indirizzo e di controllo politico-amministrativo. Quale delle seguenti materie rientra nella sua competenza esclusiva e inderogabile?",
         "options": [
@@ -2144,7 +2123,6 @@
         "a": 0,
         "e": "Il riaccertamento serve a fare 'pulizia' in bilancio, togliendo crediti che non prenderai mai o debiti che non esistono più."
     },
-
     {
         "q": "Diritto UE: Qualora la Corte di Giustizia dell'Unione Europea accerti l'inadempimento di uno Stato membro e quest'ultimo non si conformi alla sentenza, la Commissione può:",
         "options": [
@@ -2365,7 +2343,6 @@
         "a": 0,
         "e": "Responsabilità contrattuale = hai firmato il contratto e non paghi o non rispetti i patti."
     },
-
     {
         "q": "L. 241/90 (Art. 21-ter): L'istituto dell'Esecutorietà consente alla Pubblica Amministrazione di:",
         "options": [
@@ -2641,7 +2618,6 @@
         "a": 0,
         "e": "Legislatori UE: Parlamento (popoli) + Consiglio (Governi). La Commissione propone, loro decidono."
     },
-
     {
         "q": "CAD (Art. 20): Il documento informatico soddisfa il requisito della forma scritta e ha l'efficacia prevista dall'articolo 2702 del Codice Civile quando:",
         "options": [
@@ -2917,7 +2893,6 @@
         "a": 0,
         "e": "Autonomia UE: l'Unione è un mondo a sé, con le sue leggi e la sua gerarchia, superiore a quella degli Stati."
     },
-
     {
         "q": "Logica - Analogia Proporzionale: 'Sentenza' sta a 'Giudice' come X sta a Y. Individuare la coppia corretta.",
         "options": [
@@ -3193,7 +3168,6 @@
         "a": 0,
         "e": "Beni fuori commercio = Impignorabili. Il creditore della PA non può prendersi la spiaggia o il Colosseo."
     },
-
     {
         "q": "Logica Numerica: Completare la serie: 3, 7, 15, 31, ... ?",
         "options": [
@@ -3469,7 +3443,6 @@
         "a": 0,
         "e": "VIA Statale: è una decisione politica-tecnica tra il Ministero dell'Ambiente e quello della Cultura."
     },
-
     {
         "q": "L. 241/90 (Art. 3): Qual è l'effetto della mancanza assoluta di motivazione in un provvedimento amministrativo discrezionale?",
         "options": [
@@ -3745,7 +3718,6 @@
         "a": 0,
         "e": "La 'Nullità' (Art. 21-septies) è un caso raro e gravissimo. Negli altri casi è 'Annullabilità'."
     },
-
     {
         "q": "Logica Numerica: Qual è il numero mancante nella serie? 4, 9, 19, 39, ... ?",
         "options": [
@@ -4021,7 +3993,6 @@
         "a": 0,
         "e": "Regola residuale: se non c'è una legge specifica, la PA ha 30 giorni per rispondere (Art. 2)."
     },
-
     {
         "q": "Diritto UE: La teoria dei 'Controlimiti', elaborata dalla Corte Costituzionale italiana, stabilisce che il primato del diritto UE incontra un limite invalicabile:",
         "options": [
@@ -4297,7 +4268,6 @@
         "a": 0,
         "e": "L'ordine di esecuzione è il 'ponte' che fa entrare il trattato in Italia."
     },
-
     {
         "q": "CCNL Funzioni Locali: Il nuovo sistema di classificazione professionale del 2023 si articola in:",
         "options": [
@@ -4573,7 +4543,6 @@
         "a": 0,
         "e": "La PA può sempre pentirsi e annullare l'atto per chiudere la lite."
     },
-
     {
         "q": "In materia di progressioni tra le aree, ai sensi dell'art. 13 del CCNL Funzioni Locali 2019-2021 e delle deroghe vigenti fino al 2025, la procedura 'in deroga' si caratterizza per:",
         "options": [
@@ -4849,7 +4818,6 @@
         "a": 0,
         "e": "Buona fede: la PA non deve fare 'trappole' al cittadino e deve rispettare la sua fiducia (affidamento)."
     },
-
     {
         "q": "Ai sensi della Legge 160/2019, l'Imposta Municipale Propria (IMU) prevede un'esenzione per l'abitazione principale. Quale delle seguenti affermazioni descrive correttamente i limiti di tale agevolazione?",
         "options": [
@@ -5125,7 +5093,6 @@
         "a": 0,
         "e": "Rito Appalti: il tempo è denaro, quindi i termini sono dimezzati a 30 giorni."
     },
-
     {
         "q": "Ai sensi dell'art. 20 della L. 241/90, il silenzio dell'amministrazione competente equivale ad accoglimento della domanda, senza necessità di ulteriori istanze o diffide, se l'amministrazione non comunica all'interessato il provvedimento di diniego. Quale delle seguenti fattispecie è ESPRESSAMENTE ESCLUSA dall'applicazione del silenzio-assenso?",
         "options": [
@@ -5401,7 +5368,6 @@
         "a": 0,
         "e": "Sono binari paralleli: posso usare entrambi per ottenere il massimo delle informazioni."
     },
-
     {
         "q": "Logica Numerica: Quale numero completa correttamente la serie? 1, 3, 7, 15, 31, 63, ... ?",
         "options": [
@@ -5677,7 +5643,6 @@
         "a": 0,
         "e": "Il Mediatore è il 'Difensore Civico' dell'Europa: se la burocrazia di Bruxelles sbaglia, lui interviene."
     },
-
     {
         "q": "Diritto UE: La Procura Europea (EPPO), istituita con regolamento nel 2017, ha la competenza esclusiva per:",
         "options": [
@@ -5821,7 +5786,6 @@
         "a": 0,
         "e": "Ragioneria e Revisori: sono i 'controllori' della cassa."
     },
-
     {
         "q": "Logica - Calcolo Combinatorio: Un Comune deve nominare una commissione di 3 membri scegliendo tra 5 dirigenti tecnici e 4 dirigenti amministrativi. Quante diverse commissioni sono possibili se deve esserci almeno un dirigente tecnico?",
         "options": [
@@ -6097,7 +6061,6 @@
         "a": 0,
         "e": "La Commissione è il 'motore' dell'UE: propone le leggi e controlla che tutti le rispettino."
     },
-
     {
         "q": "Ai sensi dell'art. 20 del CAD, il documento informatico soddisfa il requisito della forma scritta e ha l'efficacia prevista dall'art. 2702 del Codice Civile quando:",
         "options": [
@@ -6373,7 +6336,6 @@
         "a": 0,
         "e": "La 'triade' è la base della sicurezza: il dato deve essere segreto (C), intatto (I) e pronto all'uso (A)."
     },
-
     {
         "q": "Ai sensi dell'art. 4 del TUSP (D.Lgs. 175/2016), le amministrazioni pubbliche possono, direttamente o indirettamente, costituire società o acquisire partecipazioni solo se:",
         "options": [
@@ -6572,7 +6534,6 @@
         "a": 0,
         "e": "Poteri speciali: lo Stato interviene se uno straniero vuole comprarsi un'azienda 'vitale' per l'Italia (es. Telecom o Leonardo)."
     },
-
     {
         "q": "PNRR: Qual è il termine perentorio entro il quale devono essere completati tutti gli interventi e presentate le rendicontazioni finali per non perdere i finanziamenti NextGenerationEU?",
         "options": [
@@ -6694,138 +6655,100 @@
         "a": 0,
         "e": "Clausola del Sud: il 40% dei soldi PNRR deve andare al Mezzogiorno per colmare il gap."
     }
-
 ];
 
-        let quizSessione = [];
-        let currentQuestionIndex = 0;
-        let score = 0;
-        let timerInterval;
-        let secondsElapsed = 0;
+// --- LOGICA DI MEMORIA E FILTRO ---
+const STORAGE_KEY = 'concorso_progres_2026';
+let domandeViste = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+let bufferMaterie = []; 
+let domandaCorrente = null;
 
-        function shuffle(a) {
-            for (let i = a.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [a[i], a[j]] = [a[j], a[i]];
-            }
-            return a;
+// Funzione di Tagging Automatico per coerenza
+function inizializzaMaterie() {
+    databaseQuiz.forEach((q, i) => {
+        if (!q.materia) {
+            if (i < 100) q.materia = "Diritto Amministrativo";
+            else if (i < 200) q.materia = "TUEL";
+            else if (i < 300) q.materia = "Codice Appalti";
+            else if (i < 400) q.materia = "Pubblico Impiego";
+            else if (i < 500) q.materia = "Fiscalità & UE";
+            else q.materia = "Logica & Attualità";
         }
+    });
+    document.getElementById('total-q').innerText = databaseQuiz.length;
+}
 
-        function startQuiz() {
-            document.getElementById('start-screen').classList.add('hidden');
-            document.getElementById('quiz-screen').classList.remove('hidden');
-            
-            // --- INIZIO TRACKING FANTASMA (Senza Login) ---
-            let seenQuestions = JSON.parse(localStorage.getItem('formez_incubo_visti')) || [];
-            let availableQuestions = databaseQuiz.filter(q => !seenQuestions.includes(q.q));
-            
-            if (availableQuestions.length < 13) {
-                alert("⚠️ ATTENZIONE: Hai esaurito le domande inedite del database gratuito. Al concorso non c'è il tasto 'Riprova'. Il sistema ripartirà da zero, ma senza il manuale stai solo perdendo tempo.");
-                seenQuestions = [];
-                availableQuestions = [...databaseQuiz];
-            }
-            
-            quizSessione = shuffle([...availableQuestions]).slice(0, 13);
-            
-            // Marchiamo a fuoco queste domande nel browser dell'utente
-            quizSessione.forEach(q => seenQuestions.push(q.q));
-            localStorage.setItem('formez_incubo_visti', JSON.stringify(seenQuestions));
-            // --- FINE TRACKING ---
+function estraiDomanda() {
+    if (domandeViste.length >= databaseQuiz.length) {
+        alert("🎉 TRAGUARDO RAGGIUNTO! 🎉\nHai completato tutte le " + databaseQuiz.length + " domande del database.\nIl simulatore verrà resettato.");
+        domandeViste = [];
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+        return;
+    }
 
-            score = 0; currentQuestionIndex = 0; secondsElapsed = 0;
-            timerInterval = setInterval(() => {
-                secondsElapsed++;
-                const mins = String(Math.floor(secondsElapsed/60)).padStart(2,'0');
-                const secs = String(secondsElapsed%60).padStart(2,'0');
-                document.getElementById('time-display').innerText = mins + ":" + secs;
-            }, 1000);
-            loadQuestion();
-        }
+    let poolDisponibili = databaseQuiz.filter((_, index) => !domandeViste.includes(index));
+    let poolFiltrato = poolDisponibili.filter(q => !bufferMaterie.includes(q.materia));
+    let candidati = poolFiltrato.length > 0 ? poolFiltrato : poolDisponibili;
 
-        function loadQuestion() {
-            document.getElementById('next-btn').style.display = 'none';
-            document.getElementById('feedback-box').className = 'feedback-box';
-            document.getElementById('options-grid').innerHTML = '';
-            const q = quizSessione[currentQuestionIndex];
-            const correctText = q.options[q.a];
-            
-            document.getElementById('question-text').innerText = q.q;
-            document.getElementById('question-counter').innerText = "Domanda " + (currentQuestionIndex + 1) + "/13";
-            document.getElementById('progress-fill').style.width = ((currentQuestionIndex)/13)*100 + "%";
-            
-            shuffle([...q.options]).forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn';
-                btn.innerText = opt;
-                btn.onclick = () => {
-                    const all = document.querySelectorAll('.option-btn');
-                    all.forEach(b => {
-                        b.disabled = true;
-                        if(b.innerText === correctText) b.classList.add('correct');
-                    });
-                    
-                    const fb = document.getElementById('feedback-box');
-                    const ft = document.getElementById('feedback-title');
-                    const fc = document.getElementById('feedback-content');
-                    
-                    if(opt === correctText) { 
-                        score++; 
-                        ft.innerText="✅ ANALISI CORRETTA"; 
-                        ft.style.color = "#065F46";
-                        fb.style.backgroundColor = '#D1FAE5'; 
-                        fb.style.border = '2px solid #10B981';
-                        fc.innerHTML = "<p style='color: #065F46;'>Hai dimostrato lucidità. Questa è la mentalità che serve per vincere.</p>";
-                    } else { 
-                        btn.classList.add('wrong'); 
-                        ft.innerText="❌ ERRORE LETALE"; 
-                        ft.style.color = "#D93025";
-                        fb.style.backgroundColor = '#FEE2E2'; 
-                        fb.style.border = '2px solid #EF4444';
-                        fc.innerHTML = `
-                            <p style="color: #991B1B; margin-bottom: 0.5rem;"><b>La risposta corretta era:</b> <span style="font-weight: 800;">${correctText}</span></p>
-                            <p style="color: #991B1B; margin-bottom: 0.8rem;"><b>Perché hai sbagliato:</b> ${q.e}</p>
-                            <p style="color: #666; font-size: 0.85rem; font-style: italic; border-top: 1px solid #F87171; padding-top: 0.5rem;">⚠️ Al concorso reale, questo errore ti avrebbe appena fatto perdere molte posizioni in graduatoria.</p>
-                        `;
-                    }
-                    fb.classList.add('show');
-                    document.getElementById('next-btn').style.display = 'block';
-                };
-                document.getElementById('options-grid').appendChild(btn);
-            });
-        }
+    const scelta = candidati[Math.floor(Math.random() * candidati.length)];
+    const indiceOriginale = databaseQuiz.indexOf(scelta);
 
-        function nextQuestion() {
-            currentQuestionIndex++;
-            if(currentQuestionIndex < 13) loadQuestion();
-            else {
-                clearInterval(timerInterval);
-                document.getElementById('quiz-screen').classList.add('hidden');
-                document.getElementById('result-screen').classList.remove('hidden');
-                const perc = Math.round((score/13)*100);
-                document.getElementById('score-display').innerText = perc + "%";
-                const sc = document.getElementById('sales-container');
-                if(perc < 80) {
-                    document.getElementById('score-display').style.background = "var(--action-red)";
-                    sc.innerHTML = `
-                        <div class="sales-pitch">
-                            <h3 style="color:var(--action-red);">⚠️ SEI FUORI: Il concorso non fa sconti</h3>
-                            <p>La cruda realtà? Con questa preparazione, il tuo sogno del posto fisso svanisce al primo sbarramento. Il Formez non cerca i "bravi", cerca i perfetti.</p>
-                            <p style="margin-top:1rem;">Hai assaggiato solo il 2% della cattiveria dei nuovi quiz 2026. Non permettere a una distrazione di costarti una carriera.</p>
-                            <p style="margin-top:1rem; font-weight:800;">Recupera il gap ora, prima che sia troppo tardi:</p>
-                            <a href="https://toscano334.gumroad.com/l/nhrfnx" class="btn-primary">ANALIZZA LE TRAPPOLE E VINCI ➔</a>
-                        </div>`;
-                } else {
-                    document.getElementById('score-display').style.background = "var(--success)";
-                    sc.innerHTML = `
-                        <div class="sales-pitch" style="border-color:var(--success); background:#f0fdf4;">
-                            <h3 style="color:var(--success);">✅ IDONEO: Ma basta per vincere?</h3>
-                            <p>Ottimo risultato, ma ricorda: in graduatoria vince chi non sbaglia nulla. Gli altri restano idonei... ma disoccupati.</p>
-                            <p style="margin-top:1rem;">Vuoi rischiare di finire dietro per mezzo punto o vuoi blindare la tua posizione?</p>
-                            <a href="https://toscano334.gumroad.com/l/nhrfnx" class="btn-primary" style="background:var(--success)">ASSICURATI IL POSTO FISSO ➔</a>
-                        </div>`;
-                }
-            }
-        }
-    </script>
+    domandeViste.push(indiceOriginale);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(domandeViste));
+
+    bufferMaterie.push(scelta.materia);
+    if (bufferMaterie.length > 3) bufferMaterie.shift();
+
+    return scelta;
+}
+
+function caricaDomanda() {
+    domandaCorrente = estraiDomanda();
+    if (!domandaCorrente) return;
+
+    document.getElementById('explanation-box').style.display = 'none';
+    document.getElementById('next-btn').style.display = 'none';
+    document.getElementById('counter').innerText = domandeViste.length;
+    document.getElementById('progress-fill').style.width = (domandeViste.length / databaseQuiz.length * 100) + "%";
+    document.getElementById('materia-label').innerText = domandaCorrente.materia;
+    document.getElementById('question-text').innerText = domandaCorrente.q;
+    
+    const container = document.getElementById('options-container');
+    container.innerHTML = '';
+
+    domandaCorrente.options.forEach((opt, i) => {
+        const div = document.createElement('div');
+        div.className = 'option';
+        div.innerText = opt;
+        div.onclick = () => controllaRisposta(i, div);
+        container.appendChild(div);
+    });
+}
+
+function controllaRisposta(index, element) {
+    const opzioni = document.querySelectorAll('.option');
+    opzioni.forEach(o => o.onclick = null);
+
+    if (index === domandaCorrente.a) {
+        element.classList.add('correct');
+    } else {
+        element.classList.add('wrong');
+        opzioni[domandaCorrente.a].classList.add('correct');
+    }
+
+    const expBox = document.getElementById('explanation-box');
+    expBox.innerHTML = `<strong>Spiegazione:</strong> ${domandaCorrente.e}`;
+    expBox.style.display = 'block';
+    document.getElementById('next-btn').style.display = 'block';
+}
+
+function prossimaDomanda() {
+    caricaDomanda();
+}
+
+inizializzaMaterie();
+caricaDomanda();
+</script>
 </body>
 </html>
