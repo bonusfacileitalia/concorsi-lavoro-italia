@@ -64,15 +64,9 @@
             border: none; border-radius: 12px; cursor: pointer; font-size: 1.1em; font-weight: bold; display: none;
         }
 
-        /* BOX FEEDBACK MENTORE */
         .feedback-box {
-            background: #1c1c1c;
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 25px;
-            margin: 30px 0;
-            text-align: left;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            background: #1c1c1c; border: 1px solid #333; border-radius: 12px; padding: 25px;
+            margin: 30px 0; text-align: left; box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
         }
         .feedback-title { font-size: 0.9em; color: #3498db; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 10px; }
         .feedback-text { font-size: 1.1em; color: #ddd; line-height: 1.5; font-style: italic; }
@@ -6732,7 +6726,7 @@ let domandeViste = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 let sessionPool = [];
 let sessionIdx = 0;
 let sessionScore = 0; 
-let erroriMateria = {}; // Mappa per tracciare dove sbagliamo
+let erroriMateria = {};
 let bufferMaterie = [];
 let domandaCorrente = null;
 let timerInterval;
@@ -6795,10 +6789,23 @@ function caricaDomanda() {
     const container = document.getElementById('options-container');
     container.innerHTML = '';
 
-    domandaCorrente.options.forEach((opt, i) => {
+    // --- IL FRULLATORE 🌪️ ---
+    // Mappiamo le opzioni originali e teniamo traccia di qual era quella vera (domandaCorrente.a)
+    let opzioniMix = domandaCorrente.options.map((testo, indiceOriginale) => {
+        return { testo: testo, isCorrect: (indiceOriginale === domandaCorrente.a) };
+    });
+    
+    // Mischiamo le opzioni a caso
+    opzioniMix.sort(() => Math.random() - 0.5);
+    
+    // Salviamo la nuova posizione della risposta corretta
+    domandaCorrente.indiceCorrettoAttuale = opzioniMix.findIndex(o => o.isCorrect);
+
+    // Renderizziamo i bottoni nell'ordine mixato
+    opzioniMix.forEach((opt, i) => {
         const div = document.createElement('div');
         div.className = 'option';
-        div.innerText = opt;
+        div.innerText = opt.testo;
         div.onclick = () => controllaRisposta(i, div);
         container.appendChild(div);
     });
@@ -6810,13 +6817,13 @@ function controllaRisposta(index, element) {
 
     let mat = domandaCorrente.materia || "Materia Generale";
 
-    if (index === domandaCorrente.a) {
+    // Ora controlliamo contro il "nuovo" indice corretto
+    if (index === domandaCorrente.indiceCorrettoAttuale) {
         element.classList.add('correct');
         sessionScore++; 
     } else {
         element.classList.add('wrong');
-        opzioni[domandaCorrente.a].classList.add('correct');
-        // Registra l'errore per la materia
+        opzioni[domandaCorrente.indiceCorrettoAttuale].classList.add('correct');
         erroriMateria[mat] = (erroriMateria[mat] || 0) + 1;
     }
 
@@ -6841,14 +6848,12 @@ function fineSessione(titolo) {
     
     let totalQuestions = sessionPool.length;
     let percentage = (sessionScore / totalQuestions) * 100;
-    // Arrotondamento a 2 decimali (es. 84.56%)
     let exactPercentage = parseFloat(percentage.toFixed(2));
     let passed = exactPercentage >= 85;
     
     let color = passed ? '#27ae60' : '#c0392b';
     let statusText = passed ? 'IDONEITÀ SUPERATA 🏆' : 'NON IDONEO ❌';
 
-    // Trova la materia con più errori
     let peggiorMateria = "Nessuna, sei stato perfetto!";
     let maxErrori = 0;
     for (const [mat, err] of Object.entries(erroriMateria)) {
@@ -6858,7 +6863,6 @@ function fineSessione(titolo) {
         }
     }
 
-    // FEEDBACK DINAMICI E PSICOLOGICI 😈😉
     const msgSuccesso = [
         `Hai superato lo sbarramento, Socio! 🎯 Un punteggio solido. Se proprio vogliamo essere pignoli, fai attenzione a <strong>${peggiorMateria}</strong>. Ma per oggi, goditi la vittoria. Ti stiamo portando dritto alla firma del contratto! 😉`,
         `La commissione muta! 🤫 Ottimo lavoro. Non abbassare la guardia su <strong>${peggiorMateria}</strong> (ci hai lasciato qualche punto), ma sei in zona sicurezza. Il 2026 è tuo. Avanti tutta! 🔥`,
