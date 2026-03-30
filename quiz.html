@@ -3,46 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulatore Concorsi 2026 - Killer Mode</title>
+    <title>Simulatore Concorsi 2026 - Official</title>
     <style>
-        :root { --primary: #2c3e50; --accent: #e74c3c; --success: #27ae60; --bg: #f4f7f6; }
-        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--primary); display: flex; justify-content: center; padding: 20px; margin: 0; }
-        .quiz-container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); max-width: 800px; width: 100%; margin-top: 20px; }
+        :root { --primary: #2c3e50; --accent: #e74c3c; --success: #27ae60; --bg: #f4f7f6; --white: #ffffff; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        
+        /* HOME PAGE */
+        #home-page { text-align: center; background: var(--white); padding: 50px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); max-width: 600px; width: 90%; }
+        h1 { color: var(--primary); font-size: 2.5em; margin-bottom: 10px; }
+        .subtitle { color: #7f8c8d; margin-bottom: 30px; font-size: 1.1em; }
+        .progress-card { background: #f8f9fa; padding: 20px; border-radius: 15px; margin-bottom: 30px; border: 1px solid #eee; }
+        .progress-number { font-size: 2em; font-weight: bold; color: var(--primary); }
+        .btn-start { background: var(--primary); color: white; border: none; padding: 18px 40px; border-radius: 50px; font-size: 1.2em; font-weight: bold; cursor: pointer; transition: transform 0.2s, background 0.3s; }
+        .btn-start:hover { background: #1a252f; transform: scale(1.05); }
+
+        /* QUIZ CONTAINER (Nascosto all'inizio) */
+        #quiz-container { display: none; background: var(--white); padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); max-width: 800px; width: 100%; margin: 20px; }
         .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid var(--bg); padding-bottom: 15px; }
-        .stats { font-size: 0.9em; font-weight: bold; color: #7f8c8d; }
-        .materia-tag { background: var(--primary); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.5px; }
-        .question { font-size: 1.15em; margin-bottom: 25px; line-height: 1.6; font-weight: 600; color: #1a252f; }
+        .materia-tag { background: var(--primary); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.75em; text-transform: uppercase; }
+        .question { font-size: 1.15em; margin-bottom: 25px; line-height: 1.6; font-weight: 600; }
         .options { display: grid; gap: 12px; }
-        .option { padding: 15px; border: 2px solid var(--bg); border-radius: 10px; cursor: pointer; transition: all 0.2s ease; position: relative; font-size: 0.95em; }
+        .option { padding: 15px; border: 2px solid var(--bg); border-radius: 10px; cursor: pointer; transition: 0.2s; font-size: 0.95em; }
         .option:hover { border-color: #3498db; background: #f8fbff; }
-        .option.correct { background: var(--success) !important; color: white; border-color: var(--success); }
-        .option.wrong { background: var(--accent) !important; color: white; border-color: var(--accent); }
-        .explanation { margin-top: 25px; padding: 18px; background: #eef7ff; border-left: 5px solid #3498db; display: none; font-size: 0.92em; line-height: 1.5; border-radius: 0 8px 8px 0; }
-        .btn-next { margin-top: 25px; width: 100%; padding: 16px; background: var(--primary); color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 1em; font-weight: bold; display: none; transition: opacity 0.3s; }
-        .btn-next:hover { background: #1a252f; }
-        #progress-bar { width: 100%; height: 6px; background: #ddd; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
-        #progress-fill { height: 100%; background: var(--success); width: 0%; transition: width 0.4s ease; }
+        .option.correct { background: var(--success) !important; color: white; }
+        .option.wrong { background: var(--accent) !important; color: white; }
+        .explanation { margin-top: 25px; padding: 18px; background: #eef7ff; border-left: 5px solid #3498db; display: none; border-radius: 0 8px 8px 0; }
+        .btn-next { margin-top: 25px; width: 100%; padding: 16px; background: var(--primary); color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 1em; font-weight: bold; display: none; }
     </style>
 </head>
 <body>
 
-<div class="quiz-container">
-    <div id="progress-bar"><div id="progress-fill"></div></div>
+<!-- HOME PAGE -->
+<div id="home-page">
+    <h1>Socio, benvenuto.</h1>
+    <p class="subtitle">Il tuo arsenale di 601 domande per schiantare i concorsi 2026.</p>
+    
+    <div class="progress-card">
+        <div class="progress-number"><span id="home-counter">0</span> / 601</div>
+        <p>Domande completate nel tuo percorso</p>
+    </div>
+
+    <button class="btn-start" onclick="iniziaQuiz()">ENTRA IN ARENA</button>
+</div>
+
+<!-- QUIZ CONTAINER -->
+<div id="quiz-container">
     <div class="header">
         <span id="materia-label" class="materia-tag">Caricamento...</span>
-        <span class="stats">Progressi: <span id="counter">0</span> / <span id="total-q">0</span></span>
+        <span style="font-size: 0.9em; font-weight: bold;">Quesito n. <span id="counter">0</span></span>
     </div>
     
-    <div id="quiz-box">
-        <div class="question" id="question-text"></div>
-        <div class="options" id="options-container"></div>
-        <div class="explanation" id="explanation-box"></div>
-        <button class="btn-next" id="next-btn" onclick="prossimaDomanda()">PROSSIMA DOMANDA →</button>
-    </div>
+    <div class="question" id="question-text"></div>
+    <div class="options" id="options-container"></div>
+    <div class="explanation" id="explanation-box"></div>
+    <button class="btn-next" id="next-btn" onclick="prossimaDomanda()">PROSSIMA DOMANDA →</button>
 </div>
 
 <script>
-// IL DATABASE VIENE INIETTATO QUI DALLO SCRIPT DI AGGIORNAMENTO
 const databaseQuiz = [
     {
         "q": "Nel nuovo Codice dei Contratti (D.Lgs. 36/2023), la colpa grave dell'operatore pubblico è configurata:",
@@ -6656,14 +6673,20 @@ const databaseQuiz = [
         "e": "Clausola del Sud: il 40% dei soldi PNRR deve andare al Mezzogiorno per colmare il gap."
     }
 ];
-
-// --- LOGICA DI MEMORIA E FILTRO ---
 const STORAGE_KEY = 'concorso_progres_2026';
 let domandeViste = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-let bufferMaterie = []; 
+let bufferMaterie = [];
 let domandaCorrente = null;
 
-// Funzione di Tagging Automatico per coerenza
+// Sincronizza il contatore nella Home
+document.getElementById('home-counter').innerText = domandeViste.length;
+
+function iniziaQuiz() {
+    document.getElementById('home-page').style.display = 'none';
+    document.getElementById('quiz-container').style.display = 'block';
+    caricaDomanda();
+}
+
 function inizializzaMaterie() {
     databaseQuiz.forEach((q, i) => {
         if (!q.materia) {
@@ -6675,12 +6698,11 @@ function inizializzaMaterie() {
             else q.materia = "Logica & Attualità";
         }
     });
-    document.getElementById('total-q').innerText = databaseQuiz.length;
 }
 
 function estraiDomanda() {
     if (domandeViste.length >= databaseQuiz.length) {
-        alert("🎉 TRAGUARDO RAGGIUNTO! 🎉\nHai completato tutte le " + databaseQuiz.length + " domande del database.\nIl simulatore verrà resettato.");
+        alert("🎉 HAI FINITO TUTTO! Reset in corso...");
         domandeViste = [];
         localStorage.removeItem(STORAGE_KEY);
         location.reload();
@@ -6710,7 +6732,6 @@ function caricaDomanda() {
     document.getElementById('explanation-box').style.display = 'none';
     document.getElementById('next-btn').style.display = 'none';
     document.getElementById('counter').innerText = domandeViste.length;
-    document.getElementById('progress-fill').style.width = (domandeViste.length / databaseQuiz.length * 100) + "%";
     document.getElementById('materia-label').innerText = domandaCorrente.materia;
     document.getElementById('question-text').innerText = domandaCorrente.q;
     
@@ -6748,7 +6769,6 @@ function prossimaDomanda() {
 }
 
 inizializzaMaterie();
-caricaDomanda();
 </script>
 </body>
 </html>
