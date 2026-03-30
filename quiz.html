@@ -32,7 +32,7 @@
         }
         .btn-start:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(39, 174, 96, 0.4); }
 
-        /* DOSSIER OPERATIVO (EX-FAQ) */
+        /* DOSSIER OPERATIVO */
         .briefing-box { text-align: left; border-top: 1px solid #2a2a2a; padding-top: 25px; }
         .briefing-title { color: var(--accent); font-size: 0.85em; letter-spacing: 2px; margin-bottom: 15px; display: flex; align-items: center; font-weight: bold; text-transform: uppercase; }
         .briefing-title::before { content: '⚠️'; margin-right: 8px; font-size: 1.2em; }
@@ -73,13 +73,15 @@
         .feedback-box { background: #1c1c1c; border: 1px solid #333; border-radius: 12px; padding: 25px; margin: 30px 0; text-align: left; box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
         .feedback-title { font-size: 0.9em; color: #3498db; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; margin-bottom: 10px; }
         .feedback-text { font-size: 1.1em; color: #ddd; line-height: 1.5; font-style: italic; }
+        
+        .time-badge { display: inline-block; background: #222; border: 1px solid #444; color: #aaa; padding: 8px 15px; border-radius: 8px; font-size: 0.9em; font-family: monospace; margin-top: 15px; }
     </style>
 </head>
 <body>
 
 <div id="home-page">
     <h1>Concorso Arena</h1>
-    <p class="subtitle">Simulatore Ufficiale RIPAM 2026. Non fare prigionieri.</p>
+    <p class="subtitle">Simulatore Ufficiale RIPAM 2026. La graduatoria ti aspetta.</p>
     
     <div class="stats-grid">
         <div class="stat-box">
@@ -90,28 +92,23 @@
 
     <button class="btn-start" onclick="iniziaSessione()">Entra in Trincea (25 Q)</button>
 
-    <!-- DOSSIER OPERATIVO -->
     <div class="briefing-box">
         <div class="briefing-title">Dossier Operativo RIPAM 3997</div>
-        
         <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">🎯 Cosa nasconde questo database? <span class="arrow">▼</span></div>
-            <div class="faq-a">Non troverai le solite definizioni da manuale. Ti scontrerai con <strong>Amministrativo, TUEL, Appalti (D.Lgs 36/23), GDPR, Penale e Logica RIPAM avanzata</strong>. Tutte trappole ingegnerizzate per farti scivolare.</div>
+            <div class="faq-a">Non troverai definizioni da manuale. Ti scontrerai con <strong>Amministrativo, TUEL, Appalti (D.Lgs 36/23), GDPR, Penale e Logica RIPAM avanzata</strong>. Trappole ingegnerizzate per simulare il vero esame.</div>
         </div>
-        
         <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">🩸 Qual è il vero livello di difficoltà? <span class="arrow">▼</span></div>
-            <div class="faq-a">Spietato. Abbiamo tarato i distrattori (le risposte errate) per sembrare dannatamente corrette. La soglia minima di idoneità qui dentro è l'<strong>85%</strong>. Se cerchi rassicurazioni, vai altrove. Qui si suda.</div>
+            <div class="faq-a">Estremamente tecnico. Abbiamo tarato i distrattori per sembrare corretti. La soglia minima di idoneità è l'<strong>85%</strong>. Non si fanno sconti.</div>
         </div>
-        
         <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">⏳ Quanto manca all'esame? <span class="arrow">▼</span></div>
-            <div class="faq-a">Il tempo delle scuse è scaduto. La macchina ministeriale sta già stampando le convocazioni. Ogni sessione saltata oggi è un posto in graduatoria regalato al tuo vicino di banco. L'orologio ticchetta.</div>
+            <div class="faq-a">Ogni giorno perso è un vantaggio per i tuoi concorrenti. Le convocazioni sono alle porte: ottimizza il tuo tempo e chiudi le lacune.</div>
         </div>
-
         <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">📡 Intelligence: Ultime sul Concorso <span class="arrow">▼</span></div>
-            <div class="faq-a"><strong>ALLERTA MASSIMA:</strong> Voci dai palazzi confermano che molto probabilmente <strong>NON ci sarà la pubblicazione della banca dati ufficiale</strong> prima del test. Sarà un salto nel buio. Chi non ha una preparazione trasversale verrà massacrato.</div>
+            <div class="faq-a">Con altissima probabilità <strong>NON ci sarà la pubblicazione della banca dati ufficiale</strong> prima del test. Servirà una preparazione trasversale reale, non mnemonica.</div>
         </div>
     </div>
 </div>
@@ -6747,6 +6744,7 @@ const databaseQuiz = [
 ];
 const STORAGE_KEY = 'concorso_progres_2026';
 const SESSION_KEY = 'concorso_active_session_2026';
+const MAX_TIME_SECONDS = 25 * 60; // 25 minuti
 
 let domandeViste = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 let sessionPool = [];
@@ -6754,19 +6752,17 @@ let sessionIdx = 0;
 let sessionAnswers = [];
 let domandaCorrente = null;
 let timerInterval;
-let timeLeft = 25 * 60;
+let timeLeft = MAX_TIME_SECONDS;
 
 document.getElementById('db-total').innerText = databaseQuiz.length;
 
 function toggleFaq(element) {
-    // Chiude gli altri aperti per mantenere ordine
     document.querySelectorAll('.faq-q').forEach(q => {
         if (q !== element) {
             q.classList.remove('active');
             q.nextElementSibling.classList.remove('open');
         }
     });
-    // Apre/chiude quello cliccato
     element.classList.toggle('active');
     element.nextElementSibling.classList.toggle('open');
 }
@@ -6813,7 +6809,7 @@ function iniziaSessione() {
         alert("🎉 INCREDIBILE! HAI SVUOTATO L'ARSENALE! 🎉\n\nHai affrontato tutte le " + databaseQuiz.length + " domande del database.\nIl simulatore verrà resettato.");
         domandeViste = []; localStorage.removeItem(STORAGE_KEY); distruggiStatoSessione(); location.reload(); return;
     }
-    sessionIdx = 0; sessionAnswers = []; timeLeft = 25 * 60; salvaStatoSessione();
+    sessionIdx = 0; sessionAnswers = []; timeLeft = MAX_TIME_SECONDS; salvaStatoSessione();
     document.getElementById('home-page').style.display = 'none'; document.getElementById('quiz-container').style.display = 'block';
     startTimer(); caricaDomanda();
 }
@@ -6874,32 +6870,58 @@ function prossimaDomanda() { sessionIdx++; salvaStatoSessione(); caricaDomanda()
 
 function fineSessione(titolo) {
     clearInterval(timerInterval); distruggiStatoSessione();
-    let totalQuestions = sessionPool.length; let sessionScore = sessionAnswers.filter(a => a && a.correct).length;
-    let percentage = (sessionScore / totalQuestions) * 100; let exactPercentage = parseFloat(percentage.toFixed(2));
+    
+    // Calcolo del Tempo Impiegato
+    let timeUsed = MAX_TIME_SECONDS - timeLeft;
+    let minsUsed = Math.floor(timeUsed / 60);
+    let secsUsed = timeUsed % 60;
+    let timeString = `${minsUsed}m e ${secsUsed < 10 ? '0' : ''}${secsUsed}s`;
+
+    let totalQuestions = sessionPool.length; 
+    let sessionScore = sessionAnswers.filter(a => a && a.correct).length;
+    let percentage = (sessionScore / totalQuestions) * 100; 
+    let exactPercentage = parseFloat(percentage.toFixed(2));
     let passed = exactPercentage >= 85;
-    let color = passed ? '#27ae60' : '#c0392b'; let statusText = passed ? 'IDONEITÀ SUPERATA 🏆' : 'NON IDONEO ❌';
+    
+    let color = passed ? '#27ae60' : '#c0392b'; 
+    let statusText = passed ? 'IDONEITÀ RAGGIUNTA 🏆' : 'SOTTO SOGLIA ❌';
 
     let erroriMateria = {};
     sessionAnswers.forEach(a => { if (a && !a.correct) erroriMateria[a.materia] = (erroriMateria[a.materia] || 0) + 1; });
+    
     let peggiorMateria = "Nessuna, sei perfetto!"; let maxErrori = 0;
     for (const [mat, err] of Object.entries(erroriMateria)) { if (err > maxErrori) { maxErrori = err; peggiorMateria = mat; } }
 
-    const msgSuccesso = [`Sei passato. Ma se sbagli ancora su <strong>${peggiorMateria}</strong>, in aula ti bocciano. Attento.`, `Idoneo. Ottimo lavoro. Proteggi i fianchi su <strong>${peggiorMateria}</strong> e il posto è tuo.`, `Sbarramento superato. L'unico tuo vero nemico è <strong>${peggiorMateria}</strong>.`];
-    const msgFallimento = [`Bocciato. L'algoritmo non perdona. Sanguini troppo su <strong>${peggiorMateria}</strong>. Rientra e studia.`, `Sotto soglia. ❌ Con questi errori su <strong>${peggiorMateria}</strong> sei fuori graduatoria. Sveglia.`, `Hai mancato l'85%. Hai regalato il tuo posto a causa di <strong>${peggiorMateria}</strong>. Riprova. Se hai le palle.`];
+    const msgSuccesso = [
+        `Un punteggio solido, ben fatto! Tuttavia, i dati indicano che <strong>${peggiorMateria}</strong> necessita ancora di attenzione. In sede d'esame non faranno sconti. Continua a spingere.`, 
+        `Ottimo lavoro, sei ampiamente in zona di sicurezza. Copri le tue lacune residue in <strong>${peggiorMateria}</strong> e la graduatoria finale sarà tua. Avanti così.`, 
+        `Sbarramento superato con successo. Il tuo unico vero ostacolo verso l'eccellenza rimane <strong>${peggiorMateria}</strong>. Limiamo questo dettaglio e sarai imbattibile.`
+    ];
     
-    let feedbackCasuale = (sessionScore === totalQuestions) ? "PERFEZIONE ASSOLUTA. Sei un mostro." : (passed ? msgSuccesso[Math.floor(Math.random() * msgSuccesso.length)] : msgFallimento[Math.floor(Math.random() * msgFallimento.length)]);
+    const msgFallimento = [
+        `Non ci siamo ancora. L'algoritmo è spietato e i dati parlano chiaro: stai perdendo troppi punti in <strong>${peggiorMateria}</strong>. Analizza gli errori, respira e riprova. Puoi fare di meglio.`, 
+        `Questa performance rischia di costarti caro. Le tue insicurezze su <strong>${peggiorMateria}</strong> ti stanno frenando. Usa questa simulazione come campanello d'allarme. Ritorna sui libri e riprova.`, 
+        `Obiettivo fallito. Stai lasciando punti preziosi sul campo a causa di <strong>${peggiorMateria}</strong>. Non regalare il tuo posto agli altri. Resetta la mente, analizza le soluzioni e torna in arena.`
+    ];
+    
+    let feedbackCasuale = (sessionScore === totalQuestions) ? "PERFEZIONE ASSOLUTA. 100% netto. Nessun punto debole rilevato. Continua a mantenere questo standard e non avrai rivali." : (passed ? msgSuccesso[Math.floor(Math.random() * msgSuccesso.length)] : msgFallimento[Math.floor(Math.random() * msgFallimento.length)]);
 
     document.getElementById('quiz-container').innerHTML = `
         <div style="text-align:center;">
             <h1 style="color: ${color}; font-size: 2.2em; text-transform: uppercase;">${statusText}</h1>
             <p style="font-size: 1.1em; color: #aaa; margin-top: -10px;">${titolo}</p>
-            <div style="font-size:4.5em; color:${color}; font-weight:900; margin:15px 0;">${exactPercentage}%</div>
-            <p style="font-size: 1.2em; margin-bottom: 25px; color: #fff;">Esatte: <strong>${sessionScore}</strong> su <strong>${totalQuestions}</strong></p>
+            
+            <div style="font-size:4.5em; color:${color}; font-weight:900; margin:15px 0 5px 0;">${exactPercentage}%</div>
+            
+            <div class="time-badge">⏱️ Tempo impiegato: ${timeString}</div>
+            
+            <p style="font-size: 1.2em; margin: 25px 0; color: #fff;">Esatte: <strong>${sessionScore}</strong> su <strong>${totalQuestions}</strong></p>
+            
             <div class="feedback-box">
                 <div class="feedback-title">Analisi del Mentore 🧠</div>
                 <div class="feedback-text">${feedbackCasuale}</div>
             </div>
-            <button class="btn-start" style="background: #3498db; margin-top: 15px;" onclick="location.reload()">Torna al Quartier Generale</button>
+            <button class="btn-start" style="background: #3498db; margin-top: 15px;" onclick="location.reload()">Nuova Simulazione</button>
         </div>
     `;
 }
