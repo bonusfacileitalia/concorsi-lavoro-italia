@@ -6718,36 +6718,69 @@ const databaseQuiz = [
     }
 ];
 const STORAGE_KEY = 'concorso_progres_2026';
+const SESSION_KEY = 'concorso_active_session_2026';
+
 let domandeViste = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 let sessionPool = [];
 let sessionIdx = 0;
-let sessionScore = 0; 
-let erroriMateria = {};
-let bufferMaterie = [];
+let sessionAnswers = []; // Traccia {correct: bool, materia: string} per ogni domanda
 let domandaCorrente = null;
 let timerInterval;
 let timeLeft = 25 * 60;
 
-// MOSTRA SOLO IL TOTALE DEL DATABASE NELLA HOME
 document.getElementById('db-total').innerText = databaseQuiz.length;
 
+// FUNZIONI DI SCATOLA NERA (Salvataggio in tempo reale)
+function salvaStatoSessione() {
+    localStorage.setItem(SESSION_KEY, JSON.stringify({
+        pool: sessionPool,
+        idx: sessionIdx,
+        answers: sessionAnswers,
+        time: timeLeft
+    }));
+}
+
+function distruggiStatoSessione() {
+    localStorage.removeItem(SESSION_KEY);
+}
+
+// AL CARICAMENTO DELLA PAGINA: C'è una sessione appesa?
+window.onload = function() {
+    let savedSession = JSON.parse(localStorage.getItem(SESSION_KEY));
+    if (savedSession && savedSession.pool && savedSession.time > 0 && savedSession.idx < savedSession.pool.length) {
+        // Ripristina tutto!
+        sessionPool = savedSession.pool;
+        sessionIdx = savedSession.idx;
+        sessionAnswers = savedSession.answers || [];
+        timeLeft = savedSession.time;
+        
+        document.getElementById('home-page').style.display = 'none';
+        document.getElementById('quiz-container').style.display = 'block';
+        startTimer();
+        caricaDomanda();
+    }
+};
+
 function iniziaSessione() {
-    // Il "cervello" filtra comunque in base a domandeViste (memoria invisibile)
     let pool = databaseQuiz.map((q, i) => i).filter(i => !domandeViste.includes(i));
     pool.sort(() => Math.random() - 0.5);
     sessionPool = pool.slice(0, 25);
     
-    // AVVISO FINALE QUANDO HAI FATTO TUTTE E 600 LE DOMANDE
     if (sessionPool.length === 0) {
-        alert("🎉 INCREDIBILE! HAI SVUOTATO L'ARSENALE! 🎉\n\nHai affrontato con successo tutte le " + databaseQuiz.length + " domande del database.\nIl simulatore verrà resettato per farti ricominciare il giro. Sei un mostro!");
+        alert("🎉 INCREDIBILE! HAI SVUOTATO L'ARSENALE! 🎉\n\nHai affrontato con successo tutte le " + databaseQuiz.length + " domande del database.\nIl simulatore verrà resettato.");
         domandeViste = [];
         localStorage.removeItem(STORAGE_KEY);
+        distruggiStatoSessione();
         location.reload();
         return;
     }
 
-    sessionScore = 0; 
-    erroriMateria = {};
+    sessionIdx = 0;
+    sessionAnswers = [];
+    timeLeft = 25 * 60;
+    
+    salvaStatoSessione();
+
     document.getElementById('home-page').style.display = 'none';
     document.getElementById('quiz-container').style.display = 'block';
     
@@ -6761,6 +6794,9 @@ function startTimer() {
         let mins = Math.floor(timeLeft / 60);
         let secs = timeLeft % 60;
         document.getElementById('timer').innerText = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        
+        salvaStatoSessione(); // Salva il tempo ogni secondo!
+        
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
             fineSessione("TEMPO SCADUTO!");
@@ -6792,7 +6828,12 @@ function caricaDomanda() {
         return { testo: testo, isCorrect: (indiceOriginale === domandaCorrente.a) };
     });
     
-    opzioniMix.sort(() => Math.random() - 0.5);
+    // Lo shuffle va fatto solo se non abbiamo ancora risposto a questa domanda
+    // Se ricarichiamo la pagina dopo aver risposto, teniamo tutto com'è per non creare glitch visivi
+    if (!sessionAnswers[sessionIdx]) {
+        opzioniMix.sort(() => Math.random() - 0.5);
+    }
+    
     domandaCorrente.indiceCorrettoAttuale = opzioniMix.findIndex(o => o.isCorrect);
 
     opzioniMix.forEach((opt, i) => {
@@ -6802,6 +6843,17 @@ function caricaDomanda() {
         div.onclick = () => controllaRisposta(i, div);
         container.appendChild(div);
     });
+
+    // SISTEMA ANTI-CHEAT: Se l'utente ha aggiornato la pagina DOPO aver risposto
+    if (sessionAnswers[sessionIdx] !== undefined) {
+        const opzioni = document.querySelectorAll('.option');
+        opzioni.forEach(o => o.onclick = null); // Blocca click
+        opzioni[domandaCorrente.indiceCorrettoAttuale].classList.add('correct');
+        
+        document.getElementById('explanation-box').innerHTML = `<strong>ANALISI:</strong> ${domandaCorrente.e}`;
+        document.getElementById('explanation-box').style.display = 'block';
+        document.getElementById('next-btn').style.display = 'block';
+    }
 }
 
 function controllaRisposta(index, element) {
@@ -6809,22 +6861,26 @@ function controllaRisposta(index, element) {
     opzioni.forEach(o => o.onclick = null);
 
     let mat = domandaCorrente.materia || "Materia Generale";
+    let isCorrect = (index === domandaCorrente.indiceCorrettoAttuale);
 
-    if (index === domandaCorrente.indiceCorrettoAttuale) {
+    if (isCorrect) {
         element.classList.add('correct');
-        sessionScore++; 
     } else {
         element.classList.add('wrong');
         opzioni[domandaCorrente.indiceCorrettoAttuale].classList.add('correct');
-        erroriMateria[mat] = (erroriMateria[mat] || 0) + 1;
     }
 
-    // MEMORIA INVISIBILE: Salva in background
+    // Registra la risposta nella sessione
+    sessionAnswers[sessionIdx] = { correct: isCorrect, materia: mat };
+
+    // Registra come "vista" nel database globale
     const qIdx = sessionPool[sessionIdx];
     if (!domandeViste.includes(qIdx)) {
         domandeViste.push(qIdx);
         localStorage.setItem(STORAGE_KEY, JSON.stringify(domandeViste));
     }
+
+    salvaStatoSessione(); // Salva lo stato immediatamente
 
     document.getElementById('explanation-box').innerHTML = `<strong>ANALISI:</strong> ${domandaCorrente.e}`;
     document.getElementById('explanation-box').style.display = 'block';
@@ -6833,19 +6889,29 @@ function controllaRisposta(index, element) {
 
 function prossimaDomanda() {
     sessionIdx++;
+    salvaStatoSessione(); // Salva il passaggio alla nuova domanda
     caricaDomanda();
 }
 
 function fineSessione(titolo) {
     clearInterval(timerInterval);
+    distruggiStatoSessione(); // Svuota la sessione così al prossimo F5 torna alla Home
     
     let totalQuestions = sessionPool.length;
+    let sessionScore = sessionAnswers.filter(a => a && a.correct).length;
     let percentage = (sessionScore / totalQuestions) * 100;
     let exactPercentage = parseFloat(percentage.toFixed(2));
     let passed = exactPercentage >= 85;
     
     let color = passed ? '#27ae60' : '#c0392b';
     let statusText = passed ? 'IDONEITÀ SUPERATA 🏆' : 'NON IDONEO ❌';
+
+    let erroriMateria = {};
+    sessionAnswers.forEach(a => {
+        if (a && !a.correct) {
+            erroriMateria[a.materia] = (erroriMateria[a.materia] || 0) + 1;
+        }
+    });
 
     let peggiorMateria = "Nessuna, sei stato perfetto!";
     let maxErrori = 0;
@@ -6857,20 +6923,20 @@ function fineSessione(titolo) {
     }
 
     const msgSuccesso = [
-        `Hai superato lo sbarramento, Socio! 🎯 Un punteggio solido. Se proprio vogliamo essere pignoli, fai attenzione a <strong>${peggiorMateria}</strong>. Ma per oggi, goditi la vittoria. Ti stiamo portando dritto alla firma del contratto! 😉`,
-        `La commissione muta! 🤫 Ottimo lavoro. Non abbassare la guardia su <strong>${peggiorMateria}</strong> (ci hai lasciato qualche punto), ma sei in zona sicurezza. Il 2026 è tuo. Avanti tutta! 🔥`,
-        `Idoneità in tasca! 💸 Hai dominato l'arena. L'unico leggero neo è stato <strong>${peggiorMateria}</strong>. Rimani concentrato, stiamo limando i dettagli per farti arrivare tra i primissimi in graduatoria. Bravissimo! 😈`
+        `Hai superato lo sbarramento, Socio! 🎯 Un punteggio solido. Se proprio vogliamo essere pignoli, fai attenzione a <strong>${peggiorMateria}</strong>. Ma per oggi, goditi la vittoria.`,
+        `La commissione muta! 🤫 Ottimo lavoro. Non abbassare la guardia su <strong>${peggiorMateria}</strong>, ma sei in zona sicurezza. Avanti tutta! 🔥`,
+        `Idoneità in tasca! 💸 Hai dominato l'arena. L'unico leggero neo è stato <strong>${peggiorMateria}</strong>. Stiamo limando i dettagli. Bravissimo! 😈`
     ];
 
     const msgFallimento = [
-        `Non ci siamo ancora, Capo. Questa volta sei scivolato, e l'algoritmo parla chiaro: sanguini parecchio su <strong>${peggiorMateria}</strong>. Meglio sbagliare qui con noi che davanti alla commissione. Rileggi le spiegazioni, respira e rientra in trincea. Ti copriamo noi! 🏴‍☠️`,
-        `Sotto soglia. ❌ Ma niente panico, siamo qui per coccolarti e farti crescere. Il tuo tallone d'Achille oggi è stato chiaramente <strong>${peggiorMateria}</strong>. Usa questo scivolone come bussola per il tuo prossimo ripasso. Non si molla un centimetro! 😉`,
-        `Hai mancato l'85%, Socio. Ma è proprio da queste sberle che si costruisce l'idoneità vera. Hai lasciato troppi punti per strada su <strong>${peggiorMateria}</strong>. Dai, bevi un bicchiere d'acqua, azzera la mente e torna nell'arena. Il posto fisso ti aspetta. 😈`
+        `Non ci siamo ancora, Capo. Questa volta sei scivolato: sanguini parecchio su <strong>${peggiorMateria}</strong>. Rileggi le spiegazioni, respira e rientra in trincea. Ti copriamo noi! 🏴‍☠️`,
+        `Sotto soglia. ❌ Ma niente panico. Il tuo tallone d'Achille oggi è stato chiaramente <strong>${peggiorMateria}</strong>. Usa questo scivolone come bussola. Non si molla! 😉`,
+        `Hai mancato l'85%, Socio. Hai lasciato troppi punti per strada su <strong>${peggiorMateria}</strong>. Bevi un bicchiere d'acqua, azzera la mente e torna nell'arena. 😈`
     ];
 
     let feedbackCasuale = "";
     if (sessionScore === totalQuestions) {
-        feedbackCasuale = "PERFEZIONE ASSOLUTA. 🌟 100% netto. Nessun punto debole rilevato. Sei una macchina da guerra, continua così e la commissione ti chiederà l'autografo! 💸";
+        feedbackCasuale = "PERFEZIONE ASSOLUTA. 🌟 100% netto. Nessun punto debole rilevato. Sei una macchina da guerra! 💸";
     } else if (passed) {
         feedbackCasuale = msgSuccesso[Math.floor(Math.random() * msgSuccesso.length)];
     } else {
@@ -6890,7 +6956,7 @@ function fineSessione(titolo) {
                 <div class="feedback-text">${feedbackCasuale}</div>
             </div>
 
-            <button class="btn-start" style="background: #3498db; box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3); margin-top: 15px;" onclick="location.reload()">Torna al Quartier Generale</button>
+            <button class="btn-start" style="background: #3498db; margin-top: 15px;" onclick="location.reload()">Torna al Quartier Generale</button>
         </div>
     `;
 }
