@@ -402,7 +402,24 @@
         function startQuiz() {
             document.getElementById('start-screen').classList.add('hidden');
             document.getElementById('quiz-screen').classList.remove('hidden');
-            quizSessione = shuffle([...databaseQuiz]).slice(0, 13);
+            
+            // --- INIZIO TRACKING FANTASMA (Senza Login) ---
+            let seenQuestions = JSON.parse(localStorage.getItem('formez_incubo_visti')) || [];
+            let availableQuestions = databaseQuiz.filter(q => !seenQuestions.includes(q.q));
+            
+            if (availableQuestions.length < 13) {
+                alert("⚠️ ATTENZIONE: Hai esaurito le domande inedite del database gratuito. Al concorso non c'è il tasto 'Riprova'. Il sistema ripartirà da zero, ma senza il manuale stai solo perdendo tempo.");
+                seenQuestions = [];
+                availableQuestions = [...databaseQuiz];
+            }
+            
+            quizSessione = shuffle([...availableQuestions]).slice(0, 13);
+            
+            // Marchiamo a fuoco queste domande nel browser dell'utente
+            quizSessione.forEach(q => seenQuestions.push(q.q));
+            localStorage.setItem('formez_incubo_visti', JSON.stringify(seenQuestions));
+            // --- FINE TRACKING ---
+
             score = 0; currentQuestionIndex = 0; secondsElapsed = 0;
             timerInterval = setInterval(() => {
                 secondsElapsed++;
