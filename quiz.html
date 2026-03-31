@@ -457,7 +457,9 @@ function caricaDomanda() {
             opzioni[ans.clickedIndex].classList.add('wrong');
             opzioni[domandaCorrente.indiceCorrettoAttuale].classList.add('correct');
         }
-        document.getElementById('explanation-box').innerHTML = `<strong>Perché hai sbagliato:</strong><br>${domandaCorrente.e}`;
+        let isRight = (typeof isCorrect !== 'undefined') ? isCorrect : (typeof ans !== 'undefined' ? ans.correct : false);
+    let labelHTML = isRight ? "<strong style='color: var(--success); text-transform: uppercase;'>✔️ Risposta Esatta:</strong>" : "<strong style='color: var(--danger); text-transform: uppercase; font-size: 1.1em;'>❌ Perché hai sbagliato:</strong>";
+    document.getElementById('explanation-box').innerHTML = `${labelHTML}<br><br>${domandaCorrente.e}`;
         document.getElementById('explanation-box').style.display = 'block';
         document.getElementById('next-btn').style.display = 'block';
     }
@@ -490,7 +492,9 @@ function controllaRisposta(index, element) {
     }
     salvaStatoSessione();
     
-    document.getElementById('explanation-box').innerHTML = `<strong>Perché hai sbagliato:</strong><br>${domandaCorrente.e}`;
+    let isRight = (typeof isCorrect !== 'undefined') ? isCorrect : (typeof ans !== 'undefined' ? ans.correct : false);
+    let labelHTML = isRight ? "<strong style='color: var(--success); text-transform: uppercase;'>✔️ Risposta Esatta:</strong>" : "<strong style='color: var(--danger); text-transform: uppercase; font-size: 1.1em;'>❌ Perché hai sbagliato:</strong>";
+    document.getElementById('explanation-box').innerHTML = `${labelHTML}<br><br>${domandaCorrente.e}`;
     document.getElementById('explanation-box').style.display = 'block';
     document.getElementById('next-btn').style.display = 'block';
 }
