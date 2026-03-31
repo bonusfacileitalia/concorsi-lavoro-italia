@@ -133,11 +133,11 @@
         <div class="subjects-board-title">Aree Normative Sottoposte a Verifica</div>
         <div class="subjects-grid">
             <div class="subject-tag"><span>⚖️</span> Diritto Amministrativo & L. 241/90</div>
-            <div class="subject-tag"><span>🏛️</span> Ordinamento Enti Locali (TUEL)</div>
+            <div class="subject-tag"><span>🏛️</span> Pubblico Impiego & Anticorruzione</div>
             <div class="subject-tag"><span>🏗️</span> Codice Appalti (D.Lgs 36/23)</div>
-            <div class="subject-tag"><span>💼</span> P.I. & Anticorruzione (L. 190/12)</div>
-            <div class="subject-tag"><span>🧠</span> Logica RIPAM & Diritto UE</div>
-            <div class="subject-tag"><span>💶</span> Fiscalità, Privacy (GDPR) & PNRR</div>
+            <div class="subject-tag"><span>🧠</span> Logica RIPAM & Ragionamento</div>
+            <div class="subject-tag"><span>💻</span> Informatica & C.A.D.</div>
+            <div class="subject-tag"><span>🇬🇧</span> Inglese Tecnico (Livello B2)</div>
         </div>
     </div>
 
@@ -196,7 +196,7 @@
 const databaseQuiz = [
     // --- AMMINISTRATIVO ---
     { "q": "Ai sensi dell'art. 6 della L. 241/90, l'organo competente all'adozione del provvedimento finale:", "options": ["Deve conformarsi alle risultanze dell'istruttoria condotta dal responsabile del procedimento.", "Può discostarsi dalle risultanze istruttorie fornendo una motivazione analitica nell'atto finale.", "È libero di decidere in modo difforme senza dover esplicitare le ragioni della scelta effettuata.", "Non può emettere il provvedimento in presenza di un parere tecnico negativo del responsabile."], "a": 1, "e": "L'organo decisionale può ribaltare l'istruttoria, ma l'obbligo di motivazione è il limite alla sua discrezionalità.", "materia": "Diritto Amministrativo" },
-    { "q": "In materia di SCIA, decorso il termine di 60 giorni per i poteri inibitori ordinari, la PA:", "options": ["Perde ogni potere di intervento sulla legittimità dell'attività segnalata dal soggetto privato.", "Può intervenire solo se ricorrono i presupposti per l'annullamento d'ufficio ex art. 21-nonies.", "Has la facoltà di sospendere l'attività a tempo indeterminato per motivi di semplice opportunità.", "Deve obbligatoriamente avviare un nuovo procedimento di autorizzazione espresso per legge."], "a": 1, "e": "Dopo i 60 giorni, la SCIA si stabilizza: la PA può agire solo con i poteri di autotutela (12 mesi + interesse pubblico).", "materia": "Diritto Amministrativo" },
+    { "q": "In materia di SCIA, decorso il termine di 60 giorni per i poteri inibitori ordinari, la PA:", "options": ["Perde ogni potere di intervento sulla legittimità dell'attività segnalata dal soggetto privato.", "Può intervenire solo se ricorrono i presupposti per l'annullamento d'ufficio ex art. 21-nonies.", "Ha la facoltà di sospendere l'attività a tempo indeterminato per motivi di semplice opportunità.", "Deve obbligatoriamente avviare un nuovo procedimento di autorizzazione espresso per legge."], "a": 1, "e": "Dopo i 60 giorni, la SCIA si stabilizza: la PA può agire solo con i poteri di autotutela (12 mesi + interesse pubblico).", "materia": "Diritto Amministrativo" },
     { "q": "L'accesso civico generalizzato (FOIA) può essere rifiutato per tutelare interessi commerciali se:", "options": ["L'impresa ha presentato una generica opposizione scritta entro i termini previsti dalla legge.", "L'ostensione dei dati determina un pregiudizio concreto e provato alla competitività dell'azienda.", "L'amministrazione ritiene che il diritto alla riservatezza prevalga sempre sulla trasparenza totale.", "I documenti richiesti contengono esclusivamente dati anagrafici dei soci e degli amministratori."], "a": 1, "e": "Il rifiuto del FOIA non è automatico: serve il 'test del pregiudizio concreto' per bilanciare trasparenza e privacy.", "materia": "Trasparenza" },
     { "q": "Un provvedimento amministrativo adottato in violazione delle norme sul procedimento è annullabile se:", "options": ["Si tratta di un atto vincolato e la PA dimostra che il contenuto non poteva essere diverso.", "Il privato dimostra che la violazione formale ha influito sulla correttezza della decisione finale.", "L'atto è discrezionale e l'omissione formale non ha permesso al privato di fornire il suo apporto.", "La comunicazione di avvio del procedimento è stata inviata con un ritardo superiore a dieci giorni."], "a": 2, "e": "Se l'atto è discrezionale, la forma è sostanza. Se è vincolato, il vizio formale spesso non porta all'annullamento.", "materia": "Diritto Amministrativo" },
     { "q": "Il diritto di accesso documentale (L. 241/90) è riconosciuto a chiunque abbia un interesse:", "options": ["Generico e finalizzato al controllo diffuso sulla correttezza dell'azione amministrativa.", "Diretto, concreto e attuale, corrispondente ad una situazione giuridicamente tutelata.", "Esclusivamente legato alla propria posizione di cittadino residente nel comune interessato.", "Politico o sindacale volto a verificare l'efficienza complessiva degli uffici pubblici."], "a": 1, "e": "L'accesso 241/90 richiede la dimostrazione che il documento serva per difendere un diritto o interesse specifico.", "materia": "Diritto Amministrativo" },
@@ -223,7 +223,7 @@ const databaseQuiz = [
     { "q": "Il Whistleblowing (D.Lgs 24/2023) garantisce al segnalante di illeciti:", "options": ["Un premio economico proporzionato al valore del danno erariale recuperato.", "La riservatezza dell'identità e la protezione da misure ritorsive sul lavoro.", "L'immunità totale per qualsiasi reato commesso durante lo svolgimento del servizio.", "La promozione automatica al livello retributivo superiore per merito civile."], "a": 1, "e": "In Italia non ci sono premi in denaro per i segnalanti.", "materia": "Anticorruzione" },
     { "q": "Il Pantouflage (revolving doors) prevede un divieto di assunzione per:", "options": ["Un anno dalla cessazione del rapporto di lavoro con la Pubblica Amministrazione.", "Tre anni dalla cessazione del servizio per i dipendenti con poteri autoritativi.", "Cinque anni, esteso a tutti i dipendenti pubblici indipendentemente dal ruolo.", "Sempre, qualora l'ente privato operi in regime di monopolio o concessione pubblica."], "a": 1, "e": "Blocco di 3 anni per prevenire corruzioni post-impiego.", "materia": "Anticorruzione" },
     { "q": "Il Codice di Comportamento (DPR 62/2013) vieta regali di valore superiore a:", "options": ["Cinquanta euro, anche se effettuati in occasione di festività o ricorrenze.", "Centocinquanta euro, limite oltre il quale il regalo deve essere restituito.", "Trecento euro, purché il regalo non sia finalizzato a influenzare l'attività.", "Nessun limite è previsto, purché il regalo sia destinato all'intero ufficio."], "a": 1, "e": "Regola dei 150 euro.", "materia": "Pubblico Impiego" },
-    { "q": "L'accesso civico semplice (D.Lgs 33/2013) riguarda documenti che:", "options": ["L'amministrazione ha l'obbligo di pubblicare nella sezione Trasparenza.", "Contengono dati sensibili relativi allo stato di salute dei dipendenti pubblici.", "Sono coperti dal segreto di Stato o da vincoli di riservatezza militare.", "Il cittadino desidera conoscere per finalità di studio o ricerca storica."], "a": 0, "e": "Semplice = obbligo di pubblicazione online non rispettato.", "materia": "Trasparenza" },
+    { "q": "L'accesso civico semplice (D.Lgs 33/2013) riguarda documenti che:", "options": ["L'amministrazione ha l'obbligo di pubblicare nella sezione Trasparenza.", "Contengono dati sensibili relativi allo stato di salute dei dipendenti pubblici.", "Sono coperti dal segreto di Stato o da vincoli di riservatezza militare.", "Il cittadino desidera conoscere per finalità di studio o ricerca storica."], "a": 0, "e": "Semplice = obbligo di pubblicazione online non rispettato.", "materia": "Anticorruzione" },
     { "q": "In caso di condanna per delitto contro la PA, il dipendente pubblico:", "options": ["Viene sospeso obbligatoriamente dal servizio in attesa della sentenza definitiva.", "Può incorrere nella sanzione del licenziamento per giusta causa (art. 55-quater).", "Ha diritto a mantenere il posto di lavoro se risarcisce il danno d'immagine.", "Deve essere trasferito ad altro ufficio non operativo entro trenta giorni."], "a": 1, "e": "Chi ruba allo Stato rischia il licenziamento.", "materia": "Pubblico Impiego" },
     { "q": "L'incompatibilità nell'incarico pubblico (D.Lgs 39/2013) si risolve:", "options": ["Con la decadenza automatica e immediata dall'incarico appena conferito.", "Esercitando l'opzione tra l'incarico conferito e l'attività preesistente.", "Pagando una sanzione amministrativa pecuniaria stabilita dall'ANAC.", "Richiedendo una deroga speciale motivata al Dipartimento Funzione Pubblica."], "a": 1, "e": "Incompatibilità = scelta tra due cariche entro 15 giorni.", "materia": "Pubblico Impiego" },
     { "q": "La rotazione straordinaria del personale è una misura che scatta quando:", "options": ["Il dipendente ha maturato oltre dieci anni di servizio nel medesimo ufficio.", "Vi è l'avvio di un procedimento penale per reati di corruzione a carico.", "L'amministrazione deve ridurre i costi di gestione del personale nel triennio.", "Un ufficio non raggiunge gli obiettivi di performance stabiliti dal piano."], "a": 1, "e": "La rotazione straordinaria scatta per indagini penali.", "materia": "Anticorruzione" },
@@ -234,7 +234,7 @@ const databaseQuiz = [
     { "q": "Se piove, allora la strada è bagnata. Sappiamo che la strada NON è bagnata. Quindi:", "options": ["Potrebbe aver piovuto ma la strada si è asciugata molto velocemente.", "Certamente non ha piovuto, per la regola logica del modus tollens.", "Ha piovuto ma l'acqua è stata assorbita dal drenaggio dell'asfalto.", "Non possiamo trarre alcuna conclusione certa sulla pioggia caduta."], "a": 1, "e": "Modus Tollens: Non-B implica Non-A.", "materia": "Logica" },
     { "q": "Tutti i vincitori di concorso hanno studiato. Marco ha studiato. Ne consegue che:", "options": ["Marco vincerà sicuramente il concorso pubblico cui ha partecipato.", "Marco appartiene alla categoria di persone che potrebbero vincere il concorso.", "Non è possibile concludere con certezza che Marco vincerà il concorso.", "Chi studia vince sempre i concorsi banditi dalla Pubblica Amministrazione."], "a": 2, "e": "Errore classico: la premessa non garantisce la vittoria.", "materia": "Logica" },
     { "q": "Trova il numero mancante nella serie: 2 - 5 - 11 - 23 - ?", "options": ["Quarantacinque, applicando la progressione dei numeri primi esistenti.", "Quarantasette, raddoppiando il numero precedente e aggiungendo uno.", "Quarantanove, aggiungendo al numero precedente potenze di due crescenti.", "Cinquantuno, moltiplicando per tre e sottraendo uno alla cifra precedente."], "a": 1, "e": "(n * 2) + 1.", "materia": "Logica" },
-    { "q": "Individua l'intruso tra i seguenti termini: Monitor, Mouse, Stampante, Software.", "options": ["Monitor, in quanto periferica di output necessaria alla visualizzazione.", "Mouse, perché è l'unica periferica di input basata sul puntamento fisico.", "Stampante, essendo un dispositivo elettromeccanico di produzione cartacea.", "Software, poiché è l'unico elemento intangibile (logico) della lista."], "a": 3, "e": "Software è l'unico immateriale.", "materia": "Logica" },
+    { "q": "Individua l'intruso tra i seguenti termini: Monitor, Mouse, Stampante, Software.", "options": ["Monitor, in quanto periferica di output necessaria alla visualizzazione.", "Mouse, perché è l'unica periferica di input basata sul puntamento fisico.", "Stampante, essendo un dispositivo elettromeccanico di produzione cartacea.", "Software, poiché è l'unico elemento intangibile (logico) della lista."], "a": 3, "e": "Software è l'unico materiale immateriale.", "materia": "Informatica" },
     { "q": "Alcuni politici sono onesti. Tutti gli onesti sono altruisti. Quindi:", "options": ["Tutti i politici sono altruisti e agiscono per il bene della comunità.", "Alcuni politici sono altruisti, in quanto appartenenti alla categoria onesti.", "Nessun altruista può essere un politico impegnato nelle istituzioni.", "L'onestà è una condizione necessaria per fare politica nel sistema attuale."], "a": 1, "e": "Sillogismo: intersezione di categorie.", "materia": "Logica" },
 
     // --- INFO E ENG ---
@@ -257,8 +257,8 @@ const databaseQuiz = [
     { "q": "Il silenzio-assenso (Art. 20 L. 241/90) NON si applica a:", "options": ["Patrimonio culturale, ambiente, difesa, salute e pubblica sicurezza.", "Procedimenti per l'occupazione di suolo pubblico per attività ludiche.", "Istanze per l'erogazione di contributi economici sotto i mille euro.", "Richieste di copia di atti interni presentate da ex dipendenti."], "a": 0, "e": "Interessi sensibili = provvedimento espresso obbligatorio.", "materia": "Diritto Amministrativo" }
 ];
 
-const STORAGE_KEY = 'concorso_progres_v6';
-const SESSION_KEY = 'concorso_active_session_v6';
+const STORAGE_KEY = 'concorso_progres_v7';
+const SESSION_KEY = 'concorso_active_session_v7';
 
 let MAX_TIME_SECONDS = 0;
 let domandeViste = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
@@ -355,18 +355,18 @@ function preparaSessione(numQuestions, timeMinutes, modeFlag) {
 }
 
 function riavviaSessione() {
-    if (confirm("Attenzione: Questa azione interromperà la sessione corrente. I dati non salvati andranno persi. Procedere?")) {
-        let currentModeQuestions = sessionPool.length;
-        let currentModeMinutes = MAX_TIME_SECONDS / 60;
-        let flag = isExamMode;
+    if (confirm("Vuoi riavviare la sessione?")) {
+        let n = sessionPool.length;
+        let m = MAX_TIME_SECONDS / 60;
+        let f = isExamMode;
         clearInterval(timerInterval);
         distruggiStatoSessione();
-        preparaSessione(currentModeQuestions, currentModeMinutes, flag);
+        preparaSessione(n, m, f);
     }
 }
 
 function tornaAllaHome() {
-    if (confirm("Attenzione: Vuoi abbandonare la sessione e tornare al pannello principale?")) {
+    if (confirm("Tornare alla Home?")) {
         clearInterval(timerInterval);
         distruggiStatoSessione();
         location.reload();
