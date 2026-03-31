@@ -455,7 +455,7 @@ function caricaDomanda() {
             opzioni[ans.clickedIndex].classList.add('wrong');
             opzioni[domandaCorrente.indiceCorrettoAttuale].classList.add('correct');
         }
-        document.getElementById('explanation-box').innerHTML = `<strong>Riferimento Normativo/Dottrinale:</strong><br>${domandaCorrente.e}`;
+        document.getElementById('explanation-box').innerHTML = `<strong>Perché hai sbagliato:</strong><br>${domandaCorrente.e}`;
         document.getElementById('explanation-box').style.display = 'block';
         document.getElementById('next-btn').style.display = 'block';
     }
@@ -488,7 +488,7 @@ function controllaRisposta(index, element) {
     }
     salvaStatoSessione();
     
-    document.getElementById('explanation-box').innerHTML = `<strong>Riferimento Normativo/Dottrinale:</strong><br>${domandaCorrente.e}`;
+    document.getElementById('explanation-box').innerHTML = `<strong>Perché hai sbagliato:</strong><br>${domandaCorrente.e}`;
     document.getElementById('explanation-box').style.display = 'block';
     document.getElementById('next-btn').style.display = 'block';
 }
