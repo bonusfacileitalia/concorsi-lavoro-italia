@@ -3,234 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulatore Concorsi 2026 - Versione Camouflage</title>
+    <title>Simulatore Concorsi 2026 - Versione Elite</title>
     <style>
         :root { --primary: #1a252f; --accent: #2980b9; --success: #27ae60; --danger: #c0392b; --bg: #050505; --card: #111; --text: #e0e0e0; }
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px 0; }
-        #home-page { display: none; text-align: center; background: var(--card); padding: 40px; border-radius: 16px; border: 1px solid #222; max-width: 600px; width: 90%; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px 0; }
+        #home-page { text-align: center; background: var(--card); padding: 40px; border-radius: 16px; border: 1px solid #222; max-width: 600px; width: 90%; }
         h1 { color: #fff; font-size: 2.2em; text-transform: uppercase; font-weight: 800; margin-bottom: 10px; }
-        .stat-val { font-size: 2.2em; font-weight: 900; color: var(--accent); }
+        .stat-val { font-size: 2.2em; font-weight: 900; color: var(--accent); margin-bottom: 20px; }
         .mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 25px 0; }
-        .btn-start { background: linear-gradient(135deg, #2980b9, #2c3e50); color: white; border: none; padding: 15px; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase; width: 100%; }
+        .btn-start { background: linear-gradient(135deg, #2980b9, #2c3e50); color: white; border: none; padding: 15px; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase; width: 100%; transition: 0.3s; }
+        .btn-start:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(41,128,185,0.4); }
         .btn-exam { background: linear-gradient(135deg, #c0392b, #8e44ad); }
         #quiz-container { display: none; background: var(--card); padding: 40px; border-radius: 16px; max-width: 850px; width: 95%; border: 1px solid #222; }
         .timer { font-family: monospace; font-size: 1.6em; color: #fff; background: #1a1a1a; padding: 5px 15px; border-radius: 6px; border: 1px solid #333; }
         .materia-tag { color: var(--accent); font-size: 0.75em; text-transform: uppercase; font-weight: 800; margin-bottom: 15px; display: inline-block; padding: 4px 10px; background: rgba(41, 128, 185, 0.1); border-radius: 4px; }
         .question { font-size: 1.25em; margin-bottom: 30px; line-height: 1.6; color: #fff; }
-        .option { padding: 18px 20px; background: #161616; border: 1px solid #333; border-radius: 8px; cursor: pointer; margin-bottom: 10px; font-size: 0.95em; color: #bbb; }
-        .option:hover { background: #1c1c1c; border-color: #555; }
+        .option { padding: 18px 20px; background: #161616; border: 1px solid #333; border-radius: 8px; cursor: pointer; margin-bottom: 10px; font-size: 0.95em; color: #bbb; transition: 0.2s; }
+        .option:hover { background: #1c1c1c; border-color: #555; color: #fff; }
         .option.correct { background: rgba(39, 174, 96, 0.1) !important; border-color: var(--success) !important; color: #fff !important; }
         .option.wrong { background: rgba(192, 57, 43, 0.1) !important; border-color: var(--danger) !important; color: #fff !important; }
-        .explanation { margin-top: 20px; padding: 20px; background: #111; border-left: 4px solid var(--accent); display: none; color: #aaa; font-size: 0.9em; }
-        .btn-next { width: 100%; padding: 18px; background: var(--accent); color: white; border: none; border-radius: 8px; font-weight: 700; display: none; cursor: pointer; }
+        .explanation { margin-top: 20px; padding: 20px; background: #111; border-left: 4px solid var(--accent); display: none; color: #aaa; font-size: 0.9em; line-height: 1.6; }
+        .btn-next { width: 100%; padding: 18px; background: var(--accent); color: white; border: none; border-radius: 8px; font-weight: 700; display: none; cursor: pointer; text-transform: uppercase; }
+        .btn-manual { display: block; margin-top: 20px; color: var(--accent); text-decoration: none; font-size: 0.8em; font-weight: 700; text-transform: uppercase; border: 1px solid var(--accent); padding: 10px; border-radius: 6px; }
     </style>
 </head>
 <body>
 
 <div id="home-page">
     <h1>Centrale Concorsi</h1>
-    <p>Simulatore RIPAM 2026 - Algoritmo Anti-Intuizione</p>
+    <p>Simulatore RIPAM 2026 - Analisi Normativa</p>
     <div class="stat-val" id="db-total">50</div>
     <div class="mode-grid">
-        <button class="btn-start" onclick="preparaSessione(25, 25, false)">Test Sprint</button>
-        <button class="btn-start btn-exam" onclick="preparaSessione(50, 50, true)">Esame Full</button>
+        <button class="btn-start" onclick="preparaSessione(25, 25, false)">Test Sprint (25Q)</button>
+        <button class="btn-start btn-exam" onclick="preparaSessione(50, 50, true)">Esame Full (50Q)</button>
     </div>
+    <a href="https://toscano334.gumroad.com/l/nhrfnx" target="_blank" class="btn-manual">Acquisisci il Manuale Tecnico</a>
 </div>
 
 <div id="quiz-container">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-        <span id="current-q-idx">1</span>/<span id="total-q-count">50</span>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; border-bottom: 1px solid #222; padding-bottom: 10px;">
+        <span style="font-weight:700; color:#888;">QUESITO <span id="current-q-idx">1</span>/<span id="total-q-count">50</span></span>
         <div class="timer" id="timer">00:00</div>
     </div>
     <span id="materia-label" class="materia-tag"></span>
     <div class="question" id="question-text"></div>
     <div id="options-container"></div>
     <div class="explanation" id="explanation-box"></div>
-    <button class="btn-next" id="next-btn" onclick="prossimaDomanda()">Conferma</button>
+    <button class="btn-next" id="next-btn" onclick="prossimaDomanda()">Conferma Risposta</button>
 </div>
 
 <script>
 const databaseQuiz = [
-    // --- AMMINISTRATIVO (Opzioni Bilanciate) ---
-    {
-        "q": "Ai sensi dell'art. 6 della L. 241/90, qual è il potere dell'organo competente all'adozione del provvedimento finale rispetto all'istruttoria?",
-        "options": [
-            "Deve conformarsi obbligatoriamente alle risultanze dell'istruttoria condotta dal responsabile.",
-            "Può discostarsi dalle risultanze istruttorie fornendo una motivazione analitica nel provvedimento.",
-            "È libero di adottare una decisione difforme senza dover esplicitare le ragioni della scelta operata.",
-            "Non può in nessun caso emettere l'atto se il responsabile ha espresso un parere tecnico contrario."
-        ],
-        "a": 1,
-        "e": "L'organo decisionale può ribaltare l'istruttoria, ma l'obbligo di motivazione è il baluardo contro l'arbitrarietà.",
-        "materia": "Diritto Amministrativo"
-    },
-    {
-        "q": "In materia di SCIA, decorso il termine di 60 giorni per l'esercizio dei poteri inibitori ordinari, la Pubblica Amministrazione:",
-        "options": [
-            "Perde definitivamente ogni potere di intervento sulla legittimità dell'attività segnalata dal privato.",
-            "Può intervenire solo se ricorrono i presupposti per l'annullamento d'ufficio ex art. 21-nonies.",
-            "Ha la facoltà di sospendere l'attività a tempo indeterminato per semplici motivi di opportunità.",
-            "Deve obbligatoriamente avviare un nuovo procedimento di autorizzazione espresso per legge."
-        ],
-        "a": 1,
-        "e": "Dopo i 60 giorni, la SCIA si stabilizza: l'amministrazione può agire solo con i poteri di autotutela (12 mesi + interesse pubblico).",
-        "materia": "Diritto Amministrativo"
-    },
-    {
-        "q": "L'accesso civico generalizzato (FOIA) può essere rifiutato per tutelare gli interessi commerciali di un'impresa privata se:",
-        "options": [
-            "L'impresa ha presentato una generica opposizione scritta entro i termini previsti dalla legge.",
-            "L'ostensione dei dati determina un pregiudizio concreto e provato alla competitività dell'azienda.",
-            "L'amministrazione ritiene che il diritto alla riservatezza prevalga sempre sulla trasparenza totale.",
-            "I documenti richiesti contengono esclusivamente dati anagrafici dei soci e degli amministratori."
-        ],
-        "a": 1,
-        "e": "Il rifiuto del FOIA non è automatico: serve il 'test del pregiudizio concreto' per bilanciare trasparenza e privacy.",
-        "materia": "Trasparenza"
-    },
-    {
-        "q": "Un provvedimento amministrativo adottato in violazione delle norme sul procedimento (vizio formale) è annullabile se:",
-        "options": [
-            "Si tratta di un atto vincolato e la PA dimostra che il contenuto non poteva essere diverso.",
-            "Il privato dimostra che la violazione formale ha influito sulla correttezza della decisione finale.",
-            "L'atto è discrezionale e l'omissione formale non ha permesso al privato di fornire il suo apporto.",
-            "La comunicazione di avvio del procedimento è stata inviata con un ritardo superiore a dieci giorni."
-        ],
-        "a": 2,
-        "e": "Se l'atto è discrezionale, la forma è sostanza. Se è vincolato e il risultato è obbligato, il vizio formale non lo annulla.",
-        "materia": "Diritto Amministrativo"
-    },
-    {
-        "q": "Il diritto di accesso ai documenti amministrativi (L. 241/90) è riconosciuto a chiunque abbia un interesse:",
-        "options": [
-            "Generico e finalizzato al controllo diffuso sulla correttezza dell'azione amministrativa.",
-            "Diretto, concreto e attuale, corrispondente ad una situazione giuridicamente tutelata.",
-            "Esclusivamente legato alla propria posizione di cittadino residente nel comune interessato.",
-            "Politico o sindacale volto a verificare l'efficienza complessiva degli uffici pubblici."
-        ],
-        "a": 1,
-        "e": "L'accesso 241/90 non è per tutti: devi dimostrare che quel documento ti serve per difendere un tuo diritto specifico.",
-        "materia": "Diritto Amministrativo"
-    },
-    // --- APPALTI (Opzioni Bilanciate) ---
-    {
-        "q": "Secondo il Principio del Risultato (Art. 1 D.Lgs 36/2023), l'affidamento del contratto deve garantire:",
-        "options": [
-            "La massima partecipazione possibile di operatori economici, a prescindere dai tempi di esecuzione.",
-            "La massima tempestività e il miglior rapporto possibile tra qualità e prezzo per la collettività.",
-            "L'esclusivo risparmio di spesa per l'amministrazione, privilegiando sempre il prezzo più basso.",
-            "La rotazione continua degli operatori economici per evitare la formazione di monopoli locali."
-        ],
-        "a": 1,
-        "e": "Il 'Risultato' è il nuovo faro: l'opera deve essere fatta bene e in fretta. La concorrenza è lo strumento, non il fine.",
-        "materia": "Codice Appalti"
-    },
-    {
-        "q": "Il soccorso istruttorio è attivabile dalla stazione appaltante per sanare quale delle seguenti fattispecie?",
-        "options": [
-            "L'omessa indicazione dei prezzi unitari all'interno dell'offerta economica presentata in gara.",
-            "La mancanza di elementi essenziali relativi alle caratteristiche tecniche del prodotto offerto.",
-            "La carenza di documenti amministrativi non riguardanti l'offerta tecnica o quella economica.",
-            "L'invio dell'offerta oltre il termine perentorio fissato dal bando di gara per la ricezione."
-        ],
-        "a": 2,
-        "e": "Puoi sanare le carte burocratiche (es. un certificato), ma non puoi toccare l'offerta (prezzo e tecnica).",
-        "materia": "Codice Appalti"
-    },
-    {
-        "q": "Negli appalti di lavori sotto la soglia di 150.000 euro, la stazione appaltante procede di norma tramite:",
-        "options": [
-            "Procedura aperta con pubblicazione del bando sulla Gazzetta Ufficiale della Repubblica.",
-            "Affidamento diretto, anche senza consultazione di più operatori economici qualificati.",
-            "Procedura negoziata previa consultazione di almeno cinque operatori economici scelti da elenchi.",
-            "Concorso di progettazione ristretto ai soli professionisti iscritti agli albi regionali."
-        ],
-        "a": 1,
-        "e": "Sotto i 150k per i lavori, il Codice 36/2023 autorizza l'affidamento diretto puro. Velocità massima.",
-        "materia": "Codice Appalti"
-    },
-    {
-        "q": "L'istituto dell'avvalimento consente ad un operatore economico di partecipare ad una gara:",
-        "options": [
-            "Utilizzando i requisiti di capacità tecnica o finanziaria messi a disposizione da un altro soggetto.",
-            "Subappaltando l'intera esecuzione dell'appalto ad un'impresa terza senza autorizzazione.",
-            "Costituendo obbligatoriamente un Raggruppamento Temporaneo di Imprese con un socio paritario.",
-            "Delegando la firma del contratto e la responsabilità dell'opera ad un consulente esterno."
-        ],
-        "a": 0,
-        "e": "Con l'avvalimento 'prendi in prestito' i requisiti che non hai (es. fatturato) da un'impresa ausiliaria.",
-        "materia": "Codice Appalti"
-    },
-    {
-        "q": "La garanzia provvisoria versata dai concorrenti in sede di offerta ha la funzione di:",
-        "options": [
-            "Coprire eventuali danni causati dal contraente durante la fase di esecuzione del contratto.",
-            "Garantire la serietà dell'offerta e la sottoscrizione del contratto in caso di aggiudicazione.",
-            "Anticipare il pagamento dei corrispettivi spettanti ai subappaltatori dell'impresa vincitrice.",
-            "Assicurare il pagamento delle penali in caso di ritardo nella consegna dei lavori ultimati."
-        ],
-        "a": 1,
-        "e": "La provvisoria serve a 'bloccare' l'impresa: se vinci e scappi, la PA incassa la garanzia.",
-        "materia": "Codice Appalti"
-    },
-    // ... (Aggiungere altre 40 domande qui con lo stesso stile di bilanciamento) ...
-    {
-        "q": "Nel sillogismo: 'Tutti gli impiegati pubblici sono ligi. Alcuni atleti sono impiegati pubblici'. Cosa ne consegue?",
-        "options": [
-            "Tutti gli atleti sono necessariamente ligi al proprio dovere.",
-            "Alcuni atleti sono ligi al proprio dovere in quanto impiegati.",
-            "Nessun atleta può essere considerato ligi al proprio dovere.",
-            "Tutti i ligi sono atleti che lavorano nella pubblica amministrazione."
-        ],
-        "a": 1,
-        "e": "Logica deduttiva: se un gruppo (atleti) si interseca con un altro (impiegati), le proprietà del secondo passano all'intersezione.",
-        "materia": "Logica"
-    }
+    // --- AMMINISTRATIVO (15) ---
+    { "q": "Ai sensi dell'art. 6 della L. 241/90, l'organo competente all'adozione del provvedimento finale:", "options": ["Deve conformarsi alle risultanze dell'istruttoria condotta dal responsabile del procedimento.", "Può discostarsi dalle risultanze istruttorie fornendo una motivazione analitica nell'atto finale.", "È libero di decidere in modo difforme senza dover esplicitare le ragioni della scelta effettuata.", "Non può emettere il provvedimento in presenza di un parere tecnico negativo del responsabile."], "a": 1, "e": "L'organo decisionale può ribaltare l'istruttoria, ma l'obbligo di motivazione è il limite alla sua discrezionalità.", "materia": "Diritto Amministrativo" },
+    { "q": "In materia di SCIA, decorso il termine di 60 giorni per i poteri inibitori ordinari, la PA:", "options": ["Perde ogni potere di intervento sulla legittimità dell'attività segnalata dal soggetto privato.", "Può intervenire solo se ricorrono i presupposti per l'annullamento d'ufficio ex art. 21-nonies.", "Ha la facoltà di sospendere l'attività a tempo indeterminato per motivi di semplice opportunità.", "Deve obbligatoriamente avviare un nuovo procedimento di autorizzazione espresso per legge."], "a": 1, "e": "Dopo i 60 giorni, la SCIA si stabilizza: la PA può agire solo con i poteri di autotutela (12 mesi + interesse pubblico).", "materia": "Diritto Amministrativo" },
+    { "q": "L'accesso civico generalizzato (FOIA) può essere rifiutato per tutelare interessi commerciali se:", "options": ["L'impresa ha presentato una generica opposizione scritta entro i termini previsti dalla legge.", "L'ostensione dei dati determina un pregiudizio concreto e provato alla competitività dell'azienda.", "L'amministrazione ritiene che il diritto alla riservatezza prevalga sempre sulla trasparenza totale.", "I documenti richiesti contengono esclusivamente dati anagrafici dei soci e degli amministratori."], "a": 1, "e": "Il rifiuto del FOIA non è automatico: serve il 'test del pregiudizio concreto' per bilanciare trasparenza e privacy.", "materia": "Trasparenza" },
+    { "q": "Un provvedimento amministrativo adottato in violazione delle norme sul procedimento è annullabile se:", "options": ["Si tratta di un atto vincolato e la PA dimostra che il contenuto non poteva essere diverso.", "Il privato dimostra che la violazione formale ha influito sulla correttezza della decisione finale.", "L'atto è discrezionale e l'omissione formale non ha permesso al privato di fornire il suo apporto.", "La comunicazione di avvio del procedimento è stata inviata con un ritardo superiore a dieci giorni."], "a": 2, "e": "Se l'atto è discrezionale, la forma è sostanza. Se è vincolato, il vizio formale spesso non porta all'annullamento.", "materia": "Diritto Amministrativo" },
+    { "q": "Il diritto di accesso documentale (L. 241/90) è riconosciuto a chiunque abbia un interesse:", "options": ["Generico e finalizzato al controllo diffuso sulla correttezza dell'azione amministrativa.", "Diretto, concreto e attuale, corrispondente ad una situazione giuridicamente tutelata.", "Esclusivamente legato alla propria posizione di cittadino residente nel comune interessato.", "Politico o sindacale volto a verificare l'efficienza complessiva degli uffici pubblici."], "a": 1, "e": "L'accesso 241/90 richiede la dimostrazione che il documento serva per difendere un diritto o interesse specifico.", "materia": "Diritto Amministrativo" },
+    { "q": "L'annullamento d'ufficio ex art. 21-nonies della L. 241/90 deve intervenire entro un termine:", "options": ["Ragionevole, comunque non superiore a dodici mesi dal momento dell'adozione dell'atto.", "Perentorio di diciotto mesi, come stabilito dalla normativa vigente prima della riforma 2021.", "Fisso di sessanta giorni dalla scoperta del vizio di legittimità da parte dei dirigenti.", "Illimitato, qualora l'atto riguardi la gestione di fondi pubblici o contributi europei."], "a": 0, "e": "Il termine è stato ridotto a 12 mesi per garantire la certezza del diritto e la stabilità dei rapporti privati.", "materia": "Diritto Amministrativo" },
+    { "q": "La revoca del provvedimento amministrativo (art. 21-quinquies) opera con efficacia:", "options": ["Retroattiva (ex tunc), eliminando gli effetti prodotti dall'atto sin dalla sua origine.", "Non retroattiva (ex nunc), determinando l'inidoneità dell'atto a produrre ulteriori effetti.", "Differita al momento in cui l'indennizzo viene effettivamente liquidato al destinatario.", "Limitata esclusivamente ai rapporti giuridici non ancora esauriti tra le parti in causa."], "a": 1, "e": "La revoca agisce per il futuro perché l'atto era valido ma è diventato inopportuno per nuovi motivi.", "materia": "Diritto Amministrativo" },
+    { "q": "Il silenzio-assenso tra amministrazioni pubbliche (art. 17-bis L. 241/90) si forma dopo:", "options": ["Trenta giorni dal ricevimento dello schema di provvedimento senza che sia reso l'assenso.", "Sessanta giorni dalla convocazione formale della conferenza di servizi decisoria semplificata.", "Novanta giorni dalla trasmissione della documentazione completa all'amministrazione silente.", "Centoventi giorni, qualora siano coinvolte amministrazioni preposte alla tutela ambientale."], "a": 0, "e": "Il termine generale tra PA è di 30 giorni, superati i quali l'assenso si intende acquisito (silenzio verticale).", "materia": "Diritto Amministrativo" },
+    { "q": "Qual è la conseguenza della mancanza della motivazione in un provvedimento amministrativo?", "options": ["La nullità dell'atto per mancanza di un elemento essenziale previsto dalla legge generale.", "L'annullabilità dell'atto per violazione di legge, ai sensi dell'art. 3 della L. 241/90.", "L'inesistenza del provvedimento, che non produce alcun effetto nella sfera del privato.", "La mera irregolarità formale, che non inficia la validità della decisione finale assunta."], "a": 1, "e": "La motivazione è un obbligo di legge. La sua mancanza rende l'atto annullabile (non nullo).", "materia": "Diritto Amministrativo" },
+    { "q": "Il preavviso di rigetto (art. 10-bis L. 241/90) obbliga l'amministrazione a:", "options": ["Comunicare i motivi ostativi all'accoglimento dell'istanza prima dell'adozione dell'atto.", "Sospendere il procedimento per un periodo fisso di sessanta giorni per ulteriori verifiche.", "Archiviare la pratica qualora l'interessato non presenti osservazioni entro cinque giorni.", "Indire una conferenza di servizi per valutare le controdeduzioni presentate dal privato."], "a": 0, "e": "Serve a instaurare un contraddittorio: ti dico perché sto per bocciarti e tu hai 10 giorni per convincermi.", "materia": "Diritto Amministrativo" },
+    { "q": "La conferenza di servizi decisoria è sempre indetta quando l'amministrazione deve:", "options": ["Acquisire pareri consultivi non vincolanti da parte di altre amministrazioni competenti.", "Concludere un accordo sostitutivo di provvedimento ai sensi dell'art. 11 della L. 241/90.", "Acquisire intese, nulla osta o assensi di altre PA per l'adozione di un provvedimento.", "Valutare l'opportunità economica di un investimento pubblico in ambito infrastrutturale."], "a": 2, "e": "La decisoria serve a 'decidere'. Se servono permessi di altri, la conferenza li mette tutti insieme.", "materia": "Diritto Amministrativo" },
+    { "q": "Il provvedimento adottato in violazione del giudicato (sentenza passata in giudicato) è:", "options": ["Annullabile per eccesso di potere sotto il profilo del travisamento dei fatti accaduti.", "Nullo per difetto assoluto di attribuzione o violazione/elusione del giudicato stesso.", "Irregolare, ma suscettibile di ratifica da parte dell'organo gerarchicamente superiore.", "Valido se l'amministrazione dimostra la sopravvenienza di nuovi interessi pubblici."], "a": 1, "e": "Se il giudice ti ha detto di non farlo e tu lo fai, l'atto è nullo (art. 21-septies).", "materia": "Diritto Amministrativo" },
+    { "q": "L'accordo sostitutivo di provvedimento (art. 11 L. 241/90) deve essere stipulato:", "options": ["In forma scritta a pena di nullità, salvo che la legge disponga diversamente per l'atto.", "Esclusivamente in forma pubblica davanti a un notaio o un segretario comunale.", "Anche in forma verbale, purché il contenuto sia riportato nel verbale del procedimento.", "In forma digitale con firma elettronica qualificata solo se tra amministrazioni pubbliche."], "a": 0, "e": "La forma scritta è 'ad substantiam'. Senza carta (o file firmato), l'accordo non esiste.", "materia": "Diritto Amministrativo" },
+    { "q": "La nullità del provvedimento amministrativo può essere eccepita in sede giudiziale:", "options": ["Entro il termine perentorio di sessanta giorni dalla conoscenza legale dell'atto viziato.", "Senza limiti di tempo dall'interessato e può essere rilevata d'ufficio dal magistrato.", "Esclusivamente se il vizio riguarda la competenza territoriale dell'organo emanante.", "Solo dopo aver esperito infruttuosamente il ricorso gerarchico presso l'ente."], "a": 1, "e": "La nullità è un vizio gravissimo: non scade mai e il giudice la vede anche se tu non la scrivi.", "materia": "Diritto Amministrativo" },
+    { "q": "La comunicazione di avvio del procedimento non è richiesta per i provvedimenti:", "options": ["Cautelari, data la necessità di intervenire con urgenza a tutela dell'interesse pubblico.", "Sanzionatori, per evitare che il destinatario possa occultare le prove dell'illecito.", "Concessori, in quanto determinano un ampliamento della sfera giuridica del destinatario.", "Di pianificazione urbanistica generale che coinvolgono un numero limitato di soggetti."], "a": 0, "e": "Art. 7 L. 241/90. Se devo agire subito per evitare un danno (cautelare), non perdo tempo a scriverti.", "materia": "Diritto Amministrativo" },
+
+    // --- APPALTI (15) ---
+    { "q": "Il Principio del Risultato (Art. 1 D.Lgs 36/2023) costituisce per le stazioni appaltanti:", "options": ["Un criterio meramente programmatico privo di valore cogente nelle procedure di gara.", "Il criterio prioritario per l'esercizio del potere discrezionale e la valutazione del RUP.", "Un obbligo subordinato al principio di concorrenza e massima partecipazione delle ditte.", "Una clausola di stile inserita per adeguarsi alle direttive comunitarie sugli appalti."], "a": 1, "e": "Il Risultato è il 'super-principio' del nuovo codice: tutto deve tendere a finire l'opera bene.", "materia": "Codice Appalti" },
+    { "q": "Negli appalti di lavori sotto la soglia di 150.000 euro, il codice 36/2023 prevede:", "options": ["L'obbligo di indizione di una procedura negoziata con almeno cinque inviti formali.", "L'affidamento diretto anche senza consultazione di più operatori economici qualificati.", "La pubblicazione obbligatoria del bando sulla piattaforma telematica dell'ANAC.", "Il ricorso alla procedura aperta con il criterio dell'offerta economicamente vantaggiosa."], "a": 1, "e": "Sotto i 150k per i lavori, il legislatore vuole velocità: affidamento diretto puro.", "materia": "Codice Appalti" },
+    { "q": "Il soccorso istruttorio (art. 101 D.Lgs 36/2023) non è ammesso per sanare mancanze relative:", "options": ["Alla documentazione amministrativa necessaria per la verifica dei requisiti generali.", "All'offerta economica e agli elementi essenziali dell'offerta tecnica presentata.", "Al pagamento del contributo obbligatorio in favore dell'Autorità Nazionale Anticorruzione.", "Alla firma digitale dei documenti contenuti nel fascicolo virtuale dell'operatore."], "a": 1, "e": "Non puoi usare il soccorso per cambiare il prezzo o la qualità tecnica: falseresti la gara.", "materia": "Codice Appalti" },
+    { "q": "L'istituto dell'avvalimento (art. 104) obbliga l'impresa ausiliaria a:", "options": ["Sottoscrivere il contratto di appalto insieme all'impresa concorrente aggiudicataria.", "Responsabilità in solido con il concorrente nei confronti della stazione appaltante.", "Eseguire direttamente almeno il cinquanta per cento delle prestazioni oggetto di gara.", "Rinunciare a partecipare ad altre gare nello stesso settore per la durata dell'appalto."], "a": 1, "e": "Se l'ausiliaria presta i requisiti, deve anche pagare se l'impresa principale sbaglia.", "materia": "Codice Appalti" },
+    { "q": "La garanzia provvisoria in una procedura di gara ha l'obiettivo primario di:", "options": ["Assicurare il pagamento dei subappaltatori in caso di insolvenza dell'aggiudicatario.", "Garantire la serietà dell'offerta e la sottoscrizione del contratto post aggiudicazione.", "Finanziare le spese istruttorie della commissione giudicatrice nominate dall'ente.", "Coprire i costi di manutenzione dell'opera durante il periodo di garanzia decennale."], "a": 1, "e": "Serve a evitare che le ditte partecipino per scherzo: se vinci e rifiuti, perdi la cauzione.", "materia": "Codice Appalti" },
+    { "q": "Il subappalto 'a cascata' nel nuovo Codice degli Appalti (D.Lgs 36/2023) risulta:", "options": ["Vietato in modo assoluto per prevenire infiltrazioni malavitose nei cantieri pubblici.", "Ammesso, salvo motivato divieto della stazione appaltante nei documenti di gara.", "Obbligatorio per tutte le prestazioni ad alta intensità di manodopera specializzata.", "Consentito solo per importi inferiori alla soglia di rilievo comunitario vigente."], "a": 1, "e": "La UE ha imposto l'apertura. Ora si può fare, a meno che la PA non lo vieti per seri motivi.", "materia": "Codice Appalti" },
+    { "q": "La clausola di revisione prezzi (art. 60) scatta obbligatoriamente se la variazione supera:", "options": ["Il due per cento dell'importo complessivo del contratto di appalto sottoscritto.", "Il cinque per cento dell'importo, coprendo l'ottanta per cento dell'eccedenza rilevata.", "Il dieci per cento del valore stimato, con aggiornamento automatico ogni semestre.", "Il quindici per cento, ma solo per l'acquisto di materie prime ed energia elettrica."], "a": 1, "e": "Oltre il 5% di inflazione, la PA interviene pagando l'80% dell'aumento. Rischio condiviso.", "materia": "Codice Appalti" },
+    { "q": "Il Fascicolo Virtuale dell'Operatore Economico (FVOE) è lo strumento volto a:", "options": ["Consentire alle imprese di monitorare i pagamenti effettuati dalle stazioni appaltanti.", "Permettere la verifica telematica del possesso dei requisiti di partecipazione alla gara.", "Gestire le varianti in corso d'opera e il giornale dei lavori in formato digitale.", "Archiviare esclusivamente i certificati antimafia rilasciati dalle competenti prefetture."], "a": 1, "e": "Basta carta. La PA controlla tutto online nel fascicolo dell'impresa.", "materia": "Codice Appalti" },
+    { "q": "La rotazione degli inviti (art. 49) impedisce di invitare o affidare l'appalto a:", "options": ["Qualsiasi impresa che abbia già un contratto attivo con la medesima amministrazione.", "Il contraente uscente per due affidamenti consecutivi nel medesimo settore economico.", "Tutte le società che non abbiano la sede legale nel territorio regionale dell'ente.", "Operatori economici che abbiano presentato ricorso al TAR nell'ultimo triennio solare."], "a": 1, "e": "Regola del 'salta un giro': serve a non far vincere sempre gli stessi nel sottosoglia.", "materia": "Codice Appalti" },
+    { "q": "Il RUP (Responsabile Unico di Progetto), secondo il nuovo Codice, può di regola:", "options": ["Essere nominato solo tra i dipendenti con qualifica dirigenziale della stazione appaltante.", "Far parte della commissione giudicatrice, fatte salve specifiche incompatibilità tecniche.", "Sostituire la stazione appaltante nella firma degli accordi quadro internazionali.", "Essere un consulente esterno anche se l'ente dispone di personale tecnico idoneo."], "a": 1, "e": "Nel nuovo Codice il RUP è più potente e può stare in commissione, semplificando la procedura.", "materia": "Codice Appalti" },
+    { "q": "La soglia di rilevanza europea per gli appalti di servizi e forniture delle PA centrali è:", "options": ["Sessantaquattromila euro, rivalutati annualmente in base all'indice dei prezzi ISTAT.", "Centoquarantatremila euro, come stabilito dai regolamenti comunitari di settore.", "Duecentoquindicimila euro, valida per tutti gli enti locali e le stazioni appaltanti.", "Cinque milioni e trecentottantaduemila euro, limite massimo per i lavori pubblici."], "a": 1, "e": "È una cifra tecnica (143k) sopra la quale si applicano le regole europee più rigide.", "materia": "Codice Appalti" },
+    { "q": "L'offerta economicamente vantaggiosa (OEPV) valuta i concorrenti sulla base di:", "options": ["Un calcolo matematico basato esclusivamente sulla percentuale di sconto offerta.", "Un mix di punteggi tecnici relativi alla qualità e punteggi relativi al prezzo.", "La velocità di esecuzione dichiarata e il possesso di certificazioni ambientali.", "L'anzianità di iscrizione alla Camera di Commercio e il numero di dipendenti assunti."], "a": 1, "e": "Non vince chi costa meno, ma chi offre il miglior compromesso tra qualità e costo.", "materia": "Codice Appalti" },
+    { "q": "Qual è il termine dello stand-still (blocco firma contratto) dopo l'aggiudicazione?", "options": ["Dieci giorni dalla comunicazione del provvedimento a tutti i candidati esclusi.", "Trentacinque giorni, per consentire eventuali ricorsi giurisdizionali al TAR.", "Quarantacinque giorni, necessari per la verifica dei requisiti presso l'ANAC.", "Sessanta giorni, termine utile per la registrazione del contratto alla Corte dei Conti."], "a": 1, "e": "35 giorni di attesa forzata: serve a non firmare se qualcuno vuole fare ricorso.", "materia": "Codice Appalti" },
+    { "q": "Il DGUE (Documento di Gara Unico Europeo) è un'autodichiarazione che serve a:", "options": ["Certificare il pagamento degli oneri previdenziali e assistenziali dei lavoratori.", "Attestare preliminarmente il possesso dei requisiti generali e speciali richiesti.", "Descrivere dettagliatamente l'offerta tecnica e le modalità di esecuzione dei lavori.", "Elencare i subappaltatori che verranno utilizzati durante l'esecuzione del contratto."], "a": 1, "e": "È un modulo standard: l'impresa 'giura' di essere a posto, la PA controlla dopo.", "materia": "Codice Appalti" },
+    { "q": "L'aggiudicazione di un appalto pubblico diventa efficace solo dopo:", "options": ["L'approvazione del verbale di gara da parte della commissione giudicatrice.", "La verifica positiva del possesso dei requisiti in capo all'operatore economico.", "La pubblicazione della determina di aggiudicazione sull'Albo Pretorio online.", "La stipula del contratto d'appalto in forma pubblica amministrativa telematica."], "a": 1, "e": "Puoi vincere, ma se dai controlli risulta che hai mentito sui requisiti, l'efficacia decade.", "materia": "Codice Appalti" },
+
+    // --- ANTICORRUZIONE E PUBBLICO IMPIEGO (10) ---
+    { "q": "Il Piano Triennale di Prevenzione della Corruzione (PTPCT) viene adottato da:", "options": ["Il Responsabile della Prevenzione della Corruzione e della Trasparenza (RPCT).", "L'organo di indirizzo politico dell'amministrazione (es. la Giunta comunale).", "L'Autorità Nazionale Anticorruzione su proposta vincolante del Segretario.", "L'Organismo Indipendente di Valutazione (OIV) dopo la verifica delle performance."], "a": 1, "e": "Il tecnico (RPCT) lo scrive, ma la responsabilità della scelta politica è della Giunta.", "materia": "Anticorruzione" },
+    { "q": "Il Whistleblowing (D.Lgs 24/2023) garantisce al segnalante di illeciti:", "options": ["Un premio economico proporzionato al valore del danno erariale recuperato.", "La riservatezza dell'identità e la protezione da misure ritorsive sul lavoro.", "L'immunità totale per qualsiasi reato commesso durante lo svolgimento del servizio.", "La promozione automatica al livello retributivo superiore per merito civile."], "a": 1, "e": "In Italia non ci sono premi in denaro: c'è solo protezione e anonimato.", "materia": "Anticorruzione" },
+    { "q": "Il Pantouflage (revolving doors) prevede un divieto di assunzione per:", "options": ["Un anno dalla cessazione del rapporto di lavoro con la Pubblica Amministrazione.", "Tre anni dalla cessazione del servizio per i dipendenti con poteri autoritativi.", "Cinque anni, esteso a tutti i dipendenti pubblici indipendentemente dal ruolo.", "Sempre, qualora l'ente privato operi in regime di monopolio o concessione pubblica."], "a": 1, "e": "3 anni di blocco per evitare che un dirigente faccia favori a ditte che poi lo assumeranno.", "materia": "Anticorruzione" },
+    { "q": "Il Codice di Comportamento (DPR 62/2013) vieta regali di valore superiore a:", "options": ["Cinquanta euro, anche se effettuati in occasione di festività o ricorrenze.", "Centocinquanta euro, limite oltre il quale il regalo deve essere restituito o reso.", "Trecento euro, purché il regalo non sia finalizzato a influenzare l'attività.", "Nessun limite è previsto, purché il regalo sia destinato all'intero ufficio."], "a": 1, "e": "Regola dei 150 euro: sopra questa cifra il regalo puzza di corruzione.", "materia": "Pubblico Impiego" },
+    { "q": "L'accesso civico semplice (D.Lgs 33/2013) riguarda documenti che:", "options": ["L'amministrazione ha l'obbligo di pubblicare nella sezione Trasparenza.", "Contengono dati sensibili relativi allo stato di salute dei dipendenti pubblici.", "Sono coperti dal segreto di Stato o da vincoli di riservatezza militare.", "Il cittadino desidera conoscere per finalità di studio o ricerca storica."], "a": 0, "e": "È il diritto di dire alla PA: 'Dovresti averlo messo sul sito e non c'è, mettilo!'.", "materia": "Trasparenza" },
+    { "q": "In caso di condanna per delitto contro la PA, il dipendente pubblico:", "options": ["Viene sospeso obbligatoriamente dal servizio in attesa della sentenza definitiva.", "Può incorrere nella sanzione del licenziamento per giusta causa (art. 55-quater).", "Ha diritto a mantenere il posto di lavoro se risarcisce il danno d'immagine.", "Deve essere trasferito ad altro ufficio non operativo entro trenta giorni."], "a": 1, "e": "Chi ruba allo Stato va a casa. Il licenziamento è la sanzione standard in questi casi.", "materia": "Pubblico Impiego" },
+    { "q": "L'incompatibilità nell'incarico pubblico (D.Lgs 39/2013) si risolve:", "options": ["Con la decadenza automatica e immediata dall'incarico appena conferito.", "Esercitando l'opzione tra l'incarico conferito e l'attività preesistente.", "Pagando una sanzione amministrativa pecuniaria stabilita dall'ANAC.", "Richiedendo una deroga speciale motivata al Dipartimento della Funzione Pubblica."], "a": 1, "e": "Incompatibilità significa: o fai questo o fai quello. Devi scegliere entro 15 giorni.", "materia": "Pubblico Impiego" },
+    { "q": "La rotazione straordinaria del personale è una misura che scatta quando:", "options": ["Il dipendente ha maturato oltre dieci anni di servizio nel medesimo ufficio.", "Vi è l'avvio di un procedimento penale per reati di corruzione a carico del dipendente.", "L'amministrazione deve ridurre i costi di gestione del personale nel triennio.", "Un ufficio non raggiunge gli obiettivi di performance stabiliti dal piano."], "a": 1, "e": "Se sei indagato per corruzione, ti spostano subito per evitare che continui a far danni.", "materia": "Anticorruzione" },
+    { "q": "Il Responsabile della Prevenzione della Corruzione (RPCT) è solitamente:", "options": ["Il rappresentante sindacale più anziano presente all'interno dell'amministrazione.", "Un dirigente di ruolo o il Segretario Generale negli enti locali territoriali.", "Un esperto esterno nominato dal Prefetto su indicazione del Ministero dell'Interno.", "Il titolare di una posizione organizzativa appartenente all'area economica."], "a": 1, "e": "Figura di vertice: garantisce che le regole anticorruzione siano seguite da tutti.", "materia": "Anticorruzione" },
+    { "q": "Le sanzioni disciplinari nel pubblico impiego sono irrogate:", "options": ["Dal giudice del lavoro dopo l'esperimento del tentativo di conciliazione.", "Dall'Ufficio Procedimenti Disciplinari (UPD) per le mancanze più gravi.", "Esclusivamente dal dirigente superiore gerarchico del dipendente sanzionato.", "Dalla commissione paritetica composta da dirigenti e delegati sindacali."], "a": 1, "e": "Per le cose serie decide l'UPD, non il tuo capo diretto, per evitare vendette personali.", "materia": "Pubblico Impiego" },
+
+    // --- LOGICA (5) ---
+    { "q": "Se piove, allora la strada è bagnata. Sappiamo che la strada NON è bagnata. Quindi:", "options": ["Potrebbe aver piovuto ma la strada si è asciugata molto velocemente.", "Certamente non ha piovuto, per la regola logica del modus tollens.", "Ha piovuto ma l'acqua è stata assorbita dal drenaggio dell'asfalto.", "Non possiamo trarre alcuna conclusione certa sulla pioggia caduta."], "a": 1, "e": "Regola base: Se A porta B, e B non c'è, allora non c'è neanche A.", "materia": "Logica" },
+    { "q": "Tutti i vincitori di concorso hanno studiato. Marco ha studiato. Ne consegue che:", "options": ["Marco vincerà sicuramente il concorso pubblico cui ha partecipato.", "Marco appartiene alla categoria di persone che potrebbero vincere il concorso.", "Non è possibile concludere con certezza che Marco vincerà il concorso.", "Chi studia vince sempre i concorsi banditi dalla Pubblica Amministrazione."], "a": 2, "e": "Errore classico: Studiare è necessario ma non sufficiente per vincere.", "materia": "Logica" },
+    { "q": "Trova il numero mancante nella serie: 2 - 5 - 11 - 23 - ?", "options": ["Quarantacinque, applicando la progressione dei numeri primi esistenti.", "Quarantasette, raddoppiando il numero precedente e aggiungendo uno.", "Quarantanove, aggiungendo al numero precedente potenze di due crescenti.", "Cinquantuno, moltiplicando per tre e sottraendo uno alla cifra precedente."], "a": 1, "e": "Logica numerica: (2x2)+1=5; (5x2)+1=11; (11x2)+1=23; (23x2)+1=47.", "materia": "Logica" },
+    { "q": "Individua l'intruso tra i seguenti termini: Monitor, Mouse, Stampante, Software.", "options": ["Monitor, in quanto periferica di output necessaria alla visualizzazione.", "Mouse, perché è l'unica periferica di input basata sul puntamento fisico.", "Stampante, essendo un dispositivo elettromeccanico di produzione cartacea.", "Software, poiché è l'unico elemento intangibile (logico) della lista."], "a": 3, "e": "Tutti gli altri sono 'Hardware' (si toccano), il software è codice (non si tocca).", "materia": "Informatica" },
+    { "q": "Alcuni politici sono onesti. Tutti gli onesti sono altruisti. Quindi:", "options": ["Tutti i politici sono altruisti e agiscono per il bene della comunità.", "Alcuni politici sono altruisti, in quanto appartenenti alla categoria onesti.", "Nessun altruista può essere un politico impegnato nelle istituzioni.", "L'onestà è una condizione necessaria per fare politica nel sistema attuale."], "a": 1, "e": "Sillogismo: se un pezzo di A è in B, e tutto B è in C, allora quel pezzo di A è in C.", "materia": "Logica" },
+
+    // --- INFORMATICA E INGLESE (10) ---
+    { "q": "Il domicilio digitale, previsto dal CAD (D.Lgs 82/2005), corrisponde a:", "options": ["L'indirizzo di residenza fisica dichiarato all'ufficio anagrafe comunale.", "Un indirizzo PEC o un servizio di recapito certificato qualificato.", "L'indirizzo IP statico del computer utilizzato per lo smart working.", "Il profilo utente creato sul portale istituzionale dell'ente di appartenenza."], "a": 1, "e": "Domicilio Digitale = PEC. È dove lo Stato ti manda le multe e le notifiche legali.", "materia": "Informatica" },
+    { "q": "La firma digitale garantisce tre proprietà del documento informatico:", "options": ["Velocità di trasmissione, risparmio di carta e facilità di archiviazione.", "Integrità, autenticità e non ripudiabilità della firma del sottoscrittore.", "Segretezza del contenuto, crittografia end-to-end e backup automatico.", "Compatibilità universale, leggibilità nel tempo e facilità di stampa."], "a": 1, "e": "Se è firmato digitalmente, sono sicuro di chi l'ha scritto e che non è stato cambiato.", "materia": "Informatica" },
+    { "q": "Cos'è lo SPID (Sistema Pubblico di Identità Digitale)?", "options": ["Un software di protezione contro virus e malware della rete informatica.", "Un sistema di credenziali uniche per accedere ai servizi online della PA.", "Una rete intranet riservata esclusivamente ai dipendenti ministeriali.", "Un database centralizzato che raccoglie le impronte digitali dei cittadini."], "a": 1, "e": "Una chiave sola per aprire tutti i siti dello Stato (Inps, Agenzia Entrate, ecc).", "materia": "Informatica" },
+    { "q": "Una rete LAN (Local Area Network) è una connessione che:", "options": ["Collega computer situati in un'area geografica limitata, come un ufficio.", "Permette la navigazione internet su scala globale tramite satelliti dedicati.", "Gestisce esclusivamente il traffico telefonico e i messaggi vocali criptati.", "Assicura la protezione dei dati sensibili durante i pagamenti elettronici."], "a": 0, "e": "LAN = Locale. È la rete che collega i PC dentro una stanza o un edificio.", "materia": "Informatica" },
+    { "q": "Il formato PDF/A è utilizzato nella Pubblica Amministrazione perché:", "options": ["Permette di modificare il testo liberamente anche dopo la firma digitale.", "Garantisce la conservazione a lungo termine e l'inalterabilità del file.", "Riduce drasticamente le dimensioni del documento per l'invio tramite email.", "Consente l'inserimento di video e contenuti multimediali interattivi."], "a": 1, "e": "È il formato 'archivio': tra 20 anni il file si aprirà esattamente come oggi.", "materia": "Informatica" },
+    { "q": "Quale tra queste è la traduzione corretta di 'Public Procurement'?", "options": ["Assunzioni nel settore pubblico attraverso concorsi o graduatorie.", "Appalti pubblici per l'acquisizione di beni, servizi o lavori da privati.", "Contabilità pubblica e gestione del bilancio preventivo degli enti locali.", "Ufficio relazioni con il pubblico per la gestione delle istanze civiche."], "a": 1, "e": "Termine tecnico: Procurement = Appalti/Acquisti.", "materia": "Inglese" },
+    { "q": "In English, the term 'Deadline' refers to:", "options": ["A line on a map indicating a dangerous or forbidden territory.", "The final date or time by which something must be completed.", "The process of deleting old files from a computer server system.", "A period of vacation during which public offices remain closed."], "a": 1, "e": "Deadline = Scadenza. Fondamentale per non essere esclusi dai concorsi.", "materia": "Inglese" },
+    { "q": "Choose the correct verb: 'The candidate _______ to submit the application yesterday.'", "options": ["forgot, as it is the past simple form of the verb to forget.", "forget, which is the present tense and implies a habitual action.", "forgotten, which requires an auxiliary verb to form the past tense.", "forgetting, used for continuous actions happening at the moment."], "a": 0, "e": "Yesterday richiede il Past Simple: Forgot.", "materia": "Inglese" },
+    { "q": "What does 'To call off' mean in a professional context?", "options": ["To postpone a meeting to a future date to be determined later.", "To cancel an event or an agreement that was previously planned.", "To start a conference call with participants from different countries.", "To promote a colleague to a higher position within the organization."], "a": 1, "e": "Call off = Cancellare. Se il concorso è 'called off', non si fa più.", "materia": "Inglese" },
+    { "q": "Translate: 'The manager is looking forward to _______ the new team.'", "options": ["meet, as it follows the preposition to in the infinitive form.", "meeting, because looking forward to is followed by the gerund.", "met, using the past tense to indicate a completed action in time.", "meets, used for third person singular in the present simple tense."], "a": 1, "e": "Regola bastarda: 'Looking forward to' vuole la forma in -ING.", "materia": "Inglese" }
 ];
 
-// Funzioni base (Sostituisci con le tue funzioni di gestione sessione del messaggio precedente)
-const STORAGE_KEY = 'concorso_v3';
-const SESSION_KEY = 'session_v3';
+const STORAGE_KEY = 'concorso_progres_v4';
+const SESSION_KEY = 'concorso_active_session_v4';
+
 let sessionPool = [];
 let sessionIdx = 0;
 let sessionAnswers = [];
 let timeLeft = 0;
+let MAX_TIME_SECONDS = 0;
 let timerInterval;
+let isExamMode = false;
+
+document.getElementById('db-total').innerText = databaseQuiz.length;
 
 function preparaSessione(num, min, exam) {
+    isExamMode = exam;
     sessionPool = databaseQuiz.map((_, i) => i).sort(() => Math.random() - 0.5).slice(0, num);
     sessionIdx = 0;
     sessionAnswers = [];
-    timeLeft = min * 60;
+    MAX_TIME_SECONDS = min * 60;
+    timeLeft = MAX_TIME_SECONDS;
+    
     document.getElementById('home-page').style.display = 'none';
     document.getElementById('quiz-container').style.display = 'block';
+    document.getElementById('total-q-count').innerText = num;
+    
     startTimer();
     caricaDomanda();
 }
 
 function startTimer() {
+    clearInterval(timerInterval);
     timerInterval = setInterval(() => {
         timeLeft--;
         let m = Math.floor(timeLeft / 60);
         let s = timeLeft % 60;
-        document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
-        if(timeLeft <= 0) { clearInterval(timerInterval); alert('Tempo Scaduto!'); location.reload(); }
+        document.getElementById('timer').innerText = `${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
+        if(timeLeft <= 0) { clearInterval(timerInterval); fineSessione("TEMPO SCADUTO"); }
     }, 1000);
 }
 
 function caricaDomanda() {
-    let q = databaseQuiz[sessionPool[sessionIdx]];
+    let qIdx = sessionPool[sessionIdx];
+    let q = databaseQuiz[qIdx];
+    document.getElementById('current-q-idx').innerText = sessionIdx + 1;
     document.getElementById('materia-label').innerText = q.materia;
     document.getElementById('question-text').innerText = q.q;
+    document.getElementById('explanation-box').style.display = 'none';
+    document.getElementById('next-btn').style.display = 'none';
+
     let cont = document.getElementById('options-container');
     cont.innerHTML = '';
+    
     q.options.forEach((opt, i) => {
         let div = document.createElement('div');
         div.className = 'option';
         div.innerText = opt;
         div.onclick = () => {
             document.querySelectorAll('.option').forEach(o => o.onclick = null);
-            if(i === q.a) div.classList.add('correct');
+            let isCorrect = (i === q.a);
+            sessionAnswers[sessionIdx] = isCorrect;
+            if(isCorrect) div.classList.add('correct');
             else { div.classList.add('wrong'); cont.children[q.a].classList.add('correct'); }
             document.getElementById('explanation-box').innerText = q.e;
             document.getElementById('explanation-box').style.display = 'block';
@@ -242,14 +192,22 @@ function caricaDomanda() {
 
 function prossimaDomanda() {
     sessionIdx++;
-    if(sessionIdx < sessionPool.length) {
-        document.getElementById('explanation-box').style.display = 'none';
-        document.getElementById('next-btn').style.display = 'none';
-        caricaDomanda();
-    } else {
-        alert('Test concluso!');
-        location.reload();
-    }
+    if(sessionIdx < sessionPool.length) caricaDomanda();
+    else fineSessione("COMPLETATO");
+}
+
+function fineSessione(reason) {
+    clearInterval(timerInterval);
+    let esatte = sessionAnswers.filter(a => a === true).length;
+    let perc = ((esatte / sessionPool.length) * 100).toFixed(1);
+    let idoneo = perc >= 85;
+    
+    document.getElementById('quiz-container').innerHTML = `
+        <h2 style="color:${idoneo ? '#27ae60' : '#c0392b'}">${idoneo ? 'IDONEO' : 'NON IDONEO'}</h2>
+        <p>Punteggio: ${esatte}/${sessionPool.length} (${perc}%)</p>
+        <p>Soglia minima: 85%</p>
+        <button class="btn-start" onclick="location.reload()">Torna alla Home</button>
+    `;
 }
 </script>
 </body>
