@@ -196,6 +196,606 @@
 
 <script>
 const databaseQuiz = [
+{
+        "q": "Ex art. 2, c. 9-ter L. 241/90, il potere sostitutivo deve essere esercitato entro un termine pari a:",
+        "options": [
+            "30 giorni fissi.",
+            "La metà del termine originariamente previsto.",
+            "60 giorni dalla diffida.",
+            "90 giorni per l'istruttoria."
+        ],
+        "a": 1,
+        "e": "Il soggetto sostituto deve agire nella metà del tempo originario (norma di accelerazione).",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Il diritto di accesso documentale (L. 241/90) spetta ai \"Soggetti Portatori di Interessi Diffusi\"?",
+        "options": [
+            "No, spetta solo ai singoli.",
+            "Sì, se costituiti in associazioni e riguardano i fini statutari.",
+            "Sì, a condizione che l'ente abbia 1.000 iscritti.",
+            "No, l'accesso è vietato alle persone giuridiche."
+        ],
+        "a": 1,
+        "e": "Le associazioni possono accedere se l'atto tocca i loro fini statutari.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Un provvedimento amministrativo \"Viziato da eccesso di potere\" è:",
+        "options": [
+            "Sempre nullo.",
+            "Annullabile (vizio di legittimità).",
+            "Inesistente.",
+            "Valido ma sanzionabile."
+        ],
+        "a": 1,
+        "e": "L'eccesso di potere è un vizio della discrezionalità e comporta annullabilità.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "La comunicazione di avvio del procedimento può essere omessa per ragioni di celerità?",
+        "options": [
+            "No, è un obbligo assoluto.",
+            "Sì, motivando nel provvedimento finale.",
+            "Sì, senza alcuna motivazione.",
+            "Solo nei procedimenti d'ufficio."
+        ],
+        "a": 1,
+        "e": "La celerità permette l'omissione, ma la PA ha l'obbligo di motivare la scelta.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "L'indennizzo per revoca ex art. 21-quinquies della L. 241/90 comprende:",
+        "options": [
+            "Danno emergente e lucro cessante.",
+            "Solo il danno emergente.",
+            "Un forfait del Prefetto.",
+            "Nulla se l'atto è legittimo."
+        ],
+        "a": 1,
+        "e": "La revoca è lecita, quindi si indennizza solo il danno reale (emergente).",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Il preavviso di rigetto (art. 10-bis L. 241/90) rispetto ai termini procedimentali:",
+        "options": [
+            "Li sospende.",
+            "Li interrompe.",
+            "Li annulla.",
+            "Non ha effetti."
+        ],
+        "a": 1,
+        "e": "L'istituto interrompe i termini, che ricominciano a decorrere dopo 10 giorni.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Il parere obbligatorio non reso entro i termini (art. 16 L. 241/90) consente alla PA di:",
+        "options": [
+            "Attendere il parere.",
+            "Procedere indipendentemente.",
+            "Nominare un commissario.",
+            "Annullare la pratica."
+        ],
+        "a": 1,
+        "e": "Se il parere non arriva, la PA deve procedere comunque (non aggravamento).",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "NON è elemento essenziale del provvedimento (la cui mancanza causa nullità):",
+        "options": [
+            "La forma (se prescritta).",
+            "L'oggetto.",
+            "Il termine di impugnazione.",
+            "La finalità."
+        ],
+        "a": 2,
+        "e": "L'omessa indicazione dei termini di ricorso è una mera irregolarità.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Il principio di rotazione (D.Lgs 36/23) non si applica se l'indagine di mercato è stata:",
+        "options": [
+            "Effettuata con 10 operatori.",
+            "Aperta a tutti senza limiti numerici.",
+            "Limitata a servizi intellettuali.",
+            "Svolta al minor prezzo."
+        ],
+        "a": 1,
+        "e": "Se la procedura è aperta a tutti i qualificati, non serve rotazione.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "L'appalto integrato (progettazione ed esecuzione) nel D.Lgs 36/2023 è:",
+        "options": [
+            "Ammesso ordinariamente.",
+            "Solo sopra i 100M euro.",
+            "Solo per PNRR.",
+            "Sempre vietato."
+        ],
+        "a": 0,
+        "e": "Il nuovo codice sdogana l'appalto integrato come scelta ordinaria.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Il Soccorso Istruttorio può sanare l'omessa indicazione dei costi della manodopera?",
+        "options": [
+            "Sì, sempre.",
+            "No, salvo errore materiale chiaramente desumibile.",
+            "Sì, pagando l'ANAC.",
+            "No, mai."
+        ],
+        "a": 1,
+        "e": "Il soccorso è ammesso solo per meri errori di calcolo nell'offerta economica.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "In una gara OEPV, l'apertura delle offerte economiche avviene:",
+        "options": [
+            "Prima delle tecniche.",
+            "Contemporaneamente.",
+            "Dopo la valutazione tecnica pubblica.",
+            "Mai, decide il RUP."
+        ],
+        "a": 2,
+        "e": "Si apre l'economica solo a valutazione tecnica conclusa (trasparenza).",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Il subappalto \"a cascata\" nel D.Lgs 36/2023 è:",
+        "options": [
+            "Sempre vietato.",
+            "Sempre obbligatorio.",
+            "Ammesso salvo divieto motivato.",
+            "Solo per forniture."
+        ],
+        "a": 2,
+        "e": "Ammesso per obbligo UE; la PA può vietarlo solo con motivazione specifica.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "La soglia per l'affidamento diretto di servizi e forniture è attualmente:",
+        "options": [
+            "40.000 euro.",
+            "140.000 euro.",
+            "150.000 euro.",
+            "215.000 euro."
+        ],
+        "a": 1,
+        "e": "140k per servizi/forniture. 150k è riservato ai lavori.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "La garanzia provvisoria (art. 106) è normalmente pari al:",
+        "options": [
+            "1% base gara.",
+            "2% base gara.",
+            "5% contratto.",
+            "10% contratto."
+        ],
+        "a": 1,
+        "e": "2% base gara (provvisoria). 10% è quella definitiva.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "In caso di fallimento dell'appaltatore in corso d'opera, la stazione appaltante:",
+        "options": [
+            "Deve rifare la gara.",
+            "Può scorrere la graduatoria.",
+            "Gestisce in economia.",
+            "Affida a trattativa libera."
+        ],
+        "a": 1,
+        "e": "L'interpello (art. 124) permette lo scorrimento della graduatoria.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "La revisione prezzi nel D.Lgs 36/23 opera nella misura del:",
+        "options": [
+            "100% eccedenza.",
+            "80% della quota oltre il 5%.",
+            "50% fisso.",
+            "10% semestrale."
+        ],
+        "a": 1,
+        "e": "Ristoro dell'80% dell'incremento di costo oltre la soglia del 5%.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "L'omessa dichiarazione di un conflitto di interessi comporta:",
+        "options": [
+            "Multa 100 euro.",
+            "Responsabilità disciplinare fino al licenziamento.",
+            "Corso di etica obbligatorio.",
+            "Nessuna conseguenza."
+        ],
+        "a": 1,
+        "e": "L'omissione è un illecito disciplinare grave nelle PA.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Il divieto di Pantouflage impedisce di lavorare per i privati per:",
+        "options": [
+            "1 anno.",
+            "3 anni.",
+            "5 anni.",
+            "Sempre."
+        ],
+        "a": 1,
+        "e": "Limite di 3 anni post-impiego per chi ha avuto poteri autoritativi.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Il Whistleblowing esterno ANAC è consentito se:",
+        "options": [
+            "Si temono ritorsioni.",
+            "Il canale interno è inerte o non conforme.",
+            "Si vuole un premio.",
+            "Riguarda un collega."
+        ],
+        "a": 1,
+        "e": "Il canale ANAC è sussidiario se l'ente non risponde o non è sicuro.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Il PIAO deve essere adottato dalle amministrazioni entro il:",
+        "options": [
+            "31 dicembre.",
+            "31 gennaio.",
+            "30 giugno.",
+            "15 marzo."
+        ],
+        "a": 1,
+        "e": "Data limite per la pianificazione anticorruzione e performance.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Il licenziamento senza preavviso scatta per:",
+        "options": [
+            "Assenza di 3 giorni.",
+            "Falsa attestazione presenza (cartellino).",
+            "Scarso rendimento.",
+            "Prova fallita."
+        ],
+        "a": 1,
+        "e": "Il falso cartellino comporta licenziamento immediato e denuncia.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "L'Inconferibilità di un incarico pubblico impedisce:",
+        "options": [
+            "L'assunzione.",
+            "Il conferimento dell'incarico.",
+            "La scelta tra cariche.",
+            "Il part-time."
+        ],
+        "a": 1,
+        "e": "Inconferibilità = blocco a monte. Incompatibilità = scelta a valle.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "L'Organismo Indipendente di Valutazione (OIV) deve essere composto da:",
+        "options": [
+            "Dipendenti interni.",
+            "Soggetti esterni iscritti a elenco nazionale.",
+            "Sindacalisti.",
+            "Esperti ministeriali."
+        ],
+        "a": 1,
+        "e": "L'indipendenza richiede l'essere esterni e certificati dal DFP.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "La valutazione della performance individuale incide direttamente su:",
+        "options": [
+            "Solo gloria.",
+            "Premi risultato e progressioni.",
+            "Ferie.",
+            "Pensione."
+        ],
+        "a": 1,
+        "e": "Meritocrazia: chi performa meglio accede a premi e scatti.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Sillogismo: Alcuni funzionari sono esperti. Tutti gli esperti sono laureati. Quindi:",
+        "options": [
+            "Tutti i funzionari sono laureati.",
+            "Alcuni funzionari sono laureati.",
+            "Nessuno è laureato.",
+            "Tutti i laureati sono esperti."
+        ],
+        "a": 1,
+        "e": "Intersezione di insiemi: se parte di A è B e tutto B è C, quella parte di A è C.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Completare la serie numerica: 1 - 4 - 13 - 40 - ?",
+        "options": [
+            "120",
+            "121",
+            "80",
+            "160"
+        ],
+        "a": 1,
+        "e": "Regola: (n * 3) + 1. Quindi 40 * 3 + 1 = 121.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Un'auto viaggia a 120 km/h. Quanto tempo impiega per 300 metri?",
+        "options": [
+            "9 secondi.",
+            "10 secondi.",
+            "12 secondi.",
+            "15 secondi."
+        ],
+        "a": 0,
+        "e": "120 km/h = 33,33 m/s. 300 / 33,33 = 9 secondi.",
+        "materia": "Logica"
+    },
+    {
+        "q": "4 impiegati fanno 40 pratiche in 4 ore. Quanti per 100 pratiche in 2 ore?",
+        "options": [
+            "10",
+            "20",
+            "15",
+            "25"
+        ],
+        "a": 1,
+        "e": "1 impiegato fa 2,5 pratiche/h. Per 100 in 2h servono 50 pratiche/h -> 20 impiegati.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Se \"Tutti i corvi sono neri\" è falso, allora è vero che:",
+        "options": [
+            "Nessuno è nero.",
+            "Tutti bianchi.",
+            "Almeno un corvo non è nero.",
+            "Alcuni sono neri."
+        ],
+        "a": 2,
+        "e": "La negazione dell'universale affermativa è la particolare negativa.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Individua l'intruso: ATREO, ONIAV, REDNAA, RCBOA.",
+        "options": [
+            "ATREO",
+            "ONIAV",
+            "REDNAA",
+            "RCBOA"
+        ],
+        "a": 2,
+        "e": "ANATRA (animale) vs AEREO, AVION, BARCO (mezzi di trasporto).",
+        "materia": "Logica"
+    },
+    {
+        "q": "Orologio ritarda 10 min/ora. Segna le 12:00. Dopo 12 ore reali segnerà:",
+        "options": [
+            "22:00",
+            "10:00",
+            "02:00",
+            "14:00"
+        ],
+        "a": 1,
+        "e": "12h * 10m = 120m (2h di ritardo). 12:00 + 12h - 2h = 10:00.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Probabilità di estrarre due assi consecutivi da 40 carte senza reinserimento:",
+        "options": [
+            "1/100",
+            "1/130",
+            "4/400",
+            "1/10"
+        ],
+        "a": 1,
+        "e": "(4/40) * (3/39) = 1/130.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Se la parola PA vale 161 e AB vale 12, quanto vale DA?",
+        "options": [
+            "41",
+            "40",
+            "14",
+            "32"
+        ],
+        "a": 0,
+        "e": "Valore alfabetico: P=16, A=1 (161); D=4, A=1 (41).",
+        "materia": "Logica"
+    },
+    {
+        "q": "Standard di firma digitale CAdES rispetto al PAdES:",
+        "options": [
+            "Più sicuro.",
+            "Firma ogni file ma richiede .p7m.",
+            "Solo per fatture.",
+            "No marche temporali."
+        ],
+        "a": 1,
+        "e": "CAdES produce il file .p7m esterno; PAdES è integrato nel PDF.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Per accedere allo SPID di Livello 3 è necessario:",
+        "options": [
+            "User e Pass.",
+            "OTP via App.",
+            "Supporto fisico (Smart Card).",
+            "Biometria iride."
+        ],
+        "a": 2,
+        "e": "Il Livello 3 è l'unico che impone hardware crittografico fisico.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "La notifica di Data Breach al Garante deve avvenire entro:",
+        "options": [
+            "24 ore.",
+            "48 ore.",
+            "72 ore.",
+            "15 giorni."
+        ],
+        "a": 2,
+        "e": "72 ore è il limite perentorio stabilito dal GDPR.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Il parametro RTO (Recovery Time Objective) nel Disaster Recovery indica:",
+        "options": [
+            "Perdita dati accettabile.",
+            "Tempo per ripristinare i servizi.",
+            "Velocità fibra.",
+            "Numero backup."
+        ],
+        "a": 1,
+        "e": "RTO indica quanto tempo stiamo fermi dopo un guasto.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Il principio \"Once Only\" (art. 18-bis CAD) impone alla PA di:",
+        "options": [
+            "Chiedere atti 1 volta l'anno.",
+            "Non chiedere dati già in possesso PA.",
+            "Usare 1 sola password.",
+            "Rispondere in 1 giorno."
+        ],
+        "a": 1,
+        "e": "Interoperabilità: lo Stato non chiede dati che già possiede.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "L'Indice Nazionale dei Domicili Digitali (INAD) permette di:",
+        "options": [
+            "Trovare case dipendenti.",
+            "Registrare la PEC per notifiche legali.",
+            "Pagare multe.",
+            "Vedere i concorsi."
+        ],
+        "a": 1,
+        "e": "INAD serve per le notifiche legali digitali ai cittadini.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "In architettura Cloud, il modello SaaS (Software as a Service) prevede:",
+        "options": [
+            "Gestione hardware locale.",
+            "Uso app via web senza infrastruttura.",
+            "Affitto server fisico.",
+            "Backup su nastri."
+        ],
+        "a": 1,
+        "e": "L'utente usa il software senza gestire i server sottostanti.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Un attacco informatico di tipo DDoS mira a:",
+        "options": [
+            "Rubare password.",
+            "Rendere indisponibile un servizio.",
+            "Criptare file.",
+            "Intercettare telefonate."
+        ],
+        "a": 1,
+        "e": "Satura le risorse del server con finte richieste massive.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Awarding of the contract significa:",
+        "options": [
+            "Revoca della gara.",
+            "Aggiudicazione dell'appalto.",
+            "Pagamento acconto.",
+            "Firma del notaio."
+        ],
+        "a": 1,
+        "e": "Termine tecnico per l'aggiudicazione definitiva.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "What does \"Breach of contract\" mean?",
+        "options": [
+            "Conclusione consensuale.",
+            "Inadempimento / Violazione.",
+            "Firma digitale.",
+            "Proroga tecnica."
+        ],
+        "a": 1,
+        "e": "Breach indica la rottura o violazione dei patti contrattuali.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "The term \"Stakeholder\" refers to:",
+        "options": [
+            "Solo azionisti.",
+            "Qualsiasi portatore d'interesse.",
+            "Interinali.",
+            "Autorità vigilanza."
+        ],
+        "a": 1,
+        "e": "Chiunque sia influenzato dall'attività di un'organizzazione.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "Traduzione corretta: \"The actual budget is lower than expected\".",
+        "options": [
+            "Il budget attuale è basso.",
+            "Il budget effettivo è più basso.",
+            "L'eventuale budget è basso.",
+            "Il budget aggiornato è basso."
+        ],
+        "a": 1,
+        "e": "Actual è un falso amico e significa effettivo/reale.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "The commission has to _______ an audit of the accounts.",
+        "options": [
+            "make up",
+            "carry out",
+            "look into",
+            "bring about"
+        ],
+        "a": 1,
+        "e": "To carry out è il phrasal verb per condurre attività tecniche.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "Which preposition follows \"to comply\" in a legal context?",
+        "options": [
+            "with",
+            "to",
+            "at",
+            "for"
+        ],
+        "a": 0,
+        "e": "Comply with è la forma fissa per la conformità normativa.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "The \"Tenderer\" is:",
+        "options": [
+            "L'amministrazione.",
+            "L'operatore economico offerente.",
+            "Il vincitore.",
+            "Il giudice."
+        ],
+        "a": 1,
+        "e": "Il Tenderer è l'impresa che partecipa alla gara.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "If the deadline _______ missed, the proposal will be rejected.",
+        "options": [
+            "will be",
+            "is",
+            "were",
+            "had been"
+        ],
+        "a": 1,
+        "e": "First conditional: If + present simple, future simple.",
+        "materia": "Inglese"
+    },
     // --- AMMINISTRATIVO ---
     { "q": "Ai sensi dell'art. 6 della L. 241/90, l'organo competente all'adozione del provvedimento finale:", "options": ["Deve conformarsi alle risultanze dell'istruttoria condotta dal responsabile del procedimento.", "Può discostarsi dalle risultanze istruttorie fornendo una motivazione analitica nell'atto finale.", "È libero di decidere in modo difforme senza dover esplicitare le ragioni della scelta effettuata.", "Non può emettere il provvedimento in presenza di un parere tecnico negativo del responsabile."], "a": 1, "e": "L'organo decisionale può ribaltare l'istruttoria, ma l'obbligo di motivazione è il limite alla sua discrezionalità.", "materia": "Diritto Amministrativo" },
     { "q": "In materia di SCIA, decorso il termine di 60 giorni per i poteri inibitori ordinari, la PA:", "options": ["Perde ogni potere di intervento sulla legittimità dell'attività segnalata dal soggetto privato.", "Può intervenire solo se ricorrono i presupposti per l'annullamento d'ufficio ex art. 21-nonies.", "Ha la facoltà di sospendere l'attività a tempo indeterminato per motivi di semplice opportunità.", "Deve obbligatoriamente avviare un nuovo procedimento di autorizzazione espresso per legge."], "a": 1, "e": "Dopo i 60 giorni, la SCIA si stabilizza: la PA può agire solo con i poteri di autotutela (12 mesi + interesse pubblico).", "materia": "Diritto Amministrativo" },
