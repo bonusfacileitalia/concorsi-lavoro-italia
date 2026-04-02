@@ -197,6 +197,594 @@
 <script>
 const databaseQuiz = [
 {
+        "q": "In materia di accordi tra PA e privati (art. 11 L. 241/90), gli accordi sostitutivi del provvedimento:",
+        "options": [
+            "Sono soggetti ai medesimi controlli previsti per i provvedimenti sostituiti.",
+            "Non sono mai soggetti a controllo contabile.",
+            "Richiedono la forma scritta solo ad probationem.",
+            "Sono impugnabili solo di fronte al Giudice Civile."
+        ],
+        "a": 0,
+        "e": "L'accordo sostituisce il provvedimento finale, quindi ne eredita per intero il regime di controlli (es. controllo della Corte dei Conti o di regolarità amministrativa).",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Quale delle seguenti affermazioni sulla \"Nullità\" del provvedimento (art. 21-septies) è FALSA?",
+        "options": [
+            "Il provvedimento nullo non produce effetti giuridici.",
+            "La nullità può essere fatta valere da chiunque vi abbia interesse.",
+            "L'azione di nullità dinanzi al TAR si prescrive in 60 giorni.",
+            "La nullità è rilevabile d'ufficio dal giudice."
+        ],
+        "a": 2,
+        "e": "L'azione di nullità dinanzi al giudice amministrativo è soggetta a un termine di decadenza di 180 giorni (non 60 come l'annullabilità).",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "L'esito congiunto della Conferenza di Servizi decisoria (art. 14-ter) è adottato dall'amministrazione procedente:",
+        "options": [
+            "Sulla base della maggioranza numerica delle amministrazioni partecipanti.",
+            "Sulla base delle posizioni prevalenti espresse dalle amministrazioni partecipanti.",
+            "Solo in caso di unanimità assoluta.",
+            "Attraverso il voto vincolante del Sindaco."
+        ],
+        "a": 1,
+        "e": "Il criterio non è \"una testa un voto\", ma qualitativo: il RUP valuta il peso e la pertinenza delle amministrazioni (criterio delle posizioni prevalenti).",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Ai sensi del D.P.R. 445/2000, i certificati medici e sanitari:",
+        "options": [
+            "Non possono MAI essere sostituiti da un'autocertificazione (dichiarazione sostitutiva di certificazione).",
+            "Possono essere autocertificati se rilasciati da medici privati.",
+            "Sono sempre autocertificabili online.",
+            "Non sono validi se non firmati digitalmente dal primario."
+        ],
+        "a": 0,
+        "e": "Eccezione assoluta all'autocertificazione: certificati medici, sanitari, veterinari, di origine, di conformità CE e di marchi/brevetti non si autocertificano mai.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "In merito al \"Diritto di Accesso Civico Generalizzato\" (FOIA), le PA possono respingere la richiesta se:",
+        "options": [
+            "Il richiedente non risiede nel Comune.",
+            "La richiesta è manifestamente irragionevole e comporta un carico di lavoro paralizzante per l'ente.",
+            "Il richiedente non dichiara per quale motivo chiede il documento.",
+            "Il documento è antecedente al 2013."
+        ],
+        "a": 1,
+        "e": "Le \"richieste massive/esplorative\" che paralizzano l'attività amministrativa sono l'unica deroga giurisprudenziale non scritta (ma ammessa dall'ANAC) al FOIA.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "La motivazione del provvedimento amministrativo NON è richiesta per:",
+        "options": [
+            "I provvedimenti di diniego.",
+            "I provvedimenti organizzativi interni.",
+            "Gli atti normativi e per quelli a contenuto generale.",
+            "I provvedimenti vincolati sfavorevoli."
+        ],
+        "a": 2,
+        "e": "Art. 3, comma 2, L. 241/90: niente motivazione per atti normativi (es. regolamenti) e atti a contenuto generale (es. bandi, piani urbanistici).",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Se l'amministrazione non conclude il procedimento nei termini, il cittadino:",
+        "options": [
+            "Può chiedere l'attivazione del potere sostitutivo entro un termine pari alla metà di quello originariamente previsto.",
+            "Ha diritto automatico a un risarcimento di 1.000 euro.",
+            "Vede la sua istanza accolta per silenzio-assenso in ogni caso.",
+            "Deve obbligatoriamente rivolgersi alla Corte dei Conti."
+        ],
+        "a": 0,
+        "e": "Art. 2 comma 9-bis: in caso di inerzia, il privato può rivolgersi al dirigente con potere sostitutivo, che deve concludere nella metà del tempo.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Il \"Silenzio Assenso\" (art. 20 L. 241/90) tra privati e PA si forma:",
+        "options": [
+            "Solo se la PA rilascia una ricevuta cartacea.",
+            "Allo scadere del termine del procedimento, senza necessità di ulteriori diffide da parte del privato.",
+            "Dopo 60 giorni dalla diffida ad adempiere.",
+            "Solo per procedimenti che non superano i 30 giorni."
+        ],
+        "a": 1,
+        "e": "Il silenzio assenso si forma automaticamente allo spirare del termine di conclusione del procedimento, salvo i casi esclusi dalla legge (es. ambiente).",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Nel D.Lgs 36/2023, la \"Consegna in via d'urgenza\" dei lavori (prima della stipula del contratto) è ammessa:",
+        "options": [
+            "Sempre, è la regola generale per accelerare.",
+            "Solo per eventi oggettivamente imprevedibili, per ovviare a situazioni di pericolo o per tutelare l'igiene e la salute pubblica.",
+            "Mai, il contratto va sempre firmato prima.",
+            "Solo se l'appaltatore offre uno sconto ulteriore."
+        ],
+        "a": 1,
+        "e": "La consegna d'urgenza (art. 17) è un'eccezione giustificata solo da pericoli imminenti o scadenze indifferibili (es. perdita fondi europei).",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Il Raggruppamento Temporaneo di Imprese (RTI) si definisce \"Sovrabbondante\" quando:",
+        "options": [
+            "Il numero di imprese supera le 5 unità.",
+            "Ogni singola impresa facente parte del raggruppamento possiede già, da sola, i requisiti per partecipare alla gara.",
+            "La mandataria detiene meno del 10% delle quote.",
+            "L'offerta supera la base d'asta."
+        ],
+        "a": 1,
+        "e": "L'RTI sovrabbondante è ammesso dalla giurisprudenza, purché non sia uno strumento per limitare la concorrenza (cartello).",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "In materia di Subappalto (D.Lgs 36/2023), l'operatore economico che si affida a subappaltatori:",
+        "options": [
+            "È sollevato da ogni responsabilità in caso di danni causati dal subappaltatore.",
+            "Resta in solido l'unico e il solo responsabile nei confronti della stazione appaltante per l'esecuzione dell'intero contratto.",
+            "Trasferisce la garanzia fideiussoria al subappaltatore.",
+            "Non può pagare il subappaltatore prima del collaudo."
+        ],
+        "a": 1,
+        "e": "Responsabilità in solido e totale dell'appaltatore principale. La PA riconosce solo lui come interlocutore legale.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "La procedura \"Negoziata senza previa pubblicazione del bando di gara\" (art. 76 D.Lgs 36/2023) è ammessa:",
+        "options": [
+            "Quando la gara precedente è andata deserta o non sono state presentate offerte appropriate.",
+            "Sempre, per importi fino a 1 milione di euro.",
+            "Solo se partecipano imprese estere.",
+            "Se il Sindaco dichiara lo stato di calamità verbale."
+        ],
+        "a": 0,
+        "e": "È un'eccezione consentita in casi tassativi: es. gara deserta, estrema urgenza derivante da eventi imprevedibili, o fornitore unico (monopolio).",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Il principio di \"Conservazione dell'equilibrio contrattuale\" (D.Lgs 36/2023) prevede che:",
+        "options": [
+            "Il contratto non possa mai essere modificato.",
+            "Se circostanze imprevedibili alterano l'equilibrio oltre l'alea normale, le parti hanno diritto alla rinegoziazione per ripristinarlo.",
+            "Il RUP debba aumentare sempre i pagamenti del 10%.",
+            "La PA possa annullare il contratto senza indennizzo."
+        ],
+        "a": 1,
+        "e": "Novità assoluta del nuovo Codice: la rinegoziazione diventa un diritto per mantenere in vita il contratto a fronte di eventi macroeconomici imprevisti.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Il \"Quinto d'obbligo\" (variante fino al 20% dell'importo) impone all'appaltatore di:",
+        "options": [
+            "Ridurre la propria parcella del 20%.",
+            "Eseguire i lavori aggiuntivi agli stessi patti, prezzi e condizioni del contratto originario.",
+            "Firmare un nuovo contratto per la parte eccedente.",
+            "Trovare obbligatoriamente un subappaltatore."
+        ],
+        "a": 1,
+        "e": "Fino a 1/5 dell'importo di contratto, l'appaltatore non può rifiutarsi e deve eseguire le opere extra con gli stessi prezzi di aggiudicazione.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Il Partenariato Pubblico Privato (PPP) è caratterizzato da:",
+        "options": [
+            "Un finanziamento al 100% a carico dello Stato.",
+            "Un'allocazione dei rischi tra parte pubblica e privata, con il rischio operativo in capo al privato.",
+            "La trasformazione dell'ente pubblico in S.p.A.",
+            "L'assunzione dei dipendenti privati nella PA."
+        ],
+        "a": 1,
+        "e": "Nel PPP il privato ci mette i soldi (e il rischio operativo), la PA ci mette la necessità pubblica e (talvolta) un canone di disponibilità.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Il Sistema Dinamico di Acquisizione (SDA):",
+        "options": [
+            "È una gara cartacea.",
+            "È un processo di acquisizione interamente elettronico, aperto per tutto il suo periodo di validità a qualsiasi operatore che soddisfi i requisiti.",
+            "Dura al massimo 6 mesi.",
+            "Si applica solo agli affidamenti diretti."
+        ],
+        "a": 1,
+        "e": "A differenza dell'Accordo Quadro, lo SDA rimane sempre aperto a nuovi operatori economici che vogliono qualificarsi durante la sua durata.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Se un RUP non possiede le competenze tecniche necessarie per un appalto altamente specialistico, deve:",
+        "options": [
+            "Affidare l'appalto a un altro ente.",
+            "Rinunciare all'incarico e dimettersi.",
+            "Nominare un \"Direttore dell'Esecuzione\" o avvalersi di una struttura di supporto, mantenendo la responsabilità del procedimento.",
+            "Procedere per affidamento diretto senza gara."
+        ],
+        "a": 2,
+        "e": "Il RUP rimane un \"Project Manager\", le competenze ultra-tecniche possono essere delegate a supporti operativi (es. verificatori, DL, collaudatori).",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "L'adozione del Piano Triennale di Prevenzione della Corruzione (ora assorbito dal PIAO) è un atto di competenza:",
+        "options": [
+            "Del Responsabile Anticorruzione (RPCT).",
+            "Dell'organo di indirizzo politico (Giunta / Consiglio di Amministrazione).",
+            "Del Collegio dei Revisori.",
+            "Dell'OIV."
+        ],
+        "a": 1,
+        "e": "Il RPCT propone il piano (lo scrive), ma l'adozione formale è dell'organo politico, che se ne assume la responsabilità politica.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Un dirigente pubblico che viola le disposizioni in materia di Inconferibilità (D.Lgs 39/2013):",
+        "options": [
+            "Viene sospeso per 15 giorni.",
+            "Il suo contratto è nullo di diritto e decade dall'incarico.",
+            "Paga una multa di 500 euro.",
+            "Viene trasferito a un ruolo tecnico."
+        ],
+        "a": 1,
+        "e": "L'inconferibilità colpisce l'atto alla radice: la nomina è nulla e il contratto è nullo di diritto.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Le assenze per \"Malattia\" del dipendente pubblico comportano nei primi 10 giorni:",
+        "options": [
+            "Trattenuta totale dello stipendio.",
+            "Trattenuta di ogni indennità o emolumento, comunque denominati, aventi carattere fisso e continuativo (Trattenuta Brunetta).",
+            "Nessuna trattenuta.",
+            "Trattenuta del 50% dello stipendio base."
+        ],
+        "a": 1,
+        "e": "Legge 133/2008: nei primi 10 giorni di ogni malattia si paga solo lo stipendio tabellare nudo, decurtando le indennità accessorie fisse.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "La sanzione del Licenziamento disciplinare si applica in caso di:",
+        "options": [
+            "Ritardo di 15 minuti sul posto di lavoro.",
+            "Assenza ingiustificata per un numero di giorni, anche non continuativi, superiore a 3 nell'arco di un biennio.",
+            "Mancato raggiungimento degli obiettivi annuali.",
+            "Discussione accesa con un collega."
+        ],
+        "a": 1,
+        "e": "Il TUPI (art. 55-quater) punisce severamente le assenze ingiustificate: bastano 4 giorni in 2 anni per essere licenziati.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Nel caso in cui un dipendente segnali illeciti (Whistleblowing), la sua identità:",
+        "options": [
+            "Deve essere pubblicata sull'albo pretorio.",
+            "Non può essere rivelata senza il suo consenso espresso, fatti salvi i casi in cui sia indispensabile per la difesa dell'incolpato nel processo penale/disciplinare.",
+            "È sempre rivelata al dirigente interessato.",
+            "Rimane segreta in modo assoluto, anche di fronte a un giudice."
+        ],
+        "a": 1,
+        "e": "L'anonimato è garantito per le fasi amministrative, ma cade in giudizio se la rivelazione è essenziale per garantire il diritto di difesa dell'accusato.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Il \"Mobbing\" nel pubblico impiego è caratterizzato da:",
+        "options": [
+            "Un singolo atto ingiusto da parte del datore di lavoro.",
+            "Una serie di comportamenti ostili, reiterati e sistematici nel tempo, finalizzati all'emarginazione del lavoratore.",
+            "La richiesta di fare straordinari retribuiti.",
+            "Un rimprovero per una pratica sbagliata."
+        ],
+        "a": 1,
+        "e": "I requisiti legali del mobbing sono la sistematicità, la reiterazione (durata nel tempo) e l'intento persecutorio/vessatorio.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "L'Ufficio Procedimenti Disciplinari (UPD) interviene:",
+        "options": [
+            "Per tutte le sanzioni, dal rimprovero verbale al licenziamento.",
+            "Solo per infrazioni di maggiore gravità, per le quali è prevista una sanzione superiore al rimprovero verbale.",
+            "Esclusivamente per licenziamenti penali.",
+            "Solo dopo il giudizio della Corte dei Conti."
+        ],
+        "a": 1,
+        "e": "Il rimprovero verbale è l'unica sanzione gestita interamente dal dirigente. Tutto il resto (censura, multa, sospensione, licenziamento) va all'UPD.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Il dovere di \"Esclusività\" del dipendente pubblico comporta che:",
+        "options": [
+            "Non possa frequentare persone con pendenze penali.",
+            "Non possa assumere altri impieghi o incarichi retribuiti, salvo le deroghe previste dalla legge previa autorizzazione.",
+            "Non possa avere un conto in banca privato.",
+            "Non possa iscriversi a sindacati."
+        ],
+        "a": 1,
+        "e": "L'art. 98 della Costituzione (\"I pubblici impiegati sono al servizio esclusivo della Nazione\") si traduce nell'art. 53 del TUPI (incompatibilità degli incarichi).",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Sillogismo: Tutti i pesci sanno nuotare. Qualche pesce vola. Si deduce che:",
+        "options": [
+            "Tutti gli animali che nuotano volano.",
+            "Qualche animale che vola sa nuotare.",
+            "Nessun pesce sa nuotare.",
+            "Tutti i pesci volano."
+        ],
+        "a": 1,
+        "e": "Se P è dentro N, e qualche P è in V, allora l'intersezione tra N e V non è vuota. Quindi qualche animale in V sa N.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Qual è il numero successivo della serie: 1, 4, 9, 16, 25, 36, ?",
+        "options": [
+            "45",
+            "49",
+            "48",
+            "50"
+        ],
+        "a": 1,
+        "e": "Serie dei quadrati perfetti dei numeri naturali: 1², 2², 3², 4², 5², 6², 7²(49).",
+        "materia": "Logica"
+    },
+    {
+        "q": "Un'impresa edile asfalta 2 km di strada in 4 giorni usando 3 macchinari. Quanti giorni impiegherà per asfaltare 4 km di strada usando 6 macchinari?",
+        "options": [
+            "2 giorni",
+            "4 giorni",
+            "6 giorni",
+            "8 giorni"
+        ],
+        "a": 1,
+        "e": "Raddoppi il lavoro (da 2 a 4 km), quindi servirebbe il doppio del tempo (8 gg). Ma raddoppi anche la forza lavoro (da 3 a 6 macchine), dimezzando il tempo. Torna a 4 giorni.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Trova l'intruso: TIGRE, LEONE, LEOPARDO, LUPO.",
+        "options": [
+            "TIGRE",
+            "LEONE",
+            "LEOPARDO",
+            "LUPO"
+        ],
+        "a": 3,
+        "e": "I primi tre sono felini. Il lupo è un canide.",
+        "materia": "Logica"
+    },
+    {
+        "q": "In un'urna ci sono 20 palline numerate da 1 a 20. Qual è la probabilità di estrarre un numero multiplo di 4?",
+        "options": [
+            "1/4",
+            "1/5",
+            "4/20",
+            "1/10"
+        ],
+        "a": 0,
+        "e": "I multipli di 4 da 1 a 20 sono: 4, 8, 12, 16, 20. Sono 5 palline su 20. Probabilità: 5/20 = 1/4.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Se A > B e C < B, quale disuguaglianza è vera?",
+        "options": [
+            "A < C",
+            "C > A",
+            "A > C",
+            "B = C"
+        ],
+        "a": 2,
+        "e": "Riordinando: A > B > C. Quindi A è strettamente maggiore di C.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Quanti anagrammi si possono fare con la parola \"CIAO\"?",
+        "options": [
+            "12",
+            "24",
+            "16",
+            "8"
+        ],
+        "a": 1,
+        "e": "Permutazioni di 4 lettere distinte: 4! = 4 x 3 x 2 x 1 = 24.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Paolo ha 2 figli. La somma delle loro età è 14. Fra 3 anni, la somma delle loro età sarà:",
+        "options": [
+            "17",
+            "20",
+            "23",
+            "14"
+        ],
+        "a": 1,
+        "e": "Fra 3 anni, ognuno dei 2 figli sarà cresciuto di 3 anni. L'incremento totale è 6 anni. 14 + 6 = 20.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Nel contesto della sicurezza informatica, cos'è il \"Cross-Site Scripting\" (XSS)?",
+        "options": [
+            "Un attacco che inietta codice sorgente malevolo (JavaScript) nelle pagine web visualizzate da altri utenti.",
+            "Un software per testare i firewall.",
+            "Un protocollo di criptazione.",
+            "Una tecnica per velocizzare i server."
+        ],
+        "a": 0,
+        "e": "XSS colpisce gli utenti di un sito: l'hacker inietta script che vengono eseguiti dal browser della vittima, rubando ad esempio i cookie di sessione.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "In un database relazionale, cosa si intende per \"Chiave Primaria\" (Primary Key)?",
+        "options": [
+            "La password di accesso al server.",
+            "Un campo, o un insieme di campi, che identifica in modo univoco ogni singola riga (record) all'interno di una tabella.",
+            "Il cavo di rete principale.",
+            "Il file di backup del database."
+        ],
+        "a": 1,
+        "e": "La Primary Key (es. Codice Fiscale, o un ID numerico progressivo) non ammette duplicati e garantisce che ogni record sia unico.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "La tecnologia \"VPN\" (Virtual Private Network) serve principalmente a:",
+        "options": [
+            "Scaricare video più velocemente.",
+            "Creare un tunnel crittografato e sicuro attraverso una rete pubblica (Internet) per accedere in sicurezza a una rete aziendale.",
+            "Bloccare gli annunci pubblicitari.",
+            "Aggiornare automaticamente Windows."
+        ],
+        "a": 1,
+        "e": "Essenziale per lo Smart Working: ti permette di connetterti alla rete del Ministero o del Comune da casa, in modo sicuro.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Secondo il CAD, il \"Sigillo Elettronico Qualificato\":",
+        "options": [
+            "Può essere utilizzato da persone fisiche.",
+            "Garantisce l'origine e l'integrità dei dati ed è rilasciato esclusivamente a persone giuridiche (es. la PA stessa).",
+            "È un francobollo digitale per raccomandate.",
+            "Non ha valore legale in Italia."
+        ],
+        "a": 1,
+        "e": "Il Sigillo è come il \"Timbro\" dell'ente. La Firma è della persona fisica (es. il Sindaco). Il Sigillo è della persona giuridica (es. Comune di Roma).",
+        "materia": "Informatica"
+    },
+    {
+        "q": "L'acronimo \"CERT\" o \"CSIRT\" in ambito di sicurezza informatica della PA sta per:",
+        "options": [
+            "Central Electronic Remote Terminal.",
+            "Computer Security Incident Response Team (squadra di reazione agli incidenti di sicurezza informatica).",
+            "Certified Enterprise Root Technician.",
+            "Consorzio Enti per la Rete Telematica."
+        ],
+        "a": 1,
+        "e": "L'ACN (Agenzia per la Cybersicurezza Nazionale) gestisce il CSIRT Italia, che interviene quando le PA o le infrastrutture critiche vengono bucate dagli hacker.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Il \"Pharming\" è un attacco informatico che:",
+        "options": [
+            "Installa ransomware sui telefoni.",
+            "Modifica il DNS o il file hosts per reindirizzare il traffico dell'utente verso un sito web falso, anche se l'utente digita l'URL corretto.",
+            "Ruba i dati tramite cavi USB infetti.",
+            "Clona le carte di credito fisiche."
+        ],
+        "a": 1,
+        "e": "Più subdolo del phishing. Tu scrivi \"www.banca.it\" ma il tuo DNS è corrotto e ti manda su un server hacker identico all'originale.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Nel GDPR, il \"Data Breach\" (Violazione dei dati personali) comporta l'obbligo di notifica al Garante Privacy:",
+        "options": [
+            "Sempre e comunque, entro 24 ore.",
+            "Entro 72 ore, a meno che sia improbabile che la violazione presenti un rischio per i diritti e le libertà delle persone fisiche.",
+            "Entro 30 giorni dalla scoperta.",
+            "Solo se ci sono stati danni economici accertati."
+        ],
+        "a": 1,
+        "e": "La notifica (art. 33) ha un limite rigido di 72h, ma c'è l'esimente se i dati rubati erano, ad esempio, in un disco fortemente cifrato o non presentano rischi.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Il \"Data Protection Officer\" (DPO), in una Pubblica Amministrazione, è:",
+        "options": [
+            "Una figura facoltativa.",
+            "Obbligatorio; deve essere coinvolto in tutte le questioni riguardanti la privacy e operare in indipendenza.",
+            "Il Sindaco.",
+            "Il responsabile IT (Sistemi Informativi)."
+        ],
+        "a": 1,
+        "e": "Art. 37 GDPR: la PA deve sempre nominare un DPO (Responsabile Protezione Dati). Non può avere conflitti di interesse (es. non può essere chi gestisce i server).",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Translate the term \"Sick leave\":",
+        "options": [
+            "Permesso per lutto.",
+            "Ferie arretrate.",
+            "Congedo per malattia / Permesso per malattia.",
+            "Dimissioni volontarie."
+        ],
+        "a": 2,
+        "e": "Sick leave = malattia. To be on sick leave = essere in malattia.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "In a contract, if a clause is \"Null and void\", it means:",
+        "options": [
+            "È fondamentale per l'accordo.",
+            "È nulla e priva di effetti legali.",
+            "Deve essere riscritta a mano.",
+            "Comporta un risarcimento danni."
+        ],
+        "a": 1,
+        "e": "Null and void è la formula fissa (legal doublet) per definire un atto \"nullo e invalido\".",
+        "materia": "Inglese"
+    },
+    {
+        "q": "What does the idiom \"To cut corners\" mean in a professional context?",
+        "options": [
+            "Piegare i documenti.",
+            "Fare qualcosa in modo approssimativo o economico, saltando passaggi per risparmiare tempo o denaro.",
+            "Tagliare il budget in modo efficiente.",
+            "Dividere l'ufficio in scomparti."
+        ],
+        "a": 1,
+        "e": "To cut corners (tagliare gli angoli) è pericoloso negli appalti pubblici, perché significa eludere le procedure di sicurezza/qualità per fare in fretta.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "Choose the correct preposition: \"The manager is in charge _______ the new project.\"",
+        "options": [
+            "for",
+            "to",
+            "of",
+            "with"
+        ],
+        "a": 2,
+        "e": "To be in charge OF = Essere responsabile di. Un classico dei test grammaticali.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "In an email, the abbreviation \"ASAP\" stands for:",
+        "options": [
+            "As Soon As Possible (Il prima possibile).",
+            "Always Save A Print (Salva sempre una copia).",
+            "A Simple Action Plan.",
+            "As Stated At Paragraph."
+        ],
+        "a": 0,
+        "e": "Formula usatissima nelle comunicazioni aziendali per richiedere urgenza.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "Which word correctly completes the sentence: \"_______ I known about the meeting, I would have attended.\"?",
+        "options": [
+            "If",
+            "Had",
+            "Would",
+            "Have"
+        ],
+        "a": 1,
+        "e": "Inversion form of the third conditional: \"Had I known\" is the formal equivalent of \"If I had known\". Molto amato ai concorsi B2/C1.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "In business, \"Liabilities\" refer to:",
+        "options": [
+            "Affidabilità dei dipendenti.",
+            "Le passività / I debiti finanziari di un'azienda.",
+            "I premi di produzione.",
+            "Gli immobili aziendali."
+        ],
+        "a": 1,
+        "e": "Liabilities sono i debiti (passività). Assets sono le attività.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "What does \"To draft a bill\" mean in a parliamentary/legal context?",
+        "options": [
+            "Pagare una fattura in bozza.",
+            "Redigere la bozza di un progetto di legge.",
+            "Cancellare una legge.",
+            "Ritirare i soldi dal bancomat."
+        ],
+        "a": 1,
+        "e": "Bill = disegno di legge (o fattura, o banconota, ma in contesto legal è la legge in bozza). Draft = redigere.",
+        "materia": "Inglese"
+    },
+{
         "q": "Ai sensi dell'art. 21-ter L. 241/90, l'Esecutorietà del provvedimento amministrativo consiste nella:",
         "options": [
             "Capacità del provvedimento di produrre effetti giuridici immediati.",
