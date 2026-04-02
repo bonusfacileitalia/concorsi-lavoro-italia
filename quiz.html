@@ -197,6 +197,606 @@
 <script>
 const databaseQuiz = [
 {
+        "q": "Ai sensi dell'art. 21-quater L. 241/90, la sospensione dell'efficacia di un provvedimento amministrativo può essere disposta per un periodo:",
+        "options": [
+            "Illimitato, fino a sentenza del TAR.",
+            "Non superiore a 18 mesi, prorogabile una sola volta.",
+            "Strettamente necessario e con indicazione del termine esplicito.",
+            "Massimo di 60 giorni."
+        ],
+        "a": 2,
+        "e": "La sospensione deve indicare un termine esplicito e può essere prorogata o differita per una sola volta.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Gli accordi tra pubbliche amministrazioni per disciplinare lo svolgimento in collaborazione di attività di interesse comune (art. 15 L. 241/90):",
+        "options": [
+            "Devono essere redatti per atto pubblico notarile.",
+            "Devono essere sottoscritti con firma digitale a pena di nullità.",
+            "Possono essere conclusi verbalmente in Conferenza di Servizi.",
+            "Richiedono sempre l'approvazione della Corte dei Conti."
+        ],
+        "a": 1,
+        "e": "L'art. 15 stabilisce l'obbligo inderogabile della firma digitale per gli accordi tra PA, altrimenti sono nulli.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "La comunicazione di avvio del procedimento (art. 7 L. 241/90) deve essere inviata:",
+        "options": [
+            "Solo al soggetto che ha presentato l'istanza.",
+            "Ai destinatari diretti, a chi per legge deve intervenire e ai potenziali controinteressati individuabili.",
+            "A tutti i cittadini residenti nel Comune.",
+            "Solo se il procedimento è iniziato d'ufficio."
+        ],
+        "a": 1,
+        "e": "L'obbligo si estende ai controinteressati facilmente individuabili, non solo al destinatario diretto.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "L'istituto del preavviso di rigetto (art. 10-bis) si applica ai procedimenti a istanza di parte. I termini procedimentali, a seguito della comunicazione:",
+        "options": [
+            "Si sospendono e ripartono dal punto in cui si erano fermati.",
+            "Si interrompono e ricominciano a decorrere ex novo (per intero).",
+            "Non subiscono alcuna variazione.",
+            "Si azzerano in modo definitivo."
+        ],
+        "a": 1,
+        "e": "Interruzione (non sospensione): i termini per concludere ripartono da zero per dare tempo al RUP di valutare le controdeduzioni.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Se la Pubblica Amministrazione revoca un provvedimento amministrativo ad efficacia durevole (art. 21-quinquies):",
+        "options": [
+            "Deve risarcire interamente il danno subito dal cittadino.",
+            "L'atto revocato viene annullato con efficacia retroattiva (ex tunc).",
+            "L'atto revocato perde efficacia solo per il futuro (ex nunc) e spetta un indennizzo.",
+            "Non deve corrispondere nulla se la revoca è motivata."
+        ],
+        "a": 2,
+        "e": "La revoca è lecita (cambio idea della PA) e opera solo per il futuro (ex nunc). Spetta un indennizzo, non un risarcimento.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "La SCIA (Segnalazione Certificata di Inizio Attività) può sostituire atti di natura:",
+        "options": [
+            "Vincolata, privi di discrezionalità e senza contingenti numerici.",
+            "Discrezionale, se il RUP dà l'assenso informale.",
+            "Esclusivamente in materia edilizia.",
+            "Qualsiasi atto amministrativo, compresi quelli ambientali."
+        ],
+        "a": 0,
+        "e": "La SCIA funziona solo dove la PA non deve scegliere o valutare (nessuna discrezionalità, nessun tetto massimo di licenze).",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "La conferenza di servizi decisoria (art. 14 c. 2 L. 241/90) è SEMPRE obbligatoria:",
+        "options": [
+            "Quando vi è disaccordo tra i dirigenti di uno stesso ufficio.",
+            "Quando la conclusione del procedimento è subordinata all'acquisizione di più pareri, intese o assensi da diverse PA.",
+            "Se il procedimento dura più di 30 giorni.",
+            "Solo per procedimenti avviati d'ufficio."
+        ],
+        "a": 1,
+        "e": "La decisoria è obbligatoria per sostituire i molteplici atti di assenso di diverse amministrazioni.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Il difetto di istruttoria è una figura sintomatica che rientra nel vizio di:",
+        "options": [
+            "Nullità strutturale.",
+            "Incompetenza assoluta.",
+            "Eccesso di potere.",
+            "Violazione di legge."
+        ],
+        "a": 2,
+        "e": "Decidere senza aver acquisito i fatti (difetto di istruttoria) è un classico vizio della discrezionalità (Eccesso di potere).",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Nel nuovo D.Lgs 36/2023, quanti e quali sono i livelli della progettazione in materia di lavori pubblici?",
+        "options": [
+            "Tre: preliminare, definitivo, esecutivo.",
+            "Due: progetto di fattibilità tecnico-economica e progetto esecutivo.",
+            "Uno: progetto unificato di fattibilità.",
+            "Quattro: preliminare, definitivo, esecutivo e cantierabile."
+        ],
+        "a": 1,
+        "e": "Il Codice 2023 taglia il progetto definitivo. I livelli passano da 3 a 2. Domanda certissima nei concorsi tecnici e amministrativi.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "L'esclusione automatica delle offerte anomale (sotto la soglia comunitaria) nel D.Lgs 36/2023:",
+        "options": [
+            "È sempre vietata.",
+            "Può essere prevista nel bando solo se le offerte ammesse sono almeno cinque.",
+            "È obbligatoria in ogni caso.",
+            "È decisa dall'ANAC."
+        ],
+        "a": 1,
+        "e": "Se ci sono almeno 5 offerte valide, la stazione appaltante può attivare l'esclusione automatica del taglio delle ali.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Nei contratti ad alta intensità di manodopera, il criterio di aggiudicazione obbligatorio è:",
+        "options": [
+            "Il minor prezzo.",
+            "L'offerta economicamente più vantaggiosa (OEPV) basata sul miglior rapporto qualità/prezzo.",
+            "La trattativa privata pura.",
+            "L'estrazione a sorte tra i qualificati."
+        ],
+        "a": 1,
+        "e": "Per i servizi dove il costo principale è il personale, il minor prezzo è vietato per evitare dumping salariale (art. 108).",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Il principio di \"Equilibrio Economico\" (D.Lgs 36/2023) si applica specificamente a:",
+        "options": [
+            "Appalti di forniture sotto soglia.",
+            "Affidamenti diretti.",
+            "Contratti di concessione e partenariato pubblico-privato.",
+            "Gare di progettazione."
+        ],
+        "a": 2,
+        "e": "Nelle concessioni, i ricavi devono poter coprire i costi e remunerare il capitale. È il cuore del rischio operativo.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Cosa sono i CAM nel Codice degli Appalti?",
+        "options": [
+            "Criteri di Aggiudicazione Massimi.",
+            "Certificati Antimafia Ministeriali.",
+            "Criteri Ambientali Minimi, obbligatori da inserire nei documenti di gara.",
+            "Commissioni Appalti Municipali."
+        ],
+        "a": 2,
+        "e": "I Criteri Ambientali Minimi sono le specifiche green obbligatorie. Se non li metti nel bando, la gara è illegittima.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Un Raggruppamento Temporaneo di Imprese (RTI) può partecipare a una gara d'appalto:",
+        "options": [
+            "Solo se ha già costituito una S.p.A.",
+            "Anche senza essersi ancora formalmente costituito dal notaio prima della presentazione dell'offerta.",
+            "Solo per lavori di importo inferiore a 1 milione di euro.",
+            "Solo se tutte le imprese sono iscritte alla stessa Camera di Commercio."
+        ],
+        "a": 1,
+        "e": "Le imprese possono presentare offerta con il semplice impegno a costituire l'RTI in caso di vittoria (RTI costituendo).",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Il subappalto non può in nessun caso essere superiore al:",
+        "options": [
+            "30% dell'importo contrattuale.",
+            "50% dell'importo contrattuale.",
+            "Il D.Lgs 36/2023 non fissa più un limite quantitativo generale massimo.",
+            "40% per i lavori e 20% per i servizi."
+        ],
+        "a": 2,
+        "e": "Dietro infrazione UE, il limite generale fisso al subappalto è stato eliminato. La PA deve motivare limiti specifici.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Negli affidamenti diretti di importo inferiore a 140.000 euro (D.Lgs 36/2023), la PA deve richiedere garanzie provvisorie?",
+        "options": [
+            "Sempre, per il 2% dell'importo.",
+            "Di norma no, ma può farlo in casi eccezionali con adeguata motivazione.",
+            "Sì, ma solo per importi superiori a 40.000 euro.",
+            "Sì, pari al 10%."
+        ],
+        "a": 1,
+        "e": "Semplificazione: sotto soglia la garanzia provvisoria non si chiede, per non gravare sulle micro-imprese.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "La rinegoziazione del contratto di appalto per aumento imprevedibile dei costi dei materiali si attua tramite:",
+        "options": [
+            "Risoluzione automatica del contratto.",
+            "Applicazione della clausola di revisione dei prezzi.",
+            "Indizione di una nuova gara ristretta.",
+            "Subappalto obbligatorio."
+        ],
+        "a": 1,
+        "e": "La revisione prezzi (ora obbligatoria nel Codice 2023) assorbe gli shock inflattivi e salva il contratto.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Violazione del divieto di \"Pantouflage\" (art. 53, c. 16-ter D.Lgs 165/01): se un'azienda privata assume un ex dirigente pubblico prima dei 3 anni, incorre in:",
+        "options": [
+            "Multe fino a 10.000 euro.",
+            "Nullità del contratto di lavoro e divieto di contrattare con la PA per 3 anni.",
+            "Richiamo formale dall'ANAC.",
+            "Nessuna sanzione per l'impresa, ma solo per l'ex dipendente."
+        ],
+        "a": 1,
+        "e": "La norma punisce pesantemente anche l'azienda \"corruttrice\", escludendola dal mercato pubblico per 3 anni.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Nel pubblico impiego, il procedimento disciplinare \"maggiore\" (di competenza dell'UPD) deve concludersi entro:",
+        "options": [
+            "30 giorni dalla contestazione.",
+            "120 giorni dalla contestazione dell'addebito al dipendente.",
+            "60 giorni dalla scoperta del fatto.",
+            "180 giorni dalla segnalazione del dirigente."
+        ],
+        "a": 1,
+        "e": "Termine perentorio vitale. Se l'UPD supera i 120 giorni, il procedimento decade e il dipendente si salva.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "L'esercizio di mansioni superiori nel pubblico impiego (art. 52 TUPI):",
+        "options": [
+            "Dà sempre diritto all'assunzione nel ruolo superiore.",
+            "Non dà diritto a differenze retributive.",
+            "Dà diritto alla differenza retributiva ma NON all'inquadramento definitivo superiore.",
+            "È assolutamente vietato e costituisce reato."
+        ],
+        "a": 2,
+        "e": "Nella PA le promozioni si fanno per concorso. Puoi essere pagato di più temporaneamente, ma non vieni promosso in automatico.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Il Piano Triennale per la Prevenzione della Corruzione (confluito nel PIAO) viene aggiornato:",
+        "options": [
+            "Ogni 3 anni.",
+            "Annualmente (entro il 31 gennaio).",
+            "Ogni volta che si elegge un nuovo Sindaco/Ministro.",
+            "Ogni 5 anni."
+        ],
+        "a": 1,
+        "e": "È un piano triennale a scorrimento (rolling). Copre tre anni ma si aggiorna fisicamente ogni singolo anno.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "La misura della \"rotazione straordinaria\" si applica:",
+        "options": [
+            "A tutti i dipendenti dopo 5 anni di servizio.",
+            "A seguito dell'avvio di procedimenti penali o disciplinari per condotte corruttive.",
+            "Come premio per il raggiungimento degli obiettivi.",
+            "Solo ai dirigenti in prossimità della pensione."
+        ],
+        "a": 1,
+        "e": "Straordinaria: se c'è puzza di reato, il dipendente viene subito tolto dall'ufficio sensibile in via cautelare.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Il congedo di paternità obbligatorio (TU Maternità/Paternità) ammonta attualmente a:",
+        "options": [
+            "3 giorni retribuiti al 100%.",
+            "10 giorni lavorativi retribuiti al 100%.",
+            "15 giorni al 30%.",
+            "Non esiste, c'è solo quello facoltativo."
+        ],
+        "a": 1,
+        "e": "Riforma recente per equiparazione europea: 10 giorni lavorativi, obbligatori e pienamente retribuiti.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Per Incompatibilità ex D.Lgs 39/2013 si intende l'obbligo per il soggetto a cui viene conferito un incarico di:",
+        "options": [
+            "Dimettersi da ogni incarico pubblico preesistente in un altro ente territoriale.",
+            "Scegliere, a pena di decadenza, entro 15 giorni tra l'incarico conferito e quello già ricoperto (o l'attività privata preclusa).",
+            "Pagare una sanzione amministrativa.",
+            "Superare un nuovo concorso pubblico."
+        ],
+        "a": 1,
+        "e": "L'incompatibilità impone una scelta (opzione). L'inconferibilità invece blocca l'accesso a monte.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Il procedimento disciplinare può essere sospeso in pendenza di procedimento penale?",
+        "options": [
+            "Sempre, per il principio di presunzione d'innocenza.",
+            "Sì, ma solo per infrazioni di maggiore gravità, se la complessità dei fatti richiede l'esito del giudizio penale.",
+            "Mai, i due procedimenti sono obbligatoriamente separati e paralleli in ogni caso.",
+            "Sì, ma solo se lo richiede il dipendente."
+        ],
+        "a": 1,
+        "e": "Di norma viaggiano separati. La sospensione è un'eccezione solo se i fatti sono troppo complessi da accertare internamente.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Trova il numero mancante nella serie: 3, 9, 27, 81, ?",
+        "options": [
+            "162",
+            "243",
+            "100",
+            "124"
+        ],
+        "a": 1,
+        "e": "Potenze di 3, oppure moltiplicazione per 3 ad ogni step. 81 * 3 = 243.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Sillogismo: Tutte le rose hanno le spine. Alcuni fiori rossi sono rose. Quindi:",
+        "options": [
+            "Tutti i fiori rossi hanno le spine.",
+            "Alcuni fiori rossi hanno le spine.",
+            "Nessun fiore rosso ha le spine.",
+            "Tutte le spine sono rosse."
+        ],
+        "a": 1,
+        "e": "Se alcune rose sono fiori rossi e tutte le rose hanno le spine, allora quei specifici fiori rossi hanno le spine.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Se X è maggiore di Y, e Z è minore di Y. Quale affermazione è sicuramente vera?",
+        "options": [
+            "Z è maggiore di X.",
+            "X è minore di Z.",
+            "Z è minore di X.",
+            "Y è maggiore di X."
+        ],
+        "a": 2,
+        "e": "Proprietà transitiva della disuguaglianza: X > Y > Z. Quindi X > Z (Z < X).",
+        "materia": "Logica"
+    },
+    {
+        "q": "Un treno parte alle 10:15 e viaggia a 120 km/h. Arriva a destinazione alle 12:45. Quanti chilometri ha percorso?",
+        "options": [
+            "240 km",
+            "250 km",
+            "300 km",
+            "360 km"
+        ],
+        "a": 2,
+        "e": "Tempo di viaggio: 2 ore e mezza (2,5 ore). Distanza = 120 * 2,5 = 300 km.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Se A è condizione sufficiente ma non necessaria per B, significa che:",
+        "options": [
+            "Se non c'è B, non c'è A.",
+            "Se c'è B, c'è sicuramente A.",
+            "Senza A non può mai esserci B.",
+            "B causa A."
+        ],
+        "a": 0,
+        "e": "Se A -> B (A è sufficiente). Per Modus Tollens, se non B -> non A. Ma se c'è B, potrebbe esserci per altre cause (A non è necessaria).",
+        "materia": "Logica"
+    },
+    {
+        "q": "Quanti anagrammi (anche senza senso) si possono formare con la parola \"ROMA\"?",
+        "options": [
+            "16",
+            "24",
+            "12",
+            "4"
+        ],
+        "a": 1,
+        "e": "Permutazioni semplici di 4 elementi (4!): 4 * 3 * 2 * 1 = 24.",
+        "materia": "Logica"
+    },
+    {
+        "q": "In una classe di 30 studenti, 20 studiano inglese, 15 francese. Se tutti studiano almeno una lingua, quanti le studiano entrambe?",
+        "options": [
+            "5",
+            "10",
+            "15",
+            "Nessuno"
+        ],
+        "a": 0,
+        "e": "(20 + 15) - X = 30 -> 35 - X = 30 -> X = 5. Teoria degli insiemi.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Trova l'intruso logico: BRONZO, OTTONE, ACCIAIO, RAME.",
+        "options": [
+            "BRONZO",
+            "OTTONE",
+            "ACCIAIO",
+            "RAME"
+        ],
+        "a": 3,
+        "e": "Bronzo, ottone e acciaio sono leghe. Il rame è un elemento chimico puro (metallo).",
+        "materia": "Logica"
+    },
+    {
+        "q": "Risolvi: Se 3 gatti mangiano 3 topi in 3 minuti, quanti gatti servono per mangiare 100 topi in 100 minuti?",
+        "options": [
+            "100",
+            "33",
+            "3",
+            "1"
+        ],
+        "a": 2,
+        "e": "Velocità: 1 gatto mangia 1 topo in 3 minuti. In 100 minuti, 1 gatto mangia 33,3 topi. Per mangiarne 100 in 100 min servono (100/33,3) = 3 gatti.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Qual è la differenza tra un Malware \"Trojan\" e un \"Worm\"?",
+        "options": [
+            "Il Trojan è innocuo.",
+            "Il Worm si autoreplica e si propaga autonomamente sulla rete, il Trojan si nasconde in software apparentemente legittimi.",
+            "Il Trojan cripta i file, il Worm li cancella.",
+            "Il Worm colpisce solo i server cloud."
+        ],
+        "a": 1,
+        "e": "Worm (verme) viaggia da solo sulla rete. Trojan (cavallo di Troia) richiede che tu apra un file apparentemente utile.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Nella Posta Elettronica Certificata (PEC), il messaggio assume valore legale quando il mittente riceve:",
+        "options": [
+            "Solo la ricevuta di accettazione dal proprio gestore.",
+            "La ricevuta di accettazione (gestore mittente) e la ricevuta di avvenuta consegna (gestore destinatario).",
+            "La notifica di lettura da parte dell'utente.",
+            "La conferma di stampa del documento."
+        ],
+        "a": 1,
+        "e": "La prova legale si compone di due ricevute. La \"lettura\" effettiva del destinatario non è richiesta ai fini legali.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Il formato file PDF/A è lo standard ISO raccomandato per:",
+        "options": [
+            "Le immagini ad altissima risoluzione.",
+            "L'archiviazione a lungo termine di documenti elettronici.",
+            "I file video compressi.",
+            "Le tabelle di calcolo editabili."
+        ],
+        "a": 1,
+        "e": "PDF/A (Archive) incorpora i font e disabilita funzioni dinamiche per garantire che il file sia leggibile tra 50 anni.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "L'AgID (Agenzia per l'Italia Digitale) ha il compito principale di:",
+        "options": [
+            "Arrestare i cyber-criminali.",
+            "Garantire la realizzazione degli obiettivi dell'Agenda Digitale Italiana e l'interoperabilità dei sistemi PA.",
+            "Riparare i PC dei Ministeri.",
+            "Fornire la fibra ottica ai Comuni."
+        ],
+        "a": 1,
+        "e": "AgID emana le linee guida sul CAD e coordina la digitalizzazione della PA.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Nel GDPR, l'esercizio del \"Diritto all'oblio\" (art. 17) consiste:",
+        "options": [
+            "Nella possibilità di non andare a votare.",
+            "Nel diritto dell'interessato di ottenere la cancellazione dei propri dati personali se non sono più necessari alle finalità originarie.",
+            "Nel divieto di usare password memorizzate nel browser.",
+            "Nella cancellazione automatica dei dati ogni 12 mesi."
+        ],
+        "a": 1,
+        "e": "Diritto all'oblio: se lo scopo del trattamento è finito o il consenso è revocato, la PA/azienda deve cancellare i dati.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Il principio del \"Cloud First\" per la PA italiana stabilisce che:",
+        "options": [
+            "La PA deve acquistare prima di tutto servizi cloud quando sviluppa o rinnova i propri sistemi informativi.",
+            "È vietato conservare dati sui server europei.",
+            "I dipendenti devono usare il cloud di Google per lavoro.",
+            "Solo i ministeri possono usare il cloud."
+        ],
+        "a": 0,
+        "e": "Strategia nazionale: divieto di creare nuovi data center locali, migrazione prioritaria al Polo Strategico Nazionale (Cloud).",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Nella sicurezza dei dati, la \"Regola del 3-2-1\" per i backup significa:",
+        "options": [
+            "3 backup ogni 2 ore su 1 server.",
+            "3 copie dei dati, su 2 supporti diversi, di cui 1 offsite (fuori sede/cloud).",
+            "3 password, 2 firewall, 1 antivirus.",
+            "Salvare in 3 cartelle, 2 hard disk, in 1 minuto."
+        ],
+        "a": 1,
+        "e": "Standard aureo del disaster recovery per sopravvivere ad incendi, furti o ransomware.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "In informatica, cos'è il \"Ransomware\"?",
+        "options": [
+            "Un programma che pulisce la memoria cache.",
+            "Un malware che cripta i file della vittima e chiede un riscatto per decifrarli.",
+            "Una rete protetta per la Pubblica Amministrazione.",
+            "Un dispositivo fisico per generare firme digitali."
+        ],
+        "a": 1,
+        "e": "Cryptolocker e simili. L'attacco informatico più distruttivo oggi esistente.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Translate into English: \"Accordo Quadro\"",
+        "options": [
+            "Square Deal.",
+            "Framework Agreement.",
+            "General Contract.",
+            "Outline Pact."
+        ],
+        "a": 1,
+        "e": "Termine tecnico degli appalti UE (Direttive 2014/24/UE). Framework Agreement.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "Which verb is commonly used to mean \"licenziare (un dipendente)\"?",
+        "options": [
+            "To hire.",
+            "To dismiss.",
+            "To promote.",
+            "To recruit."
+        ],
+        "a": 1,
+        "e": "To dismiss / To fire / To sack. Dismissal è il licenziamento.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "What does \"Non-Disclosure Agreement (NDA)\" stand for?",
+        "options": [
+            "Accordo di non divulgazione / Patto di riservatezza.",
+            "Decreto di nomina del direttore.",
+            "Contratto di subappalto netto.",
+            "Nota di debito aziendale."
+        ],
+        "a": 0,
+        "e": "NDA è il classico accordo di segretezza tra parti che iniziano una trattativa.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "In finance, \"to default on a loan\" means:",
+        "options": [
+            "Ripagare il prestito in anticipo.",
+            "Non riuscire a rimborsare il prestito (andare in insolvenza).",
+            "Richiedere un prestito aggiuntivo.",
+            "Ottenere un tasso di interesse agevolato."
+        ],
+        "a": 1,
+        "e": "Default = Insolvenza. (Es. The company defaulted on its debt).",
+        "materia": "Inglese"
+    },
+    {
+        "q": "Choose the correct word: \"The Parliament is going to _______ a new law next week.\"",
+        "options": [
+            "enact",
+            "break",
+            "refuse",
+            "deny"
+        ],
+        "a": 0,
+        "e": "To enact a law = emanare / promulgare una legge.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "A \"Shareholder\" is:",
+        "options": [
+            "Chiunque abbia un interesse nell'azienda.",
+            "Un dipendente part-time.",
+            "Un azionista (possessore di quote dell'azienda).",
+            "Un cliente abituale."
+        ],
+        "a": 2,
+        "e": "Da non confondere con Stakeholder (portatore di interessi generali). Shareholder possiede le azioni (shares).",
+        "materia": "Inglese"
+    },
+    {
+        "q": "Complete the sentence with the correct conditional: \"If I _______ the password, I would have logged in.\"",
+        "options": [
+            "know",
+            "knew",
+            "had known",
+            "will know"
+        ],
+        "a": 2,
+        "e": "Third conditional (irreale nel passato): If + Past Perfect (had known), would have + Past Participle.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "Choose the correct passive form: \"They signed the contract yesterday.\"",
+        "options": [
+            "The contract signed them yesterday.",
+            "The contract was signed yesterday.",
+            "The contract is signed yesterday.",
+            "The contract has been signed yesterday."
+        ],
+        "a": 1,
+        "e": "Azione finita nel passato (Past Simple Active) diventa \"was + past participle\" (Past Simple Passive).",
+        "materia": "Inglese"
+    },
+{
         "q": "L'annullamento d'ufficio (art. 21-nonies L. 241/90) di un provvedimento illegittimo attributivo di vantaggi economici deve intervenire entro un termine ragionevole, e comunque non superiore a:",
         "options": [
             "6 mesi.",
