@@ -197,6 +197,606 @@
 <script>
 const databaseQuiz = [
 {
+        "q": "Nella L. 241/90, se la Conferenza di Servizi simultanea (sincrona) si conclude con l'approvazione unanime, il provvedimento finale:",
+        "options": [
+            "Deve essere ratificato dal Sindaco o dal Ministro.",
+            "È immediatamente efficace e sostituisce a tutti gli effetti gli atti di assenso di competenza delle amministrazioni partecipanti.",
+            "Ha valore di mera proposta per il dirigente preposto.",
+            "Richiede sempre una successiva pubblicazione in Gazzetta Ufficiale."
+        ],
+        "a": 1,
+        "e": "La determinazione motivata di conclusione della conferenza sostituisce ogni autorizzazione, concessione o nulla osta. È il suo scopo acceleratorio.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Un provvedimento amministrativo vincolato, in cui l'amministrazione non ha alcun margine di scelta, deve essere motivato?",
+        "options": [
+            "No, i provvedimenti vincolati non richiedono mai motivazione.",
+            "Sì, è sufficiente indicare i presupposti di fatto e le ragioni giuridiche che hanno determinato la decisione.",
+            "No, l'obbligo di motivazione vale solo per gli atti discrezionali.",
+            "Sì, ma solo se l'esito è sfavorevole per il cittadino."
+        ],
+        "a": 1,
+        "e": "L'art. 3 stabilisce che TUTTI i provvedimenti devono essere motivati (fatti e diritto), anche quelli vincolati, ad eccezione degli atti normativi e a contenuto generale.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Nel conflitto tra Diritto di Accesso (L. 241/90) e Tutela della Privacy di terzi, come si bilanciano gli interessi?",
+        "options": [
+            "La privacy prevale sempre e comunque sull'accesso.",
+            "L'accesso è garantito se strettamente necessario per curare o difendere i propri interessi giuridici.",
+            "L'accesso è negato, ma l'istante può chiedere un risarcimento.",
+            "Prevale l'accesso in ogni caso, essendo un principio costituzionale superiore."
+        ],
+        "a": 1,
+        "e": "Criterio della \"stretta necessarietà\": posso accedere ai tuoi dati sensibili se mi servono per difendermi in giudizio (es. accesso difensivo).",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "L'annullamento d'ufficio (art. 21-nonies L. 241/90) produce effetti:",
+        "options": [
+            "Ex tunc (retroattivi), come se l'atto non fosse mai esistito.",
+            "Ex nunc (solo per il futuro), salvaguardando gli effetti passati.",
+            "Sospensivi per 60 giorni.",
+            "Solo di natura risarcitoria."
+        ],
+        "a": 0,
+        "e": "L'annullamento rimuove l'atto illegittimo fin dall'origine (ex tunc). La revoca invece agisce solo per il futuro (ex nunc).",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Per quale di questi vizi il ricorso al Giudice Amministrativo è soggetto a un termine di decadenza di 60 giorni?",
+        "options": [
+            "Difetto assoluto di attribuzione (Nullità).",
+            "Violazione o elusione del giudicato (Nullità).",
+            "Violazione di legge (Annullabilità).",
+            "Mancanza degli elementi essenziali (Nullità)."
+        ],
+        "a": 2,
+        "e": "I vizi di annullabilità (violazione di legge, eccesso di potere, incompetenza) si impugnano in 60 gg. L'azione di nullità si propone entro 180 giorni.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "In tema di Responsabile del Procedimento (RUP L. 241/90), se emerge un conflitto di interessi, anche potenziale:",
+        "options": [
+            "Il RUP deve informare il superiore, ma può continuare a gestire la pratica se ritiene di essere imparziale.",
+            "Il RUP ha l'obbligo di astenersi e comunicarlo al dirigente competente.",
+            "Il RUP deve farsi affiancare da un co-responsabile.",
+            "Il RUP deve pagare una sanzione disciplinare preventiva."
+        ],
+        "a": 1,
+        "e": "L'astensione (art. 6-bis) è un obbligo inderogabile. Non c'è discrezionalità: se c'è potenziale conflitto, devi farti da parte.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Gli Accordi di Programma (D.Lgs 267/2000 - TUEL) servono a:",
+        "options": [
+            "Promuovere i dipendenti comunali più meritevoli.",
+            "Assicurare il coordinamento delle azioni di diversi enti (Comuni, Regioni, ecc.) per la realizzazione di opere complesse.",
+            "Gestire il bilancio di previsione dello Stato.",
+            "Estinguere i debiti delle società partecipate."
+        ],
+        "a": 1,
+        "e": "L'accordo di programma è lo strumento per coordinare opere che coinvolgono i territori di più amministrazioni pubbliche.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Se la PA non risponde entro 30 giorni a una richiesta di Accesso Civico Generalizzato (FOIA):",
+        "options": [
+            "Si forma il silenzio-assenso.",
+            "Il richiedente deve pagare una tassa per sbloccare la pratica.",
+            "Si forma il silenzio-rigetto (o diniego tacito), che è impugnabile.",
+            "La richiesta decade e non può essere ripresentata."
+        ],
+        "a": 2,
+        "e": "Sia nell'accesso 241/90 che nel FOIA, il silenzio della PA equivale a un rigetto della richiesta di ostensione dei documenti.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Nel D.Lgs 36/2023, la Commissione Giudicatrice nelle gare con il criterio dell'OEPV è nominata:",
+        "options": [
+            "Prima della pubblicazione del bando di gara.",
+            "Dopo la scadenza del termine per la presentazione delle offerte.",
+            "Al momento dell'apertura delle buste economiche.",
+            "Entro 10 giorni dall'aggiudicazione provvisoria."
+        ],
+        "a": 1,
+        "e": "I commissari non devono conoscere chi partecipa prima della chiusura dei termini, per evitare corruzione o pressioni.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Il Direttore dei Lavori negli appalti pubblici può coincidere con il RUP?",
+        "options": [
+            "Mai, la legge lo vieta in ogni caso per separazione dei ruoli.",
+            "Sì, di regola, negli appalti di lavori sotto la soglia di 1 milione di euro (se in possesso dei requisiti tecnici).",
+            "Sì, ma solo se l'impresa appaltatrice fornisce il proprio consenso.",
+            "Solo se l'appalto è finanziato con fondi PNRR."
+        ],
+        "a": 1,
+        "e": "Per semplificare e ridurre i costi, sotto certe soglie (1 milione per i lavori) e complessità, il RUP può fare anche il Direttore dei Lavori.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "In merito alle modifiche dei contratti in corso di esecuzione (art. 120 Codice Appalti), le varianti \"de minimis\" sono consentite senza nuova gara se:",
+        "options": [
+            "Non superano il 30% del valore del contratto iniziale.",
+            "Il loro valore è inferiore alle soglie UE e inferiore al 10% del contratto iniziale per i servizi/forniture (15% per i lavori).",
+            "Sono approvate oralmente dal RUP.",
+            "Il costo aggiuntivo è interamente sostenuto dall'appaltatore."
+        ],
+        "a": 1,
+        "e": "Le modifiche \"de minimis\" sono quelle micro-variazioni (10% servizi, 15% lavori) che non alterano la natura del contratto.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "L'istituto del \"Costo del Ciclo di Vita\" (Life Cycle Costing) come criterio di aggiudicazione valuta:",
+        "options": [
+            "Solo il prezzo di acquisto iniziale del bene.",
+            "Il prezzo di acquisto più i costi operativi, di manutenzione e di smaltimento/fine vita del bene.",
+            "Il costo del personale amministrativo della stazione appaltante.",
+            "Il ribasso percentuale fisso applicato al tariffario regionale."
+        ],
+        "a": 1,
+        "e": "Il Codice premia le offerte che magari costano un po' di più all'inizio, ma consumano meno energia e durano di più nel tempo.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "In una \"Procedura Ristretta\" (D.Lgs 36/2023), l'operatore economico:",
+        "options": [
+            "Presenta direttamente l'offerta tecnica ed economica senza avvisi.",
+            "Presenta prima una domanda di partecipazione e, solo se invitato dalla PA, presenta l'offerta.",
+            "Viene sorteggiato senza pubblicazione di alcun bando.",
+            "Deve avere sede nella stessa regione della stazione appaltante."
+        ],
+        "a": 1,
+        "e": "Fase 1: Bando e richiesta di partecipazione. Fase 2: La PA seleziona chi ha i requisiti e invia la \"Lettera d'invito\" a presentare offerta.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "L'affidamento dell'esecuzione della progettazione esecutiva all'appaltatore (Appalto Integrato) è ammesso dal nuovo Codice:",
+        "options": [
+            "Esclusivamente per le manutenzioni ordinarie.",
+            "Come opzione ordinaria, purché la gara sia bandita sulla base del progetto di fattibilità tecnico-economica.",
+            "Mai, per tutelare la qualità dell'architettura.",
+            "Solo se l'appaltatore ha un fatturato superiore a 50 milioni."
+        ],
+        "a": 1,
+        "e": "L'Appalto Integrato, un tempo osteggiato, è ora sdoganato come scelta ordinaria per velocizzare le opere basandosi sul PFTE.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "La sostituzione del \"Collaudo\" con il \"Certificato di regolare esecuzione\" è consentita:",
+        "options": [
+            "Per i lavori di importo inferiore a 1 milione di euro (e facoltativa fino alla soglia UE).",
+            "Sempre, per snellire la burocrazia.",
+            "Mai, il collaudo è obbligatorio anche per i micro-affidamenti.",
+            "Solo per i servizi di pulizia."
+        ],
+        "a": 0,
+        "e": "Il certificato di regolare esecuzione (redatto dal Direttore dei Lavori invece che da un collaudatore terzo) è la prassi per appalti minori.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Quale procedura di scelta del contraente consente alla stazione appaltante di discutere e modificare con gli offerenti le loro offerte (escluso il prezzo)?",
+        "options": [
+            "La procedura aperta.",
+            "La procedura competitiva con negoziazione.",
+            "L'asta elettronica.",
+            "Il sistema dinamico di acquisizione."
+        ],
+        "a": 1,
+        "e": "Nelle gare aperte o ristrette non si negozia nulla. Nella competitiva con negoziazione, si può affinare la soluzione tecnica con le imprese.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "La polizza assicurativa indennitaria e di responsabilità civile è obbligatoria per:",
+        "options": [
+            "L'operatore economico aggiudicatario di un appalto di lavori pubblici, prima dell'inizio dei lavori.",
+            "La stazione appaltante.",
+            "I subappaltatori di servizi intellettuali.",
+            "Le stazioni appaltanti che non bandiscono gare telematiche."
+        ],
+        "a": 0,
+        "e": "È la polizza \"CAR\" (Contractor's All Risks), obbligatoria per coprire danni all'opera o a terzi durante il cantiere.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "L'uso improprio e sistematico dei permessi retribuiti ex L. 104/1992 (es. andare in vacanza invece di assistere il disabile) comporta:",
+        "options": [
+            "La sola decurtazione delle ferie.",
+            "Una sanzione amministrativa dell'INPS.",
+            "Il licenziamento disciplinare per giusta causa (truffa ai danni dell'ente).",
+            "Il trasferimento obbligatorio ad altro ufficio."
+        ],
+        "a": 2,
+        "e": "L'abuso della 104 lede irrimediabilmente il vincolo fiduciario. La giurisprudenza consolida il licenziamento disciplinare istantaneo.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "La figura del \"Whistleblower\" (segnalante) può essere perseguita disciplinarmente se:",
+        "options": [
+            "Non dimostra oltre ogni ragionevole dubbio la colpevolezza del denunciato.",
+            "Si accerta la calunnia, la diffamazione o la responsabilità civile ai sensi dell'art. 2043 c.c. con dolo o colpa grave.",
+            "Segnala un dirigente di prima fascia.",
+            "La segnalazione non porta a una condanna penale in Cassazione."
+        ],
+        "a": 1,
+        "e": "Lo scudo del Whistleblowing cade (e il segnalante viene punito/licenziato) se si inventa di sana pianta accuse calunniose per danneggiare un collega.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Il \"Lavoro Agile\" (Smart Working) nella Pubblica Amministrazione è configurato come:",
+        "options": [
+            "Una tipologia contrattuale speciale e separata.",
+            "Una modalità di esecuzione del rapporto di lavoro subordinato, senza precisi vincoli di orario o luogo di lavoro.",
+            "Un'indennità sostitutiva del pasto.",
+            "Un obbligo inderogabile per il 50% dei dipendenti."
+        ],
+        "a": 1,
+        "e": "Non è un nuovo tipo di contratto, ma un modo diverso di svolgere la stessa prestazione (accordo individuale basato su obiettivi, non su ore alla scrivania).",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "L'infrazione disciplinare che prevede la \"Sospensione dal servizio con privazione della retribuzione\" è irrogata:",
+        "options": [
+            "Direttamente dal Dirigente per sospensioni fino a 60 giorni.",
+            "Dall'Ufficio Procedimenti Disciplinari (UPD) per sospensioni di regola superiori a 10 giorni.",
+            "Dal Sindaco.",
+            "Dal Giudice del Lavoro."
+        ],
+        "a": 1,
+        "e": "Il dirigente può irrogare sospensioni \"brevi\" (fino a 10gg). Quelle più pesanti sono esclusiva dell'UPD (art. 55-bis TUPI).",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Nell'ambito dell'incompatibilità (D.Lgs 39/2013), la violazione dell'obbligo di scelta tra gli incarichi comporta:",
+        "options": [
+            "Una multa pari a tre mensilità.",
+            "La decadenza di diritto dall'incarico conferito e la risoluzione del contratto.",
+            "Una sospensione temporanea.",
+            "Nessuna conseguenza se comunicato in ritardo."
+        ],
+        "a": 1,
+        "e": "Se sei in situazione di incompatibilità e non opti per una delle due cariche nei termini (es. 15 giorni), decadi automaticamente.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Secondo il Codice di Comportamento (D.P.R. 62/2013), l'obbligo di formazione in materia di etica e anticorruzione per i dipendenti pubblici è:",
+        "options": [
+            "Facoltativo e a carico del dipendente.",
+            "Obbligatorio e continuo.",
+            "Riservato ai soli dirigenti.",
+            "Obbligatorio solo al momento dell'assunzione."
+        ],
+        "a": 1,
+        "e": "La formazione anticorruzione/etica non è un bonus, è un obbligo continuo previsto dai PTPCT/PIAO.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "La valutazione negativa della performance individuale per un triennio consecutivo può comportare:",
+        "options": [
+            "Il demansionamento senza garanzia di stipendio.",
+            "Il licenziamento per scarso rendimento o l'esonero dal servizio.",
+            "Il divieto di partecipare alle elezioni.",
+            "La riduzione obbligatoria delle ferie a 15 giorni."
+        ],
+        "a": 1,
+        "e": "La riforma Brunetta prevede lo strumento estremo: chi non lavora bene per molto tempo rischia il posto per insufficiente rendimento.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Il RPCT (Responsabile della Prevenzione Corruzione e Trasparenza) che non vigila adeguatamente sul Piano rischia:",
+        "options": [
+            "Niente, in quanto non ha poteri di spesa.",
+            "Una sanzione penale per favoreggiamento.",
+            "Responsabilità dirigenziale, disciplinare ed erariale per danno all'immagine.",
+            "Di perdere il diritto allo sciopero."
+        ],
+        "a": 2,
+        "e": "Il RPCT ha enormi responsabilità oggettive se si verifica corruzione nell'ente per colpa di un piano inefficace o mal vigilato.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Completa la serie numerica: 4, 16, 36, 64, ?",
+        "options": [
+            "100",
+            "81",
+            "128",
+            "144"
+        ],
+        "a": 0,
+        "e": "Sono i quadrati dei numeri pari consecutivi: 2²(4), 4²(16), 6²(36), 8²(64). Il prossimo è 10² = 100.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Sillogismo: Chi studia supera il test. Marco non ha superato il test. Cosa si deduce?",
+        "options": [
+            "Marco ha studiato poco.",
+            "Marco non ha studiato.",
+            "Il test era troppo difficile.",
+            "Non si può dedurre nulla."
+        ],
+        "a": 1,
+        "e": "Modus Tollens: Se A -> B. Non B -> Non A. Poiché non ha superato, sicuramente non ha studiato.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Un cappotto costa 200 euro. Viene applicato uno sconto del 20%, e poi un ulteriore sconto del 10% sul prezzo già scontato. Quanto costa alla fine?",
+        "options": [
+            "140 euro",
+            "144 euro",
+            "150 euro",
+            "160 euro"
+        ],
+        "a": 1,
+        "e": "20% di 200 = 40. Prezzo intermedio: 160. Il 10% di 160 = 16. Prezzo finale: 160 - 16 = 144 euro. Non si sommano gli sconti al 30%!",
+        "materia": "Logica"
+    },
+    {
+        "q": "Trova l'intruso logico: PARIGI, BERLINO, LONDRA, NEW YORK.",
+        "options": [
+            "PARIGI",
+            "BERLINO",
+            "LONDRA",
+            "NEW YORK"
+        ],
+        "a": 3,
+        "e": "Parigi, Berlino e Londra sono capitali. New York è una metropoli americana ma la capitale è Washington D.C.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Una lumaca deve salire un muro di 10 metri. Di giorno sale di 3 metri, ma di notte scivola giù di 2 metri. Quanti giorni impiegherà per arrivare in cima?",
+        "options": [
+            "10 giorni",
+            "8 giorni",
+            "7 giorni",
+            "9 giorni"
+        ],
+        "a": 1,
+        "e": "Avanza 1 metro al giorno (3-2). Al 7° giorno arriva a 7 metri. L'8° giorno sale di 3 metri (7+3=10) e arriva in cima senza ricadere.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Se \"Alcuni avvocati sono simpatici\" è FALSA, quale delle seguenti è VERA?",
+        "options": [
+            "Tutti gli avvocati sono simpatici.",
+            "Nessun avvocato è simpatico.",
+            "Alcuni avvocati non sono simpatici.",
+            "I notai sono più simpatici."
+        ],
+        "a": 1,
+        "e": "La negazione di una particolare affermativa (\"Alcuni sono\") è l'universale negativa (\"Nessuno è\").",
+        "materia": "Logica"
+    },
+    {
+        "q": "In un cassetto ci sono 10 calzini neri e 10 blu, sfusi al buio. Quanti calzini devo estrarre al minimo per essere sicuro di avere un paio dello stesso colore?",
+        "options": [
+            "3",
+            "2",
+            "11",
+            "20"
+        ],
+        "a": 0,
+        "e": "Ne pesco uno. Il secondo potrebbe essere diverso. Ma il terzo dovrà obbligatoriamente fare coppia con uno dei due precedenti (Principio dei cassetti).",
+        "materia": "Logica"
+    },
+    {
+        "q": "Se A=1, B=2, C=3... Quale parola vale di più sommando le sue lettere?",
+        "options": [
+            "CASA",
+            "SOLE",
+            "MARE",
+            "VITA"
+        ],
+        "a": 3,
+        "e": "VITA: V(20)+I(9)+T(18)+A(1)=48. CASA(1+1+18+3=23), SOLE(17+13+10+5=45 - errato: S=17,O=13,L=10,E=5, M(11)+A(1)+R(16)+E(5)=33). Senza impazzire, V,T,I sono lettere molto alte nell'alfabeto.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Oggi il padre ha 40 anni e il figlio 10. Tra quanti anni l'età del padre sarà esattamente il doppio di quella del figlio?",
+        "options": [
+            "10 anni",
+            "15 anni",
+            "20 anni",
+            "Mai"
+        ],
+        "a": 2,
+        "e": "Equazione: 40+x = 2*(10+x) -> 40+x = 20+2x -> x = 20. Tra 20 anni il padre ne avrà 60 e il figlio 30.",
+        "materia": "Logica"
+    },
+    {
+        "q": "Qual è la differenza tra \"Phishing\" e \"Spear Phishing\"?",
+        "options": [
+            "Nessuna, sono sinonimi.",
+            "Il Phishing è via mail, lo Spear Phishing via SMS.",
+            "Lo Spear Phishing è mirato a una persona specifica usando dati personalizzati, il Phishing è generico e massivo.",
+            "Il Phishing ruba dati, lo Spear Phishing blocca il computer."
+        ],
+        "a": 2,
+        "e": "Spear = lancia. Un attacco mirato e ad alta ingegneria sociale verso un target specifico (es. il Direttore Generale).",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Nel backup dei dati, il \"Backup Differenziale\" copia:",
+        "options": [
+            "Tutti i dati del disco rigido.",
+            "Solo i dati modificati rispetto all'ultimo backup completo (Full).",
+            "Solo i dati modificati rispetto all'ultimo backup di qualsiasi tipo.",
+            "Solo i file con estensione .docx."
+        ],
+        "a": 1,
+        "e": "Differenziale: guarda all'ultimo FULL. Incrementale: guarda all'ultimo backup qualsiasi. Da sapere per non confonderli.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Nel Regolamento GDPR (UE 2016/679), chi è il \"Titolare del Trattamento\" (Data Controller)?",
+        "options": [
+            "L'operatore del call center che inserisce i dati.",
+            "La persona fisica o giuridica, l'autorità pubblica che determina le finalità e i mezzi del trattamento.",
+            "Il dipendente che ha subito un furto di dati.",
+            "Il Garante della Privacy."
+        ],
+        "a": 1,
+        "e": "Il Titolare è l'Ente (es. il Comune, il Ministero, l'Azienda). Il Responsabile (Data Processor) è chi processa i dati per conto del Titolare (es. la ditta del software).",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Cosa sono i \"Cookie di Profilazione\" sui siti web?",
+        "options": [
+            "File che salvano la sessione per non reinserire la password (tecnici).",
+            "Cookie usati per tracciare la navigazione dell'utente e creare profili per inviare pubblicità mirata.",
+            "Virus che rubano i dati della carta di credito.",
+            "Antivirus integrati nel browser."
+        ],
+        "a": 1,
+        "e": "A differenza dei cookie tecnici, quelli di profilazione richiedono il consenso esplicito dell'utente (il famoso banner \"Accetta tutti\").",
+        "materia": "Informatica"
+    },
+    {
+        "q": "La tecnologia \"Blockchain\" in ambito Pubblica Amministrazione è apprezzata perché garantisce:",
+        "options": [
+            "La cancellazione immediata e invisibile dei dati.",
+            "Immutabilità, tracciabilità e decentralizzazione delle informazioni senza un'autorità centrale singola.",
+            "La crittografia dei messaggi di posta elettronica ordinaria.",
+            "Velocità maggiore nel caricamento dei siti web."
+        ],
+        "a": 1,
+        "e": "La catena a blocchi impedisce di alterare un registro dopo che è stato approvato dalla rete (utile per catasto, certificati, ecc.).",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Il protocollo \"HTTPS\" (Hypertext Transfer Protocol Secure) garantisce:",
+        "options": [
+            "Che il sito visitato sia di proprietà dello Stato.",
+            "Che i dati in transito tra il browser dell'utente e il sito web siano criptati (es. tramite TLS/SSL).",
+            "L'assenza totale di virus sul sito visitato.",
+            "La traduzione automatica della pagina web."
+        ],
+        "a": 1,
+        "e": "L'HTTPS non ti protegge se il sito è truffaldino, ma garantisce che nessuno \"ascolti\" o rubi i dati mentre viaggiano sulla linea.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "La Firma Elettronica Avanzata (FEA) si distingue da quella Qualificata (FEQ) perché:",
+        "options": [
+            "Non ha alcun valore legale.",
+            "Garantisce la connessione univoca al firmatario, ma non si basa necessariamente su un certificato qualificato o dispositivo sicuro hardware.",
+            "Richiede una marca temporale obbligatoria.",
+            "È valida solo all'estero."
+        ],
+        "a": 1,
+        "e": "La FEA (es. firma grafometrica sul tablet in banca) identifica chi firma in modo sicuro, ma non ha l'hardware certificato europeo (Smartcard) della FEQ.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "In tema di e-Government, il \"Domicilio Digitale\" del cittadino (INAD) coincide solitamente con:",
+        "options": [
+            "L'indirizzo IP del suo computer.",
+            "Il suo indirizzo di Posta Elettronica Certificata (PEC) iscritto nell'indice nazionale.",
+            "Il profilo Facebook del cittadino.",
+            "L'account dell'Agenzia delle Entrate."
+        ],
+        "a": 1,
+        "e": "Il domicilio digitale è la casella PEC dove lo Stato ti manda le notifiche a valore legale (multe, atti, ecc.) sostituendo le raccomandate cartacee.",
+        "materia": "Informatica"
+    },
+    {
+        "q": "Translate: \"The meeting is scheduled for tomorrow at 10 AM.\"",
+        "options": [
+            "L'incontro è annullato per domani alle 10.",
+            "La riunione è pianificata/programmata per domani alle 10.",
+            "Il meeting è in ritardo fino alle 10 di domani.",
+            "L'incontro durerà 10 ore da domani."
+        ],
+        "a": 1,
+        "e": "To schedule = programmare, fissare, mettere in agenda.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "In a business context, the \"Agenda\" refers to:",
+        "options": [
+            "Il diario personale del dipendente.",
+            "L'elenco degli argomenti da discutere in una riunione (Ordine del giorno).",
+            "Il verbale della riunione precedente.",
+            "La lista dei fornitori esclusi."
+        ],
+        "a": 1,
+        "e": "Falso amico: \"Agenda\" in inglese non è il diario (che si dice \"diary\" o \"planner\"), ma l'ordine del giorno.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "What does the expression \"On behalf of\" mean?",
+        "options": [
+            "Di fianco a.",
+            "Prima di tutto.",
+            "A nome di / Per conto di.",
+            "Al di sopra delle aspettative."
+        ],
+        "a": 2,
+        "e": "Es. \"I sign this contract on behalf of my company\" (Firmo questo contratto a nome della mia azienda).",
+        "materia": "Inglese"
+    },
+    {
+        "q": "In public procurement, a \"Proposal\" generally refers to:",
+        "options": [
+            "La disdetta del contratto.",
+            "Un'offerta tecnica o economica presentata da un fornitore (Offerta).",
+            "La tassa di partecipazione alla gara.",
+            "La revoca del bando."
+        ],
+        "a": 1,
+        "e": "Proposal = Proposta/Offerta. Spesso usato in \"Request for Proposal\" (RFP - Richiesta di offerta).",
+        "materia": "Inglese"
+    },
+    {
+        "q": "The phrasal verb \"To carry on\" means:",
+        "options": [
+            "Sollevare un peso pesante.",
+            "Lamentarsi.",
+            "Annullare.",
+            "Continuare a fare qualcosa."
+        ],
+        "a": 3,
+        "e": "Es. \"Carry on with your work\" (Continuate a lavorare).",
+        "materia": "Inglese"
+    },
+    {
+        "q": "What does the idiom \"Red tape\" mean in a public administration context?",
+        "options": [
+            "Il nastro isolante per i server.",
+            "La burocrazia eccessiva, procedure formali rigide e superflue.",
+            "La zona di pericolo in cantiere.",
+            "Il nastro rosso per l'inaugurazione."
+        ],
+        "a": 1,
+        "e": "Red tape è la traduzione idiomatica perfetta per \"Burocrazia soffocante/lentezza burocratica\".",
+        "materia": "Inglese"
+    },
+    {
+        "q": "Choose the correct Second Conditional form: \"If I _______ the CEO, I _______ change the policy.\"",
+        "options": [
+            "am / will",
+            "was / would have",
+            "were / would",
+            "had been / will"
+        ],
+        "a": 2,
+        "e": "Second conditional (ipotesi irreale): If + Past Simple (were, per tutte le persone), would + verbo base.",
+        "materia": "Inglese"
+    },
+    {
+        "q": "Choose the correct passive form for: \"The committee is reviewing the project.\"",
+        "options": [
+            "The project was reviewed by the committee.",
+            "The project is being reviewed by the committee.",
+            "The project reviews the committee.",
+            "The project has been reviewed by the committee."
+        ],
+        "a": 1,
+        "e": "Present Continuous Active (is reviewing) diventa Present Continuous Passive (is being reviewed).",
+        "materia": "Inglese"
+    },
+{
         "q": "Nel D.Lgs 36/2023, il \"Principio del risultato\" (art. 1) stabilisce che:",
         "options": [
             "Il RUP deve garantire l'assenza assoluta di ricorsi giurisdizionali.",
