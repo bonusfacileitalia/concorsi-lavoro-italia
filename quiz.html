@@ -197,6 +197,582 @@
 <script>
 const databaseQuiz = [
 {
+        "q": "In caso di SCIA (Segnalazione Certificata di Inizio Attività), il potere inibitorio della PA si esercita di regola entro 60 giorni. Decorso tale termine, la PA:",
+        "options": [
+            "Non può più intervenire in alcun modo sull'attività del privato.",
+            "Può vietare la prosecuzione dell'attività solo rivolgendosi al Giudice Amministrativo.",
+            "Può adottare provvedimenti inibitori solo in presenza delle condizioni previste per l'annullamento d'ufficio (art. 21-nonies).",
+            "Può esigere una nuova SCIA aggiornata dal privato imponendo una sanzione."
+        ],
+        "a": 2,
+        "e": "Scaduti i 60 giorni, la PA perde il potere inibitorio ordinario e può intervenire solo in Autotutela, dimostrando un interesse pubblico attuale e agendo entro 12 mesi.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Se l'annullamento d'ufficio (art. 21-nonies L. 241/90) riguarda provvedimenti conseguiti sulla base di false rappresentazioni dei fatti accertate con sentenza penale passata in giudicato:",
+        "options": [
+            "Deve comunque intervenire entro il termine massimo di 12 mesi.",
+            "Può essere adottato anche oltre il termine perentorio di 12 mesi.",
+            "È precluso e sostituito esclusivamente da una sanzione pecuniaria.",
+            "Spetta alla competenza esclusiva della Corte dei Conti."
+        ],
+        "a": 1,
+        "e": "Deroga fondamentale all'art. 21-nonies: se c'è falsità o dolo accertato dal giudice penale, la PA può annullare l'atto illegittimo senza limiti di tempo.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Le controversie relative alla determinazione e corresponsione dell'indennizzo dovuto in caso di Revoca del provvedimento (art. 21-quinquies) sono attribuite alla giurisdizione:",
+        "options": [
+            "Del Giudice Ordinario (Tribunale Civile).",
+            "Esclusiva del Giudice Amministrativo.",
+            "Della Corte dei Conti.",
+            "Del Giudice di Pace."
+        ],
+        "a": 1,
+        "e": "L'indennizzo per revoca di un atto amministrativo, pur essendo una questione patrimoniale, rientra nella Giurisdizione Esclusiva del TAR/Consiglio di Stato.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Nei procedimenti amministrativi, i termini di conclusione possono essere sospesi?",
+        "options": [
+            "Mai, il termine è perentorio e insospendibile.",
+            "Sì, per una sola volta e per un periodo non superiore a 30 giorni, per l'acquisizione di informazioni o certificazioni non attestate in documenti della PA.",
+            "Sì, senza limiti di tempo se il RUP è sovraccarico di lavoro.",
+            "Solo nei procedimenti sanzionatori."
+        ],
+        "a": 1,
+        "e": "Art. 2 comma 7 L. 241/90: la sospensione è lecita ma rigidamente limitata a max 30 giorni e per una sola volta.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Nella Conferenza di Servizi asincrona, se una PA esprime un dissenso privo della congrua motivazione:",
+        "options": [
+            "Il dissenso blocca comunque il procedimento.",
+            "La conferenza viene rinviata a nuova data.",
+            "Il dissenso si considera non apposto, equivalendo ad assenso senza condizioni.",
+            "Il RUP deve diffidare l'amministrazione dissenziente."
+        ],
+        "a": 2,
+        "e": "La semplificazione è feroce: se rispondi in ritardo o rispondi 'No' senza una solida motivazione tecnica, per la legge hai detto 'Sì' (assenso incondizionato).",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Il mancato accoglimento delle osservazioni presentate dal privato a seguito del preavviso di rigetto (art. 10-bis):",
+        "options": [
+            "Comporta la nullità del provvedimento finale.",
+            "Deve essere obbligatoriamente motivato nel provvedimento finale.",
+            "Non necessita di motivazione se il diniego è vincolato.",
+            "Dà diritto a un indennizzo automatico."
+        ],
+        "a": 1,
+        "e": "La PA non è obbligata a dare ragione al cittadino, ma ha l'obbligo assoluto di spiegare nel provvedimento finale *perché* ha rigettato le sue memorie.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Gli accordi integrativi e sostitutivi del provvedimento (art. 11 L. 241/90):",
+        "options": [
+            "Sono devoluti alla giurisdizione del Giudice Ordinario, trattandosi di contratti.",
+            "Sono devoluti alla giurisdizione esclusiva del Giudice Amministrativo.",
+            "Non sono sindacabili da alcun giudice.",
+            "Sono competenza delle Commissioni Tributarie."
+        ],
+        "a": 1,
+        "e": "Essendo accordi che esercitano (o sostituiscono) un potere pubblico, la giurisdizione resta attratta al Giudice Amministrativo.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "I provvedimenti attributivi di vantaggi economici (art. 12 L. 241/90, es. sovvenzioni, sussidi) sono subordinati:",
+        "options": [
+            "Alla cittadinanza italiana del richiedente.",
+            "Alla predeterminazione da parte delle PA dei criteri e delle modalità per la loro concessione, da pubblicare preventivamente.",
+            "Alla firma congiunta del Sindaco e del Prefetto.",
+            "All'assenza di precedenti penali in senso assoluto."
+        ],
+        "a": 1,
+        "e": "Per evitare favoritismi, i criteri per dare soldi pubblici devono essere fissati e resi pubblici prima di aprire il bando/erogare.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Un provvedimento amministrativo è nullo ai sensi dell'art. 21-septies L. 241/90 se:",
+        "options": [
+            "È viziato da incompetenza relativa.",
+            "Manca di un elemento essenziale o è stato adottato in violazione o elusione del giudicato.",
+            "Presenta una motivazione illogica.",
+            "Viola la direttiva sul pareggio di bilancio."
+        ],
+        "a": 1,
+        "e": "Cause di nullità tassative: difetto assoluto di attribuzione, mancanza elementi essenziali, elusione del giudicato, altri casi previsti dalla legge.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Il diritto di accesso documentale (L. 241/90) rispetto ai documenti coperti da Segreto di Stato è:",
+        "options": [
+            "Consentito con oscuramento dei dati sensibili.",
+            "Consentito solo a chi deve difendersi in un processo penale.",
+            "Escluso in modo assoluto e inderogabile.",
+            "Rimesso alla discrezionalità del RUP."
+        ],
+        "a": 2,
+        "e": "L'art. 24 della L. 241/90 pone il Segreto di Stato come barriera assoluta contro l'accesso agli atti. Non c'è bilanciamento che tenga.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "L'Accordo di Programma (art. 34 TUEL) deve essere approvato formalmente con atto del:",
+        "options": [
+            "Presidente della Repubblica.",
+            "Presidente della Regione, della Provincia o Sindaco (a seconda della competenza primaria sull'opera).",
+            "Dirigente dell'Ufficio Tecnico.",
+            "Consiglio Comunale a maggioranza qualificata."
+        ],
+        "a": 1,
+        "e": "È un patto politico-amministrativo: la firma finale spetta all'organo di vertice dell'ente che ha promosso l'accordo territoriale.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Il ricorso straordinario al Presidente della Repubblica è ammesso:",
+        "options": [
+            "Solo per vizi di merito.",
+            "Sia per vizi di legittimità che di merito.",
+            "Solo per vizi di legittimità, contro atti amministrativi definitivi.",
+            "Solo contro le leggi regionali incostituzionali."
+        ],
+        "a": 2,
+        "e": "Rimedio alternativo al TAR: impugna atti definitivi, solo per motivi di legittimità, termine lungo (120 giorni).",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "La revoca (art. 21-quinquies) di un provvedimento NON può essere disposta per:",
+        "options": [
+            "Sopravvenuti motivi di pubblico interesse.",
+            "Mutamento della situazione di fatto non prevedibile al momento dell'adozione.",
+            "Nuova valutazione dell'interesse pubblico originario.",
+            "Scoperta di un vizio di legittimità (es. incompetenza) originario dell'atto."
+        ],
+        "a": 3,
+        "e": "Se l'atto è nato 'malato' (vizio di legittimità), si usa l'Annullamento d'ufficio. La revoca si usa se l'atto era legittimo, ma è cambiato l'interesse pubblico.",
+        "materia": "Diritto Amministrativo"
+    },
+    {
+        "q": "Nel D.Lgs 36/2023 (Codice Appalti), la suddivisione dell'appalto in lotti funzionali o prestazionali:",
+        "options": [
+            "È vietata per gli appalti di servizi informatici.",
+            "È la regola per favorire le PMI; la mancata suddivisione deve essere obbligatoriamente motivata nel bando.",
+            "È facoltativa e non richiede mai motivazione.",
+            "È obbligatoria solo per importi superiori a 10 milioni di euro."
+        ],
+        "a": 1,
+        "e": "Favorire l'accesso delle piccole imprese è un dogma. Se fai un appalto monstre unico, devi spiegare analiticamente perché non potevi dividerlo.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Il Principio della Concorrenza (art. 3 Codice Appalti):",
+        "options": [
+            "È il fine ultimo e assoluto del Codice, a cui ogni altro principio è subordinato.",
+            "È un valore funzionale a conseguire il miglior risultato possibile nell'affidamento e nell'esecuzione dei contratti.",
+            "Riguarda solo gli appalti internazionali.",
+            "Vieta l'uso delle procedure negoziate in assoluto."
+        ],
+        "a": 1,
+        "e": "Cambio di paradigma: il fine è fare l'opera bene e in fretta (Principio del Risultato). La concorrenza non è più il fine, ma il mezzo per arrivarci.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Costituisce causa di ESCLUSIONE AUTOMATICA da una gara (art. 94 D.Lgs 36/2023):",
+        "options": [
+            "Una grave infrazione alle norme in materia di salute e sicurezza sul lavoro.",
+            "La condanna definitiva per delitti di criminalità organizzata, frode, corruzione o terrorismo.",
+            "Significative carenze nell'esecuzione di un precedente contratto d'appalto.",
+            "Il conflitto di interessi non diversamente risolvibile."
+        ],
+        "a": 1,
+        "e": "Reati gravissimi (mafia, corruzione, terrorismo) generano esclusione automatica. Le altre opzioni citate sono cause di esclusione NON automatica (art. 95), che il RUP deve valutare.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Costituisce causa di esclusione NON AUTOMATICA (art. 95) per 'grave illecito professionale':",
+        "options": [
+            "Il pagamento in ritardo delle tasse per 5.000 euro (sotto soglia gravità).",
+            "Risoluzione di un precedente contratto pubblico per inadempimento accertato dalla stazione appaltante.",
+            "La condanna definitiva per associazione a delinquere di stampo mafioso.",
+            "L'apertura di una semplice inchiesta giornalistica."
+        ],
+        "a": 1,
+        "e": "Se l'impresa ha fatto disastri in un altro appalto (risoluzione), la PA attuale *può* escluderla, ma deve valutare e motivare se è ancora inaffidabile.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "L'Avvalimento 'premiale', novità del Codice 36/2023, consente a un operatore economico di:",
+        "options": [
+            "Pagare una tangente legalizzata sotto forma di premio.",
+            "Farsi prestare requisiti da un'altra impresa al solo scopo di incrementare il proprio punteggio tecnico nell'offerta, pur avendo già i requisiti minimi di partecipazione.",
+            "Ottenere uno sconto del 50% sulle fideiussioni.",
+            "Subappaltare l'intera opera senza dichiararlo."
+        ],
+        "a": 1,
+        "e": "L'avvalimento non serve più solo per 'entrare' in gara, ma anche per 'vincerla' prendendo in prestito certificazioni o qualità extra da un'altra azienda.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "In un 'Appalto Misto' composto da lavori (60.000 euro) e servizi (80.000 euro), quale disciplina si applica alla procedura di affidamento?",
+        "options": [
+            "La disciplina prevista per i lavori, poiché prevalgono sempre normativamente.",
+            "La disciplina relativa all'oggetto principale del contratto, determinato in base al valore stimato più elevato (in questo caso, i servizi).",
+            "Vengono indette due gare separate obbligatoriamente.",
+            "Si applica sempre la normativa comunitaria massima."
+        ],
+        "a": 1,
+        "e": "L'appalto misto segue l'attrazione economica: la componente che costa di più (servizi) detta le regole di affidamento dell'intero blocco.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Il Soccorso Istruttorio (art. 101) NON è mai consentito per sanare:",
+        "options": [
+            "La mancanza della firma digitale sulla domanda di partecipazione.",
+            "Il mancato versamento del contributo ANAC (se rimediabile entro il termine).",
+            "Carenze o inesattezze relative all'offerta tecnica e all'offerta economica.",
+            "L'omessa indicazione del domicilio digitale."
+        ],
+        "a": 2,
+        "e": "L'offerta tecnica e i prezzi sono il cuore della gara: se sbagli quelli, sei fuori. Modificarli in soccorso istruttorio violerebbe la par condicio.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Nella valutazione dell'anomalia dell'offerta, le spiegazioni fornite dall'operatore economico NON possono mai giustificare:",
+        "options": [
+            "Risparmi derivanti dal processo di fabbricazione.",
+            "Soluzioni tecniche particolarmente avanzate.",
+            "Ribassi applicati sui costi della manodopera inferiori ai minimi salariali o sui costi per la sicurezza aziendale.",
+            "L'ottenimento di contributi statali leciti."
+        ],
+        "a": 2,
+        "e": "Puoi ribassare sui materiali o sul tuo margine di profitto, ma la sicurezza sul lavoro e gli stipendi minimi dei dipendenti sono intoccabili.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Ai sensi del D.Lgs 36/2023, per importi sotto i 150.000 euro in materia di LAVORI, la stazione appaltante procede tramite:",
+        "options": [
+            "Procedura aperta con bando europeo.",
+            "Affidamento diretto, anche senza consultazione di più operatori economici.",
+            "Procedura negoziata con invito a 10 operatori.",
+            "Dialogo competitivo obbligatorio."
+        ],
+        "a": 1,
+        "e": "Soglia vitale da memorizzare: fino a 150.000 euro per i Lavori (140.000 per Servizi/Forniture) si fa affidamento diretto secco.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Quale strumento contrattuale consente a una PA di selezionare più fornitori per stabilire in anticipo i prezzi e le condizioni per futuri appalti ricorrenti durante un certo periodo (es. 4 anni)?",
+        "options": [
+            "L'Appalto Integrato.",
+            "La Finanza di Progetto.",
+            "L'Accordo Quadro.",
+            "Il Partenariato Pubblico Privato."
+        ],
+        "a": 2,
+        "e": "L'Accordo Quadro è un 'contenitore' in cui si fissano le regole generali; quando la PA ha bisogno (es. comprare PC), fa i singoli 'contratti attuativi' molto velocemente.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Nella procedura di 'Finanza di Progetto' (Project Financing) a iniziativa privata, il promotore la cui proposta sia stata messa a gara:",
+        "options": [
+            "Non può partecipare alla gara per evitare conflitti.",
+            "Gode di un diritto di prelazione e può aggiudicarsi il contratto se dichiara di adeguare la propria offerta a quella del miglior offerente.",
+            "Viene automaticamente estromesso se non vince economicamente.",
+            "Diventa il RUP della gara."
+        ],
+        "a": 1,
+        "e": "Il promotore investe tempo e soldi per proporre l'opera. Il premio è la prelazione: se alla gara arriva uno che fa un prezzo migliore, il promotore può pareggiarlo e vincere lui.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Il Collegio Consultivo Tecnico (CCT) istituito in pendenza di esecuzione di un'opera pubblica adotta determinazioni che:",
+        "options": [
+            "Hanno natura di parere meramente facoltativo e ignorabile.",
+            "Hanno natura di lodo contrattuale, se le parti vi hanno preventivamente acconsentito, per risolvere rapidamente le liti.",
+            "Sostituiscono le sentenze penali della Cassazione.",
+            "Possono solo suggerire varianti de minimis."
+        ],
+        "a": 1,
+        "e": "Il CCT serve a non bloccare i grandi cantieri. Le sue decisioni tecniche possono avere forza vincolante (lodo) tra impresa e PA, evitando decenni di cause in tribunale.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "Le clausole contrattuali di 'Revisione dei prezzi' (D.Lgs 36/2023) sono:",
+        "options": [
+            "Vietate dalla UE.",
+            "Obbligatorie nei documenti di gara iniziali per compensare le fluttuazioni dei costi superiori al 5%.",
+            "Facoltative e dipendono dalla volontà del Sindaco.",
+            "Ammesse solo per i carburanti."
+        ],
+        "a": 1,
+        "e": "Art. 60: obbligo assoluto di inserirle. Assorbono l'inflazione (oltre il 5%) per l'80% dell'importo, evitando il fallimento delle imprese o il blocco dei cantieri.",
+        "materia": "Codice Appalti"
+    },
+    {
+        "q": "In materia di Incompatibilità (D.Lgs 39/2013), se il dipendente non effettua la scelta (opzione) tra l'incarico conferito e quello incompatibile entro 15 giorni:",
+        "options": [
+            "Viene deferito alla Corte dei Conti.",
+            "Incorre nella decadenza di diritto dall'incarico e nella risoluzione del contratto.",
+            "Subisce una ritenuta del 50% sullo stipendio.",
+            "L'incompatibilità si sana tacitamente."
+        ],
+        "a": 1,
+        "e": "La sanzione è automatica e drastica: perdi il posto/l'incarico di diritto.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "L'Inconferibilità di un incarico pubblico per condanna penale (reati contro la PA) scatta:",
+        "options": [
+            "Anche in caso di condanna non definitiva (es. sentenza di primo grado).",
+            "Solo dopo la sentenza definitiva in Cassazione.",
+            "Solo se l'interessato finisce in carcere.",
+            "Mai, se il reato è stato commesso in un'altra città."
+        ],
+        "a": 0,
+        "e": "Non serve aspettare i 3 gradi di giudizio. La PA si tutela subito: una condanna in primo grado per corruzione/peculato blocca il conferimento di nuovi incarichi dirigenti.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "La mancata adozione del PIAO (che contiene il Piano Anticorruzione) comporta per l'ente:",
+        "options": [
+            "Nessuna conseguenza pratica.",
+            "Il divieto di procedere ad assunzioni e il blocco dell'erogazione della retribuzione di risultato ai dirigenti responsabili.",
+            "L'obbligo di raddoppiare lo stipendio base ai dipendenti.",
+            "Lo scioglimento del Consiglio Comunale da parte del Prefetto."
+        ],
+        "a": 1,
+        "e": "Sanzioni paralizzanti (art. 10 D.Lgs 36/2006 integrato): l'ente non può assumere nessuno e i dirigenti perdono i premi di performance.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Quale responsabilità incombe sul RPCT se, a causa della mancata vigilanza sull'attuazione del Piano Anticorruzione, si verifica un reato di corruzione nell'ente?",
+        "options": [
+            "Risponde solo penalmente se ha preso parte alla tangente.",
+            "Incorre in responsabilità dirigenziale, disciplinare ed erariale per danno all'immagine, salvo che provi di aver predisposto il piano e vigilato adeguatamente.",
+            "Nessuna, risponde solo l'autore materiale del reato.",
+            "Viene automaticamente condannato all'ergastolo."
+        ],
+        "a": 1,
+        "e": "Il RPCT ha una responsabilità oggettiva pesantissima. Si salva solo se dimostra che il piano c'era, funzionava, e l'hackeraggio o il reato è avvenuto eludendo fraudolentemente le misure.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Il divieto di 'Pantouflage' (o revolving doors) impedisce agli ex dipendenti con poteri autoritativi di lavorare presso i privati destinatari dei loro atti per un periodo di:",
+        "options": [
+            "1 anno.",
+            "2 anni.",
+            "3 anni successivi alla cessazione del rapporto.",
+            "5 anni."
+        ],
+        "a": 2,
+        "e": "Art. 53 c. 16-ter TUPI. Il divieto dura 3 anni. Se il privato lo assume lo stesso, il contratto è nullo e il privato non può fare appalti per 3 anni.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "La segnalazione di illeciti (Whistleblowing) garantisce la segretezza dell'identità del segnalante. Tuttavia, nel procedimento penale, l'identità:",
+        "options": [
+            "Non può mai essere rivelata.",
+            "È coperta da segreto nei limiti previsti dall'art. 329 c.p.p. (segreto istruttorio).",
+            "Viene pubblicata obbligatoriamente su un sito web.",
+            "Viene comunicata al superiore gerarchico per prassi."
+        ],
+        "a": 1,
+        "e": "La segretezza amministrativa è totale, ma nel penale ci si scontra con il diritto alla difesa: il segreto cade quando lo impongono le regole del codice di procedura penale.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "L'obbligo di astensione previsto dal Codice di Comportamento (D.P.R. 62/2013) si applica al dipendente anche in caso di:",
+        "options": [
+            "Solo per parentela entro il 1° grado.",
+            "Grave inimicizia con l'utente o 'gravi ragioni di convenienza'.",
+            "Differenze di orientamento politico.",
+            "Nessuna delle precedenti, l'astensione è facoltativa."
+        ],
+        "a": 1,
+        "e": "La clausola di chiusura 'gravi ragioni di convenienza' copre tutte quelle situazioni (es. ex coniuge, debito pregresso) in cui la neutralità dell'istruttoria è compromessa.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "I dati e i documenti oggetto di 'Pubblicazione Obbligatoria' (Amministrazione Trasparente ex D.Lgs 33/2013):",
+        "options": [
+            "Sono consultabili, ma non possono essere scaricati o riutilizzati.",
+            "Possono essere liberamente riutilizzati e ridistribuiti da chiunque senza limitazioni (Open Data), citando la fonte.",
+            "Richiedono il pagamento dei diritti di segreteria.",
+            "Non possono essere indicizzati dai motori di ricerca in nessun caso."
+        ],
+        "a": 1,
+        "e": "È il principio degli Open Data. I dati della trasparenza sono patrimonio della collettività.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Il limite massimo per l'accettazione di regali o 'doni di modico valore' da parte di un pubblico dipendente (es. a Natale) è fissato indicativamente in:",
+        "options": [
+            "50 euro.",
+            "100 euro.",
+            "150 euro.",
+            "Nessun limite, purché tracciato."
+        ],
+        "a": 2,
+        "e": "Art. 4 D.P.R. 62/2013: 150 euro (calcolati anche sotto forma di sconti). Oltre questa soglia si rischia illecito disciplinare o l'ipotesi di reato.",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "La misura organizzativa della 'Rotazione Ordinaria' (Prevenzione Corruzione) si applica:",
+        "options": [
+            "Come sanzione penale alternativa.",
+            "In caso di avvio di procedimenti penali (quella è straordinaria).",
+            "In via preventiva ai dirigenti e ai funzionari che operano in settori a rischio corruttivo elevato (es. appalti), alternandoli periodicamente.",
+            "Esclusivamente agli impiegati in part-time."
+        ],
+        "a": 2,
+        "e": "Ordinaria = preventiva (evita che tu metta 'radici' in ufficio appalti stringendo troppe amicizie coi fornitori). Straordinaria = reattiva (ti sposto perché sei sotto indagine).",
+        "materia": "Anticorruzione"
+    },
+    {
+        "q": "Nel Pubblico Impiego (D.Lgs 165/2001), le determinazioni per l'organizzazione degli uffici e le misure inerenti alla gestione dei rapporti di lavoro sono assunte:",
+        "options": [
+            "Dai politici, tramite leggi e regolamenti.",
+            "Dagli organi di vertice con Decreti Presidenziali.",
+            "Dagli organi dirigenti, in via esclusiva, con la capacità e i poteri del privato datore di lavoro.",
+            "Esclusivamente previa consultazione referendaria dei dipendenti."
+        ],
+        "a": 2,
+        "e": "È il cuore della privatizzazione (Art. 5 comma 2): il Dirigente gestisce il personale coi poteri di un manager privato (micro-organizzazione), non con atti amministrativi autoritativi.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Le controversie in materia di procedure concorsuali per l'assunzione di dipendenti pubblici sono devolute alla giurisdizione del:",
+        "options": [
+            "Giudice Ordinario (Tribunale del Lavoro).",
+            "Giudice Amministrativo (TAR).",
+            "Corte dei Conti.",
+            "Ispettorato del Lavoro."
+        ],
+        "a": 1,
+        "e": "Lo spartiacque: il concorso (assunzione) è potere pubblico -> Giudice Amministrativo. Tutto ciò che accade *dopo* l'assunzione (licenziamento, stipendio) -> Giudice Ordinario del Lavoro.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Nel TUPI (art. 52), in caso di assegnazione ILLEGITTIMA a mansioni superiori, il dipendente:",
+        "options": [
+            "Acquisisce il diritto inquadramento nella qualifica superiore dopo 6 mesi.",
+            "Non ha diritto ad alcuna maggiorazione retributiva.",
+            "Ha diritto alla differenza retributiva per il periodo lavorato, ma NON all'inquadramento nella qualifica superiore.",
+            "Viene sanzionato insieme al dirigente."
+        ],
+        "a": 2,
+        "e": "Se il capo ti fa fare il lavoro di un grado superiore senza titolo, devi essere pagato (tutela del lavoratore art. 36 Cost.), ma non vieni promosso (nella PA si entra per concorso).",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Costituisce giusta causa di Licenziamento Disciplinare SENZA PREAVVISO:",
+        "options": [
+            "L'assenza ingiustificata per 1 solo giorno.",
+            "La falsa attestazione della presenza in servizio, accertata oggettivamente (es. timbratura del badge per conto di altri).",
+            "Il rifiuto di fare straordinari.",
+            "Un errore materiale nella compilazione di un atto."
+        ],
+        "a": 1,
+        "e": "Art. 55-quater lett. a) TUPI. I 'furbetti del cartellino' vengono licenziati in tronco con rito abbreviato e denunciati per truffa.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "L'Ufficio Procedimenti Disciplinari (UPD) ha competenza esclusiva per:",
+        "options": [
+            "Le infrazioni punibili con il solo rimprovero verbale.",
+            "Tutte le infrazioni disciplinari, ad esclusione di quelle punibili con il rimprovero verbale (che restano al capo struttura).",
+            "Solo le infrazioni rilevanti penalmente.",
+            "I trasferimenti volontari del personale."
+        ],
+        "a": 1,
+        "e": "Il dirigente gestisce solo il rimprovero a voce. Se la questione è più grave (censura scritta, multa, sospensione, licenziamento), passa le carte all'UPD per garantire imparzialità.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Il procedimento disciplinare a carico di un dipendente pubblico deve concludersi con provvedimento finale (art. 55-bis):",
+        "options": [
+            "Entro 30 giorni dalla contestazione.",
+            "Entro 60 giorni dalla contestazione.",
+            "Entro 120 giorni dalla contestazione dell'addebito, termine perentorio.",
+            "Senza limiti di tempo previsti dalla legge."
+        ],
+        "a": 2,
+        "e": "Se l'UPD sfora i 120 giorni per chiudere il procedimento, la sanzione decade e il dipendente la fa franca. Termine sacro e perentorio.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Il rapporto tra procedimento Disciplinare e processo Penale riguardanti i medesimi fatti si basa sul principio di:",
+        "options": [
+            "Sospensione obbligatoria e assoluta del procedimento disciplinare in attesa del giudizio penale.",
+            "Autonomia: il procedimento disciplinare viene concluso senza attendere l'esito del processo penale, salvo casi di eccezionale complessità dei fatti.",
+            "Sostituzione: la sanzione penale assorbe quella disciplinare.",
+            "Estinzione automatica in caso di patteggiamento."
+        ],
+        "a": 1,
+        "e": "Riforma Madia: basta attendere decenni la Cassazione. Il procedimento disciplinare viaggia veloce e in autonomia. Ti licenzio subito; se poi il penale ti assolve con formula piena, riapriamo il caso.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Il Comitato Unico di Garanzia (CUG) all'interno degli Enti Pubblici sostituisce:",
+        "options": [
+            "I comitati per la sicurezza e la viabilità.",
+            "I vecchi comitati per le pari opportunità e i comitati paritetici sul fenomeno del mobbing.",
+            "L'Ufficio Risorse Umane.",
+            "La Rappresentanza Sindacale Unitaria (RSU)."
+        ],
+        "a": 1,
+        "e": "Il CUG unifica e rafforza le funzioni di tutela contro le discriminazioni e il mobbing, promuovendo il benessere lavorativo nell'ente.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "L'OIV (Organismo Indipendente di Valutazione) esercita funzioni di:",
+        "options": [
+            "Giudizio contabile sulle spese dell'Ente.",
+            "Controllo di gestione interno.",
+            "Misurazione e valutazione della performance di ciascuna struttura e del vertice dirigenziale, garantendo la correttezza dei processi.",
+            "Riscossione dei tributi locali."
+        ],
+        "a": 2,
+        "e": "È il cuore della Riforma Brunetta: gli esterni dell'OIV giudicano se il Comune/Ministero ha raggiunto gli obiettivi, autorizzando di fatto lo sblocco dei premi in denaro.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Il passaggio diretto di personale tra amministrazioni diverse (Mobilità volontaria ex art. 30 TUPI):",
+        "options": [
+            "È deciso unilateralmente dal dipendente con preavviso di 10 giorni.",
+            "È subordinato, di regola, all'assenso dell'amministrazione di appartenenza e all'inquadramento nella medesima area funzionale (o categoria).",
+            "Comporta il declassamento di una categoria lavorativa.",
+            "Richiede sempre il superamento di un nuovo concorso scritto."
+        ],
+        "a": 1,
+        "e": "La mobilità è una cessione del contratto di lavoro. Serve il nulla osta in uscita (con alcune eccezioni normative) e l'equivalenza del ruolo in ingresso.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "La disciplina dell'Incompatibilità e cumulo di impieghi (art. 53 TUPI) prevede che il dipendente pubblico:",
+        "options": [
+            "Non possa in alcun caso esercitare il commercio, l'industria o professioni (salvo albi autorizzati), stante il principio costituzionale di esclusività.",
+            "Possa essere amministratore delegato di società con fini di lucro se dichiara i redditi.",
+            "Possa gestire negozi commerciali nel fine settimana senza autorizzazioni.",
+            "Sia esentato da ogni divieto dopo 15 anni di servizio."
+        ],
+        "a": 0,
+        "e": "Regola ferrea: l'esercizio di attività d'impresa o commercio è INCOMPATIBILE IN MODO ASSOLUTO con il pubblico impiego. Non c'è autorizzazione che tenga.",
+        "materia": "Pubblico Impiego"
+    },
+    {
+        "q": "Nella giurisdizione della Corte dei Conti (Responsabilità Amministrativo-Contabile), il dipendente pubblico risponde dei danni cagionati all'erario:",
+        "options": [
+            "Per qualsiasi errore o svista (colpa lievissima).",
+            "Solo se l'atto ha causato un clamore mediatico.",
+            "Esclusivamente se il danno è stato cagionato con 'Dolo' o 'Colpa Grave'.",
+            "Sempre in modo oggettivo, a prescindere dal suo stato psicologico."
+        ],
+        "a": 2,
+        "e": "La colpa lieve non è perseguibile. La ratio è evitare la paralisi della PA ('paura della firma'): se sbagli per negligenza gravissima o dolo, paghi.",
+        "materia": "Pubblico Impiego"
+    },
+{
         "q": "In materia di accordi tra PA e privati (art. 11 L. 241/90), gli accordi sostitutivi del provvedimento:",
         "options": [
             "Sono soggetti ai medesimi controlli previsti per i provvedimenti sostituiti.",
