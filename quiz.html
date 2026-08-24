@@ -210,6 +210,7 @@
 </div>
 
 <script>
+
 const databaseQuiz = [
 {
         "q": "In caso di SCIA (Segnalazione Certificata di Inizio Attività), il potere inibitorio della PA si esercita di regola entro 60 giorni. Decorso tale termine, la PA:",
@@ -4076,7 +4077,6 @@ const databaseQuiz = [
 { "q": "Translate the phrase: 'In compliance with the law'.", "options": ["In complicità con la legge.", "Nel rispetto della legge / Conformemente alla legge.", "Per competenza legale.", "In lagnanza della legge."], "a": 1, "e": "'Compliance' = Conformità. È la parola più usata in assoluto in tutti i settori dell'anticorruzione, della privacy e del diritto societario.", "materia": "Inglese" }
 ];
 
-
 const STORAGE_KEY = 'concorso_progres_v7';
 const SESSION_KEY = 'concorso_active_session_v7';
 
@@ -4383,7 +4383,6 @@ function fineSessione(reason) {
             ` : ''}
         </div>
 
-        
         <button class="btn-start" onclick="salvaSessione(); mostraAnalisi()" style="margin-top: 15px; background: #27ae60 !important;">
             🔍 RIVEDI TUTTE LE SPIEGAZIONI
         </button>
@@ -4393,27 +4392,9 @@ function fineSessione(reason) {
     
     `;
 }
-</script>
 
+/* --- FUNZIONI AGGIUNTIVE CONSOLIDATE --- */
 
-
-
-<style>
-    #review-report-area { display: none; background: #000; padding: 25px; border-radius: 15px; border: 1px solid #333; margin-top: 20px; color: #fff; max-width: 850px; width: 95%; box-shadow: 0 30px 60px rgba(0,0,0,0.9); margin-left: auto; margin-right: auto; }
-    .card-errore { background: rgba(192, 57, 43, 0.1); border-left: 5px solid #c0392b; padding: 15px; margin-bottom: 15px; border-radius: 8px; text-align: left; }
-    .card-corretta { background: rgba(39, 174, 96, 0.1); border-left: 5px solid #27ae60; padding: 15px; margin-bottom: 15px; border-radius: 8px; text-align: left; }
-    .spiegazione-box { background: #111; padding: 12px; border-radius: 5px; margin-top: 10px; border: 1px solid #222; color: #ccc; font-size: 0.9em; line-height: 1.5; }
-    .btn-master { background: #2980b9; color: white; border: none; padding: 15px 25px; border-radius: 10px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
-    .btn-master:hover { background: #3498db; }
-</style>
-
-<div id="review-report-area">
-    <h2 style="text-align:center; color:#2980b9; text-transform: uppercase; letter-spacing: 2px;">Analisi Chirurgica Errori</h2>
-    <div id="lista-risultati"></div>
-    <button class="btn-master" onclick="uscitaSicura()">🏠 TORNA ALLA HOME</button>
-</div>
-
-<script>
 // 1. SALVATAGGIO BLINDATO
 function salvaSessione() {
     if(typeof sessionPool !== 'undefined' && sessionPool.length > 0) {
@@ -4519,8 +4500,23 @@ window.addEventListener('load', function() {
         }
     }
 });
+
 </script>
 
+<style>
+    #review-report-area { display: none; background: #000; padding: 25px; border-radius: 15px; border: 1px solid #333; margin-top: 20px; color: #fff; max-width: 850px; width: 95%; box-shadow: 0 30px 60px rgba(0,0,0,0.9); margin-left: auto; margin-right: auto; }
+    .card-errore { background: rgba(192, 57, 43, 0.1); border-left: 5px solid #c0392b; padding: 15px; margin-bottom: 15px; border-radius: 8px; text-align: left; }
+    .card-corretta { background: rgba(39, 174, 96, 0.1); border-left: 5px solid #27ae60; padding: 15px; margin-bottom: 15px; border-radius: 8px; text-align: left; }
+    .spiegazione-box { background: #111; padding: 12px; border-radius: 5px; margin-top: 10px; border: 1px solid #222; color: #ccc; font-size: 0.9em; line-height: 1.5; }
+    .btn-master { background: #2980b9; color: white; border: none; padding: 15px 25px; border-radius: 10px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+    .btn-master:hover { background: #3498db; }
+</style>
+
+<div id="review-report-area">
+    <h2 style="text-align:center; color:#2980b9; text-transform: uppercase; letter-spacing: 2px;">Analisi Chirurgica Errori</h2>
+    <div id="lista-risultati"></div>
+    <button class="btn-master" onclick="uscitaSicura()">🏠 TORNA ALLA HOME</button>
+</div>
 
 <style>
     #review-report-area { 
@@ -4540,105 +4536,6 @@ window.addEventListener('load', function() {
     <div id="lista-risultati"></div>
     <button class="btn-master" onclick="uscitaSicura()">🏠 TORNA ALLA HOME</button>
 </div>
-
-<script>
-// Funzione vitale: cancella la memoria della posizione e ricarica la Home pulita
-function uscitaSicura() {
-    console.log("Resetting session and returning home...");
-    sessionStorage.removeItem('schermata_attiva');
-    location.reload();
-}
-
-function salvaSessione() {
-    try {
-        if(typeof sessionPool !== 'undefined' && sessionPool.length > 0) {
-            const data = {
-                pool: sessionPool,
-                answers: sessionAnswers,
-                time: new Date().toLocaleString('it-IT')
-            };
-            localStorage.setItem('ULTIMO_TEST_MASTER', JSON.stringify(data));
-            sessionStorage.setItem('schermata_attiva', 'risultati');
-        }
-    } catch(e) { console.error("Errore salvataggio:", e); }
-}
-
-function mostraAnalisi() {
-    sessionStorage.setItem('schermata_attiva', 'report');
-    
-    let pool = (typeof sessionPool !== 'undefined' && sessionPool.length > 0) ? sessionPool : [];
-    let answers = (typeof sessionAnswers !== 'undefined' && sessionAnswers.length > 0) ? sessionAnswers : [];
-
-    if (pool.length === 0) {
-        const salvato = localStorage.getItem('ULTIMO_TEST_MASTER');
-        if (salvato) {
-            const dati = JSON.parse(salvato);
-            pool = dati.pool;
-            answers = dati.answers;
-            sessionPool = pool;
-            sessionAnswers = answers;
-        } else {
-            uscitaSicura();
-            return;
-        }
-    }
-
-    const lista = document.getElementById('lista-risultati');
-    lista.innerHTML = '';
-    
-    pool.forEach((qIdx, index) => {
-        const q = databaseQuiz[qIdx];
-        const ans = answers[index];
-        const esatta = (ans && ans.correct);
-        
-        const div = document.createElement('div');
-        div.className = esatta ? 'card-corretta' : 'card-errore';
-        div.innerHTML = `
-            <div style="font-weight:bold; margin-bottom:5px;">${index + 1}. ${q.q}</div>
-            <div style="font-size:0.85em;">Tua risposta: <span style="color:${esatta?'#27ae60':'#c0392b'}; font-weight:bold;">${ans ? q.options[ans.clickedIndex] : 'Non data'}</span></div>
-            <div style="font-size:0.85em; color:#27ae60;">Risposta esatta: ${q.options[q.a]}</div>
-            <div class="spiegazione-box"><strong>Il Razionale:</strong><br>${q.e}</div>
-        `;
-        lista.appendChild(div);
-    });
-
-    // Nascondi tutto e mostra solo il report
-    document.getElementById('home-page').style.display = 'none';
-    document.getElementById('quiz-container').style.display = 'none';
-    document.getElementById('review-report-area').style.display = 'block';
-    window.scrollTo(0,0);
-}
-
-// Gestione del caricamento pagina (Refresh)
-window.addEventListener('load', function() {
-    const schermata = sessionStorage.getItem('schermata_attiva');
-    const salvato = localStorage.getItem('ULTIMO_TEST_MASTER');
-    
-    if (schermata === 'report' && salvato) {
-        mostraAnalisi();
-    } else if (schermata === 'risultati' && salvato) {
-        const dati = JSON.parse(salvato);
-        sessionPool = dati.pool;
-        sessionAnswers = dati.answers;
-        if (typeof fineSessione === 'function') fineSessione("RECUPERO");
-    } else if (salvato) {
-        // Se siamo in Home, mostra il box di recupero rapido
-        const dati = JSON.parse(salvato);
-        const home = document.getElementById('home-page');
-        if (home && !document.getElementById('box-recupero')) {
-            const box = document.createElement('div');
-            box.id = 'box-recupero';
-            box.innerHTML = `
-                <div style="background: rgba(41, 128, 185, 0.1); border: 1px solid #2980b9; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: left;">
-                    <p style="margin: 0 0 10px 0; color: #bbb; font-size: 0.85em; text-transform:uppercase;">📌 <strong>Ultima Sessione:</strong> ${dati.time}</p>
-                    <button class="btn-master" onclick="mostraAnalisi()" style="background: #2980b9; color: #fff; padding: 12px; font-size: 0.85em;">🔍 RIVEDI ERRORI PRECEDENTI</button>
-                </div>
-            `;
-            home.insertBefore(box, home.querySelector('.mode-grid'));
-        }
-    }
-});
-</script>
 
 </body>
 </html>
